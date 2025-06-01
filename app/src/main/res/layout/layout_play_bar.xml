@@ -47,16 +47,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
+        <me.wcy.music.widget.BufferedCircularProgressIndicator
             android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:progress="75"
-            app:indicatorColor="@color/common_text_h1_color"
-            app:indicatorSize="28dp"
-            app:trackColor="@color/common_divider"
-            app:trackCornerRadius="1dp"
-            app:trackThickness="2dp" />
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
 
         <ImageView
             android:id="@+id/ivPlay"

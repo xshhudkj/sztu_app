@@ -30,8 +30,10 @@ android {
 
         ndk {
             abiFilters.apply {
-                add("armeabi-v7a")
-                add("arm64-v8a")
+                add("armeabi-v7a")  // ARM 32位 - 真机支持
+                add("arm64-v8a")    // ARM 64位 - 真机支持
+                add("x86")          // x86 32位 - 模拟器支持
+                add("x86_64")       // x86 64位 - 模拟器支持
             }
         }
 
@@ -46,6 +48,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     signingConfigs {
@@ -60,6 +63,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("boolean", "DEBUG", "true")
+            // 调试版本支持所有架构（包括模拟器）
+            ndk {
+                abiFilters.clear()
+                abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
+            }
+        }
+
         release {
             isMinifyEnabled = true
             isShrinkResources = true
@@ -68,6 +80,12 @@ android {
                 "proguard-rules.pro"
             )
             signingConfig = signingConfigs.getByName("release")
+            buildConfigField("boolean", "DEBUG", "false")
+            // 发布版本只支持真机架构（减小APK大小）
+            ndk {
+                abiFilters.clear()
+                abiFilters.addAll(listOf("armeabi-v7a", "arm64-v8a"))
+            }
         }
     }
 
@@ -78,6 +96,23 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.valueOf(libs.versions.java.get()).toString()
+        // 抑制已过时API警告和其他编译警告
+        freeCompilerArgs += listOf(
+            "-Xsuppress-deprecated-jvm-target-warning",
+            "-opt-in=kotlin.RequiresOptIn"
+        )
+        // 抑制所有警告
+        allWarningsAsErrors = false
+        suppressWarnings = true
+    }
+
+    // 针对性抑制特定Java编译警告
+    tasks.withType<JavaCompile> {
+        options.compilerArgs.addAll(listOf(
+            "-Xlint:-deprecation",    // 抑制过时API警告
+            "-Xlint:-unchecked",      // 抑制未检查类型警告
+            "-Xlint:-processing"      // 抑制注解处理器警告
+        ))
     }
 }
 
@@ -102,6 +137,19 @@ fun getLocalValue(key: String, quot: Boolean): String {
 kapt {
     // For hilt: Allow references to generated code
     correctErrorTypes = true
+    // 抑制注解处理器警告
+    arguments {
+        arg("dagger.fastInit", "enabled")
+        arg("dagger.hilt.android.internal.disableAndroidSuperclassValidation", "true")
+        arg("dagger.hilt.android.internal.projectType", "APP")
+        arg("dagger.hilt.internal.useAggregatingRootProcessor", "false")
+    }
+    // 针对性抑制kapt相关警告
+    javacOptions {
+        option("-Xlint:-deprecation")
+        option("-Xlint:-unchecked")
+        option("-Xlint:-processing")
+    }
 }
 
 ksp {
@@ -145,4 +193,6 @@ dependencies {
     implementation(libs.zbar)
     implementation(libs.blurry)
     implementation(libs.banner)
+    // 移除 error_prone_annotations 以解决 j2objc ReflectionSupport 警告
+    // implementation(libs.errorprone.annotations)
 }

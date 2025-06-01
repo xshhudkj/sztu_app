@@ -36,7 +36,7 @@ class SearchFragment : BaseMusicFragment() {
     }
     private val viewModel by activityViewModels<SearchViewModel>()
     private val menuSearch by lazy {
-        getTitleLayout()!!.addTextMenu("搜索", false)!!
+        getTitleLayout()?.addTextMenu("搜索", false)!!
     }
 
     override fun getRootView(): View {

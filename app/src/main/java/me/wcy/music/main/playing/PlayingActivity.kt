@@ -33,6 +33,8 @@ import me.wcy.music.common.BaseMusicActivity
 import me.wcy.music.consts.RoutePath
 import me.wcy.music.databinding.ActivityPlayingBinding
 import me.wcy.music.discover.DiscoverApi
+import me.wcy.music.ext.addButtonAnimation
+import me.wcy.music.ext.addPlayControlAnimation
 import me.wcy.music.ext.registerReceiverCompat
 import me.wcy.music.main.playlist.CurrentPlaylistFragment
 import me.wcy.music.service.PlayMode
@@ -136,16 +138,49 @@ class PlayingActivity : BaseMusicActivity() {
         if (insets != null) {
             updateInsets(insets)
         }
-        ViewCompat.setOnApplyWindowInsetsListener(viewBinding.llContent) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(viewBinding.llContent) { _, insets ->
             updateInsets(insets)
             insets
         }
     }
 
     private fun initTitle() {
+        // 为返回按钮添加按钮动画
+        viewBinding.titleLayout.ivClose.addButtonAnimation(
+            scaleDown = 0.9f,
+            duration = 200L,
+            rippleColor = 0x40FFFFFF
+        )
         viewBinding.titleLayout.ivClose.setOnClickListener {
-            onBackPressed()
+            finishWithAnimation()
         }
+    }
+
+    private fun finishWithAnimation() {
+        // 添加延时确保动画能够完整播放
+        lifecycleScope.launch {
+            // 先触发动画开始
+            super.onBackPressed()
+            // 延时等待动画完成，下滑动画通常需要300-500ms
+            kotlinx.coroutines.delay(400)
+            // 确保Activity真正关闭
+            if (!isFinishing) {
+                finish()
+            }
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        // 不直接调用super.onBackPressed()，而是使用自定义的动画逻辑
+        finishWithAnimation()
+    }
+
+    override fun finish() {
+        // 重写finish方法，确保使用动画
+        super.finish()
+        // 手动应用退出动画，确保在主题消失前执行
+        overridePendingTransition(R.anim.anim_stay_background, R.anim.anim_slide_down_with_background)
     }
 
     private fun initVolume() {
@@ -167,7 +202,7 @@ class PlayingActivity : BaseMusicActivity() {
     }
 
     private fun initLrc() {
-        viewBinding.lrcView.setDraggable(true) { view, time ->
+        viewBinding.lrcView.setDraggable(true) { _, time ->
             val playState = playerController.playState.value
             if (playState.isPlaying || playState.isPausing) {
                 playerController.seekTo(time.toInt())
@@ -178,12 +213,18 @@ class PlayingActivity : BaseMusicActivity() {
             }
             return@setDraggable false
         }
-        viewBinding.lrcView.setOnTapListener { view: LrcView?, x: Float, y: Float ->
+        viewBinding.lrcView.setOnTapListener { _: LrcView?, _: Float, _: Float ->
             switchCoverLrc(true)
         }
     }
 
     private fun initActions() {
+        // 为喜欢按钮添加按钮动画
+        viewBinding.controlLayout.ivLike.addButtonAnimation(
+            scaleDown = 0.9f,
+            duration = 200L,
+            rippleColor = 0x40FFFFFF
+        )
         viewBinding.controlLayout.ivLike.setOnClickListener {
             lifecycleScope.launch {
                 val song = playerController.currentSong.value ?: return@launch
@@ -195,6 +236,13 @@ class PlayingActivity : BaseMusicActivity() {
                 }
             }
         }
+
+        // 为下载按钮添加按钮动画
+        viewBinding.controlLayout.ivDownload.addButtonAnimation(
+            scaleDown = 0.9f,
+            duration = 200L,
+            rippleColor = 0x40FFFFFF
+        )
         viewBinding.controlLayout.ivDownload.setOnClickListener {
             lifecycleScope.launch {
                 val song = playerController.currentSong.value ?: return@launch
@@ -219,18 +267,32 @@ class PlayingActivity : BaseMusicActivity() {
             }
         }
 
+        // 为播放模式按钮添加播放控制动画
+        viewBinding.controlLayout.ivMode.addPlayControlAnimation()
         viewBinding.controlLayout.ivMode.setOnClickListener {
             switchPlayMode()
         }
+
+        // 为播放按钮添加播放控制动画
+        viewBinding.controlLayout.flPlay.addPlayControlAnimation()
         viewBinding.controlLayout.flPlay.setOnClickListener {
             playerController.playPause()
         }
+
+        // 为上一首按钮添加播放控制动画
+        viewBinding.controlLayout.ivPrev.addPlayControlAnimation()
         viewBinding.controlLayout.ivPrev.setOnClickListener {
             playerController.prev()
         }
+
+        // 为下一首按钮添加播放控制动画
+        viewBinding.controlLayout.ivNext.addPlayControlAnimation()
         viewBinding.controlLayout.ivNext.setOnClickListener {
             playerController.next()
         }
+
+        // 为播放列表按钮添加播放控制动画
+        viewBinding.controlLayout.ivPlaylist.addPlayControlAnimation()
         viewBinding.controlLayout.ivPlaylist.setOnClickListener {
             CurrentPlaylistFragment.newInstance()
                 .show(supportFragmentManager, CurrentPlaylistFragment.TAG)

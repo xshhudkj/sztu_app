@@ -7,9 +7,9 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.blankj.utilcode.util.AppUtils
 import me.wcy.music.R
-import top.wangchenyan.common.ui.activity.BaseActivity
+import me.wcy.music.common.BaseMusicActivity
 
-class AboutActivity : BaseActivity() {
+class AboutActivity : BaseMusicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)

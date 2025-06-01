@@ -13,7 +13,7 @@ kotlin = "1.9.25"
 ksp = "1.9.25-1.0.20"
 hilt = "2.48.1"
 # sdk
-media3 = "1.4.1"
+media3 = "1.6.0"
 room = "2.6.1"
 common = "1.0.2"
 crouter = "3.0.0-beta01"
@@ -33,7 +33,7 @@ crouter-plugin = { group = "com.github.wangchenyan.crouter", name = "crouter-plu
 # androidx
 appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
 material = { group = "com.google.android.material", name = "material", version = "1.12.0" }
-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.1.4" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.2.0" }
 flexbox = { group = "com.google.android.flexbox", name = "flexbox", version = "3.0.0" }
 media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
 media3-datasource-okhttp = { group = "androidx.media3", name = "media3-datasource-okhttp", version.ref = "media3" }
@@ -57,3 +57,4 @@ loggingInterceptor = { group = "com.github.ihsanbal", name = "LoggingInterceptor
 zbar = { group = "cn.bertsir.zbarLibary", name = "zbarlibary", version = "1.4.2" }
 blurry = { group = "jp.wasabeef", name = "blurry", version = "4.0.1" }
 banner = { group = "io.github.youth5201314", name = "banner", version = "2.2.2" }
+errorprone-annotations = { group = "com.google.errorprone", name = "error_prone_annotations", version = "2.18.0" }

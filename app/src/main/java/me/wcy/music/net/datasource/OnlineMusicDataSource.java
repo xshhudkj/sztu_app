@@ -41,7 +41,6 @@ import androidx.media3.datasource.okhttp.OkHttpDataSource;
 import com.google.common.base.Predicate;
 import com.google.common.net.HttpHeaders;
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.errorprone.annotations.CanIgnoreReturnValue;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -108,7 +107,6 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
             defaultRequestProperties = new RequestProperties();
         }
 
-        @CanIgnoreReturnValue
         @UnstableApi
         @Override
         public final Factory setDefaultRequestProperties(Map<String, String> defaultRequestProperties) {
@@ -126,7 +124,6 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
          *                  agent of the underlying {@link OkHttpClient}.
          * @return This factory.
          */
-        @CanIgnoreReturnValue
         @UnstableApi
         public Factory setUserAgent(@Nullable String userAgent) {
             this.userAgent = userAgent;
@@ -141,7 +138,6 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
          * @param cacheControl The cache control that will be used.
          * @return This factory.
          */
-        @CanIgnoreReturnValue
         @UnstableApi
         public Factory setCacheControl(@Nullable CacheControl cacheControl) {
             this.cacheControl = cacheControl;
@@ -159,7 +155,6 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
          *                             predicate that was previously set.
          * @return This factory.
          */
-        @CanIgnoreReturnValue
         @UnstableApi
         public Factory setContentTypePredicate(@Nullable Predicate<String> contentTypePredicate) {
             this.contentTypePredicate = contentTypePredicate;
@@ -176,7 +171,6 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
          * @param transferListener The listener that will be used.
          * @return This factory.
          */
-        @CanIgnoreReturnValue
         @UnstableApi
         public Factory setTransferListener(@Nullable TransferListener transferListener) {
             this.transferListener = transferListener;

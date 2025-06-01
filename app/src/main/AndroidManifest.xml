@@ -38,24 +38,29 @@
             android:name=".main.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:launchMode="singleTop">
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.CarImmersive">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".common.MusicFragmentContainerActivity" />
+        <activity
+            android:name=".common.MusicFragmentContainerActivity"
+            android:theme="@style/AppTheme.CarImmersive" />
         <activity
             android:name=".main.SettingsActivity"
-            android:label="@string/menu_setting" />
+            android:label="@string/menu_setting"
+            android:theme="@style/AppTheme.CarImmersive" />
         <activity
             android:name=".main.AboutActivity"
-            android:label="@string/menu_about" />
+            android:label="@string/menu_about"
+            android:theme="@style/AppTheme.CarImmersive" />
         <activity
             android:name="me.wcy.music.main.playing.PlayingActivity"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.Popup" />
+            android:theme="@style/AppTheme.CarImmersive.Playing" />
     </application>
 
 </manifest>

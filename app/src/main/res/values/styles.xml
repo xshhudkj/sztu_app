@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
 
@@ -14,11 +14,44 @@
         <item name="android:windowAnimationStyle">@style/AnimationPopup</item>
     </style>
 
+    <!-- 车载全屏沉浸式主题 -->
+    <style name="AppTheme.CarImmersive" parent="AppTheme">
+        <!-- 基础全屏设置 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- 透明系统栏 -->
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+
+        <!-- 刘海屏适配 -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+
+        <!-- 窗口适配设置 -->
+        <item name="android:fitsSystemWindows">false</item>
+
+        <!-- 车载环境优化 -->
+        <item name="android:keepScreenOn">true</item>
+    </style>
+
+    <!-- 播放页面专用主题，带滑动动画 -->
+    <style name="AppTheme.CarImmersive.Playing" parent="AppTheme.CarImmersive">
+        <item name="android:windowAnimationStyle">@style/AnimationPlaying</item>
+    </style>
+
     <style name="AnimationPopup" mce_bogus="1" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/anim_slide_up</item>
         <item name="android:activityOpenExitAnimation">@anim/anim_slide_down</item>
         <item name="android:activityCloseEnterAnimation">@anim/anim_slide_up</item>
         <item name="android:activityCloseExitAnimation">@anim/anim_slide_down</item>
+    </style>
+
+    <!-- 播放页面专用动画 -->
+    <style name="AnimationPlaying" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_up_with_background</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_stay_background</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_stay_background</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_down_with_background</item>
     </style>
 
     <style name="TabLayout">

@@ -27,6 +27,7 @@ import me.wcy.radapter3.RTypeMapper
 import me.wcy.router.CRouter
 import me.wcy.router.annotation.Route
 import top.wangchenyan.common.ext.getColor
+import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import javax.inject.Inject
 
@@ -156,17 +157,17 @@ class RankingFragment : BaseMusicFragment() {
 
     private fun playPlaylist(playlistData: PlaylistData) {
         lifecycleScope.launch {
-            showLoading()
             kotlin.runCatching {
                 DiscoverApi.getFullPlaylistSongList(playlistData.id)
             }.onSuccess { songListData ->
-                dismissLoading()
                 if (songListData.code == 200 && songListData.songs.isNotEmpty()) {
                     val songs = songListData.songs.map { it.toMediaItem() }
                     playerController.replaceAll(songs, songs[0])
+                    // 自动弹出播放页面
+                    CRouter.with(requireContext()).url(RoutePath.PLAYING).start()
                 }
             }.onFailure {
-                dismissLoading()
+                // 静默处理错误，不显示弹窗
             }
         }
     }

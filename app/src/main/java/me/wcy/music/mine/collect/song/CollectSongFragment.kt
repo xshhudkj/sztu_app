@@ -8,11 +8,11 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.SizeUtils
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.wcy.music.R
+import me.wcy.music.common.BaseMusicBottomSheetFragment
 import me.wcy.music.common.bean.PlaylistData
 import me.wcy.music.databinding.FragmentCollectSongBinding
 import me.wcy.music.mine.playlist.UserPlaylistItemBinder
@@ -25,7 +25,7 @@ import top.wangchenyan.common.widget.decoration.SpacingDecoration
  * Created by wangchenyan.top on 2024/3/20.
  */
 @AndroidEntryPoint
-class CollectSongFragment : BottomSheetDialogFragment() {
+class CollectSongFragment : BaseMusicBottomSheetFragment() {
     private val viewBinding by viewBindings<FragmentCollectSongBinding>()
     private val viewModel: CollectSongViewModel by viewModels()
     private val adapter by lazy { RAdapter<PlaylistData>() }

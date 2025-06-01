@@ -13,9 +13,11 @@ import me.wcy.music.common.DarkModeService
 import me.wcy.music.consts.PreferenceName
 import me.wcy.music.service.PlayerController
 import me.wcy.music.storage.preference.ConfigPreferences
+
 import me.wcy.music.utils.MusicUtils
 import me.wcy.router.annotation.Route
 import top.wangchenyan.common.ext.toast
+
 import javax.inject.Inject
 
 @Route("/settings")
@@ -52,6 +54,7 @@ class SettingsActivity : BaseMusicActivity() {
             findPreference(getString(R.string.setting_key_filter_time))!!
         }
 
+
         @Inject
         lateinit var playerController: PlayerController
 
@@ -67,6 +70,7 @@ class SettingsActivity : BaseMusicActivity() {
             initSoundEffect()
             initDownloadSoundQuality()
             initFilter()
+
         }
 
         private fun initDarkMode() {
@@ -160,6 +164,8 @@ class SettingsActivity : BaseMusicActivity() {
                 true
             }
         }
+
+
 
         private fun startEqualizer() {
             if (MusicUtils.isAudioControlPanelAvailable(requireContext())) {

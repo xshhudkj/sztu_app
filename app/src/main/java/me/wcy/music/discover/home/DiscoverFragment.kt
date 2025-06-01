@@ -28,9 +28,11 @@ import me.wcy.music.discover.banner.BannerData
 import me.wcy.music.discover.home.viewmodel.DiscoverViewModel
 import me.wcy.music.discover.playlist.square.item.PlaylistItemBinder
 import me.wcy.music.discover.ranking.discover.item.DiscoverRankingItemBinder
+import me.wcy.music.ext.addButtonAnimation
 import me.wcy.music.main.MainActivity
 import me.wcy.music.service.PlayerController
 import me.wcy.music.storage.preference.ConfigPreferences
+import me.wcy.music.utils.BatchPlaylistLoader
 import me.wcy.music.utils.toMediaItem
 import me.wcy.radapter3.RAdapter
 import me.wcy.router.CRouter
@@ -61,6 +63,10 @@ class DiscoverFragment : BaseMusicFragment() {
 
     @Inject
     lateinit var playerController: PlayerController
+
+    private val batchPlaylistLoader by lazy {
+        BatchPlaylistLoader(playerController, lifecycleScope)
+    }
 
     override fun getRootView(): View {
         return viewBinding.root
@@ -157,17 +163,28 @@ class DiscoverFragment : BaseMusicFragment() {
     }
 
     private fun initTopButton() {
+        // 为推荐歌曲按钮添加按钮动画
+        viewBinding.btnRecommendSong.addButtonAnimation()
         viewBinding.btnRecommendSong.setOnClickListener {
             CRouter.with(requireActivity()).url(RoutePath.RECOMMEND_SONG).start()
         }
+
+        // 为私人FM按钮添加按钮动画
+        viewBinding.btnPrivateFm.addButtonAnimation()
         viewBinding.btnPrivateFm.setOnClickListener {
             toast("敬请期待")
         }
+
+        // 为推荐歌单按钮添加按钮动画
+        viewBinding.btnRecommendPlaylist.addButtonAnimation()
         viewBinding.btnRecommendPlaylist.setOnClickListener {
             CRouter.with(requireActivity())
                 .url(RoutePath.PLAYLIST_SQUARE)
                 .start()
         }
+
+        // 为排行榜按钮添加按钮动画
+        viewBinding.btnRank.addButtonAnimation()
         viewBinding.btnRank.setOnClickListener {
             CRouter.with(requireActivity()).url(RoutePath.RANKING).start()
         }
@@ -278,19 +295,16 @@ class DiscoverFragment : BaseMusicFragment() {
     }
 
     private fun playPlaylist(playlistData: PlaylistData, songPosition: Int) {
-        lifecycleScope.launch {
-            showLoading()
-            kotlin.runCatching {
-                DiscoverApi.getFullPlaylistSongList(playlistData.id)
-            }.onSuccess { songListData ->
-                dismissLoading()
-                if (songListData.code == 200 && songListData.songs.isNotEmpty()) {
-                    val songs = songListData.songs.map { it.toMediaItem() }
-                    playerController.replaceAll(songs, songs.getOrElse(songPosition) { songs[0] })
-                }
-            }.onFailure {
-                dismissLoading()
+        batchPlaylistLoader.playPlaylistSong(
+            playlistId = playlistData.id,
+            songPosition = songPosition,
+            onPlayStarted = {
+                // 播放开始后自动弹出播放页面
+                CRouter.with(requireContext()).url(RoutePath.PLAYING).start()
+            },
+            onError = {
+                // 静默处理错误，不显示弹窗
             }
-        }
+        )
     }
 }

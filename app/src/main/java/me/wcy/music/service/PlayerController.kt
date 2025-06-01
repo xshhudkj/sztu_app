@@ -23,6 +23,9 @@ interface PlayerController {
     fun replaceAll(songList: List<MediaItem>, song: MediaItem)
 
     @MainThread
+    fun appendToPlaylist(songList: List<MediaItem>)
+
+    @MainThread
     fun play(mediaId: String)
 
     @MainThread

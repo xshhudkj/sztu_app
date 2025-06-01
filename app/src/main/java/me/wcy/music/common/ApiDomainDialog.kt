@@ -27,9 +27,9 @@ import top.wangchenyan.common.widget.dialog.CenterDialogBuilder
 class ApiDomainDialog(private val context: Context) {
 
     fun show() {
-        CenterDialogBuilder(context)
+        val dialog = CenterDialogBuilder(context)
             .title("请输入云音乐API域名")
-            .contentViewBinding { dialog: CenterDialog, viewBinding: DialogApiDomainBinding ->
+            .contentViewBinding { _: CenterDialog, viewBinding: DialogApiDomainBinding ->
                 viewBinding.tvDoc.setLink()
                 viewBinding.tvDoc.text = buildSpannedString {
                     append("点击查看")
@@ -66,7 +66,11 @@ class ApiDomainDialog(private val context: Context) {
                             NetCache.userCache.clear()
                         }
                         dialog.dismiss()
-                        context.showSingleDialog("设置成功，重启后生效") {
+                        context.showImmersiveConfirmDialog(
+                            message = "设置成功，重启后生效",
+                            confirmButton = "确定",
+                            cancelButton = ""
+                        ) {
                             AppUtils.relaunchApp(true)
                         }
                     }
@@ -76,13 +80,18 @@ class ApiDomainDialog(private val context: Context) {
             }
             .isAutoClose(false)
             .build()
-            .show()
+
+        // 应用全屏沉浸式模式
+        ImmersiveDialogHelper.enableImmersiveForDialog(dialog)
+        dialog.show()
     }
 
     companion object {
         fun checkApiDomain(context: Context): Boolean {
             return if (ConfigPreferences.apiDomain.isEmpty()) {
-                context.showConfirmDialog("请先设置云音乐API域名") {
+                context.showImmersiveConfirmDialog(
+                    message = "请先设置云音乐API域名"
+                ) {
                     ApiDomainDialog(context).show()
                 }
                 false

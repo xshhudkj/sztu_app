@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import me.wcy.music.utils.MusicUtils.asLargeCover
 import me.wcy.music.utils.MusicUtils.asSmallCover
@@ -69,6 +70,7 @@ data class SongEntity(
     @ColumnInfo("file_size")
     val fileSize: Long = 0,
 ) : Parcelable {
+    @IgnoredOnParcel
     @PrimaryKey
     @ColumnInfo("unique_id")
     var uniqueId: String = generateUniqueId(type, songId)

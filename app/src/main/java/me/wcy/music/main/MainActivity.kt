@@ -18,6 +18,7 @@ import me.wcy.music.R
 import me.wcy.music.account.service.UserService
 import me.wcy.music.common.ApiDomainDialog
 import me.wcy.music.common.BaseMusicActivity
+import me.wcy.music.common.ImmersiveDialogHelper
 import me.wcy.music.consts.RoutePath
 import me.wcy.music.databinding.ActivityMainBinding
 import me.wcy.music.databinding.NavigationHeaderBinding
@@ -29,7 +30,7 @@ import me.wcy.music.utils.QuitTimer
 import me.wcy.music.utils.TimeUtils
 import me.wcy.router.CRouter
 import top.wangchenyan.common.ext.getColorEx
-import top.wangchenyan.common.ext.showConfirmDialog
+import me.wcy.music.common.showImmersiveConfirmDialog
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.widget.pager.CustomTabPager
@@ -174,13 +175,17 @@ class MainActivity : BaseMusicActivity() {
     }
 
     private fun timerDialog() {
-        AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this)
             .setTitle(R.string.menu_timer)
             .setItems(resources.getStringArray(R.array.timer_text)) { dialog: DialogInterface?, which: Int ->
                 val times = resources.getIntArray(R.array.timer_int)
                 startTimer(times[which])
             }
-            .show()
+            .create()
+
+        // 应用全屏沉浸式模式
+        ImmersiveDialogHelper.enableImmersiveForDialog(dialog)
+        dialog.show()
     }
 
     private fun startTimer(minute: Int) {
@@ -193,7 +198,7 @@ class MainActivity : BaseMusicActivity() {
     }
 
     private fun logout() {
-        showConfirmDialog(message = "确认退出登录？") {
+        showImmersiveConfirmDialog(message = "确认退出登录？") {
             lifecycleScope.launch {
                 userService.logout()
             }

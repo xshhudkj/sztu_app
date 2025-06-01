@@ -17,6 +17,8 @@ import kotlinx.coroutines.launch
 import me.wcy.music.R
 import me.wcy.music.consts.RoutePath
 import me.wcy.music.databinding.LayoutPlayBarBinding
+import me.wcy.music.ext.addListItemAnimation
+import me.wcy.music.ext.addPlayControlAnimation
 import me.wcy.music.main.playlist.CurrentPlaylistFragment
 import me.wcy.music.service.PlayServiceModule.playerController
 import me.wcy.music.service.PlayState
@@ -60,15 +62,26 @@ class PlayBar @JvmOverloads constructor(
     }
 
     private fun initView() {
+        // 为整个播放栏添加列表项动画
+        viewBinding.root.addListItemAnimation()
         viewBinding.root.setOnClickListener {
             CRouter.with(context).url(RoutePath.PLAYING).start()
         }
+
+        // 为播放按钮添加播放控制动画
+        viewBinding.flPlay.addPlayControlAnimation()
         viewBinding.flPlay.setOnClickListener {
             playerController.playPause()
         }
+
+        // 为下一首按钮添加播放控制动画
+        viewBinding.ivNext.addPlayControlAnimation()
         viewBinding.ivNext.setOnClickListener {
             playerController.next()
         }
+
+        // 为播放列表按钮添加播放控制动画
+        viewBinding.ivPlaylist.addPlayControlAnimation()
         viewBinding.ivPlaylist.setOnClickListener {
             val activity = context.findActivity()
             if (activity is FragmentActivity) {
@@ -92,6 +105,12 @@ class PlayBar @JvmOverloads constructor(
                 }
                 viewBinding.progressBar.max = currentSong.mediaMetadata.getDuration().toInt()
                 viewBinding.progressBar.progress = playerController.playProgress.value.toInt()
+                // 设置进度条颜色
+                viewBinding.progressBar.setColors(
+                    backgroundColor = getColor(R.color.common_divider),
+                    bufferColor = getColor(R.color.translucent_white_p50),
+                    progressColor = getColor(R.color.common_theme_color)
+                )
             } else {
                 isVisible = false
             }
@@ -136,6 +155,18 @@ class PlayBar @JvmOverloads constructor(
         lifecycleOwner.lifecycleScope.launch {
             playerController.playProgress.collectLatest {
                 viewBinding.progressBar.progress = it.toInt()
+            }
+        }
+
+        lifecycleOwner.lifecycleScope.launch {
+            playerController.bufferingPercent.collectLatest { percent ->
+                // 更新缓存进度
+                val currentSong = playerController.currentSong.value
+                if (currentSong != null) {
+                    val duration = currentSong.mediaMetadata.getDuration().toInt()
+                    val bufferProgress = (duration * percent / 100).coerceIn(0, duration)
+                    viewBinding.progressBar.bufferProgress = bufferProgress
+                }
             }
         }
     }

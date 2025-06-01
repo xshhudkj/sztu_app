@@ -83,6 +83,12 @@ class PlayerControllerImpl(
                 }
             }
 
+            override fun onLoadingChanged(isLoading: Boolean) {
+                super.onLoadingChanged(isLoading)
+                // 当加载状态改变时，更新缓存进度
+                updateBufferingPercent()
+            }
+
             override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
                 super.onMediaItemTransition(mediaItem, reason)
                 mediaItem ?: return
@@ -139,6 +145,8 @@ class PlayerControllerImpl(
                 if (player.isPlaying) {
                     _playProgress.value = player.currentPosition
                 }
+                // 定期更新缓存进度
+                updateBufferingPercent()
                 delay(1000)
             }
         }
@@ -177,6 +185,52 @@ class PlayerControllerImpl(
             _playlist.value = songList
             _currentSong.value = song
             play(song.mediaId)
+        }
+    }
+
+    @MainThread
+    override fun appendToPlaylist(songList: List<MediaItem>) {
+        launch(Dispatchers.Main.immediate) {
+            val currentPlaylist = _playlist.value.orEmpty().toMutableList()
+            val newSongs = songList.filter { newSong ->
+                currentPlaylist.none { it.mediaId == newSong.mediaId }
+            }
+            if (newSongs.isNotEmpty()) {
+                currentPlaylist.addAll(newSongs)
+                withContext(Dispatchers.IO) {
+                    db.playlistDao().insertAll(newSongs.map { it.toSongEntity() })
+                }
+                // 分批添加到ExoPlayer，避免一次性添加太多导致卡顿
+                newSongs.chunked(10).forEach { batch ->
+                    player.addMediaItems(batch)
+                }
+                _playlist.value = currentPlaylist
+            }
+        }
+    }
+
+    /**
+     * 智能播放指定歌曲，如果歌曲不在当前播放列表中则等待
+     * @param mediaId 歌曲ID
+     * @param maxWaitTime 最大等待时间（毫秒）
+     */
+    @MainThread
+    fun playWhenAvailable(mediaId: String, maxWaitTime: Long = 5000) {
+        launch(Dispatchers.Main.immediate) {
+            val startTime = System.currentTimeMillis()
+            while (System.currentTimeMillis() - startTime < maxWaitTime) {
+                val playlist = _playlist.value
+                if (playlist?.any { it.mediaId == mediaId } == true) {
+                    play(mediaId)
+                    return@launch
+                }
+                delay(100) // 每100ms检查一次
+            }
+            // 超时后播放当前播放列表的第一首
+            val playlist = _playlist.value
+            if (!playlist.isNullOrEmpty()) {
+                play(playlist[0].mediaId)
+            }
         }
     }
 
@@ -317,5 +371,17 @@ class PlayerControllerImpl(
     override fun stop() {
         player.stop()
         _playState.value = PlayState.Idle
+    }
+
+    /**
+     * 更新缓存进度百分比
+     */
+    private fun updateBufferingPercent() {
+        if (player.duration > 0) {
+            val bufferedPosition = player.bufferedPosition
+            val duration = player.duration
+            val percent = ((bufferedPosition * 100) / duration).toInt().coerceIn(0, 100)
+            _bufferingPercent.value = percent
+        }
     }
 }

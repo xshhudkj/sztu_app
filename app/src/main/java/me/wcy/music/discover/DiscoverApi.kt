@@ -86,6 +86,33 @@ interface DiscoverApi {
 
         fun get(): DiscoverApi = api
 
+        /**
+         * 分批获取歌单歌曲列表
+         * @param id 歌单ID
+         * @param limit 每批获取数量
+         * @param offset 偏移量
+         * @param timestamp 时间戳
+         */
+        suspend fun getPlaylistSongListBatch(
+            id: Long,
+            limit: Int = 3,
+            offset: Int = 0,
+            timestamp: Long? = null
+        ): SongListData {
+            return withContext(Dispatchers.IO) {
+                val songList = get().getPlaylistSongList(
+                    id,
+                    limit = limit,
+                    offset = offset,
+                    timestamp = timestamp
+                )
+                if (songList.code != 200) {
+                    throw Exception("code = ${songList.code}")
+                }
+                return@withContext songList
+            }
+        }
+
         suspend fun getFullPlaylistSongList(id: Long, timestamp: Long? = null): SongListData {
             return withContext(Dispatchers.IO) {
                 var offset = 0
