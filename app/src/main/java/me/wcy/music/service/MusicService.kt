@@ -17,6 +17,7 @@ import androidx.media3.session.MediaSessionService
 import com.blankj.utilcode.util.IntentUtils
 import me.wcy.music.R
 import me.wcy.music.net.datasource.MusicDataSource
+import me.wcy.music.utils.MusicUtils
 import top.wangchenyan.common.CommonApp
 
 /**
@@ -62,9 +63,26 @@ class MusicService : MediaSessionService() {
             )
             .build()
 
-        // 针对Android Automotive优化的通知栏配置
-        setupAutomotiveNotification()
-        Log.d(TAG, "MusicService onCreate() - Android Automotive通知栏配置完成")
+        // 根据系统类型配置通知栏
+        setupNotificationProvider()
+        Log.d(TAG, "MusicService onCreate() - 通知栏配置完成")
+    }
+
+    /**
+     * 根据系统类型配置通知栏
+     * Android Automotive系统使用专用的AutomotiveMediaNotificationProvider
+     * 手机Android系统使用原始的DefaultMediaNotificationProvider
+     */
+    @OptIn(UnstableApi::class)
+    private fun setupNotificationProvider() {
+        val isAutomotive = MusicUtils.isAndroidAutomotive(applicationContext)
+        Log.d(TAG, "setupNotificationProvider() - 检测到系统类型: ${if (isAutomotive) "Android Automotive" else "手机Android"}")
+
+        if (isAutomotive) {
+            setupAutomotiveNotification()
+        } else {
+            setupPhoneNotification()
+        }
     }
 
     /**
@@ -82,17 +100,29 @@ class MusicService : MediaSessionService() {
         } catch (e: Exception) {
             Log.e(TAG, "setupAutomotiveNotification() - 通知栏配置失败，回退到默认配置", e)
             // 回退到默认配置
-            try {
-                val defaultProvider = DefaultMediaNotificationProvider.Builder(applicationContext)
-                    .build()
-                    .apply {
-                        setSmallIcon(R.drawable.ic_notification)
-                    }
-                setMediaNotificationProvider(defaultProvider)
-                Log.d(TAG, "setupAutomotiveNotification() - 默认通知栏配置成功")
-            } catch (fallbackException: Exception) {
-                Log.e(TAG, "setupAutomotiveNotification() - 默认通知栏配置也失败", fallbackException)
-            }
+            setupPhoneNotification()
+        }
+    }
+
+    /**
+     * 配置手机Android系统的原始通知栏
+     * 使用标准的DefaultMediaNotificationProvider，适配手机系统
+     */
+    @OptIn(UnstableApi::class)
+    private fun setupPhoneNotification() {
+        try {
+            // 使用原始的DefaultMediaNotificationProvider，适配手机Android系统
+            val defaultProvider = DefaultMediaNotificationProvider.Builder(applicationContext)
+                .setChannelId("music_player_channel")
+                .setChannelName(R.string.app_name)
+                .build()
+                .apply {
+                    setSmallIcon(R.drawable.ic_notification)
+                }
+            setMediaNotificationProvider(defaultProvider)
+            Log.d(TAG, "setupPhoneNotification() - 手机Android原始通知栏配置成功")
+        } catch (e: Exception) {
+            Log.e(TAG, "setupPhoneNotification() - 手机通知栏配置失败", e)
         }
     }
 
