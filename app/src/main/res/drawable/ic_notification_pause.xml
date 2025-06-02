@@ -1,12 +1,17 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp"
-    android:height="24dp"
-    android:viewportWidth="1024"
-    android:viewportHeight="1024">
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 圆形背景 -->
     <path
-        android:fillColor="@color/common_text_h2_color"
-        android:pathData="M413.9,320c-17.1,0 -32,14.9 -32,32v320c0,17.1 14.9,32 32,32s32,-14.9 32,-32v-320c0,-17.1 -14.9,-32 -32,-32zM605.9,320c-17.1,0 -32,14.9 -32,32v320c0,17.1 14.9,32 32,32s32,-14.9 32,-32v-320c0,-17.1 -14.9,-32 -32,-32z" />
+        android:fillColor="#FFFFFF"
+        android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10s10,-4.48 10,-10S17.52,2 12,2z" />
+    <!-- 暂停双竖线 -->
     <path
-        android:fillColor="@color/common_text_h2_color"
-        android:pathData="M509.9,32C245.3,32 32,247.5 32,512s213.3,480 477.9,480S987.7,776.5 987.7,512 774.4,32 509.9,32zM509.9,928C281.6,928 96,742.4 96,512S281.6,96 509.9,96 923.7,281.6 923.7,512s-185.6,416 -413.9,416z" />
+        android:fillColor="#333333"
+        android:pathData="M8,7h2.5v10H8V7z" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M13.5,7H16v10h-2.5V7z" />
 </vector>

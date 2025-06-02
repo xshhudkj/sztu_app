@@ -47,11 +47,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <me.wcy.music.widget.BufferedCircularProgressIndicator
-            android:id="@+id/progressBar"
-            android:layout_width="28dp"
-            android:layout_height="28dp" />
-
         <ImageView
             android:id="@+id/ivPlay"
             android:layout_width="16dp"

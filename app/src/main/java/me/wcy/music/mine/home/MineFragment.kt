@@ -26,6 +26,7 @@ import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.widget.decoration.SpacingDecoration
 import top.wangchenyan.common.widget.dialog.BottomItemsDialogBuilder
+import me.wcy.music.common.enableImmersiveMode
 import javax.inject.Inject
 
 /**
@@ -167,7 +168,7 @@ class MineFragment : BaseMusicFragment() {
         }
 
         override fun onMoreClick(item: PlaylistData) {
-            BottomItemsDialogBuilder(requireActivity())
+            val dialog = BottomItemsDialogBuilder(requireActivity())
                 .items(listOf("删除"))
                 .onClickListener { dialog, which ->
                     lifecycleScope.launch {
@@ -180,7 +181,10 @@ class MineFragment : BaseMusicFragment() {
                     }
                 }
                 .build()
-                .show()
+
+            // 应用全屏沉浸式模式，确保Dialog符合官方最佳实践
+            dialog.enableImmersiveMode()
+            dialog.show()
         }
     }
 }

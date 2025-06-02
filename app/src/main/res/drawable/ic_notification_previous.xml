@@ -7,8 +7,11 @@
     <path
         android:fillColor="#FFFFFF"
         android:pathData="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10s10,-4.48 10,-10S17.52,2 12,2z" />
-    <!-- 播放三角形 -->
+    <!-- 上一首图标：竖线+三角形 -->
     <path
         android:fillColor="#333333"
-        android:pathData="M9,7v10l8,-5z" />
+        android:pathData="M6,7h2.5v10H6V7z" />
+    <path
+        android:fillColor="#333333"
+        android:pathData="M10,12l8,-5v10z" />
 </vector>

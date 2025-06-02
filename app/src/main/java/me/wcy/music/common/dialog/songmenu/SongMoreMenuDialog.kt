@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import com.blankj.utilcode.util.SizeUtils
 import top.wangchenyan.common.widget.dialog.BottomDialog
 import top.wangchenyan.common.widget.dialog.BottomDialogBuilder
+import me.wcy.music.common.enableImmersiveMode
 import me.wcy.music.common.bean.SongData
 import me.wcy.music.databinding.DialogSongMoreMenuBinding
 import me.wcy.music.databinding.ItemSongMoreMenuBinding
@@ -40,14 +41,17 @@ class SongMoreMenuDialog {
     }
 
     fun show() {
-        BottomDialogBuilder(context)
+        val dialog = BottomDialogBuilder(context)
             .contentViewBinding { dialog: BottomDialog, viewBinding: DialogSongMoreMenuBinding ->
                 bindSongInfo(viewBinding)
                 bindMenus(dialog, viewBinding)
             }
             .cancelable(true)
             .build()
-            .show()
+
+        // 应用全屏沉浸式模式，确保Dialog符合官方最佳实践
+        dialog.enableImmersiveMode()
+        dialog.show()
     }
 
     @SuppressLint("SetTextI18n")

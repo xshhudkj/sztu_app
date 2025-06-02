@@ -2,11 +2,14 @@ package me.wcy.music.service
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.util.Log
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.DefaultLoadControl
+import androidx.media3.exoplayer.upstream.DefaultAllocator
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.session.DefaultMediaNotificationProvider
 import androidx.media3.session.MediaSession
@@ -26,6 +29,7 @@ class MusicService : MediaSessionService() {
     @OptIn(UnstableApi::class)
     override fun onCreate() {
         super.onCreate()
+        Log.d(TAG, "MusicService onCreate() - 初始化Android Automotive音乐服务")
 
         @OptIn(UnstableApi::class)
         player = ExoPlayer.Builder(applicationContext)
@@ -33,6 +37,8 @@ class MusicService : MediaSessionService() {
             .setAudioAttributes(AudioAttributes.DEFAULT, true)
             // 自动暂停播放
             .setHandleAudioBecomingNoisy(true)
+            // 设置优化的LoadControl配置，支持智能预加载
+            .setLoadControl(createOptimizedLoadControl())
             .setMediaSourceFactory(
                 DefaultMediaSourceFactory(applicationContext)
                     .setDataSourceFactory(MusicDataSource.Factory(applicationContext))
@@ -56,11 +62,38 @@ class MusicService : MediaSessionService() {
             )
             .build()
 
-        setMediaNotificationProvider(
-            DefaultMediaNotificationProvider.Builder(applicationContext).build().apply {
-                setSmallIcon(R.drawable.ic_notification)
+        // 针对Android Automotive优化的通知栏配置
+        setupAutomotiveNotification()
+        Log.d(TAG, "MusicService onCreate() - Android Automotive通知栏配置完成")
+    }
+
+    /**
+     * 配置Android Automotive专用的通知栏
+     * 确保通知栏在车载环境下的稳定显示和一致性
+     */
+    @OptIn(UnstableApi::class)
+    private fun setupAutomotiveNotification() {
+        try {
+            // 使用自定义的AutomotiveMediaNotificationProvider
+            // 解决Android Automotive环境下通知栏背景颜色不稳定的问题
+            val automotiveNotificationProvider = AutomotiveMediaNotificationProvider(applicationContext)
+            setMediaNotificationProvider(automotiveNotificationProvider)
+            Log.d(TAG, "setupAutomotiveNotification() - Android Automotive专用通知栏配置成功")
+        } catch (e: Exception) {
+            Log.e(TAG, "setupAutomotiveNotification() - 通知栏配置失败，回退到默认配置", e)
+            // 回退到默认配置
+            try {
+                val defaultProvider = DefaultMediaNotificationProvider.Builder(applicationContext)
+                    .build()
+                    .apply {
+                        setSmallIcon(R.drawable.ic_notification)
+                    }
+                setMediaNotificationProvider(defaultProvider)
+                Log.d(TAG, "setupAutomotiveNotification() - 默认通知栏配置成功")
+            } catch (fallbackException: Exception) {
+                Log.e(TAG, "setupAutomotiveNotification() - 默认通知栏配置也失败", fallbackException)
             }
-        )
+        }
     }
 
     override fun onGetSession(controllerInfo: MediaSession.ControllerInfo): MediaSession? {
@@ -69,16 +102,51 @@ class MusicService : MediaSessionService() {
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
-        player.stop()
+        Log.d(TAG, "onTaskRemoved() - 任务被移除，播放状态: ${player.playWhenReady}")
+        if (!player.playWhenReady) {
+            Log.d(TAG, "onTaskRemoved() - 停止播放并停止服务")
+            player.stop()
+            stopSelf()
+        }
     }
 
     override fun onDestroy() {
+        Log.d(TAG, "onDestroy() - 销毁MusicService")
         super.onDestroy()
         player.release()
         session.release()
     }
 
+    /**
+     * 创建优化的LoadControl配置，平衡性能与用户体验
+     */
+    private fun createOptimizedLoadControl(): DefaultLoadControl {
+        return DefaultLoadControl.Builder()
+            // 设置缓存参数，优化车载环境性能
+            .setBufferDurationsMs(
+                // 最小缓存时间：15秒，保证基本播放连续性
+                15_000,
+                // 最大缓存时间：60秒，避免过度缓存影响性能
+                60_000,
+                // 播放开始前的缓存时间：1.6秒，更快启动播放
+                1_600,
+                // 重新缓存时的缓存时间：8秒，网络恢复后快速恢复
+                8_000
+            )
+            // 设置目标缓存字节数，控制内存使用
+            .setTargetBufferBytes(
+                // 最大缓存：8MB，平衡性能与内存使用
+                8 * 1024 * 1024
+            )
+            // 优先基于时间的缓存策略，适合音频流
+            .setPrioritizeTimeOverSizeThresholds(true)
+            // 设置分配器，优化内存分配
+            .setAllocator(DefaultAllocator(true, 64 * 1024)) // 64KB块大小
+            .build()
+    }
+
     companion object {
+        private const val TAG = "MusicService"
         val EXTRA_NOTIFICATION = "${CommonApp.app.packageName}.notification"
     }
 }

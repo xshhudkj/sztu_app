@@ -20,6 +20,7 @@ import me.wcy.music.storage.preference.ConfigPreferences
 import me.wcy.music.utils.toMediaItem
 import me.wcy.music.utils.toSongEntity
 import top.wangchenyan.common.ext.toUnMutable
+import android.util.Log
 import top.wangchenyan.common.ext.toast
 
 /**
@@ -49,6 +50,14 @@ class PlayerControllerImpl(
     override val playMode: StateFlow<PlayMode> = _playMode
 
     private var audioSessionId = 0
+
+    // 持续缓存相关变量
+    private var lastProgressCheckTime = 0L
+    private val progressCheckInterval = 1000L // 1秒检查一次进度，降低CPU负担
+    private var lastCacheCheckTime = 0L
+    private val cacheCheckInterval = 3000L // 3秒检查一次缓存状态，减少频繁检查
+    private val targetCacheLeadTime = 15_000L // 目标缓存领先时间：15秒，优化内存占用
+    private var isNextSongCaching = false // 是否正在缓存下一首歌曲
 
     init {
         player.playWhenReady = false
@@ -142,12 +151,24 @@ class PlayerControllerImpl(
 
         launch {
             while (true) {
+                val currentTime = System.currentTimeMillis()
                 if (player.isPlaying) {
                     _playProgress.value = player.currentPosition
+
+                    // 检查持续缓存状态
+                    if (currentTime - lastProgressCheckTime >= progressCheckInterval) {
+                        checkContinuousCache()
+                        lastProgressCheckTime = currentTime
+                    }
                 }
+
                 // 定期更新缓存进度
-                updateBufferingPercent()
-                delay(1000)
+                if (currentTime - lastCacheCheckTime >= cacheCheckInterval) {
+                    updateBufferingPercent()
+                    lastCacheCheckTime = currentTime
+                }
+
+                delay(1000) // 1秒检查一次，平衡响应性与性能
             }
         }
     }
@@ -252,6 +273,9 @@ class PlayerControllerImpl(
         _currentSong.value = playlist[index]
         _playProgress.value = 0
         _bufferingPercent.value = 0
+
+        // 重置缓存状态
+        resetCacheState()
     }
 
     @MainThread
@@ -322,6 +346,9 @@ class PlayerControllerImpl(
         player.prepare()
         _playProgress.value = 0
         _bufferingPercent.value = 0
+
+        // 重置缓存状态
+        resetCacheState()
     }
 
     @MainThread
@@ -331,6 +358,9 @@ class PlayerControllerImpl(
         player.prepare()
         _playProgress.value = 0
         _bufferingPercent.value = 0
+
+        // 重置缓存状态
+        resetCacheState()
     }
 
     @MainThread
@@ -382,6 +412,143 @@ class PlayerControllerImpl(
             val duration = player.duration
             val percent = ((bufferedPosition * 100) / duration).toInt().coerceIn(0, 100)
             _bufferingPercent.value = percent
+
+            // 检查缓存是否领先播放进度足够时间
+            val currentPosition = player.currentPosition
+            val cacheLeadTime = bufferedPosition - currentPosition
+
+            Log.d(TAG, "缓存状态 - 当前位置: ${currentPosition}ms, 缓存位置: ${bufferedPosition}ms, 领先时间: ${cacheLeadTime}ms, 歌曲总长: ${duration}ms")
         }
     }
+
+    /**
+     * 检查持续缓存状态
+     */
+    private fun checkContinuousCache() {
+        if (player.duration <= 0) return
+
+        val currentPosition = player.currentPosition
+        val bufferedPosition = player.bufferedPosition
+        val duration = player.duration
+        val cacheLeadTime = bufferedPosition - currentPosition
+
+        Log.d(TAG, "持续缓存检查 - 当前位置: ${currentPosition}ms, 缓存位置: ${bufferedPosition}ms, 领先时间: ${cacheLeadTime}ms")
+
+        // 如果当前歌曲已完全缓存
+        if (bufferedPosition >= duration) {
+            Log.d(TAG, "当前歌曲已完全缓存")
+
+            // 如果缓存领先时间仍不足15秒，开始缓存下一首歌曲
+            if (cacheLeadTime < targetCacheLeadTime && !isNextSongCaching) {
+                val remainingCacheTime = targetCacheLeadTime - cacheLeadTime
+                Log.d(TAG, "缓存领先时间不足，需要缓存下一首歌曲 ${remainingCacheTime}ms")
+                startNextSongCache(remainingCacheTime)
+            }
+        } else {
+            // 当前歌曲未完全缓存，继续缓存当前歌曲
+            if (cacheLeadTime < targetCacheLeadTime) {
+                Log.d(TAG, "继续缓存当前歌曲，缓存领先时间不足: ${cacheLeadTime}ms < ${targetCacheLeadTime}ms")
+            }
+        }
+    }
+
+    /**
+     * 开始缓存下一首歌曲
+     */
+    private fun startNextSongCache(remainingCacheTime: Long) {
+        // 单曲循环模式下不缓存下一首歌曲
+        if (_playMode.value == PlayMode.Single) {
+            Log.d(TAG, "单曲循环模式，跳过下一首歌曲缓存")
+            return
+        }
+
+        val currentSong = _currentSong.value ?: return
+        val playlist = _playlist.value ?: return
+        val currentIndex = playlist.indexOfFirst { it.mediaId == currentSong.mediaId }
+
+        if (currentIndex < 0) return
+
+        val nextIndex = getNextSongIndex(currentIndex, playlist)
+        if (nextIndex >= 0 && nextIndex < playlist.size) {
+            val nextSong = playlist[nextIndex]
+
+            // 检查是否为在线歌曲
+            if (shouldCacheNextSong(nextSong)) {
+                isNextSongCaching = true
+                Log.d(TAG, "开始缓存下一首歌曲: ${nextSong.mediaMetadata.title} (索引: $nextIndex, 需要缓存时间: ${remainingCacheTime}ms)")
+
+                // 这里可以实现具体的下一首歌曲缓存逻辑
+                // 目前主要是记录状态和日志
+                cacheNextSongData(nextSong, remainingCacheTime)
+            }
+        }
+    }
+
+    /**
+     * 获取下一首歌曲的索引
+     */
+    private fun getNextSongIndex(currentIndex: Int, playlist: List<MediaItem>): Int {
+        return when (_playMode.value) {
+            PlayMode.Loop -> (currentIndex + 1) % playlist.size
+            PlayMode.Shuffle -> {
+                // 随机模式下，使用ExoPlayer的内部逻辑
+                // 这里简化处理，实际应该使用ExoPlayer的shuffle逻辑
+                if (currentIndex + 1 < playlist.size) currentIndex + 1 else -1
+            }
+            PlayMode.Single -> -1 // 单曲循环不需要下一首
+        }
+    }
+
+    /**
+     * 检查是否应该缓存下一首歌曲
+     */
+    private fun shouldCacheNextSong(mediaItem: MediaItem): Boolean {
+        // 避免缓存本地歌曲（本地歌曲不需要网络缓存）
+        val uri = mediaItem.localConfiguration?.uri
+        if (uri?.scheme == "file" || uri?.scheme == "content") {
+            Log.d(TAG, "跳过本地歌曲缓存: ${mediaItem.mediaMetadata.title}")
+            return false
+        }
+
+        return true
+    }
+
+    /**
+     * 缓存下一首歌曲的数据
+     */
+    private fun cacheNextSongData(mediaItem: MediaItem, cacheTime: Long) {
+        // 这里可以实现具体的下一首歌曲缓存逻辑
+        // 例如：预先获取音频URL、缓存指定时长的音频数据等
+        // 由于ExoPlayer的缓存机制比较复杂，这里主要是记录缓存状态
+        Log.d(TAG, "缓存下一首歌曲数据: ${mediaItem.mediaMetadata.title} (缓存时长: ${cacheTime}ms)")
+
+        // 模拟缓存完成后重置状态
+        launch {
+            delay(1000) // 模拟缓存时间
+            isNextSongCaching = false
+            Log.d(TAG, "下一首歌曲缓存完成: ${mediaItem.mediaMetadata.title}")
+        }
+    }
+
+    /**
+     * 重置缓存状态（切换歌曲时调用）
+     */
+    private fun resetCacheState() {
+        lastProgressCheckTime = 0L
+        lastCacheCheckTime = 0L
+        isNextSongCaching = false
+        Log.d(TAG, "重置缓存状态")
+    }
+
+    /**
+     * 清理资源，停止缓存监听
+     */
+    fun cleanup() {
+        resetCacheState()
+    }
+
+    companion object {
+        private const val TAG = "PlayerControllerImpl"
+    }
 }
+

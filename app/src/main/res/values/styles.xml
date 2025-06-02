@@ -14,24 +14,33 @@
         <item name="android:windowAnimationStyle">@style/AnimationPopup</item>
     </style>
 
-    <!-- 车载全屏沉浸式主题 -->
+    <!-- 车载全屏沉浸式主题 - 符合官方最佳实践 -->
     <style name="AppTheme.CarImmersive" parent="AppTheme">
         <!-- 基础全屏设置 -->
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
 
-        <!-- 透明系统栏 -->
+        <!-- 透明系统栏 - 符合edge-to-edge设计 -->
         <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
         <item name="android:navigationBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
 
-        <!-- 刘海屏适配 -->
+        <!-- 强制透明系统栏（确保沉浸式效果） -->
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+
+        <!-- 刘海屏和异形屏适配 -->
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
 
-        <!-- 窗口适配设置 -->
+        <!-- 窗口适配设置 - 关键配置 -->
         <item name="android:fitsSystemWindows">false</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>
 
         <!-- 车载环境优化 -->
         <item name="android:keepScreenOn">true</item>
+
+        <!-- 防止系统UI覆盖 -->
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
     </style>
 
     <!-- 播放页面专用主题，带滑动动画 -->

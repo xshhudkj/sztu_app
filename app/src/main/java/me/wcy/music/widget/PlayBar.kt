@@ -62,8 +62,6 @@ class PlayBar @JvmOverloads constructor(
     }
 
     private fun initView() {
-        // 为整个播放栏添加列表项动画
-        viewBinding.root.addListItemAnimation()
         viewBinding.root.setOnClickListener {
             CRouter.with(context).url(RoutePath.PLAYING).start()
         }
@@ -103,14 +101,7 @@ class PlayBar @JvmOverloads constructor(
                         color = getColor(R.color.common_text_h2_color)
                     )
                 }
-                viewBinding.progressBar.max = currentSong.mediaMetadata.getDuration().toInt()
-                viewBinding.progressBar.progress = playerController.playProgress.value.toInt()
-                // 设置进度条颜色
-                viewBinding.progressBar.setColors(
-                    backgroundColor = getColor(R.color.common_divider),
-                    bufferColor = getColor(R.color.translucent_white_p50),
-                    progressColor = getColor(R.color.common_theme_color)
-                )
+                // 播放进度相关代码已删除，仅保留加载状态
             } else {
                 isVisible = false
             }
@@ -152,22 +143,6 @@ class PlayBar @JvmOverloads constructor(
             }
         }
 
-        lifecycleOwner.lifecycleScope.launch {
-            playerController.playProgress.collectLatest {
-                viewBinding.progressBar.progress = it.toInt()
-            }
-        }
-
-        lifecycleOwner.lifecycleScope.launch {
-            playerController.bufferingPercent.collectLatest { percent ->
-                // 更新缓存进度
-                val currentSong = playerController.currentSong.value
-                if (currentSong != null) {
-                    val duration = currentSong.mediaMetadata.getDuration().toInt()
-                    val bufferProgress = (duration * percent / 100).coerceIn(0, duration)
-                    viewBinding.progressBar.bufferProgress = bufferProgress
-                }
-            }
-        }
+        // 播放进度和缓存进度相关代码已删除，仅保留加载状态的红色转圈
     }
 }
