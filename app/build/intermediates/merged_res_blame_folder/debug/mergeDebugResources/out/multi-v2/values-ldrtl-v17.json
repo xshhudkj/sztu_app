@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "me.wcy.music.app-mergeDebugResources-66:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\ed9553fb9af75b90a85668bb0aac2cdb\\transformed\\material-1.12.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,191",
+                        "endColumns": "135,140",
+                        "endOffsets": "186,327"
+                    }
+                }
+            ]
+        }
+    ]
+}

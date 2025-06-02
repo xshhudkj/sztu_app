@@ -1,0 +1,60 @@
+{
+    "logs": [
+        {
+            "outputFile": "me.wcy.music.app-mergeDebugResources-66:/values-large-v4/values-large-v4.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\8110c868e8d28496c81ffd9e11046d18\\transformed\\appcompat-1.7.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,580,684",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,679,795"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\ed9553fb9af75b90a85668bb0aac2cdb\\transformed\\material-1.12.0\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,169,285,407",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "164,280,402,536"
+                    },
+                    "to": {
+                        "startLines": "12,13,14,15",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "800,914,1030,1152",
+                        "endColumns": "113,115,121,133",
+                        "endOffsets": "909,1025,1147,1281"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\e14d147c3d78b264e53fe39d2725f464\\transformed\\jetified-android-crop-1.0.1\\res\\values-large\\values-large.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "172",
+                        "endColumns": "47",
+                        "endOffsets": "215"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "532",
+                        "endColumns": "47",
+                        "endOffsets": "575"
+                    }
+                }
+            ]
+        }
+    ]
+}
