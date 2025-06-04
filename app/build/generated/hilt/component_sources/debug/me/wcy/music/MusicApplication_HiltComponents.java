@@ -50,6 +50,10 @@ import me.wcy.music.account.login.phone.PhoneLoginViewModel_HiltModules;
 import me.wcy.music.account.login.qrcode.QrcodeLoginFragment_GeneratedInjector;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel_HiltModules;
 import me.wcy.music.account.service.UserServiceModule;
+import me.wcy.music.album.detail.AlbumDetailFragment_GeneratedInjector;
+import me.wcy.music.album.detail.AlbumDetailViewModel_HiltModules;
+import me.wcy.music.artist.detail.ArtistDetailFragment_GeneratedInjector;
+import me.wcy.music.artist.detail.ArtistDetailViewModel_HiltModules;
 import me.wcy.music.common.MusicFragmentContainerActivity_GeneratedInjector;
 import me.wcy.music.discover.home.DiscoverFragment_GeneratedInjector;
 import me.wcy.music.discover.home.viewmodel.DiscoverViewModel_HiltModules;
@@ -70,8 +74,11 @@ import me.wcy.music.mine.home.MineFragment_GeneratedInjector;
 import me.wcy.music.mine.home.viewmodel.MineViewModel_HiltModules;
 import me.wcy.music.mine.local.LocalMusicFragment_GeneratedInjector;
 import me.wcy.music.search.SearchFragment_GeneratedInjector;
+import me.wcy.music.search.album.SearchAlbumFragment_GeneratedInjector;
+import me.wcy.music.search.artist.SearchArtistFragment_GeneratedInjector;
 import me.wcy.music.search.playlist.SearchPlaylistFragment_GeneratedInjector;
 import me.wcy.music.search.song.SearchSongFragment_GeneratedInjector;
+import me.wcy.music.search.user.SearchUserFragment_GeneratedInjector;
 import me.wcy.music.service.PlayServiceModule;
 import me.wcy.music.service.likesong.LikeSongProcessorModule;
 import me.wcy.music.storage.db.DatabaseModule;
@@ -187,6 +194,8 @@ public final class MusicApplication_HiltComponents {
 
   @Subcomponent(
       modules = {
+          AlbumDetailViewModel_HiltModules.KeyModule.class,
+          ArtistDetailViewModel_HiltModules.KeyModule.class,
           CollectSongViewModel_HiltModules.KeyModule.class,
           DiscoverViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
@@ -234,6 +243,8 @@ public final class MusicApplication_HiltComponents {
 
   @Subcomponent(
       modules = {
+          AlbumDetailViewModel_HiltModules.BindsModule.class,
+          ArtistDetailViewModel_HiltModules.BindsModule.class,
           CollectSongViewModel_HiltModules.BindsModule.class,
           DiscoverViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
@@ -271,6 +282,8 @@ public final class MusicApplication_HiltComponents {
       GeneratedComponent,
       PhoneLoginFragment_GeneratedInjector,
       QrcodeLoginFragment_GeneratedInjector,
+      AlbumDetailFragment_GeneratedInjector,
+      ArtistDetailFragment_GeneratedInjector,
       DiscoverFragment_GeneratedInjector,
       PlaylistDetailFragment_GeneratedInjector,
       PlaylistSquareFragment_GeneratedInjector,
@@ -283,8 +296,11 @@ public final class MusicApplication_HiltComponents {
       MineFragment_GeneratedInjector,
       LocalMusicFragment_GeneratedInjector,
       SearchFragment_GeneratedInjector,
+      SearchAlbumFragment_GeneratedInjector,
+      SearchArtistFragment_GeneratedInjector,
       SearchPlaylistFragment_GeneratedInjector,
-      SearchSongFragment_GeneratedInjector {
+      SearchSongFragment_GeneratedInjector,
+      SearchUserFragment_GeneratedInjector {
     @Subcomponent.Builder
     abstract interface Builder extends FragmentComponentBuilder {
     }

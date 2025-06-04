@@ -4,6 +4,10 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_playing_volume.xml"
     },
     {
+        "merged": "me.wcy.music.app-mergeDebugResources-67:/layout/fragment_artist_detail.xml",
+        "source": "me.wcy.music.app-main-70:/layout/fragment_artist_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_search.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_search.xml"
     },
@@ -18,6 +22,10 @@
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_playlist_tag.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_playlist_tag.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_search_suggest.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_suggest.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_collect_song.xml",
@@ -52,12 +60,20 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_mine.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\activity_playing_title.xml",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_playing_title.xml"
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_search_artist.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_artist.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_recommend_song.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_recommend_song.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\activity_playing_title.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_playing_title.xml"
+    },
+    {
+        "merged": "me.wcy.music.app-mergeDebugResources-67:/layout/fragment_album_detail.xml",
+        "source": "me.wcy.music.app-main-70:/layout/fragment_album_detail.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_local_song.xml",
@@ -72,10 +88,6 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\dialog_song_more_menu.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-67:/layout/item_discover_ranking_song.xml",
-        "source": "me.wcy.music.app-main-70:/layout/item_discover_ranking_song.xml"
-    },
-    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_discover.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_discover.xml"
     },
@@ -86,6 +98,10 @@
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_official_ranking_song.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_official_ranking_song.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_search_list.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_search_list.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_login_route.xml",
@@ -106,6 +122,10 @@
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_search_playlist.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_playlist.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_artist_detail.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_artist_detail.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_local_music.xml",
@@ -140,6 +160,10 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_playlist_song.xml"
     },
     {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_album_detail.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_album_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\notification.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\notification.xml"
     },
@@ -148,16 +172,16 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_selected_ranking.xml"
     },
     {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_hot_search.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_hot_search.xml"
+    },
+    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\activity_playing_control.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_playing_control.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\activity_main.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_main.xml"
-    },
-    {
-        "merged": "me.wcy.music.app-mergeDebugResources-67:/layout/item_discover_ranking.xml",
-        "source": "me.wcy.music.app-main-70:/layout/item_discover_ranking.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_current_playlist.xml",
@@ -170,6 +194,10 @@
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_recommend_song.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_recommend_song.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_search_album.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_album.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\title_search.xml",
@@ -186,6 +214,10 @@
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\fragment_phone_login.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_phone_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_search_user.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_user.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_user_playlist.xml",

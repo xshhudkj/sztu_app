@@ -30,4 +30,13 @@
     <color name="play_bar_bg">@color/white</color>
     <color name="play_bar_bg_translucent">#80FFFFFF</color>
     <color name="play_bar_progress_background">#80808080</color>
+
+    <!-- 半透明颜色 -->
+    <color name="translucent_black_p30">#4D000000</color>
+    <color name="translucent_white_p30">#4DFFFFFF</color>
+
+    <!-- 排行榜颜色 -->
+    <color name="rank_first">#FFD700</color>
+    <color name="rank_second">#C0C0C0</color>
+    <color name="rank_third">#CD7F32</color>
 </resources>

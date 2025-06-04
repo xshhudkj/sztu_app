@@ -1,6 +1,7 @@
 package me.wcy.music.discover.home;
 
 import android.view.View;
+import android.widget.ImageView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;

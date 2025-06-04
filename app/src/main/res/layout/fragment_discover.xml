@@ -26,8 +26,9 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:layout_marginTop="8dp">
+                android:layout_height="140dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginHorizontal="16dp">
 
                 <com.youth.banner.Banner
                     android:id="@+id/banner"
@@ -35,16 +36,23 @@
                     android:layout_height="match_parent"
                     app:banner_auto_loop="true"
                     app:banner_infinite_loop="true"
-                    app:banner_loop_time="5000" />
+                    app:banner_loop_time="5000"
+                    app:banner_indicator_height="8dp"
+                    app:banner_indicator_margin="6dp"
+                    app:banner_indicator_normal_color="@color/translucent_white_p30"
+                    app:banner_indicator_radius="4dp"
+                    app:banner_indicator_selected_color="@color/white"
+                    app:banner_radius="16dp" />
 
                 <com.hjq.shape.view.ShapeTextView
                     android:id="@+id/bannerPlaceholder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="16dp"
                     android:gravity="center"
                     android:text="广告位招租~"
-                    app:shape_radius="12dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/common_text_h2_color"
+                    app:shape_radius="16dp"
                     app:shape_solidColor="@color/common_divider" />
             </FrameLayout>
 
@@ -148,7 +156,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvRankingList"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="370dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginBottom="5dp"
                 android:clipToPadding="false"

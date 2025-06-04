@@ -40,6 +40,14 @@ import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel_HiltModules_KeyModule_ProvideFactory;
 import me.wcy.music.account.service.UserService;
 import me.wcy.music.account.service.UserServiceImpl;
+import me.wcy.music.album.detail.AlbumDetailFragment;
+import me.wcy.music.album.detail.AlbumDetailFragment_MembersInjector;
+import me.wcy.music.album.detail.AlbumDetailViewModel;
+import me.wcy.music.album.detail.AlbumDetailViewModel_HiltModules_KeyModule_ProvideFactory;
+import me.wcy.music.artist.detail.ArtistDetailFragment;
+import me.wcy.music.artist.detail.ArtistDetailFragment_MembersInjector;
+import me.wcy.music.artist.detail.ArtistDetailViewModel;
+import me.wcy.music.artist.detail.ArtistDetailViewModel_HiltModules_KeyModule_ProvideFactory;
 import me.wcy.music.common.DarkModeService;
 import me.wcy.music.common.MusicFragmentContainerActivity;
 import me.wcy.music.discover.home.DiscoverFragment;
@@ -80,9 +88,13 @@ import me.wcy.music.mine.home.viewmodel.MineViewModel_MembersInjector;
 import me.wcy.music.mine.local.LocalMusicFragment;
 import me.wcy.music.mine.local.LocalMusicFragment_MembersInjector;
 import me.wcy.music.search.SearchFragment;
+import me.wcy.music.search.SearchFragment_MembersInjector;
+import me.wcy.music.search.album.SearchAlbumFragment;
+import me.wcy.music.search.artist.SearchArtistFragment;
 import me.wcy.music.search.playlist.SearchPlaylistFragment;
 import me.wcy.music.search.song.SearchSongFragment;
 import me.wcy.music.search.song.SearchSongFragment_MembersInjector;
+import me.wcy.music.search.user.SearchUserFragment;
 import me.wcy.music.service.PlayServiceModule;
 import me.wcy.music.service.PlayServiceModule_ProviderPlayerControllerFactory;
 import me.wcy.music.service.PlayerController;
@@ -410,6 +422,16 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     }
 
     @Override
+    public void injectAlbumDetailFragment(AlbumDetailFragment albumDetailFragment) {
+      injectAlbumDetailFragment2(albumDetailFragment);
+    }
+
+    @Override
+    public void injectArtistDetailFragment(ArtistDetailFragment artistDetailFragment) {
+      injectArtistDetailFragment2(artistDetailFragment);
+    }
+
+    @Override
     public void injectDiscoverFragment(DiscoverFragment discoverFragment) {
       injectDiscoverFragment2(discoverFragment);
     }
@@ -464,6 +486,15 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
     @Override
     public void injectSearchFragment(SearchFragment searchFragment) {
+      injectSearchFragment2(searchFragment);
+    }
+
+    @Override
+    public void injectSearchAlbumFragment(SearchAlbumFragment searchAlbumFragment) {
+    }
+
+    @Override
+    public void injectSearchArtistFragment(SearchArtistFragment searchArtistFragment) {
     }
 
     @Override
@@ -475,6 +506,10 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
       injectSearchSongFragment2(searchSongFragment);
     }
 
+    @Override
+    public void injectSearchUserFragment(SearchUserFragment searchUserFragment) {
+    }
+
     @CanIgnoreReturnValue
     private PhoneLoginFragment injectPhoneLoginFragment2(PhoneLoginFragment instance) {
       PhoneLoginFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
@@ -484,6 +519,19 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     @CanIgnoreReturnValue
     private QrcodeLoginFragment injectQrcodeLoginFragment2(QrcodeLoginFragment instance) {
       QrcodeLoginFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private AlbumDetailFragment injectAlbumDetailFragment2(AlbumDetailFragment instance) {
+      AlbumDetailFragment_MembersInjector.injectPlayerController(instance, singletonCImpl.playerController());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
+    private ArtistDetailFragment injectArtistDetailFragment2(ArtistDetailFragment instance) {
+      ArtistDetailFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
+      ArtistDetailFragment_MembersInjector.injectPlayerController(instance, singletonCImpl.playerController());
       return instance;
     }
 
@@ -541,6 +589,12 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     }
 
     @CanIgnoreReturnValue
+    private SearchFragment injectSearchFragment2(SearchFragment instance) {
+      SearchFragment_MembersInjector.injectPlayerController(instance, singletonCImpl.playerController());
+      return instance;
+    }
+
+    @CanIgnoreReturnValue
     private SearchSongFragment injectSearchSongFragment2(SearchSongFragment instance) {
       SearchSongFragment_MembersInjector.injectPlayerController(instance, singletonCImpl.playerController());
       return instance;
@@ -588,7 +642,7 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
     @Override
     public Set<String> getViewModelKeys() {
-      return ImmutableSet.<String>of(CollectSongViewModel_HiltModules_KeyModule_ProvideFactory.provide(), DiscoverViewModel_HiltModules_KeyModule_ProvideFactory.provide(), MineViewModel_HiltModules_KeyModule_ProvideFactory.provide(), PhoneLoginViewModel_HiltModules_KeyModule_ProvideFactory.provide(), PlaylistViewModel_HiltModules_KeyModule_ProvideFactory.provide(), QrcodeLoginViewModel_HiltModules_KeyModule_ProvideFactory.provide());
+      return ImmutableSet.<String>of(AlbumDetailViewModel_HiltModules_KeyModule_ProvideFactory.provide(), ArtistDetailViewModel_HiltModules_KeyModule_ProvideFactory.provide(), CollectSongViewModel_HiltModules_KeyModule_ProvideFactory.provide(), DiscoverViewModel_HiltModules_KeyModule_ProvideFactory.provide(), MineViewModel_HiltModules_KeyModule_ProvideFactory.provide(), PhoneLoginViewModel_HiltModules_KeyModule_ProvideFactory.provide(), PlaylistViewModel_HiltModules_KeyModule_ProvideFactory.provide(), QrcodeLoginViewModel_HiltModules_KeyModule_ProvideFactory.provide());
     }
 
     @Override
@@ -646,6 +700,10 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
     private final ViewModelCImpl viewModelCImpl = this;
 
+    private Provider<AlbumDetailViewModel> albumDetailViewModelProvider;
+
+    private Provider<ArtistDetailViewModel> artistDetailViewModelProvider;
+
     private Provider<CollectSongViewModel> collectSongViewModelProvider;
 
     private Provider<DiscoverViewModel> discoverViewModelProvider;
@@ -671,17 +729,19 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     @SuppressWarnings("unchecked")
     private void initialize(final SavedStateHandle savedStateHandleParam,
         final ViewModelLifecycle viewModelLifecycleParam) {
-      this.collectSongViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
-      this.discoverViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
-      this.mineViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
-      this.phoneLoginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
-      this.playlistViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
-      this.qrcodeLoginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.albumDetailViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 0);
+      this.artistDetailViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 1);
+      this.collectSongViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 2);
+      this.discoverViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 3);
+      this.mineViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 4);
+      this.phoneLoginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 5);
+      this.playlistViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 6);
+      this.qrcodeLoginViewModelProvider = new SwitchingProvider<>(singletonCImpl, activityRetainedCImpl, viewModelCImpl, 7);
     }
 
     @Override
     public Map<String, Provider<ViewModel>> getHiltViewModelMap() {
-      return ImmutableMap.<String, Provider<ViewModel>>builderWithExpectedSize(6).put("me.wcy.music.mine.collect.song.CollectSongViewModel", ((Provider) collectSongViewModelProvider)).put("me.wcy.music.discover.home.viewmodel.DiscoverViewModel", ((Provider) discoverViewModelProvider)).put("me.wcy.music.mine.home.viewmodel.MineViewModel", ((Provider) mineViewModelProvider)).put("me.wcy.music.account.login.phone.PhoneLoginViewModel", ((Provider) phoneLoginViewModelProvider)).put("me.wcy.music.discover.playlist.detail.viewmodel.PlaylistViewModel", ((Provider) playlistViewModelProvider)).put("me.wcy.music.account.login.qrcode.QrcodeLoginViewModel", ((Provider) qrcodeLoginViewModelProvider)).build();
+      return ImmutableMap.<String, Provider<ViewModel>>builderWithExpectedSize(8).put("me.wcy.music.album.detail.AlbumDetailViewModel", ((Provider) albumDetailViewModelProvider)).put("me.wcy.music.artist.detail.ArtistDetailViewModel", ((Provider) artistDetailViewModelProvider)).put("me.wcy.music.mine.collect.song.CollectSongViewModel", ((Provider) collectSongViewModelProvider)).put("me.wcy.music.discover.home.viewmodel.DiscoverViewModel", ((Provider) discoverViewModelProvider)).put("me.wcy.music.mine.home.viewmodel.MineViewModel", ((Provider) mineViewModelProvider)).put("me.wcy.music.account.login.phone.PhoneLoginViewModel", ((Provider) phoneLoginViewModelProvider)).put("me.wcy.music.discover.playlist.detail.viewmodel.PlaylistViewModel", ((Provider) playlistViewModelProvider)).put("me.wcy.music.account.login.qrcode.QrcodeLoginViewModel", ((Provider) qrcodeLoginViewModelProvider)).build();
     }
 
     @CanIgnoreReturnValue
@@ -723,22 +783,28 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
       @Override
       public T get() {
         switch (id) {
-          case 0: // me.wcy.music.mine.collect.song.CollectSongViewModel 
+          case 0: // me.wcy.music.album.detail.AlbumDetailViewModel 
+          return (T) new AlbumDetailViewModel();
+
+          case 1: // me.wcy.music.artist.detail.ArtistDetailViewModel 
+          return (T) new ArtistDetailViewModel();
+
+          case 2: // me.wcy.music.mine.collect.song.CollectSongViewModel 
           return (T) viewModelCImpl.injectCollectSongViewModel(CollectSongViewModel_Factory.newInstance());
 
-          case 1: // me.wcy.music.discover.home.viewmodel.DiscoverViewModel 
+          case 3: // me.wcy.music.discover.home.viewmodel.DiscoverViewModel 
           return (T) new DiscoverViewModel(singletonCImpl.userServiceImplProvider.get());
 
-          case 2: // me.wcy.music.mine.home.viewmodel.MineViewModel 
+          case 4: // me.wcy.music.mine.home.viewmodel.MineViewModel 
           return (T) viewModelCImpl.injectMineViewModel(MineViewModel_Factory.newInstance());
 
-          case 3: // me.wcy.music.account.login.phone.PhoneLoginViewModel 
+          case 5: // me.wcy.music.account.login.phone.PhoneLoginViewModel 
           return (T) new PhoneLoginViewModel(singletonCImpl.userServiceImplProvider.get());
 
-          case 4: // me.wcy.music.discover.playlist.detail.viewmodel.PlaylistViewModel 
+          case 6: // me.wcy.music.discover.playlist.detail.viewmodel.PlaylistViewModel 
           return (T) viewModelCImpl.injectPlaylistViewModel(PlaylistViewModel_Factory.newInstance());
 
-          case 5: // me.wcy.music.account.login.qrcode.QrcodeLoginViewModel 
+          case 7: // me.wcy.music.account.login.qrcode.QrcodeLoginViewModel 
           return (T) new QrcodeLoginViewModel(singletonCImpl.userServiceImplProvider.get());
 
           default: throw new AssertionError(id);

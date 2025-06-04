@@ -4,6 +4,13 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg_card.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
@@ -1337,11 +1344,15 @@
         </entry>
         <entry key="me.wcy.music">
           <value>
-            <CheckInfo lastCheckTimestamp="1748872006262" />
+            <CheckInfo lastCheckTimestamp="1748996916983" />
           </value>
         </entry>
         <entry />
-        <entry />
+        <entry key="me.wcy.music.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1748996916983" />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

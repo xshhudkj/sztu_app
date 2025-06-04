@@ -41,4 +41,20 @@ class SearchViewModel : ViewModel() {
     fun showHistory() {
         _showResult.value = false
     }
+
+    fun clearAllHistory() {
+        _historyKeywords.value = emptyList()
+        viewModelScope.launch(Dispatchers.IO) {
+            SearchPreference.historyKeywords = emptyList()
+        }
+    }
+
+    fun removeHistoryKeyword(keyword: String) {
+        val list = _historyKeywords.value.toMutableList()
+        list.remove(keyword)
+        _historyKeywords.value = list
+        viewModelScope.launch(Dispatchers.IO) {
+            SearchPreference.historyKeywords = list
+        }
+    }
 }

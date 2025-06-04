@@ -1,6 +1,7 @@
 package me.wcy.music.discover.home
 
 import android.view.View
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -119,9 +120,9 @@ class DiscoverFragment : BaseMusicFragment() {
     private fun initBanner() {
         viewBinding.banner.addBannerLifecycleObserver(this)
             .setIndicator(CircleIndicator(requireContext()))
-            .setIndicatorGravity(IndicatorConfig.Direction.LEFT)
+            .setIndicatorGravity(IndicatorConfig.Direction.CENTER)
             .setIndicatorMargins(IndicatorConfig.Margins().apply {
-                leftMargin = SizeUtils.dp2px(28f)
+                bottomMargin = SizeUtils.dp2px(16f)
             })
             .setAdapter(object : BannerImageAdapter<BannerData>(emptyList()) {
                 override fun onBindView(
@@ -131,9 +132,10 @@ class DiscoverFragment : BaseMusicFragment() {
                     size: Int
                 ) {
                     holder?.imageView?.apply {
-                        val padding = SizeUtils.dp2px(16f)
-                        setPadding(padding, 0, padding, 0)
-                        load(data?.pic ?: "", SizeUtils.dp2px(12f))
+                        // 移除内边距，让图片充满整个Banner区域
+                        setPadding(0, 0, 0, 0)
+                        scaleType = ImageView.ScaleType.CENTER_CROP
+                        load(data?.pic ?: "", SizeUtils.dp2px(16f))
                         setOnClickListener {
                             data ?: return@setOnClickListener
                             if (data.song != null) {

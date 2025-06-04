@@ -2518,6 +2518,9 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color rank_first
+color rank_second
+color rank_third
 color red_500
 color red_500_p30
 color red_700
@@ -3892,6 +3895,9 @@ drawable scanner_back_img
 drawable scanner_light
 drawable shadow
 drawable shape_dialog_bg
+drawable shape_follow_button
+drawable shape_hot_tag
+drawable shape_new_tag
 drawable shape_view_placeholder
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -4033,6 +4039,7 @@ id btnAction
 id btnClear
 id btnDialogNegative
 id btnDialogPositive
+id btnFollow
 id btnLogin
 id btnPrivateFm
 id btnRank
@@ -4225,6 +4232,7 @@ id flCoverLrc
 id flHistory
 id flPlay
 id flProfile
+id flSearchSuggest
 id flTags
 id fl_scan
 id fl_title
@@ -4272,6 +4280,8 @@ id is_pooling_container_tag
 id italic
 id item_touch_helper_previous_elevation
 id itemsContainer
+id ivAlbumCover
+id ivArtistCover
 id ivAvatar
 id ivBack
 id ivClose
@@ -4279,6 +4289,7 @@ id ivCover
 id ivCreatorAvatar
 id ivDelete
 id ivDownload
+id ivFavorite
 id ivIcon
 id ivImage
 id ivLike
@@ -4292,6 +4303,7 @@ id ivPlayingBg
 id ivPlaylist
 id ivPrev
 id ivQrCode
+id ivUserAvatar
 id iv_album
 id iv_flash
 id iv_icon
@@ -4318,7 +4330,9 @@ id list_item
 id llActions
 id llCollectPlaylist
 id llContent
-id llHistory
+id llHistoryHeader
+id llHotSearchLeft
+id llHotSearchRight
 id llLikePlaylist
 id llMyPlaylist
 id llPlayAll
@@ -4508,6 +4522,8 @@ id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchBanner
+id searchBannerPlaceholder
 id search_badge
 id search_bar
 id search_button
@@ -4573,6 +4589,7 @@ id submit_area
 id supportScrollUp
 id surface_view
 id sv
+id svHistory
 id sweep
 id switchWidget
 id tabBar
@@ -4637,8 +4654,14 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvAlbumName
+id tvAlias
 id tvArtist
+id tvArtistAlias
+id tvArtistName
+id tvClearHistory
 id tvCollectPlaylist
+id tvContent
 id tvCount
 id tvCreatorName
 id tvCurrentTime
@@ -4648,10 +4671,14 @@ id tvDialogTitle
 id tvDoc
 id tvEmpty
 id tvError
+id tvHistoryTitle
+id tvHotSearchTitle
+id tvHotTag
 id tvIndex
 id tvItemText
 id tvMyPlaylist
 id tvName
+id tvNewTag
 id tvNickName
 id tvPhoneLogin
 id tvPlayAll
@@ -4662,14 +4689,18 @@ id tvRank
 id tvRankingList
 id tvRecommendPlaylist
 id tvSearch
+id tvSearchWord
 id tvSendCode
 id tvSongCount
 id tvStatus
 id tvSubTitle
+id tvSuggestTitle
 id tvTag
 id tvTitle
 id tvTotalTime
 id tvUpdateTime
+id tvUserDesc
+id tvUserName
 id tv_cancel
 id tv_confirm
 id tv_content
@@ -4912,6 +4943,8 @@ layout exo_styled_settings_list_item
 layout exo_styled_sub_settings_list_item
 layout exo_track_selection_dialog
 layout expand_button
+layout fragment_album_detail
+layout fragment_artist_detail
 layout fragment_collect_song
 layout fragment_current_playlist
 layout fragment_discover
@@ -4925,6 +4958,7 @@ layout fragment_qrcode_login
 layout fragment_ranking
 layout fragment_recommend_song
 layout fragment_search
+layout fragment_search_list
 layout image_frame
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
@@ -4932,6 +4966,7 @@ layout item_current_playlist
 layout item_discover_playlist
 layout item_discover_ranking
 layout item_discover_ranking_song
+layout item_hot_search
 layout item_local_song
 layout item_official_ranking
 layout item_official_ranking_song
@@ -4939,9 +4974,12 @@ layout item_playlist_song
 layout item_playlist_tag
 layout item_ranking_title
 layout item_recommend_song
+layout item_search_album
+layout item_search_artist
 layout item_search_history
 layout item_search_playlist
 layout item_search_song
+layout item_search_user
 layout item_selected_ranking
 layout item_song_more_menu
 layout item_user_playlist

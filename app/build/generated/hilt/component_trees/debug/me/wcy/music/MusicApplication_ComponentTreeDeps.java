@@ -44,6 +44,12 @@ import hilt_aggregated_deps._me_wcy_music_account_login_qrcode_QrcodeLoginViewMo
 import hilt_aggregated_deps._me_wcy_music_account_login_qrcode_QrcodeLoginViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._me_wcy_music_account_service_UserServiceModule;
 import hilt_aggregated_deps._me_wcy_music_account_service_UserServiceModule_UserServiceEntryPoint;
+import hilt_aggregated_deps._me_wcy_music_album_detail_AlbumDetailFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_album_detail_AlbumDetailViewModel_HiltModules_BindsModule;
+import hilt_aggregated_deps._me_wcy_music_album_detail_AlbumDetailViewModel_HiltModules_KeyModule;
+import hilt_aggregated_deps._me_wcy_music_artist_detail_ArtistDetailFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_artist_detail_ArtistDetailViewModel_HiltModules_BindsModule;
+import hilt_aggregated_deps._me_wcy_music_artist_detail_ArtistDetailViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._me_wcy_music_common_MusicFragmentContainerActivity_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_discover_home_DiscoverFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_discover_home_viewmodel_DiscoverViewModel_HiltModules_BindsModule;
@@ -68,8 +74,11 @@ import hilt_aggregated_deps._me_wcy_music_mine_home_viewmodel_MineViewModel_Hilt
 import hilt_aggregated_deps._me_wcy_music_mine_home_viewmodel_MineViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._me_wcy_music_mine_local_LocalMusicFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_search_SearchFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_search_album_SearchAlbumFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_search_artist_SearchArtistFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_search_playlist_SearchPlaylistFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_search_song_SearchSongFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_search_user_SearchUserFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule;
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_LikeSongProcessorEntryPoint;
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint;
@@ -124,6 +133,12 @@ import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
         _me_wcy_music_account_login_qrcode_QrcodeLoginViewModel_HiltModules_KeyModule.class,
         _me_wcy_music_account_service_UserServiceModule.class,
         _me_wcy_music_account_service_UserServiceModule_UserServiceEntryPoint.class,
+        _me_wcy_music_album_detail_AlbumDetailFragment_GeneratedInjector.class,
+        _me_wcy_music_album_detail_AlbumDetailViewModel_HiltModules_BindsModule.class,
+        _me_wcy_music_album_detail_AlbumDetailViewModel_HiltModules_KeyModule.class,
+        _me_wcy_music_artist_detail_ArtistDetailFragment_GeneratedInjector.class,
+        _me_wcy_music_artist_detail_ArtistDetailViewModel_HiltModules_BindsModule.class,
+        _me_wcy_music_artist_detail_ArtistDetailViewModel_HiltModules_KeyModule.class,
         _me_wcy_music_common_MusicFragmentContainerActivity_GeneratedInjector.class,
         _me_wcy_music_discover_home_DiscoverFragment_GeneratedInjector.class,
         _me_wcy_music_discover_home_viewmodel_DiscoverViewModel_HiltModules_BindsModule.class,
@@ -148,8 +163,11 @@ import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
         _me_wcy_music_mine_home_viewmodel_MineViewModel_HiltModules_KeyModule.class,
         _me_wcy_music_mine_local_LocalMusicFragment_GeneratedInjector.class,
         _me_wcy_music_search_SearchFragment_GeneratedInjector.class,
+        _me_wcy_music_search_album_SearchAlbumFragment_GeneratedInjector.class,
+        _me_wcy_music_search_artist_SearchArtistFragment_GeneratedInjector.class,
         _me_wcy_music_search_playlist_SearchPlaylistFragment_GeneratedInjector.class,
         _me_wcy_music_search_song_SearchSongFragment_GeneratedInjector.class,
+        _me_wcy_music_search_user_SearchUserFragment_GeneratedInjector.class,
         _me_wcy_music_service_PlayServiceModule.class,
         _me_wcy_music_service_PlayServiceModule_LikeSongProcessorEntryPoint.class,
         _me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint.class,

@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -13,6 +15,8 @@ import androidx.viewbinding.ViewBindings;
 import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.tabs.TabLayout;
+import com.hjq.shape.view.ShapeTextView;
+import com.youth.banner.Banner;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -29,26 +33,71 @@ public final class FragmentSearchBinding implements ViewBinding {
   public final FlexboxLayout flHistory;
 
   @NonNull
-  public final LinearLayout llHistory;
+  public final FlexboxLayout flSearchSuggest;
+
+  @NonNull
+  public final LinearLayout llHistoryHeader;
+
+  @NonNull
+  public final LinearLayout llHotSearchLeft;
+
+  @NonNull
+  public final LinearLayout llHotSearchRight;
 
   @NonNull
   public final LinearLayout llResult;
 
   @NonNull
+  public final Banner searchBanner;
+
+  @NonNull
+  public final ShapeTextView searchBannerPlaceholder;
+
+  @NonNull
+  public final ScrollView svHistory;
+
+  @NonNull
   public final TabLayout tabLayout;
+
+  @NonNull
+  public final TextView tvClearHistory;
+
+  @NonNull
+  public final TextView tvHistoryTitle;
+
+  @NonNull
+  public final TextView tvHotSearchTitle;
+
+  @NonNull
+  public final TextView tvSuggestTitle;
 
   @NonNull
   public final ViewPager2 viewPage2;
 
   private FragmentSearchBinding(@NonNull LinearLayout rootView, @NonNull FrameLayout content,
-      @NonNull FlexboxLayout flHistory, @NonNull LinearLayout llHistory,
-      @NonNull LinearLayout llResult, @NonNull TabLayout tabLayout, @NonNull ViewPager2 viewPage2) {
+      @NonNull FlexboxLayout flHistory, @NonNull FlexboxLayout flSearchSuggest,
+      @NonNull LinearLayout llHistoryHeader, @NonNull LinearLayout llHotSearchLeft,
+      @NonNull LinearLayout llHotSearchRight, @NonNull LinearLayout llResult,
+      @NonNull Banner searchBanner, @NonNull ShapeTextView searchBannerPlaceholder,
+      @NonNull ScrollView svHistory, @NonNull TabLayout tabLayout, @NonNull TextView tvClearHistory,
+      @NonNull TextView tvHistoryTitle, @NonNull TextView tvHotSearchTitle,
+      @NonNull TextView tvSuggestTitle, @NonNull ViewPager2 viewPage2) {
     this.rootView = rootView;
     this.content = content;
     this.flHistory = flHistory;
-    this.llHistory = llHistory;
+    this.flSearchSuggest = flSearchSuggest;
+    this.llHistoryHeader = llHistoryHeader;
+    this.llHotSearchLeft = llHotSearchLeft;
+    this.llHotSearchRight = llHotSearchRight;
     this.llResult = llResult;
+    this.searchBanner = searchBanner;
+    this.searchBannerPlaceholder = searchBannerPlaceholder;
+    this.svHistory = svHistory;
     this.tabLayout = tabLayout;
+    this.tvClearHistory = tvClearHistory;
+    this.tvHistoryTitle = tvHistoryTitle;
+    this.tvHotSearchTitle = tvHotSearchTitle;
+    this.tvSuggestTitle = tvSuggestTitle;
     this.viewPage2 = viewPage2;
   }
 
@@ -91,9 +140,27 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.llHistory;
-      LinearLayout llHistory = ViewBindings.findChildViewById(rootView, id);
-      if (llHistory == null) {
+      id = R.id.flSearchSuggest;
+      FlexboxLayout flSearchSuggest = ViewBindings.findChildViewById(rootView, id);
+      if (flSearchSuggest == null) {
+        break missingId;
+      }
+
+      id = R.id.llHistoryHeader;
+      LinearLayout llHistoryHeader = ViewBindings.findChildViewById(rootView, id);
+      if (llHistoryHeader == null) {
+        break missingId;
+      }
+
+      id = R.id.llHotSearchLeft;
+      LinearLayout llHotSearchLeft = ViewBindings.findChildViewById(rootView, id);
+      if (llHotSearchLeft == null) {
+        break missingId;
+      }
+
+      id = R.id.llHotSearchRight;
+      LinearLayout llHotSearchRight = ViewBindings.findChildViewById(rootView, id);
+      if (llHotSearchRight == null) {
         break missingId;
       }
 
@@ -103,9 +170,51 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.searchBanner;
+      Banner searchBanner = ViewBindings.findChildViewById(rootView, id);
+      if (searchBanner == null) {
+        break missingId;
+      }
+
+      id = R.id.searchBannerPlaceholder;
+      ShapeTextView searchBannerPlaceholder = ViewBindings.findChildViewById(rootView, id);
+      if (searchBannerPlaceholder == null) {
+        break missingId;
+      }
+
+      id = R.id.svHistory;
+      ScrollView svHistory = ViewBindings.findChildViewById(rootView, id);
+      if (svHistory == null) {
+        break missingId;
+      }
+
       id = R.id.tabLayout;
       TabLayout tabLayout = ViewBindings.findChildViewById(rootView, id);
       if (tabLayout == null) {
+        break missingId;
+      }
+
+      id = R.id.tvClearHistory;
+      TextView tvClearHistory = ViewBindings.findChildViewById(rootView, id);
+      if (tvClearHistory == null) {
+        break missingId;
+      }
+
+      id = R.id.tvHistoryTitle;
+      TextView tvHistoryTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvHistoryTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvHotSearchTitle;
+      TextView tvHotSearchTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvHotSearchTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSuggestTitle;
+      TextView tvSuggestTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvSuggestTitle == null) {
         break missingId;
       }
 
@@ -115,8 +224,10 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSearchBinding((LinearLayout) rootView, content, flHistory, llHistory,
-          llResult, tabLayout, viewPage2);
+      return new FragmentSearchBinding((LinearLayout) rootView, content, flHistory, flSearchSuggest,
+          llHistoryHeader, llHotSearchLeft, llHotSearchRight, llResult, searchBanner,
+          searchBannerPlaceholder, svHistory, tabLayout, tvClearHistory, tvHistoryTitle,
+          tvHotSearchTitle, tvSuggestTitle, viewPage2);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

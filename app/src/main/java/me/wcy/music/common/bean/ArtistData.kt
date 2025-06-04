@@ -13,5 +13,9 @@ data class ArtistData(
     @SerializedName("tns")
     val tns: List<Any> = listOf(),
     @SerializedName("alias")
-    val alias: List<Any> = listOf()
+    val alias: List<Any> = listOf(),
+    @SerializedName("picUrl")
+    val picUrl: String = "",
+    @SerializedName("img1v1Url")
+    val img1v1Url: String = ""
 )
