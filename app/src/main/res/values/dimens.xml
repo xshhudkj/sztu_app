@@ -1,3 +1,15 @@
 <resources>
-    <dimen name="play_bar_height">48dp</dimen>
+    <!-- PlayBar 车载优化尺寸 -->
+    <dimen name="play_bar_height">62dp</dimen>
+    <dimen name="play_bar_album_cover_size">55dp</dimen>
+    <dimen name="play_bar_cover_margin_end">12dp</dimen>
+    <dimen name="play_bar_title_text_size">20sp</dimen>
+    <dimen name="play_bar_artist_text_size">16sp</dimen>
+    <dimen name="play_bar_artist_margin_top">3dp</dimen>
+    <dimen name="play_bar_control_button_size">64dp</dimen>
+    <dimen name="play_bar_playlist_button_size">56dp</dimen>
+    <dimen name="play_bar_like_button_size">56dp</dimen>
+    <dimen name="play_bar_button_margin">16dp</dimen>
+    <dimen name="play_bar_horizontal_padding">16dp</dimen>
+    <dimen name="play_bar_info_margin_horizontal">12dp</dimen>
 </resources>

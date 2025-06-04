@@ -71,6 +71,7 @@ import hilt_aggregated_deps._me_wcy_music_search_SearchFragment_GeneratedInjecto
 import hilt_aggregated_deps._me_wcy_music_search_playlist_SearchPlaylistFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_search_song_SearchSongFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule;
+import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_LikeSongProcessorEntryPoint;
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint;
 import hilt_aggregated_deps._me_wcy_music_service_likesong_LikeSongProcessorModule;
 import hilt_aggregated_deps._me_wcy_music_service_likesong_LikeSongProcessorModule_LikeSongProcessorEntryPoint;
@@ -150,6 +151,7 @@ import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
         _me_wcy_music_search_playlist_SearchPlaylistFragment_GeneratedInjector.class,
         _me_wcy_music_search_song_SearchSongFragment_GeneratedInjector.class,
         _me_wcy_music_service_PlayServiceModule.class,
+        _me_wcy_music_service_PlayServiceModule_LikeSongProcessorEntryPoint.class,
         _me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint.class,
         _me_wcy_music_service_likesong_LikeSongProcessorModule.class,
         _me_wcy_music_service_likesong_LikeSongProcessorModule_LikeSongProcessorEntryPoint.class,

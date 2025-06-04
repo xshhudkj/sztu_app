@@ -1,17 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/play_bar_height"
-    android:background="@color/play_bar_bg"
-    android:gravity="center_vertical"
-    android:orientation="horizontal">
+    android:layout_height="@dimen/play_bar_height">
 
+    <!-- 播放进度背景 -->
+    <View
+        android:id="@+id/progressBackground"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/play_bar_progress_background" />
+
+    <!-- 半透明背景容器 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/play_bar_bg_translucent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/play_bar_horizontal_padding">
+
+    <!-- 播放控制按钮组 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/play_bar_button_margin"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- 收藏按钮 -->
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="@dimen/play_bar_like_button_size"
+            android:layout_height="@dimen/play_bar_like_button_size"
+            android:layout_marginEnd="@dimen/play_bar_button_margin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:padding="14dp"
+            android:src="@drawable/ic_favorite_selector"
+            android:visibility="gone"
+            app:tint="@color/common_text_h1_color" />
+
+        <!-- 播放/暂停按钮 -->
+        <FrameLayout
+            android:id="@+id/flPlay"
+            android:layout_width="@dimen/play_bar_control_button_size"
+            android:layout_height="@dimen/play_bar_control_button_size"
+            android:layout_marginEnd="@dimen/play_bar_button_margin"
+            android:background="?android:attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:id="@+id/ivPlay"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_play_bar_play_pause_selector"
+                app:tint="@color/common_text_h1_color" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loadingProgress"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                app:indicatorColor="@color/common_theme_color"
+                app:indicatorSize="48dp"
+                app:trackThickness="2dp" />
+        </FrameLayout>
+
+        <!-- 下一首按钮 -->
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="@dimen/play_bar_control_button_size"
+            android:layout_height="@dimen/play_bar_control_button_size"
+            android:layout_marginEnd="@dimen/play_bar_button_margin"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:padding="14dp"
+            android:src="@drawable/ic_next"
+            app:tint="@color/common_text_h1_color" />
+
+        <!-- 播放列表按钮 -->
+        <ImageView
+            android:id="@+id/ivPlaylist"
+            android:layout_width="@dimen/play_bar_playlist_button_size"
+            android:layout_height="@dimen/play_bar_playlist_button_size"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@null"
+            android:padding="14dp"
+            android:src="@drawable/ic_playlist"
+            app:tint="@color/common_text_h1_color" />
+    </LinearLayout>
+
+    <!-- 歌曲信息区域 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/play_bar_info_margin_horizontal"
+        android:layout_weight="1"
+        android:gravity="end"
+        android:orientation="vertical">
+
+        <!-- 歌曲标题 -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="无音乐"
+            android:textAlignment="textEnd"
+            android:textColor="@color/common_text_h1_color"
+            android:textSize="@dimen/play_bar_title_text_size" />
+
+        <!-- 歌手名 -->
+        <TextView
+            android:id="@+id/tvArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/play_bar_artist_margin_top"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text=""
+            android:textAlignment="textEnd"
+            android:textColor="@color/common_text_h2_color"
+            android:textSize="@dimen/play_bar_artist_text_size"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 专辑封面 -->
     <com.hjq.shape.layout.ShapeFrameLayout
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:padding="6dp"
+        android:layout_width="@dimen/play_bar_album_cover_size"
+        android:layout_height="@dimen/play_bar_album_cover_size"
+        android:layout_gravity="end|center_vertical"
         app:shape_radius="100dp"
         app:shape_solidColor="@color/black">
 
@@ -20,68 +142,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             android:src="@drawable/common_bg_image_placeholder_round" />
     </com.hjq.shape.layout.ShapeFrameLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="12dp"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="无音乐"
-            android:textColor="@color/common_text_h1_color"
-            android:textSize="15dp" />
     </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/flPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/ivPlay"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="center"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_play_bar_play_pause_selector"
-            app:tint="@color/common_text_h1_color" />
-
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/loadingProgress"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            app:indicatorColor="@color/common_theme_color"
-            app:indicatorSize="22dp"
-            app:trackThickness="1.5dp" />
-    </FrameLayout>
-
-    <ImageView
-        android:id="@+id/ivNext"
-        android:layout_width="40dp"
-        android:layout_height="match_parent"
-        android:contentDescription="@null"
-        android:padding="10dp"
-        android:src="@drawable/ic_next"
-        app:tint="@color/common_text_h1_color" />
-
-    <ImageView
-        android:id="@+id/ivPlaylist"
-        android:layout_width="40dp"
-        android:layout_height="match_parent"
-        android:contentDescription="@null"
-        android:padding="10dp"
-        android:src="@drawable/ic_playlist"
-        app:tint="@color/common_text_h1_color" />
-</LinearLayout>
+</FrameLayout>

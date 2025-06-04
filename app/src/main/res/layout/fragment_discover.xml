@@ -116,7 +116,7 @@
                 android:layout_marginTop="16dp"
                 android:text="推荐歌单"
                 android:textColor="@color/common_text_h1_color"
-                android:textSize="17dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 app:drawableEndCompat="@drawable/ic_arrow_right"
                 app:drawableTint="@color/common_text_h1_color" />
@@ -127,7 +127,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:clipToPadding="false"
-                android:paddingHorizontal="16dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="32dp"
                 tools:itemCount="1"
                 tools:listitem="@layout/item_discover_playlist" />
 
@@ -136,19 +137,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
                 android:text="排行榜"
                 android:textColor="@color/common_text_h1_color"
-                android:textSize="17dp"
+                android:textSize="22dp"
                 android:textStyle="bold"
                 app:drawableEndCompat="@drawable/ic_arrow_right"
                 app:drawableTint="@color/common_text_h1_color" />
 
-            <androidx.viewpager2.widget.ViewPager2
-                android:id="@+id/vpRankingList"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRankingList"
                 android:layout_width="match_parent"
-                android:layout_height="224dp"
-                android:layout_marginTop="12dp" />
+                android:layout_height="400dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="5dp"
+                android:clipToPadding="false"
+                android:paddingHorizontal="16dp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -196,7 +196,7 @@ class DiscoverFragment : BaseMusicFragment() {
                 .url(RoutePath.PLAYLIST_SQUARE)
                 .start()
         }
-        val itemWidth = (ScreenUtils.getAppScreenWidth() - SizeUtils.dp2px(20f)) / 3
+        val itemWidth = (ScreenUtils.getAppScreenWidth() - SizeUtils.dp2px(20f)) / 6
         recommendPlaylistAdapter.register(PlaylistItemBinder(itemWidth, true, object :
             PlaylistItemBinder.OnItemClickListener {
             override fun onItemClick(item: PlaylistData) {
@@ -260,24 +260,23 @@ class DiscoverFragment : BaseMusicFragment() {
                 playPlaylist(item, songPosition)
             }
         }))
-        viewBinding.vpRankingList.apply {
-            val recyclerView = getChildAt(0) as RecyclerView
-            recyclerView.apply {
-                setPadding(SizeUtils.dp2px(16f), 0, SizeUtils.dp2px(16f), 0)
-                clipToPadding = false
-            }
-            orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        viewBinding.rvRankingList.apply {
+            // 使用水平LinearLayoutManager实现横向滚动
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             adapter = rankingListAdapter
+
+            // 添加间距装饰器
+            addItemDecoration(SpacingDecoration(SizeUtils.dp2px(10f)))
         }
 
         viewModel.rankingList.observe(this) { rankingList ->
             rankingList ?: return@observe
             if (viewModel.rankingList.value?.isNotEmpty() == true) {
                 viewBinding.tvRankingList.isVisible = true
-                viewBinding.vpRankingList.isVisible = true
+                viewBinding.rvRankingList.isVisible = true
             } else {
                 viewBinding.tvRankingList.isVisible = false
-                viewBinding.vpRankingList.isVisible = false
+                viewBinding.rvRankingList.isVisible = false
             }
             rankingListAdapter.refresh(rankingList)
         }

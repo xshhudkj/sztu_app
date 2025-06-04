@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import androidx.viewpager2.widget.ViewPager2;
 import com.hjq.shape.view.ShapeTextView;
 import com.youth.banner.Banner;
 import java.lang.NullPointerException;
@@ -45,6 +44,9 @@ public final class FragmentDiscoverBinding implements ViewBinding {
   public final LinearLayout content;
 
   @NonNull
+  public final RecyclerView rvRankingList;
+
+  @NonNull
   public final RecyclerView rvRecommendPlaylist;
 
   @NonNull
@@ -53,15 +55,12 @@ public final class FragmentDiscoverBinding implements ViewBinding {
   @NonNull
   public final TextView tvRecommendPlaylist;
 
-  @NonNull
-  public final ViewPager2 vpRankingList;
-
   private FragmentDiscoverBinding(@NonNull LinearLayout rootView, @NonNull Banner banner,
       @NonNull ShapeTextView bannerPlaceholder, @NonNull TextView btnPrivateFm,
       @NonNull TextView btnRank, @NonNull TextView btnRecommendPlaylist,
       @NonNull TextView btnRecommendSong, @NonNull LinearLayout content,
-      @NonNull RecyclerView rvRecommendPlaylist, @NonNull TextView tvRankingList,
-      @NonNull TextView tvRecommendPlaylist, @NonNull ViewPager2 vpRankingList) {
+      @NonNull RecyclerView rvRankingList, @NonNull RecyclerView rvRecommendPlaylist,
+      @NonNull TextView tvRankingList, @NonNull TextView tvRecommendPlaylist) {
     this.rootView = rootView;
     this.banner = banner;
     this.bannerPlaceholder = bannerPlaceholder;
@@ -70,10 +69,10 @@ public final class FragmentDiscoverBinding implements ViewBinding {
     this.btnRecommendPlaylist = btnRecommendPlaylist;
     this.btnRecommendSong = btnRecommendSong;
     this.content = content;
+    this.rvRankingList = rvRankingList;
     this.rvRecommendPlaylist = rvRecommendPlaylist;
     this.tvRankingList = tvRankingList;
     this.tvRecommendPlaylist = tvRecommendPlaylist;
-    this.vpRankingList = vpRankingList;
   }
 
   @Override
@@ -145,6 +144,12 @@ public final class FragmentDiscoverBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rvRankingList;
+      RecyclerView rvRankingList = ViewBindings.findChildViewById(rootView, id);
+      if (rvRankingList == null) {
+        break missingId;
+      }
+
       id = R.id.rvRecommendPlaylist;
       RecyclerView rvRecommendPlaylist = ViewBindings.findChildViewById(rootView, id);
       if (rvRecommendPlaylist == null) {
@@ -163,15 +168,9 @@ public final class FragmentDiscoverBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.vpRankingList;
-      ViewPager2 vpRankingList = ViewBindings.findChildViewById(rootView, id);
-      if (vpRankingList == null) {
-        break missingId;
-      }
-
       return new FragmentDiscoverBinding((LinearLayout) rootView, banner, bannerPlaceholder,
-          btnPrivateFm, btnRank, btnRecommendPlaylist, btnRecommendSong, content,
-          rvRecommendPlaylist, tvRankingList, tvRecommendPlaylist, vpRankingList);
+          btnPrivateFm, btnRank, btnRecommendPlaylist, btnRecommendSong, content, rvRankingList,
+          rvRecommendPlaylist, tvRankingList, tvRecommendPlaylist);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

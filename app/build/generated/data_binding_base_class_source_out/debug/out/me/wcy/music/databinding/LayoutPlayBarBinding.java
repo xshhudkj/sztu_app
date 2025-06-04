@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,13 +19,16 @@ import me.wcy.music.R;
 
 public final class LayoutPlayBarBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final FrameLayout flPlay;
 
   @NonNull
   public final ImageView ivCover;
+
+  @NonNull
+  public final ImageView ivLike;
 
   @NonNull
   public final ImageView ivNext;
@@ -41,25 +43,35 @@ public final class LayoutPlayBarBinding implements ViewBinding {
   public final CircularProgressIndicator loadingProgress;
 
   @NonNull
+  public final View progressBackground;
+
+  @NonNull
+  public final TextView tvArtist;
+
+  @NonNull
   public final TextView tvTitle;
 
-  private LayoutPlayBarBinding(@NonNull LinearLayout rootView, @NonNull FrameLayout flPlay,
-      @NonNull ImageView ivCover, @NonNull ImageView ivNext, @NonNull ImageView ivPlay,
-      @NonNull ImageView ivPlaylist, @NonNull CircularProgressIndicator loadingProgress,
-      @NonNull TextView tvTitle) {
+  private LayoutPlayBarBinding(@NonNull FrameLayout rootView, @NonNull FrameLayout flPlay,
+      @NonNull ImageView ivCover, @NonNull ImageView ivLike, @NonNull ImageView ivNext,
+      @NonNull ImageView ivPlay, @NonNull ImageView ivPlaylist,
+      @NonNull CircularProgressIndicator loadingProgress, @NonNull View progressBackground,
+      @NonNull TextView tvArtist, @NonNull TextView tvTitle) {
     this.rootView = rootView;
     this.flPlay = flPlay;
     this.ivCover = ivCover;
+    this.ivLike = ivLike;
     this.ivNext = ivNext;
     this.ivPlay = ivPlay;
     this.ivPlaylist = ivPlaylist;
     this.loadingProgress = loadingProgress;
+    this.progressBackground = progressBackground;
+    this.tvArtist = tvArtist;
     this.tvTitle = tvTitle;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -96,6 +108,12 @@ public final class LayoutPlayBarBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ivLike;
+      ImageView ivLike = ViewBindings.findChildViewById(rootView, id);
+      if (ivLike == null) {
+        break missingId;
+      }
+
       id = R.id.ivNext;
       ImageView ivNext = ViewBindings.findChildViewById(rootView, id);
       if (ivNext == null) {
@@ -120,14 +138,26 @@ public final class LayoutPlayBarBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressBackground;
+      View progressBackground = ViewBindings.findChildViewById(rootView, id);
+      if (progressBackground == null) {
+        break missingId;
+      }
+
+      id = R.id.tvArtist;
+      TextView tvArtist = ViewBindings.findChildViewById(rootView, id);
+      if (tvArtist == null) {
+        break missingId;
+      }
+
       id = R.id.tvTitle;
       TextView tvTitle = ViewBindings.findChildViewById(rootView, id);
       if (tvTitle == null) {
         break missingId;
       }
 
-      return new LayoutPlayBarBinding((LinearLayout) rootView, flPlay, ivCover, ivNext, ivPlay,
-          ivPlaylist, loadingProgress, tvTitle);
+      return new LayoutPlayBarBinding((FrameLayout) rootView, flPlay, ivCover, ivLike, ivNext,
+          ivPlay, ivPlaylist, loadingProgress, progressBackground, tvArtist, tvTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

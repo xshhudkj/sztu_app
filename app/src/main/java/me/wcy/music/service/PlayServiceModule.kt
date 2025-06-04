@@ -9,6 +9,7 @@ import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.wcy.music.ext.accessEntryPoint
+import me.wcy.music.service.likesong.LikeSongProcessor
 import me.wcy.music.storage.db.MusicDatabase
 import top.wangchenyan.common.ext.toUnMutable
 
@@ -43,9 +44,19 @@ object PlayServiceModule {
         return accessEntryPoint<PlayerControllerEntryPoint>().playerController()
     }
 
+    fun Application.likeSongProcessor(): LikeSongProcessor {
+        return accessEntryPoint<LikeSongProcessorEntryPoint>().likeSongProcessor()
+    }
+
     @EntryPoint
     @InstallIn(SingletonComponent::class)
     interface PlayerControllerEntryPoint {
         fun playerController(): PlayerController
+    }
+
+    @EntryPoint
+    @InstallIn(SingletonComponent::class)
+    interface LikeSongProcessorEntryPoint {
+        fun likeSongProcessor(): LikeSongProcessor
     }
 }

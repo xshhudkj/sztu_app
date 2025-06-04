@@ -863,13 +863,13 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     }
 
     @Override
-    public PlayerController playerController() {
-      return PlayServiceModule_ProviderPlayerControllerFactory.providerPlayerController(DatabaseModule_ProvideAppDatabaseFactory.provideAppDatabase());
+    public LikeSongProcessor likeSongProcessor() {
+      return likeSongProcessorImplProvider.get();
     }
 
     @Override
-    public LikeSongProcessor likeSongProcessor() {
-      return likeSongProcessorImplProvider.get();
+    public PlayerController playerController() {
+      return PlayServiceModule_ProviderPlayerControllerFactory.providerPlayerController(DatabaseModule_ProvideAppDatabaseFactory.provideAppDatabase());
     }
 
     @CanIgnoreReturnValue

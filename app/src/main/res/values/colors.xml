@@ -28,4 +28,6 @@
     <color name="tab_bg">@color/white</color>
     <color name="card_bg">@color/white</color>
     <color name="play_bar_bg">@color/white</color>
+    <color name="play_bar_bg_translucent">#80FFFFFF</color>
+    <color name="play_bar_progress_background">#80808080</color>
 </resources>

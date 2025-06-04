@@ -2507,6 +2507,8 @@ color notification_action_color_filter
 color notification_icon_bg_color
 color notification_material_background_media_default_color
 color play_bar_bg
+color play_bar_bg_translucent
+color play_bar_progress_background
 color preference_fallback_accent_color
 color primary_dark_material_dark
 color primary_dark_material_light
@@ -3396,7 +3398,18 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen play_bar_album_cover_size
+dimen play_bar_artist_margin_top
+dimen play_bar_artist_text_size
+dimen play_bar_button_margin
+dimen play_bar_control_button_size
+dimen play_bar_cover_margin_end
 dimen play_bar_height
+dimen play_bar_horizontal_padding
+dimen play_bar_info_margin_horizontal
+dimen play_bar_like_button_size
+dimen play_bar_playlist_button_size
+dimen play_bar_title_text_size
 dimen preference_dropdown_padding_start
 dimen preference_icon_minWidth
 dimen preference_seekbar_padding_horizontal
@@ -4451,6 +4464,7 @@ id preferences_detail
 id preferences_header
 id preferences_sliding_pane_layout
 id pressed
+id progressBackground
 id progressBar
 id progress_circular
 id progress_horizontal
@@ -4480,6 +4494,7 @@ id rtl
 id rvCollectPlaylist
 id rvLikePlaylist
 id rvMyPlaylist
+id rvRankingList
 id rvRecommendPlaylist
 id save_non_transition_alpha
 id save_overlay_view
@@ -4689,7 +4704,6 @@ id view_tree_view_model_store_owner
 id visible
 id visible_removing_fragment_view_tag
 id volumeLayout
-id vpRankingList
 id vsb_zoom
 id vv_divider
 id west

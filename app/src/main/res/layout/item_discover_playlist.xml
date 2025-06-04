@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/ivCover"
-            android:layout_width="108dp"
-            android:layout_height="108dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:src="@drawable/ic_default_cover" />
 
         <com.hjq.shape.layout.ShapeLinearLayout
@@ -57,9 +57,10 @@
         android:id="@+id/tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:lines="2"
-        android:textColor="@color/common_text_h2_color"
-        android:textSize="12dp"
-        tools:text="华语私人订制 | 最懂你的华语推荐 每日更新35首" />
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        tools:text="华语私人订制" />
 </LinearLayout>

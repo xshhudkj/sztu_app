@@ -171,6 +171,7 @@ public final class MusicApplication_HiltComponents {
       GeneratedComponent,
       MusicApplication_GeneratedInjector,
       UserServiceModule.UserServiceEntryPoint,
+      PlayServiceModule.LikeSongProcessorEntryPoint,
       PlayServiceModule.PlayerControllerEntryPoint,
       LikeSongProcessorModule.LikeSongProcessorEntryPoint {
   }

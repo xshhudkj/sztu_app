@@ -4,33 +4,39 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
+
 import android.view.LayoutInflater
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
+import android.widget.Toast
 import androidx.core.text.buildSpannedString
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.wcy.music.R
 import me.wcy.music.consts.RoutePath
 import me.wcy.music.databinding.LayoutPlayBarBinding
+import me.wcy.music.ext.addButtonAnimation
 import me.wcy.music.ext.addListItemAnimation
 import me.wcy.music.ext.addPlayControlAnimation
 import me.wcy.music.main.playlist.CurrentPlaylistFragment
 import me.wcy.music.service.PlayServiceModule.playerController
+import me.wcy.music.service.PlayServiceModule.likeSongProcessor
 import me.wcy.music.service.PlayState
 import me.wcy.music.utils.getDuration
+import me.wcy.music.utils.getSongId
 import me.wcy.music.utils.getSmallCover
+import me.wcy.music.utils.isLocal
 import me.wcy.router.CRouter
 import top.wangchenyan.common.CommonApp
 import top.wangchenyan.common.ext.findActivity
 import top.wangchenyan.common.ext.findLifecycleOwner
-import top.wangchenyan.common.ext.getColor
 import top.wangchenyan.common.ext.loadAvatar
-import top.wangchenyan.common.widget.CustomSpan.appendStyle
+import top.wangchenyan.common.ext.toast
 
 /**
  * Created by wangchenyan.top on 2023/9/4.
@@ -41,6 +47,9 @@ class PlayBar @JvmOverloads constructor(
     private val viewBinding: LayoutPlayBarBinding
     private val playerController by lazy {
         CommonApp.app.playerController()
+    }
+    private val likeSongProcessor by lazy {
+        CommonApp.app.likeSongProcessor()
     }
     private val rotateAnimator: ObjectAnimator
 
@@ -64,6 +73,27 @@ class PlayBar @JvmOverloads constructor(
     private fun initView() {
         viewBinding.root.setOnClickListener {
             CRouter.with(context).url(RoutePath.PLAYING).start()
+        }
+
+        // 为收藏按钮添加按钮动画
+        viewBinding.ivLike.addButtonAnimation(
+            scaleDown = 0.9f,
+            duration = 200L,
+            rippleColor = 0x40FFFFFF
+        )
+        viewBinding.ivLike.setOnClickListener {
+            val activity = context.findActivity()
+            if (activity is FragmentActivity) {
+                activity.lifecycleScope.launch {
+                    val song = playerController.currentSong.value ?: return@launch
+                    val res = likeSongProcessor.like(activity, song.getSongId())
+                    if (res.isSuccess()) {
+                        updateLikeState(song.getSongId())
+                    } else {
+                        Toast.makeText(context, res.msg, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
 
         // 为播放按钮添加播放控制动画
@@ -94,14 +124,19 @@ class PlayBar @JvmOverloads constructor(
             if (currentSong != null) {
                 isVisible = true
                 viewBinding.ivCover.loadAvatar(currentSong.getSmallCover())
-                viewBinding.tvTitle.text = buildSpannedString {
-                    append(currentSong.mediaMetadata.title)
-                    appendStyle(
-                        " - ${currentSong.mediaMetadata.artist}",
-                        color = getColor(R.color.common_text_h2_color)
-                    )
+
+                // 分离显示歌曲标题和歌手名
+                viewBinding.tvTitle.text = currentSong.mediaMetadata.title
+                val artist = currentSong.mediaMetadata.artist
+                if (artist.isNullOrBlank().not()) {
+                    viewBinding.tvArtist.text = artist
+                    viewBinding.tvArtist.isVisible = true
+                } else {
+                    viewBinding.tvArtist.isVisible = false
                 }
-                // 播放进度相关代码已删除，仅保留加载状态
+
+                // 更新收藏状态和显示
+                updateLikeState(currentSong.getSongId())
             } else {
                 isVisible = false
             }
@@ -143,6 +178,44 @@ class PlayBar @JvmOverloads constructor(
             }
         }
 
-        // 播放进度和缓存进度相关代码已删除，仅保留加载状态的红色转圈
+        // 播放进度更新
+        lifecycleOwner.lifecycleScope.launch {
+            playerController.playProgress.collectLatest { progress ->
+                updatePlayProgress()
+            }
+        }
+    }
+
+    /**
+     * 更新播放进度
+     */
+    private fun updatePlayProgress() {
+        val currentSong = playerController.currentSong.value
+        val progressWidth = if (currentSong != null) {
+            val duration = currentSong.mediaMetadata.getDuration()
+            val position = playerController.playProgress.value
+
+            if (duration > 0 && viewBinding.root.width > 0) {
+                val progress = (position.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
+                (viewBinding.root.width * progress).toInt()
+            } else 0
+        } else 0
+
+        // 更新进度背景宽度
+        viewBinding.progressBackground.layoutParams =
+            viewBinding.progressBackground.layoutParams.apply { width = progressWidth }
+    }
+
+    /**
+     * 更新收藏状态
+     */
+    private fun updateLikeState(songId: Long) {
+        val currentSong = playerController.currentSong.value
+        if (currentSong != null && !currentSong.isLocal()) {
+            viewBinding.ivLike.isVisible = true
+            viewBinding.ivLike.isSelected = likeSongProcessor.isLiked(songId)
+        } else {
+            viewBinding.ivLike.isVisible = false
+        }
     }
 }
