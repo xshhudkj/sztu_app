@@ -1,6 +1,8 @@
 package me.wcy.music.album.detail
 
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -9,6 +11,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.wcy.music.R
+import me.wcy.music.account.service.UserService
 import me.wcy.music.common.BaseMusicFragment
 import me.wcy.music.common.OnItemClickListener2
 import me.wcy.music.common.bean.SongData
@@ -42,6 +45,10 @@ class AlbumDetailFragment : BaseMusicFragment() {
     private val viewBinding by viewBindings<FragmentAlbumDetailBinding>()
     private val viewModel by viewModels<AlbumDetailViewModel>()
     private val adapter by lazy { RAdapter<SongData>() }
+    private var collectMenu: View? = null
+
+    @Inject
+    lateinit var userService: UserService
 
     @Inject
     lateinit var playerController: PlayerController
@@ -81,7 +88,6 @@ class AlbumDetailFragment : BaseMusicFragment() {
         initTitle()
         initAlbumInfo()
         initSongList()
-        initFavorite()
         loadData()
     }
 
@@ -98,17 +104,46 @@ class AlbumDetailFragment : BaseMusicFragment() {
     }
 
     private fun initTitle() {
+        collectMenu = getTitleLayout()?.addImageMenu(R.drawable.ic_favorite_selector, false)
+        collectMenu?.setOnClickListener {
+            viewModel.albumData.value ?: return@setOnClickListener
+            userService.checkLogin(requireActivity()) {
+                lifecycleScope.launch {
+                    showLoading()
+                    val res = viewModel.toggleSubscribe()
+                    dismissLoading()
+                    if (res.isSuccess()) {
+                        toast("操作成功")
+                    } else {
+                        toast(res.msg)
+                    }
+                }
+            }
+        }
+
         view?.getStatusBarHeight {
-            viewBinding.titlePlaceholder.updateLayoutParams<android.view.ViewGroup.MarginLayoutParams> {
+            viewBinding.titlePlaceholder.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = it
             }
-            viewBinding.toolbarPlaceholder.updateLayoutParams<android.view.ViewGroup.LayoutParams> {
+            viewBinding.toolbarPlaceholder.updateLayoutParams<ViewGroup.LayoutParams> {
                 height = resources.getDimensionPixelSize(R.dimen.common_title_bar_size) + it
             }
         }
 
         viewBinding.appBarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
             getTitleLayout()?.updateScroll(-verticalOffset)
+        }
+
+        lifecycleScope.launch {
+            userService.profile.collectLatest { profile ->
+                updateCollectState()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.isSubscribed.collectLatest { isSubscribed ->
+                updateCollectState()
+            }
         }
     }
 
@@ -117,10 +152,47 @@ class AlbumDetailFragment : BaseMusicFragment() {
             viewModel.albumData.collectLatest { albumData ->
                 albumData ?: return@collectLatest
                 getTitleLayout()?.setTitleText(albumData.name)
+                updateCollectState()
                 viewBinding.ivCover.loadCover(albumData.picUrl, SizeUtils.dp2px(6f))
                 viewBinding.tvName.text = albumData.name
-                viewBinding.tvArtist.text = "专辑"
-                viewBinding.tvDesc.text = "专辑简介"
+
+                // 隐藏创建者头像，显示专辑艺术家信息
+                viewBinding.ivCreatorAvatar.isVisible = false
+                val artistName = when {
+                    albumData.artist != null -> albumData.artist.name
+                    albumData.artists.isNotEmpty() -> albumData.artists.joinToString(" / ") { it.name }
+                    else -> "未知艺术家"
+                }
+                viewBinding.tvCreatorName.text = artistName
+
+                // 隐藏标签区域
+                viewBinding.flTags.isVisible = false
+
+                // 显示专辑描述，如果没有描述则显示专辑信息
+                val description = if (albumData.description.isNotEmpty()) {
+                    albumData.description
+                } else {
+                    buildString {
+                        if (albumData.company.isNotEmpty()) {
+                            append("发行公司：${albumData.company}\n")
+                        }
+                        if (albumData.publishTime > 0) {
+                            val publishDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
+                                .format(java.util.Date(albumData.publishTime))
+                            append("发行时间：$publishDate\n")
+                        }
+                        if (albumData.subType.isNotEmpty()) {
+                            append("专辑类型：${albumData.subType}\n")
+                        }
+                        if (albumData.size > 0) {
+                            append("歌曲数量：${albumData.size}首")
+                        }
+                        if (isEmpty()) {
+                            append("暂无专辑简介")
+                        }
+                    }
+                }
+                viewBinding.tvDesc.text = description
             }
         }
     }
@@ -165,25 +237,13 @@ class AlbumDetailFragment : BaseMusicFragment() {
         }
     }
 
-    private fun initFavorite() {
-        viewBinding.ivFavorite.setOnClickListener {
-            lifecycleScope.launch {
-                val result = viewModel.toggleSubscribe()
-                if (result.isSuccess()) {
-                    val isSubscribed = viewModel.isSubscribed.value
-                    toast(if (isSubscribed) "收藏成功" else "取消收藏成功")
-                } else {
-                    toast(result.msg ?: "操作失败")
-                }
-            }
+    private fun updateCollectState() {
+        val albumData = viewModel.albumData.value
+        if (albumData == null) {
+            collectMenu?.isVisible = false
+            return
         }
-
-        lifecycleScope.launch {
-            viewModel.isSubscribed.collectLatest { isSubscribed ->
-                viewBinding.ivFavorite.setImageResource(
-                    if (isSubscribed) R.drawable.ic_favorite_fill else R.drawable.ic_favorite
-                )
-            }
-        }
+        collectMenu?.isVisible = true
+        collectMenu?.isSelected = viewModel.isSubscribed.value
     }
 }
