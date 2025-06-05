@@ -34,46 +34,78 @@ class ArtistDetailViewModel @Inject constructor() : ViewModel() {
     }
 
     suspend fun loadData(): CommonResult<Unit> {
-        // 照抄歌单详情的加载逻辑，调用真实的歌手API
+        // 参考歌单详情页的安全处理方式，使用kotlin.runCatching
         val detailRes = kotlin.runCatching {
             SearchApi.get().getArtistDetail(artistId)
         }
+
         val songListRes = kotlin.runCatching {
             SearchApi.get().getArtistTopSongs(artistId)
         }
-        return if (detailRes.isSuccess.not() || detailRes.getOrThrow().code != 200) {
+
+        return if (detailRes.isSuccess.not()) {
             CommonResult.fail(msg = detailRes.exceptionOrNull()?.message)
-        } else if (songListRes.isSuccess.not() || songListRes.getOrThrow().code != 200) {
+        } else if (songListRes.isSuccess.not()) {
             CommonResult.fail(msg = songListRes.exceptionOrNull()?.message)
         } else {
-            // 暂时使用模拟数据，等API返回结构确定后再修改
-            val artistData = ArtistData(
-                id = artistId,
-                name = "歌手名称",
-                picUrl = "",
-                alias = emptyList()
-            )
-            _artistData.value = artistData
+            // 安全地获取数据，参考歌单详情页的处理方式
+            val detailResult = detailRes.getOrThrow()
+            val songResult = songListRes.getOrThrow()
 
-            // 暂时使用空歌曲列表
-            _songList.value = emptyList()
+            // 检查API返回的code状态
+            if (detailResult.code != 200) {
+                return CommonResult.fail(detailResult.code, "歌手详情获取失败")
+            }
+
+            if (songResult.code != 200) {
+                return CommonResult.fail(songResult.code, "歌手歌曲获取失败")
+            }
+
+            // 优先使用artists API返回的歌手信息，因为它包含完整的头像等信息
+            val artistDataFromSongs = songResult.artist
+            val artistDataFromDetail = detailResult.data?.artist
+
+            // 如果歌曲API返回了歌手信息，优先使用它；否则使用详情API的数据
+            val artistData = if (artistDataFromSongs != null && artistDataFromSongs.picUrl.isNotEmpty()) {
+                artistDataFromSongs
+            } else {
+                artistDataFromDetail
+            }
+            val songs = songResult.songs
+
+            _artistData.value = artistData
+            _songList.value = songs
             CommonResult.success(Unit)
         }
     }
 
     suspend fun toggleSubscribe(): CommonResult<Unit> {
-        val currentSubscribed = _isSubscribed.value
-        val t = if (currentSubscribed) 0 else 1 // 1为收藏，0为取消收藏
+        val artistData = _artistData.value ?: return CommonResult.fail(msg = "歌手数据不存在")
 
-        val res = apiCall {
-            SearchApi.get().subscribeArtist(artistId, t)
-        }
-
-        return if (res.isSuccess()) {
-            _isSubscribed.value = !currentSubscribed
-            CommonResult.success(Unit)
-        } else {
-            CommonResult.fail(res.code, res.msg)
+        return kotlin.runCatching {
+            if (_isSubscribed.value) {
+                val res = apiCall {
+                    SearchApi.get().subscribeArtist(artistData.id, 0)
+                }
+                if (res.isSuccess()) {
+                    _isSubscribed.value = false
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
+            } else {
+                val res = apiCall {
+                    SearchApi.get().subscribeArtist(artistData.id, 1)
+                }
+                if (res.isSuccess()) {
+                    _isSubscribed.value = true
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
+            }
+        }.getOrElse {
+            CommonResult.fail(msg = it.message)
         }
     }
 }

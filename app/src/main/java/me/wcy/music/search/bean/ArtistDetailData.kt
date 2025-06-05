@@ -8,11 +8,8 @@ import me.wcy.music.common.bean.ArtistData
  * Created by wangchenyan.top on 2024/12/20.
  */
 data class ArtistDetailData(
-    @SerializedName("data")
-    val data: ArtistDetailInfo? = null
-)
-
-data class ArtistDetailInfo(
+    @SerializedName("code")
+    val code: Int = 0,
     @SerializedName("artist")
     val artist: ArtistData? = null,
     @SerializedName("more")
@@ -23,7 +20,11 @@ data class ArtistDetailInfo(
  * 歌手歌曲数据
  */
 data class ArtistSongsData(
-    @SerializedName("songs")
+    @SerializedName("code")
+    val code: Int = 0,
+    @SerializedName("artist")
+    val artist: ArtistData? = null,
+    @SerializedName("hotSongs")
     val songs: List<me.wcy.music.common.bean.SongData> = emptyList(),
     @SerializedName("more")
     val more: Boolean = false
@@ -33,6 +34,8 @@ data class ArtistSongsData(
  * 专辑详情数据
  */
 data class AlbumDetailData(
+    @SerializedName("code")
+    val code: Int = 0,
     @SerializedName("album")
     val album: me.wcy.music.common.bean.AlbumData? = null,
     @SerializedName("songs")

@@ -524,6 +524,7 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
     @CanIgnoreReturnValue
     private AlbumDetailFragment injectAlbumDetailFragment2(AlbumDetailFragment instance) {
+      AlbumDetailFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
       AlbumDetailFragment_MembersInjector.injectPlayerController(instance, singletonCImpl.playerController());
       return instance;
     }

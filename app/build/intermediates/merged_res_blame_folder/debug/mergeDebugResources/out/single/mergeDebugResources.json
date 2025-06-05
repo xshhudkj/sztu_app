@@ -44,28 +44,28 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable_ic_sound_wave_animation.xml.flat",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable\\ic_sound_wave_animation.xml"
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_item_recommend_song.xml.flat",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_recommend_song.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable_ic_menu_settings.xml.flat",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable\\ic_menu_settings.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_item_recommend_song.xml.flat",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_recommend_song.xml"
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable_ic_sound_wave_animation.xml.flat",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable\\ic_sound_wave_animation.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\xml_network_security_config.xml.flat",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\xml\\network_security_config.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable_ic_close.xml.flat",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable\\ic_close.xml"
-    },
-    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable_ic_close.xml.flat",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\drawable\\ic_close.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_fragment_search_list.xml.flat",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_hot_search.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_fragment_playlist_detail.xml.flat",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_playlist_detail.xml"
-    },
-    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_item_search_suggest.xml.flat",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_suggest.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\layout_fragment_playlist_detail.xml.flat",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\fragment_playlist_detail.xml"
     },
     {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-debug-68:\\drawable-xxhdpi_ic_default_artist.webp.flat",

@@ -1,6 +1,5 @@
 package me.wcy.music.artist.detail
 
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -31,7 +30,6 @@ import me.wcy.radapter3.RAdapter
 import me.wcy.router.CRouter
 import me.wcy.router.annotation.Route
 import top.wangchenyan.common.ext.getColor
-import top.wangchenyan.common.ext.loadAvatar
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.insets.WindowInsetsUtils.getStatusBarHeight
@@ -47,6 +45,7 @@ class ArtistDetailFragment : BaseMusicFragment() {
     private val viewBinding by viewBindings<FragmentArtistDetailBinding>()
     private val viewModel by viewModels<ArtistDetailViewModel>()
     private val adapter by lazy { RAdapter<SongData>() }
+    private var collectMenu: View? = null
 
     @Inject
     lateinit var userService: UserService
@@ -89,7 +88,6 @@ class ArtistDetailFragment : BaseMusicFragment() {
         initTitle()
         initArtistInfo()
         initSongList()
-        initFavorite()
         loadData()
     }
 
@@ -106,6 +104,23 @@ class ArtistDetailFragment : BaseMusicFragment() {
     }
 
     private fun initTitle() {
+        collectMenu = getTitleLayout()?.addImageMenu(R.drawable.ic_favorite_selector, false)
+        collectMenu?.setOnClickListener {
+            viewModel.artistData.value ?: return@setOnClickListener
+            userService.checkLogin(requireActivity()) {
+                lifecycleScope.launch {
+                    showLoading()
+                    val res = viewModel.toggleSubscribe()
+                    dismissLoading()
+                    if (res.isSuccess()) {
+                        toast("操作成功")
+                    } else {
+                        toast(res.msg)
+                    }
+                }
+            }
+        }
+
         view?.getStatusBarHeight {
             viewBinding.titlePlaceholder.updateLayoutParams<ViewGroup.MarginLayoutParams> {
                 topMargin = it
@@ -118,6 +133,18 @@ class ArtistDetailFragment : BaseMusicFragment() {
         viewBinding.appBarLayout.addOnOffsetChangedListener { appBarLayout, verticalOffset ->
             getTitleLayout()?.updateScroll(-verticalOffset)
         }
+
+        lifecycleScope.launch {
+            userService.profile.collectLatest { profile ->
+                updateCollectState()
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.isSubscribed.collectLatest { isSubscribed ->
+                updateCollectState()
+            }
+        }
     }
 
     private fun initArtistInfo() {
@@ -125,14 +152,35 @@ class ArtistDetailFragment : BaseMusicFragment() {
             viewModel.artistData.collectLatest { artistData ->
                 artistData ?: return@collectLatest
                 getTitleLayout()?.setTitleText(artistData.name)
-                viewBinding.ivCover.loadCover(artistData.picUrl, SizeUtils.dp2px(6f))
+                updateCollectState()
+
+                // 加载歌手头像，添加图片尺寸参数优化显示效果
+                val imageUrl = if (artistData.picUrl.isNotEmpty()) {
+                    artistData.picUrl + "?param=400y400"
+                } else {
+                    ""
+                }
+                viewBinding.ivCover.loadCover(imageUrl, SizeUtils.dp2px(6f))
                 viewBinding.tvName.text = artistData.name
-                viewBinding.tvAlias.text = if (artistData.alias.isNotEmpty()) {
-                    artistData.alias.joinToString(" / ")
+
+                // 隐藏创建者头像，显示歌手别名
+                viewBinding.ivCreatorAvatar.isVisible = false
+                viewBinding.tvCreatorName.text = if (artistData.alias.isNotEmpty()) {
+                    artistData.alias.joinToString(" / ") { it.toString() }
                 } else {
                     "歌手"
                 }
-                viewBinding.tvDesc.text = "歌手简介"
+
+                // 隐藏标签区域
+                viewBinding.flTags.isVisible = false
+
+                // 显示歌手简介，如果没有简介则显示默认文本
+                val description = if (artistData.briefDesc.isNotEmpty()) {
+                    artistData.briefDesc
+                } else {
+                    "暂无歌手简介"
+                }
+                viewBinding.tvDesc.text = description
             }
         }
     }
@@ -177,25 +225,13 @@ class ArtistDetailFragment : BaseMusicFragment() {
         }
     }
 
-    private fun initFavorite() {
-        viewBinding.ivFavorite.setOnClickListener {
-            lifecycleScope.launch {
-                val result = viewModel.toggleSubscribe()
-                if (result.isSuccess()) {
-                    val isSubscribed = viewModel.isSubscribed.value
-                    toast(if (isSubscribed) "收藏成功" else "取消收藏成功")
-                } else {
-                    toast(result.msg ?: "操作失败")
-                }
-            }
+    private fun updateCollectState() {
+        val artistData = viewModel.artistData.value
+        if (artistData == null) {
+            collectMenu?.isVisible = false
+            return
         }
-
-        lifecycleScope.launch {
-            viewModel.isSubscribed.collectLatest { isSubscribed ->
-                viewBinding.ivFavorite.setImageResource(
-                    if (isSubscribed) R.drawable.ic_favorite_fill else R.drawable.ic_favorite
-                )
-            }
-        }
+        collectMenu?.isVisible = true
+        collectMenu?.isSelected = viewModel.isSubscribed.value
     }
 }

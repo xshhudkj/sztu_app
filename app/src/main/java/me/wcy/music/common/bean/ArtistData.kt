@@ -17,5 +17,15 @@ data class ArtistData(
     @SerializedName("picUrl")
     val picUrl: String = "",
     @SerializedName("img1v1Url")
-    val img1v1Url: String = ""
+    val img1v1Url: String = "",
+    @SerializedName("briefDesc")
+    val briefDesc: String = "",
+    @SerializedName("albumSize")
+    val albumSize: Int = 0,
+    @SerializedName("musicSize")
+    val musicSize: Int = 0,
+    @SerializedName("mvSize")
+    val mvSize: Int = 0,
+    @SerializedName("followed")
+    val followed: Boolean = false
 )

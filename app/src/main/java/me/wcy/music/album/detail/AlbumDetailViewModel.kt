@@ -34,42 +34,59 @@ class AlbumDetailViewModel @Inject constructor() : ViewModel() {
     }
 
     suspend fun loadData(): CommonResult<Unit> {
-        // 照抄歌单详情的加载逻辑，调用真实的专辑API
+        // 参考歌单详情页的安全处理方式，使用kotlin.runCatching
         val detailRes = kotlin.runCatching {
             SearchApi.get().getAlbumDetail(albumId)
         }
-        return if (detailRes.isSuccess.not() || detailRes.getOrThrow().code != 200) {
+
+        return if (detailRes.isSuccess.not()) {
             CommonResult.fail(msg = detailRes.exceptionOrNull()?.message)
         } else {
-            // 解析专辑详情数据
-            val albumDetailResponse = detailRes.getOrThrow()
-            // 暂时使用模拟数据，等API返回结构确定后再修改
-            val albumData = AlbumData(
-                id = albumId,
-                name = "专辑名称",
-                picUrl = ""
-            )
-            _albumData.value = albumData
+            // 安全地获取数据，参考歌单详情页的处理方式
+            val detailResult = detailRes.getOrThrow()
 
-            // 解析专辑歌曲数据
-            _songList.value = emptyList() // 暂时使用空列表
+            // 检查API返回的code状态
+            if (detailResult.code != 200) {
+                return CommonResult.fail(detailResult.code, "专辑详情获取失败")
+            }
+
+            // 直接从API返回结果中获取数据
+            val albumData = detailResult.album
+            val songs = detailResult.songs
+
+            _albumData.value = albumData
+            _songList.value = songs
             CommonResult.success(Unit)
         }
     }
 
     suspend fun toggleSubscribe(): CommonResult<Unit> {
-        val currentSubscribed = _isSubscribed.value
-        val t = if (currentSubscribed) 0 else 1 // 1为收藏，0为取消收藏
+        val albumData = _albumData.value ?: return CommonResult.fail(msg = "专辑数据不存在")
 
-        val res = apiCall {
-            SearchApi.get().subscribeAlbum(albumId, t)
-        }
-
-        return if (res.isSuccess()) {
-            _isSubscribed.value = !currentSubscribed
-            CommonResult.success(Unit)
-        } else {
-            CommonResult.fail(res.code, res.msg)
+        return kotlin.runCatching {
+            if (_isSubscribed.value) {
+                val res = apiCall {
+                    SearchApi.get().subscribeAlbum(albumData.id, 0)
+                }
+                if (res.isSuccess()) {
+                    _isSubscribed.value = false
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
+            } else {
+                val res = apiCall {
+                    SearchApi.get().subscribeAlbum(albumData.id, 1)
+                }
+                if (res.isSuccess()) {
+                    _isSubscribed.value = true
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
+            }
+        }.getOrElse {
+            CommonResult.fail(msg = it.message)
         }
     }
 }

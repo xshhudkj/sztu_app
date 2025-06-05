@@ -83,22 +83,22 @@ interface SearchApi {
      * 获取歌手详情
      * @param id 歌手id
      */
-    @GET("artist/detail")
+    @POST("artist/detail")
     suspend fun getArtistDetail(@Query("id") id: Long): NetResult<ArtistDetailData>
 
     /**
-     * 获取歌手热门50首歌曲
+     * 获取歌手热门歌曲
      * @param id 歌手id
      */
-    @GET("artist/top/song")
-    suspend fun getArtistTopSongs(@Query("id") id: Long): NetResult<ArtistSongsData>
+    @POST("artists")
+    suspend fun getArtistTopSongs(@Query("id") id: Long): ArtistSongsData
 
     /**
      * 获取专辑内容
      * @param id 专辑id
      */
     @GET("album")
-    suspend fun getAlbumDetail(@Query("id") id: Long): NetResult<AlbumDetailData>
+    suspend fun getAlbumDetail(@Query("id") id: Long): AlbumDetailData
 
     /**
      * 收藏/取消收藏歌手

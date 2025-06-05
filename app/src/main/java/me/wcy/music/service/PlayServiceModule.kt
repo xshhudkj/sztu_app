@@ -33,9 +33,15 @@ object PlayServiceModule {
     @Provides
     fun providerPlayerController(db: MusicDatabase): PlayerController {
         return playerController ?: run {
-            val player = player ?: throw IllegalStateException("Player not prepared!")
+            val player = player ?: run {
+                // 如果播放器还没准备好，等待一下再尝试
+                android.util.Log.w("PlayServiceModule", "Player not ready yet, waiting...")
+                Thread.sleep(100) // 等待100ms
+                this.player ?: throw IllegalStateException("Player not prepared after waiting!")
+            }
             PlayerControllerImpl(player, db).also {
                 playerController = it
+                android.util.Log.d("PlayServiceModule", "PlayerController created successfully")
             }
         }
     }

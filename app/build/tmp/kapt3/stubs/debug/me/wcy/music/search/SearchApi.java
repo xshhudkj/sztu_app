@@ -20,7 +20,7 @@ import retrofit2.http.Query;
 /**
  * Created by wangchenyan.top on 2023/9/20.
  */
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0007\bf\u0018\u0000 \"2\u00020\u0001:\u0001\"J(\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\bJ\u001e\u0010\t\u001a\b\u0012\u0004\u0012\u00020\n0\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u001e\u0010\f\u001a\b\u0012\u0004\u0012\u00020\r0\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u001e\u0010\u000e\u001a\b\u0012\u0004\u0012\u00020\u000f0\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u000e\u0010\u0010\u001a\u00020\u0011H\u00a7@\u00a2\u0006\u0002\u0010\u0012J\u000e\u0010\u0013\u001a\u00020\u0014H\u00a7@\u00a2\u0006\u0002\u0010\u0012J$\u0010\u0015\u001a\u00020\u00162\b\b\u0001\u0010\u0017\u001a\u00020\u00182\n\b\u0003\u0010\u0019\u001a\u0004\u0018\u00010\u0018H\u00a7@\u00a2\u0006\u0002\u0010\u001aJ<\u0010\u001b\u001a\b\u0012\u0004\u0012\u00020\u001c0\u00032\b\b\u0001\u0010\u0019\u001a\u00020\u00072\b\b\u0001\u0010\u0017\u001a\u00020\u00182\b\b\u0001\u0010\u001d\u001a\u00020\u00072\b\b\u0001\u0010\u001e\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\u001fJ(\u0010 \u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\bJ(\u0010!\u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\b\u00a8\u0006#"}, d2 = {"Lme/wcy/music/search/SearchApi;", "", "followUser", "Ltop/wangchenyan/common/net/NetResult;", "id", "", "t", "", "(JILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAlbumDetail", "Lme/wcy/music/search/bean/AlbumDetailData;", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getArtistDetail", "Lme/wcy/music/search/bean/ArtistDetailData;", "getArtistTopSongs", "Lme/wcy/music/search/bean/ArtistSongsData;", "getHotSearchDetailList", "Lme/wcy/music/search/bean/HotSearchDetailListData;", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getHotSearchList", "Lme/wcy/music/search/bean/HotSearchListData;", "getSearchSuggest", "Lme/wcy/music/search/bean/SearchSuggestData;", "keywords", "", "type", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "search", "Lme/wcy/music/search/bean/SearchResultData;", "limit", "offset", "(ILjava/lang/String;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "subscribeAlbum", "subscribeArtist", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000V\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0010\b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0007\bf\u0018\u0000 \"2\u00020\u0001:\u0001\"J(\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\bJ\u0018\u0010\t\u001a\u00020\n2\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u001e\u0010\f\u001a\b\u0012\u0004\u0012\u00020\r0\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u0018\u0010\u000e\u001a\u00020\u000f2\b\b\u0001\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u000bJ\u000e\u0010\u0010\u001a\u00020\u0011H\u00a7@\u00a2\u0006\u0002\u0010\u0012J\u000e\u0010\u0013\u001a\u00020\u0014H\u00a7@\u00a2\u0006\u0002\u0010\u0012J$\u0010\u0015\u001a\u00020\u00162\b\b\u0001\u0010\u0017\u001a\u00020\u00182\n\b\u0003\u0010\u0019\u001a\u0004\u0018\u00010\u0018H\u00a7@\u00a2\u0006\u0002\u0010\u001aJ<\u0010\u001b\u001a\b\u0012\u0004\u0012\u00020\u001c0\u00032\b\b\u0001\u0010\u0019\u001a\u00020\u00072\b\b\u0001\u0010\u0017\u001a\u00020\u00182\b\b\u0001\u0010\u001d\u001a\u00020\u00072\b\b\u0001\u0010\u001e\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\u001fJ(\u0010 \u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\bJ(\u0010!\u001a\b\u0012\u0004\u0012\u00020\u00010\u00032\b\b\u0001\u0010\u0004\u001a\u00020\u00052\b\b\u0001\u0010\u0006\u001a\u00020\u0007H\u00a7@\u00a2\u0006\u0002\u0010\b\u00a8\u0006#"}, d2 = {"Lme/wcy/music/search/SearchApi;", "", "followUser", "Ltop/wangchenyan/common/net/NetResult;", "id", "", "t", "", "(JILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAlbumDetail", "Lme/wcy/music/search/bean/AlbumDetailData;", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getArtistDetail", "Lme/wcy/music/search/bean/ArtistDetailData;", "getArtistTopSongs", "Lme/wcy/music/search/bean/ArtistSongsData;", "getHotSearchDetailList", "Lme/wcy/music/search/bean/HotSearchDetailListData;", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getHotSearchList", "Lme/wcy/music/search/bean/HotSearchListData;", "getSearchSuggest", "Lme/wcy/music/search/bean/SearchSuggestData;", "keywords", "", "type", "(Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "search", "Lme/wcy/music/search/bean/SearchResultData;", "limit", "offset", "(ILjava/lang/String;IILkotlin/coroutines/Continuation;)Ljava/lang/Object;", "subscribeAlbum", "subscribeArtist", "Companion", "app_debug"})
 public abstract interface SearchApi {
     @org.jetbrains.annotations.NotNull()
     public static final me.wcy.music.search.SearchApi.Companion Companion = null;
@@ -96,21 +96,21 @@ public abstract interface SearchApi {
      * 获取歌手详情
      * @param id 歌手id
      */
-    @retrofit2.http.GET(value = "artist/detail")
+    @retrofit2.http.POST(value = "artist/detail")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getArtistDetail(@retrofit2.http.Query(value = "id")
     long id, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super top.wangchenyan.common.net.NetResult<me.wcy.music.search.bean.ArtistDetailData>> $completion);
     
     /**
-     * 获取歌手热门50首歌曲
+     * 获取歌手热门歌曲
      * @param id 歌手id
      */
-    @retrofit2.http.GET(value = "artist/top/song")
+    @retrofit2.http.POST(value = "artists")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getArtistTopSongs(@retrofit2.http.Query(value = "id")
     long id, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super top.wangchenyan.common.net.NetResult<me.wcy.music.search.bean.ArtistSongsData>> $completion);
+    kotlin.coroutines.Continuation<? super me.wcy.music.search.bean.ArtistSongsData> $completion);
     
     /**
      * 获取专辑内容
@@ -120,7 +120,7 @@ public abstract interface SearchApi {
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getAlbumDetail(@retrofit2.http.Query(value = "id")
     long id, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super top.wangchenyan.common.net.NetResult<me.wcy.music.search.bean.AlbumDetailData>> $completion);
+    kotlin.coroutines.Continuation<? super me.wcy.music.search.bean.AlbumDetailData> $completion);
     
     /**
      * 收藏/取消收藏歌手

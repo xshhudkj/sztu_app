@@ -20,7 +20,25 @@ data class AlbumData(
     @SerializedName("pic_str")
     val picStr: String = "",
     @SerializedName("pic")
-    val pic: Long = 0
+    val pic: Long = 0,
+    @SerializedName("description")
+    val description: String = "",
+    @SerializedName("publishTime")
+    val publishTime: Long = 0,
+    @SerializedName("company")
+    val company: String = "",
+    @SerializedName("artist")
+    val artist: ArtistData? = null,
+    @SerializedName("artists")
+    val artists: List<ArtistData> = emptyList(),
+    @SerializedName("size")
+    val size: Int = 0,
+    @SerializedName("status")
+    val status: Int = 0,
+    @SerializedName("subType")
+    val subType: String = "",
+    @SerializedName("type")
+    val type: String = ""
 ) {
     fun getSmallCover(): String {
         return picUrl.asSmallCover()

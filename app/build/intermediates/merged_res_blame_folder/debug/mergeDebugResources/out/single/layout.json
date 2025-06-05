@@ -64,12 +64,12 @@
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_search_artist.xml"
     },
     {
-        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_recommend_song.xml",
-        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_recommend_song.xml"
-    },
-    {
         "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\activity_playing_title.xml",
         "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\activity_playing_title.xml"
+    },
+    {
+        "merged": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-67:\\layout\\item_recommend_song.xml",
+        "source": "C:\\Users\\86158\\.gradle\\daemon\\8.7\\me.wcy.music.app-main-70:\\layout\\item_recommend_song.xml"
     },
     {
         "merged": "me.wcy.music.app-mergeDebugResources-67:/layout/fragment_album_detail.xml",

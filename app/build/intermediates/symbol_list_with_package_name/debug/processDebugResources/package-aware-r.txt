@@ -4289,7 +4289,6 @@ id ivCover
 id ivCreatorAvatar
 id ivDelete
 id ivDownload
-id ivFavorite
 id ivIcon
 id ivImage
 id ivLike
@@ -4655,7 +4654,6 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tvAlbumName
-id tvAlias
 id tvArtist
 id tvArtistAlias
 id tvArtistName
