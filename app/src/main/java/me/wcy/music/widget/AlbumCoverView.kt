@@ -82,22 +82,26 @@ class AlbumCoverView @JvmOverloads constructor(
     }
 
     private fun initSize() {
+        // 黑胶大小恢复，唱臂继续往下移，唱片往上移
         val unit = min(width / 8, height / 9)
 
-        needleBitmap = ImageUtils.resizeImage(needleBitmap, unit * 2, (unit * 3.33).toInt())
+        // 唱臂：保持尺寸，和封面一起上移20像素（8+12）
+        needleBitmap = ImageUtils.resizeImage(needleBitmap, (unit * 2.1).toInt(), (unit * 3.4).toInt())
         needleStartPoint.x = (width / 2 - needleBitmap.width / 5.5f).toInt()
-        needleStartPoint.y = 0
+        needleStartPoint.y = 15 // 从27再上移12到15（总共从35上移20）
         needleCenterPoint.x = width / 2
-        needleCenterPoint.y = (needleBitmap.width / 5.5f).toInt()
+        needleCenterPoint.y = (needleBitmap.width / 5.5f).toInt() + 5 // 从17再上移12到5（总共从25上移20）
 
-        discBitmap = ImageUtils.resizeImage(discBitmap, unit * 6, unit * 6)
-        val discOffsetY = (needleBitmap.height / 1.5).toInt()
+        // 黑胶唱片：恢复原始尺寸，和唱臂一起上移20像素
+        discBitmap = ImageUtils.resizeImage(discBitmap, (unit * 6.2).toInt(), (unit * 6.2).toInt())
+        val discOffsetY = (needleBitmap.height / 1.2).toInt() - 20 // 总共上移20像素
         discStartPoint.x = (width - discBitmap.width) / 2
         discStartPoint.y = discOffsetY
         discCenterPoint.x = width / 2
         discCenterPoint.y = discBitmap.height / 2 + discOffsetY
 
-        coverSize = unit * 4
+        // 封面：恢复原始尺寸
+        coverSize = (unit * 4.1).toInt()
         coverStartPoint.x = (width - coverSize) / 2
         coverStartPoint.y = discOffsetY + (discBitmap.height - coverSize) / 2
         coverCenterPoint.x = discCenterPoint.x

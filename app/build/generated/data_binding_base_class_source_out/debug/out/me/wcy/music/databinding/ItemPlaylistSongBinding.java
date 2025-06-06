@@ -32,13 +32,18 @@ public final class ItemPlaylistSongBinding implements ViewBinding {
   @NonNull
   public final TextView tvTitle;
 
+  @NonNull
+  public final TextView tvVipLabel;
+
   private ItemPlaylistSongBinding(@NonNull LinearLayout rootView, @NonNull ImageView ivMore,
-      @NonNull TextView tvIndex, @NonNull TextView tvSubTitle, @NonNull TextView tvTitle) {
+      @NonNull TextView tvIndex, @NonNull TextView tvSubTitle, @NonNull TextView tvTitle,
+      @NonNull TextView tvVipLabel) {
     this.rootView = rootView;
     this.ivMore = ivMore;
     this.tvIndex = tvIndex;
     this.tvSubTitle = tvSubTitle;
     this.tvTitle = tvTitle;
+    this.tvVipLabel = tvVipLabel;
   }
 
   @Override
@@ -92,8 +97,14 @@ public final class ItemPlaylistSongBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvVipLabel;
+      TextView tvVipLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvVipLabel == null) {
+        break missingId;
+      }
+
       return new ItemPlaylistSongBinding((LinearLayout) rootView, ivMore, tvIndex, tvSubTitle,
-          tvTitle);
+          tvTitle, tvVipLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -3,6 +3,7 @@ package me.wcy.music.discover.playlist.detail.item;
 import me.wcy.music.common.OnItemClickListener2;
 import me.wcy.music.common.bean.SongData;
 import me.wcy.music.databinding.ItemPlaylistSongBinding;
+import me.wcy.music.utils.VipUtils;
 import me.wcy.radapter3.RItemBinder;
 
 /**

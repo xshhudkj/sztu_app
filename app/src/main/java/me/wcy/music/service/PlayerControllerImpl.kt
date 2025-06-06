@@ -113,8 +113,17 @@ class PlayerControllerImpl(
 
             override fun onPlayerError(error: PlaybackException) {
                 super.onPlayerError(error)
-                stop()
-                toast("播放失败(${error.errorCodeName},${error.localizedMessage})")
+                Log.e(TAG, "Player error occurred: ${error.errorCodeName}, ${error.localizedMessage}", error)
+
+                // 不要立即停止播放，尝试播放下一首歌曲
+                if (player.mediaItemCount > 1) {
+                    Log.d(TAG, "Attempting to play next song due to playback error")
+                    next()
+                } else {
+                    // 只有在没有其他歌曲时才停止
+                    stop()
+                    toast("播放失败(${error.errorCodeName},${error.localizedMessage})")
+                }
             }
         })
         setPlayMode(PlayMode.valueOf(ConfigPreferences.playMode))
@@ -204,8 +213,20 @@ class PlayerControllerImpl(
             stop()
             player.setMediaItems(songList)
             _playlist.value = songList
-            _currentSong.value = song
-            play(song.mediaId)
+
+            // 确保目标歌曲在播放列表中
+            val targetSong = songList.find { it.mediaId == song.mediaId } ?: songList.firstOrNull()
+            if (targetSong != null) {
+                _currentSong.value = targetSong
+                play(targetSong.mediaId)
+                Log.d(TAG, "Successfully replaced playlist and started playing: ${targetSong.mediaMetadata.title}")
+            } else {
+                Log.e(TAG, "Target song not found in playlist, using first song")
+                if (songList.isNotEmpty()) {
+                    _currentSong.value = songList.first()
+                    play(songList.first().mediaId)
+                }
+            }
         }
     }
 

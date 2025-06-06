@@ -27,6 +27,12 @@ import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.widget.decoration.SpacingDecoration
 import top.wangchenyan.common.widget.dialog.BottomItemsDialogBuilder
 import me.wcy.music.common.enableImmersiveMode
+import me.wcy.music.account.VipApi
+import me.wcy.music.common.bean.VipInfoData
+import me.wcy.music.common.bean.UserLevelData
+import top.wangchenyan.common.net.apiCall
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.async
 import javax.inject.Inject
 
 /**
@@ -49,6 +55,7 @@ class MineFragment : BaseMusicFragment() {
 
         initTitle()
         initProfile()
+        initVipInfo()
         initLocalMusic()
         initPlaylist()
         viewModel.updatePlaylistFromCache()
@@ -97,7 +104,96 @@ class MineFragment : BaseMusicFragment() {
                         }
                     }
                 }
+
+                // 用户登录后更新VIP信息
+                if (profile != null && userService.isLogin()) {
+                    updateVipInfo()
+                }
             }
+        }
+    }
+
+    /**
+     * 初始化VIP信息和用户等级显示
+     * 获取用户VIP状态和等级信息，在用户名右侧显示相应标签
+     */
+    private fun initVipInfo() {
+        // 初始状态隐藏所有标签
+        viewBinding.tvVipLabel.visibility = android.view.View.GONE
+        viewBinding.tvLevelLabel.visibility = android.view.View.GONE
+    }
+
+    /**
+     * 更新VIP信息显示
+     * 获取并显示用户的VIP状态和等级信息
+     */
+    private fun updateVipInfo() {
+        lifecycleScope.launch {
+            try {
+                // 并行获取VIP信息和用户等级信息
+                val vipInfoDeferred = async {
+                    VipApi.get().getVipInfoV2()
+                }
+                val userLevelDeferred = async {
+                    VipApi.get().getUserLevel()
+                }
+
+                val vipInfoResult = vipInfoDeferred.await()
+                val userLevelResult = userLevelDeferred.await()
+
+                // 更新VIP标签
+                if (vipInfoResult.code == 200) {
+                    updateVipLabel(vipInfoResult)
+                }
+
+                // 更新等级标签
+                if (userLevelResult.code == 200) {
+                    updateLevelLabel(userLevelResult)
+                }
+            } catch (e: Exception) {
+                // 获取VIP信息失败时，隐藏标签
+                viewBinding.tvVipLabel.visibility = android.view.View.GONE
+                viewBinding.tvLevelLabel.visibility = android.view.View.GONE
+            }
+        }
+    }
+
+    /**
+     * 更新VIP标签显示
+     * @param vipInfo VIP信息数据
+     */
+    private fun updateVipLabel(vipInfo: VipInfoData) {
+        val vipData = vipInfo.data
+        viewBinding.tvVipLabel.apply {
+            visibility = android.view.View.VISIBLE
+            text = "VIP"
+            setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
+
+            if (vipData != null && vipData.isVip) {
+                // VIP用户显示金色标签
+                setBackgroundResource(me.wcy.music.R.drawable.bg_vip_label_gold)
+            } else {
+                // 非VIP用户显示灰色标签
+                setBackgroundResource(me.wcy.music.R.drawable.bg_vip_label_gray)
+            }
+        }
+    }
+
+    /**
+     * 更新等级标签显示
+     * @param levelData 用户等级数据
+     */
+    private fun updateLevelLabel(levelData: UserLevelData) {
+        val levelInfo = levelData.data
+        if (levelInfo != null && levelInfo.level > 0) {
+            viewBinding.tvLevelLabel.apply {
+                visibility = android.view.View.VISIBLE
+                text = "Lv.${levelInfo.level}"
+                setBackgroundResource(me.wcy.music.R.drawable.bg_level_label)
+                setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
+            }
+        } else {
+            viewBinding.tvLevelLabel.visibility = android.view.View.GONE
         }
     }
 

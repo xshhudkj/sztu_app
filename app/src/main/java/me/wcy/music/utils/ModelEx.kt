@@ -21,6 +21,7 @@ const val EXTRA_FILE_PATH = "file_path"
 const val EXTRA_FILE_NAME = "file_name"
 const val EXTRA_FILE_SIZE = "file_size"
 const val EXTRA_BASE_COVER = "base_cover"
+const val EXTRA_FEE = "fee"
 
 fun SongData.getSimpleArtist(): String {
     return ar.joinToString("/") { it.name }
@@ -71,6 +72,30 @@ fun SongData.toMediaItem(): MediaItem {
         .authority(CommonApp.app.packageName)
         .appendQueryParameter(PARAM_ID, id.toString())
         .build()
+
+    // 优化封面获取逻辑：确保专辑和歌手详情页的歌曲也能正确显示封面
+    // 基于错误日志分析，修复哈希值问题以避免404错误
+    val albumCover = when {
+        // 优先使用专辑的picUrl（通常最完整且包含正确哈希值）
+        al.picUrl.isNotEmpty() -> {
+            // 验证URL格式，避免无效链接
+            if (al.picUrl.startsWith("http")) al.picUrl else ""
+        }
+        // 如果专辑picUrl为空，但有pic_str字段（包含哈希值），优先使用
+        al.picStr.isNotEmpty() && al.pic > 0 -> {
+            // 使用pic_str作为哈希值构建正确的封面URL
+            "https://p1.music.126.net/${al.picStr}/${al.pic}.jpg"
+        }
+        // 如果有专辑pic字段但没有pic_str，尝试使用pic作为哈希值（可能不准确）
+        al.pic > 0 -> {
+            // 注意：这种方式可能导致404，因为缺少正确的哈希值
+            // 但作为备选方案保留
+            "https://p1.music.126.net/${al.pic}/${al.pic}.jpg"
+        }
+        // 最后的备选方案：使用默认封面（空字符串会显示默认封面）
+        else -> ""
+    }
+
     return MediaItem.Builder()
         .setMediaId(generateUniqueId(SongEntity.ONLINE, id))
         .setUri(uri)
@@ -81,8 +106,9 @@ fun SongData.toMediaItem(): MediaItem {
                 .setAlbumTitle(al.name)
                 .setAlbumArtist(getSimpleArtist())
                 .setArtworkUri(Uri.parse(al.getLargeCover()))
-                .setBaseCover(al.picUrl)
+                .setBaseCover(albumCover)
                 .setDuration(dt)
+                .setFee(fee)
                 .build()
         )
         .build()
@@ -152,6 +178,16 @@ fun MediaMetadata.Builder.setBaseCover(value: String) = apply {
 
 fun MediaMetadata.getBaseCover(): String? {
     return extras?.getString(EXTRA_BASE_COVER)
+}
+
+fun MediaMetadata.Builder.setFee(fee: Int) = apply {
+    val extras = build().extras ?: bundleOf()
+    extras.putInt(EXTRA_FEE, fee)
+    setExtras(extras)
+}
+
+fun MediaMetadata.getFee(): Int {
+    return extras?.getInt(EXTRA_FEE) ?: 0
 }
 
 fun MediaItem.getSmallCover(): String {

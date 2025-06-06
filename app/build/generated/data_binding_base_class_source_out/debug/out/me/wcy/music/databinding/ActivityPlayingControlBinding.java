@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +17,7 @@ import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
 import me.wcy.music.R;
+import me.wcy.music.widget.VipTrialSeekBar;
 
 public final class ActivityPlayingControlBinding implements ViewBinding {
   @NonNull
@@ -57,7 +57,7 @@ public final class ActivityPlayingControlBinding implements ViewBinding {
   public final CircularProgressIndicator loadingProgress;
 
   @NonNull
-  public final SeekBar sbProgress;
+  public final VipTrialSeekBar sbProgress;
 
   @NonNull
   public final TextView tvCurrentTime;
@@ -69,7 +69,7 @@ public final class ActivityPlayingControlBinding implements ViewBinding {
       @NonNull ImageView ivDownload, @NonNull ImageView ivLike, @NonNull ImageView ivMode,
       @NonNull ImageView ivNext, @NonNull ImageView ivPlay, @NonNull ImageView ivPlaylist,
       @NonNull ImageView ivPrev, @NonNull LinearLayout llActions, @NonNull LinearLayout llProgress,
-      @NonNull CircularProgressIndicator loadingProgress, @NonNull SeekBar sbProgress,
+      @NonNull CircularProgressIndicator loadingProgress, @NonNull VipTrialSeekBar sbProgress,
       @NonNull TextView tvCurrentTime, @NonNull TextView tvTotalTime) {
     this.rootView = rootView;
     this.flPlay = flPlay;
@@ -182,7 +182,7 @@ public final class ActivityPlayingControlBinding implements ViewBinding {
       }
 
       id = R.id.sbProgress;
-      SeekBar sbProgress = ViewBindings.findChildViewById(rootView, id);
+      VipTrialSeekBar sbProgress = ViewBindings.findChildViewById(rootView, id);
       if (sbProgress == null) {
         break missingId;
       }

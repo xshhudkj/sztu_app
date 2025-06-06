@@ -51,11 +51,14 @@ public final class LayoutPlayBarBinding implements ViewBinding {
   @NonNull
   public final TextView tvTitle;
 
+  @NonNull
+  public final TextView tvVipLabel;
+
   private LayoutPlayBarBinding(@NonNull FrameLayout rootView, @NonNull FrameLayout flPlay,
       @NonNull ImageView ivCover, @NonNull ImageView ivLike, @NonNull ImageView ivNext,
       @NonNull ImageView ivPlay, @NonNull ImageView ivPlaylist,
       @NonNull CircularProgressIndicator loadingProgress, @NonNull View progressBackground,
-      @NonNull TextView tvArtist, @NonNull TextView tvTitle) {
+      @NonNull TextView tvArtist, @NonNull TextView tvTitle, @NonNull TextView tvVipLabel) {
     this.rootView = rootView;
     this.flPlay = flPlay;
     this.ivCover = ivCover;
@@ -67,6 +70,7 @@ public final class LayoutPlayBarBinding implements ViewBinding {
     this.progressBackground = progressBackground;
     this.tvArtist = tvArtist;
     this.tvTitle = tvTitle;
+    this.tvVipLabel = tvVipLabel;
   }
 
   @Override
@@ -156,8 +160,14 @@ public final class LayoutPlayBarBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvVipLabel;
+      TextView tvVipLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvVipLabel == null) {
+        break missingId;
+      }
+
       return new LayoutPlayBarBinding((FrameLayout) rootView, flPlay, ivCover, ivLike, ivNext,
-          ivPlay, ivPlaylist, loadingProgress, progressBackground, tvArtist, tvTitle);
+          ivPlay, ivPlaylist, loadingProgress, progressBackground, tvArtist, tvTitle, tvVipLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

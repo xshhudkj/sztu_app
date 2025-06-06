@@ -53,18 +53,24 @@ public final class FragmentMineBinding implements ViewBinding {
   public final TextView tvCollectPlaylist;
 
   @NonNull
+  public final TextView tvLevelLabel;
+
+  @NonNull
   public final TextView tvMyPlaylist;
 
   @NonNull
   public final TextView tvNickName;
+
+  @NonNull
+  public final TextView tvVipLabel;
 
   private FragmentMineBinding(@NonNull LinearLayout rootView, @NonNull FrameLayout flProfile,
       @NonNull ImageView ivAvatar, @NonNull LinearLayout llCollectPlaylist,
       @NonNull LinearLayout llLikePlaylist, @NonNull LinearLayout llMyPlaylist,
       @NonNull LinearLayout localMusic, @NonNull RecyclerView rvCollectPlaylist,
       @NonNull RecyclerView rvLikePlaylist, @NonNull RecyclerView rvMyPlaylist,
-      @NonNull TextView tvCollectPlaylist, @NonNull TextView tvMyPlaylist,
-      @NonNull TextView tvNickName) {
+      @NonNull TextView tvCollectPlaylist, @NonNull TextView tvLevelLabel,
+      @NonNull TextView tvMyPlaylist, @NonNull TextView tvNickName, @NonNull TextView tvVipLabel) {
     this.rootView = rootView;
     this.flProfile = flProfile;
     this.ivAvatar = ivAvatar;
@@ -76,8 +82,10 @@ public final class FragmentMineBinding implements ViewBinding {
     this.rvLikePlaylist = rvLikePlaylist;
     this.rvMyPlaylist = rvMyPlaylist;
     this.tvCollectPlaylist = tvCollectPlaylist;
+    this.tvLevelLabel = tvLevelLabel;
     this.tvMyPlaylist = tvMyPlaylist;
     this.tvNickName = tvNickName;
+    this.tvVipLabel = tvVipLabel;
   }
 
   @Override
@@ -167,6 +175,12 @@ public final class FragmentMineBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvLevelLabel;
+      TextView tvLevelLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvLevelLabel == null) {
+        break missingId;
+      }
+
       id = R.id.tvMyPlaylist;
       TextView tvMyPlaylist = ViewBindings.findChildViewById(rootView, id);
       if (tvMyPlaylist == null) {
@@ -179,9 +193,16 @@ public final class FragmentMineBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvVipLabel;
+      TextView tvVipLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvVipLabel == null) {
+        break missingId;
+      }
+
       return new FragmentMineBinding((LinearLayout) rootView, flProfile, ivAvatar,
           llCollectPlaylist, llLikePlaylist, llMyPlaylist, localMusic, rvCollectPlaylist,
-          rvLikePlaylist, rvMyPlaylist, tvCollectPlaylist, tvMyPlaylist, tvNickName);
+          rvLikePlaylist, rvMyPlaylist, tvCollectPlaylist, tvLevelLabel, tvMyPlaylist, tvNickName,
+          tvVipLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

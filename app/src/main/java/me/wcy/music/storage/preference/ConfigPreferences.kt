@@ -47,4 +47,6 @@ object ConfigPreferences :
     var currentSongId: String by IPreferencesFile.StringProperty("current_song_id", "")
 
     var apiDomain: String by IPreferencesFile.StringProperty("api_domain", "")
+
+    var vipDialogShown: Boolean by IPreferencesFile.BooleanProperty("vip_dialog_shown", false)
 }

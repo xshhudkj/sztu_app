@@ -39,4 +39,13 @@
     <color name="rank_first">#FFD700</color>
     <color name="rank_second">#C0C0C0</color>
     <color name="rank_third">#CD7F32</color>
+
+    <!-- 歌词时间线相关颜色 -->
+    <color name="lrc_timeline_highlight_color">#FFE082</color>  <!-- 时间线选中歌词的高亮颜色：金黄色 -->
+    <color name="translucent_white_p50">#80FFFFFF</color>       <!-- 时间线颜色：半透明白色 -->
+
+    <!-- 搜索建议相关颜色 -->
+    <color name="search_suggest_bg">#F0F8FF</color>            <!-- 搜索建议背景：淡蓝色 -->
+    <color name="search_suggest_border">#B0C4DE</color>        <!-- 搜索建议边框：钢蓝色 -->
 </resources>
+

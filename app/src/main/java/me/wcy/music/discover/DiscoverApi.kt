@@ -41,6 +41,10 @@ interface DiscoverApi {
     @POST("lyric")
     suspend fun getLrc(
         @Query("id") id: Long,
+        @Query("tv") tv: Int = 0,  // 翻译歌词版本，0表示获取翻译歌词
+        @Query("lv") lv: Int = 0,  // 歌词版本，0表示获取歌词
+        @Query("rv") rv: Int = 0,  // 罗马音版本
+        @Query("kv") kv: Int = 0   // 卡拉OK版本
     ): LrcDataWrap
 
     @POST("playlist/detail")

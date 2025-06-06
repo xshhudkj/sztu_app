@@ -6,6 +6,7 @@ import me.wcy.music.common.OnItemClickListener2
 import me.wcy.music.common.bean.SongData
 import me.wcy.music.databinding.ItemSearchSongBinding
 import me.wcy.music.utils.MusicUtils
+import me.wcy.music.utils.VipUtils
 import me.wcy.music.utils.getSimpleArtist
 import me.wcy.radapter3.RItemBinder
 
@@ -24,6 +25,10 @@ class SearchSongItemBinder(private val listener: OnItemClickListener2<SongData>)
             listener.onMoreClick(item, position)
         }
         viewBinding.tvTitle.text = MusicUtils.keywordsTint(viewBinding.context, item.name, keywords)
+
+        // 使用优化的VIP标签更新方法，提升渲染性能
+        VipUtils.updateVipLabelOptimized(viewBinding.tvVipLabel, item.fee)
+
         viewBinding.tvTag.isVisible = item.recommendReason.isNotEmpty()
         viewBinding.tvTag.text = item.recommendReason
         viewBinding.tvSubTitle.text = buildString {

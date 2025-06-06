@@ -1848,6 +1848,7 @@ color lrc_current_text_color
 color lrc_normal_text_color
 color lrc_time_text_color
 color lrc_timeline_color
+color lrc_timeline_highlight_color
 color lrc_timeline_text_color
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
@@ -2526,6 +2527,8 @@ color red_500_p30
 color red_700
 color ripple_material_dark
 color ripple_material_light
+color search_suggest_bg
+color search_suggest_border
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
@@ -2757,12 +2760,18 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen lrc_current_text_size
 dimen lrc_divider_height
 dimen lrc_drawable_width
+dimen lrc_line_spacing_extra
+dimen lrc_normal_text_size
+dimen lrc_padding
+dimen lrc_play_drawable_size
 dimen lrc_text_size
 dimen lrc_time_text_size
 dimen lrc_time_width
 dimen lrc_timeline_height
+dimen lrc_translation_spacing
 dimen m3_alert_dialog_action_bottom_padding
 dimen m3_alert_dialog_action_top_padding
 dimen m3_alert_dialog_corner_size
@@ -3413,6 +3422,13 @@ dimen play_bar_info_margin_horizontal
 dimen play_bar_like_button_size
 dimen play_bar_playlist_button_size
 dimen play_bar_title_text_size
+dimen playing_control_button_padding
+dimen playing_control_button_size
+dimen playing_progress_padding_horizontal
+dimen playing_song_artist_text_size
+dimen playing_song_title_text_size
+dimen playing_volume_icon_size
+dimen playing_volume_padding_horizontal
 dimen preference_dropdown_padding_start
 dimen preference_icon_minWidth
 dimen preference_seekbar_padding_horizontal
@@ -3512,6 +3528,9 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable bg_card
+drawable bg_close_button
+drawable bg_control_card
+drawable bg_level_label
 drawable bg_play_bar_progress
 drawable bg_playing_cover_border
 drawable bg_playing_default
@@ -3519,6 +3538,13 @@ drawable bg_playing_default_cover
 drawable bg_playing_disc
 drawable bg_playing_playback_progress
 drawable bg_playing_volume_progress
+drawable bg_search_history_item
+drawable bg_search_suggest_item
+drawable bg_song_info_card
+drawable bg_vip_label
+drawable bg_vip_label_gold
+drawable bg_vip_label_gray
+drawable bg_vip_trial_dialog
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3738,6 +3764,7 @@ drawable ic_sound_wave_animation
 drawable ic_tab_discover
 drawable ic_tab_layout_indicator
 drawable ic_tab_mine
+drawable ic_vip
 drawable ic_volume
 drawable indeterminate_static
 drawable lrc_play
@@ -3898,7 +3925,9 @@ drawable shape_dialog_bg
 drawable shape_follow_button
 drawable shape_hot_tag
 drawable shape_new_tag
+drawable shape_next_button
 drawable shape_view_placeholder
+drawable shape_vip_button
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -4041,11 +4070,13 @@ id btnDialogNegative
 id btnDialogPositive
 id btnFollow
 id btnLogin
+id btnNext
 id btnPrivateFm
 id btnRank
 id btnRecommendPlaylist
 id btnRecommendSong
 id btnRetry
+id btnVip
 id btn_cancel
 id btn_done
 id bubbleContainer
@@ -4285,6 +4316,7 @@ id ivArtistCover
 id ivAvatar
 id ivBack
 id ivClose
+id ivCloseButton
 id ivCover
 id ivCreatorAvatar
 id ivDelete
@@ -4303,6 +4335,7 @@ id ivPlaylist
 id ivPrev
 id ivQrCode
 id ivUserAvatar
+id ivVipIcon
 id iv_album
 id iv_flash
 id iv_icon
@@ -4552,6 +4585,7 @@ id snackbar_action
 id snackbar_text
 id snap
 id snapMargins
+id songInfoLayout
 id south
 id space_around
 id space_between
@@ -4661,6 +4695,7 @@ id tvClearHistory
 id tvCollectPlaylist
 id tvContent
 id tvCount
+id tvCountdown
 id tvCreatorName
 id tvCurrentTime
 id tvDesc
@@ -4674,6 +4709,8 @@ id tvHotSearchTitle
 id tvHotTag
 id tvIndex
 id tvItemText
+id tvLevelLabel
+id tvMessage
 id tvMyPlaylist
 id tvName
 id tvNewTag
@@ -4689,7 +4726,9 @@ id tvRecommendPlaylist
 id tvSearch
 id tvSearchWord
 id tvSendCode
+id tvSongArtist
 id tvSongCount
+id tvSongTitle
 id tvStatus
 id tvSubTitle
 id tvSuggestTitle
@@ -4699,6 +4738,7 @@ id tvTotalTime
 id tvUpdateTime
 id tvUserDesc
 id tvUserName
+id tvVipLabel
 id tv_cancel
 id tv_confirm
 id tv_content
@@ -4930,6 +4970,7 @@ layout design_text_input_start_icon
 layout dialog_api_domain
 layout dialog_loading
 layout dialog_song_more_menu
+layout dialog_vip_trial
 layout exo_legacy_player_control_view
 layout exo_list_divider
 layout exo_player_control_ffwd_button

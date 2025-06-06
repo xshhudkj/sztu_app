@@ -87,6 +87,7 @@ class SearchFragment : BaseMusicFragment() {
         initHistory()
         initHotSearch()
         initSearchBanner()
+        initBackPressedHandler()
 
         lifecycleScope.launch {
             viewModel.showResult.collectLatest { showResult ->
@@ -256,6 +257,10 @@ class SearchFragment : BaseMusicFragment() {
                         true
                     ).apply {
                         root.text = text
+                        // 搜索历史使用普通字体，保持原有样式
+                        root.setTypeface(root.typeface, android.graphics.Typeface.NORMAL)
+                        // 确保使用原有的背景样式
+                        root.setBackgroundResource(R.drawable.bg_search_history_item)
                         root.setOnClickListener {
                             titleBinding.etSearch.setText(text)
                             titleBinding.etSearch.setSelection(text.length)
@@ -388,7 +393,10 @@ class SearchFragment : BaseMusicFragment() {
                 true
             ).apply {
                 root.text = suggest.keyword
+                // 搜索建议使用粗体文字区分
                 root.setTypeface(root.typeface, android.graphics.Typeface.BOLD)
+                // 搜索建议使用稍微不同的背景色来区分
+                root.setBackgroundResource(R.drawable.bg_search_suggest_item)
                 root.setOnClickListener {
                     titleBinding.etSearch.setText(suggest.keyword)
                     titleBinding.etSearch.setSelection(suggest.keyword.length)
@@ -454,13 +462,21 @@ class SearchFragment : BaseMusicFragment() {
 
     override fun onInterceptBackEvent(): Boolean {
         if (viewModel.showResult.value) {
+            // 在搜索结果页面，返回到搜索页面
             viewModel.showHistory()
             return true
         } else if (viewBinding.flSearchSuggest.isVisible) {
-            // 如果当前显示搜索建议，清空搜索框并返回历史记录
-            titleBinding.etSearch.setText("")
-            return true
+            // 如果当前显示搜索建议，直接返回两次（不返回到搜索历史）
+            return false // 让系统处理返回事件，直接退出
         }
         return super.onInterceptBackEvent()
+    }
+
+    /**
+     * 初始化返回键处理逻辑
+     * 在显示搜索建议时，点击返回键直接退出，不返回到搜索历史
+     */
+    private fun initBackPressedHandler() {
+        // 这个方法现在不需要额外的逻辑，因为onInterceptBackEvent已经处理了
     }
 }

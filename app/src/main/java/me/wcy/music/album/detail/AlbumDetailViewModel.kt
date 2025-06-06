@@ -54,8 +54,27 @@ class AlbumDetailViewModel @Inject constructor() : ViewModel() {
             val albumData = detailResult.album
             val songs = detailResult.songs
 
+            // 专辑详情页统一使用专辑封面作为所有歌曲的封面
+            // 确保视觉一致性，避免个别歌曲封面缺失或错误的问题
+            val fixedSongs = if (albumData != null && albumData.picUrl.isNotEmpty()) {
+                songs.map { song ->
+                    // 统一使用专辑封面替换歌曲的专辑封面
+                    song.copy(
+                        al = song.al.copy(
+                            id = albumData.id,
+                            name = albumData.name,
+                            picUrl = albumData.picUrl,
+                            pic = albumData.pic,
+                            picStr = albumData.picStr // 保持哈希值信息
+                        )
+                    )
+                }
+            } else {
+                songs
+            }
+
             _albumData.value = albumData
-            _songList.value = songs
+            _songList.value = fixedSongs
             CommonResult.success(Unit)
         }
     }

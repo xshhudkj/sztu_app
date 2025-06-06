@@ -34,423 +34,431 @@
 20    <uses-permission android:name="android.permission.WAKE_LOCK" />
 20-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:13:5-68
 20-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:13:22-65
-21    <uses-permission android:name="android.permission.VIBRATE" />
-21-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:8:5-66
-21-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:8:22-63
-22    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-22-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:9:5-80
-22-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:9:22-77
-23    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-23-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:11:5-76
-23-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:11:22-73
-24    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
-24-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:12:5-75
-24-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:12:22-72
-25    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
-25-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:13:5-75
-25-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:13:22-72
-26    <uses-permission android:name="android.permission.CAMERA" />
-26-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:14:5-65
-26-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:14:22-62
-27
-28    <queries>
-28-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:16:5-20:15
-29        <intent>
-29-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:17:9-19:18
-30            <action android:name="android.intent.action.SEND" />
-30-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:18:13-65
-30-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:18:21-62
-31        </intent>
-32        <intent>
-32-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:10:9-12:18
-33            <action android:name="android.intent.action.MAIN" />
-33-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:17-69
-33-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:25-66
-34        </intent>
-35        <intent>
-35-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:13:9-15:18
-36            <action android:name="android.intent.action.VIEW" />
-36-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:14:13-65
-36-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:14:21-62
-37        </intent>
-38    </queries>
-39
-40    <uses-feature android:name="android.hardware.camera" />
-40-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:13:5-60
-40-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:13:19-57
-41    <uses-feature android:name="android.hardware.camera.autofocus" />
-41-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:14:5-70
-41-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:14:19-67
-42
-43    <uses-permission android:name="android.permission.FLASHLIGHT" />
-43-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:16:5-69
-43-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:16:22-66
-44    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-44-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:20:5-84
-44-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:20:22-81
-45
-46    <permission
-46-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
-47        android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-47-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
-48        android:protectionLevel="signature" />
-48-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+21
+22    <!-- Android Automotive 音量控制权限 -->
+23    <uses-permission android:name="android.car.permission.CAR_CONTROL_AUDIO_VOLUME" />
+23-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:16:5-87
+23-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:16:22-84
+24    <uses-permission android:name="android.car.permission.ACCESS_CAR_AUDIO" />
+24-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:17:5-79
+24-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:17:22-76
+25    <uses-permission android:name="android.permission.VIBRATE" />
+25-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:8:5-66
+25-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:8:22-63
+26    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+26-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:9:5-80
+26-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:9:22-77
+27    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+27-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:11:5-76
+27-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:11:22-73
+28    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+28-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:12:5-75
+28-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:12:22-72
+29    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+29-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:13:5-75
+29-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:13:22-72
+30    <uses-permission android:name="android.permission.CAMERA" />
+30-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:14:5-65
+30-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:14:22-62
+31
+32    <queries>
+32-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:16:5-20:15
+33        <intent>
+33-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:17:9-19:18
+34            <action android:name="android.intent.action.SEND" />
+34-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:18:13-65
+34-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:18:21-62
+35        </intent>
+36        <intent>
+36-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:10:9-12:18
+37            <action android:name="android.intent.action.MAIN" />
+37-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:17-69
+37-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:25-66
+38        </intent>
+39        <intent>
+39-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:13:9-15:18
+40            <action android:name="android.intent.action.VIEW" />
+40-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:14:13-65
+40-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:14:21-62
+41        </intent>
+42    </queries>
+43
+44    <uses-feature android:name="android.hardware.camera" />
+44-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:13:5-60
+44-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:13:19-57
+45    <uses-feature android:name="android.hardware.camera.autofocus" />
+45-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:14:5-70
+45-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:14:19-67
+46
+47    <uses-permission android:name="android.permission.FLASHLIGHT" />
+47-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:16:5-69
+47-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:16:22-66
+48    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+48-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:20:5-84
+48-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:20:22-81
 49
-50    <uses-permission android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-50-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
-50-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
-51
-52    <application
-52-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:15:5-76:19
-53        android:name="me.wcy.music.MusicApplication"
-53-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:16:9-41
-54        android:allowBackup="true"
-54-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:17:9-35
-55        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-55-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
-56        android:debuggable="true"
-57        android:extractNativeLibs="true"
-58        android:icon="@drawable/ic_launcher"
-58-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:18:9-45
-59        android:label="@string/app_name"
-59-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:19:9-41
-60        android:networkSecurityConfig="@xml/network_security_config"
-60-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:20:9-69
-61        android:roundIcon="@drawable/ic_launcher_round"
-61-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:21:9-56
-62        android:supportsRtl="true"
-62-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:26:9-35
-63        android:testOnly="true"
-64        android:theme="@style/AppTheme" >
-64-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:22:9-40
-65        <service
-65-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:24:9-31:19
-66            android:name="me.wcy.music.service.MusicService"
-66-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:25:13-49
-67            android:exported="true"
-67-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:26:13-36
-68            android:foregroundServiceType="mediaPlayback" >
-68-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:27:13-58
-69            <intent-filter>
-69-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:28:13-30:29
-70                <action android:name="androidx.media3.session.MediaSessionService" />
-70-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:29:17-86
-70-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:29:25-83
-71            </intent-filter>
-72        </service>
-73
-74        <receiver
-74-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:33:9-39:20
-75            android:name="me.wcy.music.download.DownloadReceiver"
-75-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:34:13-54
-76            android:exported="true" >
-76-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:35:13-36
-77            <intent-filter>
-77-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:36:13-38:29
-78                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
-78-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:37:17-82
-78-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:37:25-79
-79            </intent-filter>
-80        </receiver>
-81
-82        <activity
-82-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:41:9-52:20
-83            android:name="me.wcy.music.main.MainActivity"
-83-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:42:13-46
-84            android:exported="true"
-84-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:43:13-36
-85            android:label="@string/app_name"
-85-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:44:13-45
-86            android:launchMode="singleTop"
-86-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:45:13-43
-87            android:theme="@style/AppTheme.CarImmersive" >
-87-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:46:13-57
-88            <intent-filter>
-88-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:47:13-51:29
-89                <action android:name="android.intent.action.MAIN" />
-89-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:17-69
-89-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:25-66
-90
-91                <category android:name="android.intent.category.LAUNCHER" />
-91-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:50:17-77
-91-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:50:27-74
-92            </intent-filter>
-93        </activity>
-94        <activity
-94-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:53:9-55:60
-95            android:name="me.wcy.music.common.MusicFragmentContainerActivity"
-95-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:54:13-66
-96            android:theme="@style/AppTheme.CarImmersive" />
-96-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:55:13-57
-97        <activity
-97-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:56:9-59:60
-98            android:name="me.wcy.music.main.SettingsActivity"
-98-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:57:13-50
-99            android:label="@string/menu_setting"
-99-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:58:13-49
+50    <permission
+50-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+51        android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+51-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+52        android:protectionLevel="signature" />
+52-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+53
+54    <uses-permission android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+54-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+54-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+55
+56    <application
+56-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:19:5-80:19
+57        android:name="me.wcy.music.MusicApplication"
+57-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:20:9-41
+58        android:allowBackup="true"
+58-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:21:9-35
+59        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+59-->[androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+60        android:debuggable="true"
+61        android:extractNativeLibs="true"
+62        android:icon="@drawable/ic_launcher"
+62-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:22:9-45
+63        android:label="@string/app_name"
+63-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:23:9-41
+64        android:networkSecurityConfig="@xml/network_security_config"
+64-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:24:9-69
+65        android:roundIcon="@drawable/ic_launcher_round"
+65-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:25:9-56
+66        android:supportsRtl="true"
+66-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:26:9-35
+67        android:testOnly="true"
+68        android:theme="@style/AppTheme" >
+68-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:26:9-40
+69        <service
+69-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:28:9-35:19
+70            android:name="me.wcy.music.service.MusicService"
+70-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:29:13-49
+71            android:exported="true"
+71-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:30:13-36
+72            android:foregroundServiceType="mediaPlayback" >
+72-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:31:13-58
+73            <intent-filter>
+73-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:32:13-34:29
+74                <action android:name="androidx.media3.session.MediaSessionService" />
+74-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:33:17-86
+74-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:33:25-83
+75            </intent-filter>
+76        </service>
+77
+78        <receiver
+78-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:37:9-43:20
+79            android:name="me.wcy.music.download.DownloadReceiver"
+79-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:38:13-54
+80            android:exported="true" >
+80-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:39:13-36
+81            <intent-filter>
+81-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:40:13-42:29
+82                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+82-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:41:17-82
+82-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:41:25-79
+83            </intent-filter>
+84        </receiver>
+85
+86        <activity
+86-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:45:9-56:20
+87            android:name="me.wcy.music.main.MainActivity"
+87-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:46:13-46
+88            android:exported="true"
+88-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:47:13-36
+89            android:label="@string/app_name"
+89-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:13-45
+90            android:launchMode="singleTop"
+90-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:49:13-43
+91            android:theme="@style/AppTheme.CarImmersive" >
+91-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:50:13-57
+92            <intent-filter>
+92-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:51:13-55:29
+93                <action android:name="android.intent.action.MAIN" />
+93-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:17-69
+93-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:25-66
+94
+95                <category android:name="android.intent.category.LAUNCHER" />
+95-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:54:17-77
+95-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:54:27-74
+96            </intent-filter>
+97        </activity>
+98        <activity
+98-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:57:9-59:60
+99            android:name="me.wcy.music.common.MusicFragmentContainerActivity"
+99-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:58:13-66
 100            android:theme="@style/AppTheme.CarImmersive" />
 100-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:59:13-57
 101        <activity
 101-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:60:9-63:60
-102            android:name="me.wcy.music.main.AboutActivity"
-102-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:61:13-47
-103            android:label="@string/menu_about"
-103-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:62:13-47
+102            android:name="me.wcy.music.main.SettingsActivity"
+102-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:61:13-50
+103            android:label="@string/menu_setting"
+103-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:62:13-49
 104            android:theme="@style/AppTheme.CarImmersive" />
 104-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:63:13-57
 105        <activity
-105-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:64:9-67:68
-106            android:name="me.wcy.music.main.playing.PlayingActivity"
-106-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:65:13-69
-107            android:launchMode="singleTop"
-107-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:66:13-43
-108            android:theme="@style/AppTheme.CarImmersive.Playing" />
-108-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:67:13-65
-109
-110        <!-- Android Automotive 元数据配置 -->
-111        <meta-data
-111-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:70:9-72:59
-112            android:name="com.android.automotive"
-112-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:71:13-50
-113            android:resource="@xml/automotive_app_desc" />
-113-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:72:13-56
-114        <meta-data
-114-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:73:9-75:65
-115            android:name="androidx.media3.session.MediaSessionService"
-115-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:74:13-71
-116            android:value="me.wcy.music.service.MusicService" />
-116-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:75:13-62
-117
-118        <activity
-118-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:23:9-25:50
-119            android:name="top.wangchenyan.common.ui.activity.FragmentContainerActivity"
-119-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:24:13-88
-120            android:screenOrientation="behind" />
-120-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:25:13-47
+105-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:64:9-67:60
+106            android:name="me.wcy.music.main.AboutActivity"
+106-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:65:13-47
+107            android:label="@string/menu_about"
+107-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:66:13-47
+108            android:theme="@style/AppTheme.CarImmersive" />
+108-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:67:13-57
+109        <activity
+109-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:68:9-71:68
+110            android:name="me.wcy.music.main.playing.PlayingActivity"
+110-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:69:13-69
+111            android:launchMode="singleTop"
+111-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:70:13-43
+112            android:theme="@style/AppTheme.CarImmersive.Playing" />
+112-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:71:13-65
+113
+114        <!-- Android Automotive 元数据配置 -->
+115        <meta-data
+115-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:74:9-76:59
+116            android:name="com.android.automotive"
+116-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:75:13-50
+117            android:resource="@xml/automotive_app_desc" />
+117-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:76:13-56
+118        <meta-data
+118-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:77:9-79:65
+119            android:name="androidx.media3.session.MediaSessionService"
+119-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:78:13-71
+120            android:value="me.wcy.music.service.MusicService" />
+120-->C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:79:13-62
 121
-122        <meta-data
-122-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:11:9-13:36
-123            android:name="android.notch_support"
-123-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:12:13-49
-124            android:value="true" /> <!-- PermissonActivity -->
-124-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:13:13-33
-125        <activity
-125-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:15:9-17:75
-126            android:name="com.lxj.xpopup.util.XPermission$PermissionActivity"
-126-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:16:13-78
-127            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-127-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:17:13-72
-128
-129        <provider
-129-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:27:9-35:20
-130            android:name="cn.bertsir.zbar.utils.QrFileProvider"
-130-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:28:13-64
-131            android:authorities="me.wcy.music.zbar.FileProvider"
-131-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:29:13-69
-132            android:exported="false"
-132-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:30:13-37
-133            android:grantUriPermissions="true" >
-133-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:31:13-47
-134            <meta-data
-134-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:32:13-34:57
-135                android:name="android.support.FILE_PROVIDER_PATHS"
-135-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:33:17-67
-136                android:resource="@xml/qr_file_paths" />
-136-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:34:17-54
-137        </provider>
-138
-139        <activity
-139-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:37:9-39:77
-140            android:name="cn.bertsir.zbar.QRActivity"
-140-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:38:13-54
-141            android:configChanges="keyboardHidden|orientation|screenSize" />
-141-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:39:13-74
-142        <activity
-142-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:40:9-42:58
-143            android:name="cn.bertsir.zbar.utils.PermissionUtils$PermissionActivity"
-143-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:41:13-84
-144            android:theme="@style/ActivityTranslucent" />
-144-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:42:13-55
-145        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
-145-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:43:9-82
-145-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:43:19-79
+122        <activity
+122-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:23:9-25:50
+123            android:name="top.wangchenyan.common.ui.activity.FragmentContainerActivity"
+123-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:24:13-88
+124            android:screenOrientation="behind" />
+124-->[com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:25:13-47
+125
+126        <meta-data
+126-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:11:9-13:36
+127            android:name="android.notch_support"
+127-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:12:13-49
+128            android:value="true" /> <!-- PermissonActivity -->
+128-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:13:13-33
+129        <activity
+129-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:15:9-17:75
+130            android:name="com.lxj.xpopup.util.XPermission$PermissionActivity"
+130-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:16:13-78
+131            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+131-->[com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:17:13-72
+132
+133        <provider
+133-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:27:9-35:20
+134            android:name="cn.bertsir.zbar.utils.QrFileProvider"
+134-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:28:13-64
+135            android:authorities="me.wcy.music.zbar.FileProvider"
+135-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:29:13-69
+136            android:exported="false"
+136-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:30:13-37
+137            android:grantUriPermissions="true" >
+137-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:31:13-47
+138            <meta-data
+138-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:32:13-34:57
+139                android:name="android.support.FILE_PROVIDER_PATHS"
+139-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:33:17-67
+140                android:resource="@xml/qr_file_paths" />
+140-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:34:17-54
+141        </provider>
+142
+143        <activity
+143-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:37:9-39:77
+144            android:name="cn.bertsir.zbar.QRActivity"
+144-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:38:13-54
+145            android:configChanges="keyboardHidden|orientation|screenSize" />
+145-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:39:13-74
 146        <activity
-146-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:19:9-24:75
-147            android:name="com.blankj.utilcode.util.UtilsTransActivity4MainProcess"
-147-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:20:13-83
-148            android:configChanges="orientation|keyboardHidden|screenSize"
-148-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:21:13-74
-149            android:exported="false"
-149-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:22:13-37
-150            android:theme="@style/ActivityTranslucent"
-150-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:23:13-55
-151            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-151-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:24:13-72
-152        <activity
-152-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:25:9-31:75
-153            android:name="com.blankj.utilcode.util.UtilsTransActivity"
-153-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:26:13-71
-154            android:configChanges="orientation|keyboardHidden|screenSize"
-154-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:27:13-74
-155            android:exported="false"
-155-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:28:13-37
-156            android:multiprocess="true"
-156-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:29:13-40
-157            android:theme="@style/ActivityTranslucent"
-157-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:30:13-55
-158            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
-158-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:31:13-72
-159
-160        <provider
-160-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:33:9-41:20
-161            android:name="com.blankj.utilcode.util.UtilsFileProvider"
-161-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:34:13-70
-162            android:authorities="me.wcy.music.utilcode.fileprovider"
-162-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:35:13-73
-163            android:exported="false"
-163-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:36:13-37
-164            android:grantUriPermissions="true" >
-164-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:37:13-47
-165            <meta-data
-165-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:32:13-34:57
-166                android:name="android.support.FILE_PROVIDER_PATHS"
-166-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:33:17-67
-167                android:resource="@xml/util_code_provider_paths" />
-167-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:34:17-54
-168        </provider>
-169
-170        <service
-170-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:43:9-49:19
-171            android:name="com.blankj.utilcode.util.MessengerUtils$ServerService"
-171-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:44:13-81
-172            android:exported="false" >
-172-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:45:13-37
-173            <intent-filter>
-173-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:46:13-48:29
-174                <action android:name="me.wcy.music.messenger" />
-174-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:47:17-69
-174-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:47:25-66
-175            </intent-filter>
-176        </service>
-177        <service
-177-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
-178            android:name="androidx.room.MultiInstanceInvalidationService"
-178-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
-179            android:directBootAware="true"
-179-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
-180            android:exported="false" />
-180-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
-181
-182        <provider
-182-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-183            android:name="androidx.startup.InitializationProvider"
-183-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
-184            android:authorities="me.wcy.music.androidx-startup"
-184-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
-185            android:exported="false" >
-185-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
-186            <meta-data
-186-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-187                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-187-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
-188                android:value="androidx.startup" />
-188-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
-189            <meta-data
-189-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-190                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-190-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-191                android:value="androidx.startup" />
-191-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-192            <meta-data
-192-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-193                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-193-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-194                android:value="androidx.startup" />
-194-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-195        </provider>
-196
-197        <uses-library
-197-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
-198            android:name="androidx.window.extensions"
-198-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
-199            android:required="false" />
-199-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
-200        <uses-library
-200-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
-201            android:name="androidx.window.sidecar"
-201-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
-202            android:required="false" />
-202-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
-203
-204        <provider
-204-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:8:9-12:43
-205            android:name="me.wcy.router.RouterProvider"
-205-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:9:13-56
-206            android:authorities="me.wcy.music.crouter.provider"
-206-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:10:13-68
-207            android:exported="false"
-207-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:11:13-37
-208            android:multiprocess="true" />
-208-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:12:13-40
-209
-210        <receiver
-210-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-211            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-211-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-212            android:directBootAware="false"
-212-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-213            android:enabled="true"
-213-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-214            android:exported="true"
-214-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-215            android:permission="android.permission.DUMP" >
-215-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-216            <intent-filter>
-216-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-217                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-217-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-217-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-218            </intent-filter>
-219            <intent-filter>
-219-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-220                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-220-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-220-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-221            </intent-filter>
-222            <intent-filter>
-222-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-223                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-223-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-223-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-224            </intent-filter>
-225            <intent-filter>
-225-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-226                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-226-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-226-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-227            </intent-filter>
-228        </receiver>
-229
-230        <provider
-230-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:10:9-14:43
-231            android:name="com.qw.soul.permission.InitProvider"
-231-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:11:13-63
-232            android:authorities="me.wcy.music.permission.provider"
-232-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:12:13-71
-233            android:exported="false"
-233-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:13:13-37
-234            android:multiprocess="true" />
-234-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:14:13-40
-235
-236        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
-236-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:12:9-118
-236-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:12:18-115
-237        <service
-237-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:13:9-15:49
-238            android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService"
-238-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:14:13-108
-239            android:process=":filedownloader" />
-239-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:15:13-46
-240    </application>
-241
-242</manifest>
+146-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:40:9-42:58
+147            android:name="cn.bertsir.zbar.utils.PermissionUtils$PermissionActivity"
+147-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:41:13-84
+148            android:theme="@style/ActivityTranslucent" />
+148-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:42:13-55
+149        <activity android:name="com.soundcloud.android.crop.CropImageActivity" />
+149-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:43:9-82
+149-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:43:19-79
+150        <activity
+150-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:19:9-24:75
+151            android:name="com.blankj.utilcode.util.UtilsTransActivity4MainProcess"
+151-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:20:13-83
+152            android:configChanges="orientation|keyboardHidden|screenSize"
+152-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:21:13-74
+153            android:exported="false"
+153-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:22:13-37
+154            android:theme="@style/ActivityTranslucent"
+154-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:23:13-55
+155            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+155-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:24:13-72
+156        <activity
+156-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:25:9-31:75
+157            android:name="com.blankj.utilcode.util.UtilsTransActivity"
+157-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:26:13-71
+158            android:configChanges="orientation|keyboardHidden|screenSize"
+158-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:27:13-74
+159            android:exported="false"
+159-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:28:13-37
+160            android:multiprocess="true"
+160-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:29:13-40
+161            android:theme="@style/ActivityTranslucent"
+161-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:30:13-55
+162            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
+162-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:31:13-72
+163
+164        <provider
+164-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:33:9-41:20
+165            android:name="com.blankj.utilcode.util.UtilsFileProvider"
+165-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:34:13-70
+166            android:authorities="me.wcy.music.utilcode.fileprovider"
+166-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:35:13-73
+167            android:exported="false"
+167-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:36:13-37
+168            android:grantUriPermissions="true" >
+168-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:37:13-47
+169            <meta-data
+169-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:32:13-34:57
+170                android:name="android.support.FILE_PROVIDER_PATHS"
+170-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:33:17-67
+171                android:resource="@xml/util_code_provider_paths" />
+171-->[cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:34:17-54
+172        </provider>
+173
+174        <service
+174-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:43:9-49:19
+175            android:name="com.blankj.utilcode.util.MessengerUtils$ServerService"
+175-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:44:13-81
+176            android:exported="false" >
+176-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:45:13-37
+177            <intent-filter>
+177-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:46:13-48:29
+178                <action android:name="me.wcy.music.messenger" />
+178-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:47:17-69
+178-->[com.blankj:utilcodex:1.31.1] C:\Users\86158\.gradle\caches\transforms-4\148ae947ff43ca6b9b3284c945ceda29\transformed\jetified-utilcodex-1.31.1\AndroidManifest.xml:47:25-66
+179            </intent-filter>
+180        </service>
+181        <service
+181-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+182            android:name="androidx.room.MultiInstanceInvalidationService"
+182-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+183            android:directBootAware="true"
+183-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+184            android:exported="false" />
+184-->[androidx.room:room-runtime:2.6.1] C:\Users\86158\.gradle\caches\transforms-4\a62d4e13a02f69be72dd1a09f131ea3b\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+185
+186        <provider
+186-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+187            android:name="androidx.startup.InitializationProvider"
+187-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+188            android:authorities="me.wcy.music.androidx-startup"
+188-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+189            android:exported="false" >
+189-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+190            <meta-data
+190-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+191                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+191-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+192                android:value="androidx.startup" />
+192-->[androidx.emoji2:emoji2:1.3.0] C:\Users\86158\.gradle\caches\transforms-4\487478292e3e6e14c6a27f95ada9fa66\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+193            <meta-data
+193-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+194                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+194-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+195                android:value="androidx.startup" />
+195-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\86158\.gradle\caches\transforms-4\b0c6e7adfd372a060b5489a22133f14c\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+196            <meta-data
+196-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+197                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+197-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+198                android:value="androidx.startup" />
+198-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+199        </provider>
+200
+201        <uses-library
+201-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+202            android:name="androidx.window.extensions"
+202-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+203            android:required="false" />
+203-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+204        <uses-library
+204-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+205            android:name="androidx.window.sidecar"
+205-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+206            android:required="false" />
+206-->[androidx.window:window:1.0.0] C:\Users\86158\.gradle\caches\transforms-4\767165226d4846d17727bd190d952353\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+207
+208        <provider
+208-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:8:9-12:43
+209            android:name="me.wcy.router.RouterProvider"
+209-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:9:13-56
+210            android:authorities="me.wcy.music.crouter.provider"
+210-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:10:13-68
+211            android:exported="false"
+211-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:11:13-37
+212            android:multiprocess="true" />
+212-->[com.github.wangchenyan.crouter:crouter-api:3.0.0-beta01] C:\Users\86158\.gradle\caches\transforms-4\b7ed2910bedb46e3efab1cd90ea6aec9\transformed\jetified-crouter-api-3.0.0-beta01\AndroidManifest.xml:12:13-40
+213
+214        <receiver
+214-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+215            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+215-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+216            android:directBootAware="false"
+216-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+217            android:enabled="true"
+217-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+218            android:exported="true"
+218-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+219            android:permission="android.permission.DUMP" >
+219-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+220            <intent-filter>
+220-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+221                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+221-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+221-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+222            </intent-filter>
+223            <intent-filter>
+223-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+224                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+224-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+224-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+225            </intent-filter>
+226            <intent-filter>
+226-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+227                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+227-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+227-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+228            </intent-filter>
+229            <intent-filter>
+229-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+230                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+230-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+230-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\8aeb8fb05dcb0b6b2d3d6ebc1570c7a7\transformed\jetified-profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+231            </intent-filter>
+232        </receiver>
+233
+234        <provider
+234-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:10:9-14:43
+235            android:name="com.qw.soul.permission.InitProvider"
+235-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:11:13-63
+236            android:authorities="me.wcy.music.permission.provider"
+236-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:12:13-71
+237            android:exported="false"
+237-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:13:13-37
+238            android:multiprocess="true" />
+238-->[com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\caches\transforms-4\2cd48bdea82363edfe078b1fc7ceb77b\transformed\jetified-SoulPermission-1.4.0\AndroidManifest.xml:14:13-40
+239
+240        <service android:name="com.liulishuo.filedownloader.services.FileDownloadService$SharedMainProcessService" />
+240-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:12:9-118
+240-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:12:18-115
+241        <service
+241-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:13:9-15:49
+242            android:name="com.liulishuo.filedownloader.services.FileDownloadService$SeparateProcessService"
+242-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:14:13-108
+243            android:process=":filedownloader" />
+243-->[com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:15:13-46
+244    </application>
+245
+246</manifest>

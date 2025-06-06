@@ -12,6 +12,10 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!-- Android Automotive 音量控制权限 -->
+    <uses-permission android:name="android.car.permission.CAR_CONTROL_AUDIO_VOLUME" />
+    <uses-permission android:name="android.car.permission.ACCESS_CAR_AUDIO" />
+
     <application
         android:name=".MusicApplication"
         android:allowBackup="true"

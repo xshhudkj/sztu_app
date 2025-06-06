@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+音量控制布局文件
+用途：包含音量图标和音量调节条
+被引用：在activity_playing.xml和activity_playing-land.xml中通过include引入
+-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,21 +14,35 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp">
 
+    <!--
+    音量图标
+    作用：显示音量状态的视觉指示
+    调整：增大图标尺寸以适配车载大屏
+         src更换图标，tint控制图标颜色
+    -->
     <ImageView
-        android:layout_width="16dp"
-        android:layout_height="16dp"
+        android:layout_width="@dimen/playing_volume_icon_size"
+        android:layout_height="@dimen/playing_volume_icon_size"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@null"
         android:src="@drawable/ic_volume"
         app:tint="@color/translucent_white_p80" />
 
+    <!--
+    音量调节条
+    作用：调节系统音量，支持拖拽操作
+    调整：增大触摸区域高度以适配车载操作
+         增大进度条厚度以提升可见性
+         在代码中区分Android Automotive和普通Android的音量控制
+    -->
     <SeekBar
         android:id="@+id/sbVolume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="2dp"
-        android:minHeight="2dp"
-        android:paddingTop="4dp"
-        android:paddingBottom="4dp"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_weight="1"
+        android:maxHeight="4dp"
+        android:minHeight="4dp"
+        android:paddingVertical="12dp"
         android:progressDrawable="@drawable/bg_playing_volume_progress"
         android:thumb="@drawable/ic_playing_volume_progress_thumb" />
 </LinearLayout>

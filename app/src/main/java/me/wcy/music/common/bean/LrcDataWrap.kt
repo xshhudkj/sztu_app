@@ -9,5 +9,7 @@ data class LrcDataWrap(
     @SerializedName("code")
     val code: Int = -1,
     @SerializedName("lrc")
-    val lrc: LrcData = LrcData()
+    val lrc: LrcData = LrcData(),
+    @SerializedName("tlyric")
+    val tlyric: LrcData = LrcData()
 )

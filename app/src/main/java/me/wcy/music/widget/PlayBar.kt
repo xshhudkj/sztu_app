@@ -27,6 +27,7 @@ import me.wcy.music.main.playlist.CurrentPlaylistFragment
 import me.wcy.music.service.PlayServiceModule.playerController
 import me.wcy.music.service.PlayServiceModule.likeSongProcessor
 import me.wcy.music.service.PlayState
+import me.wcy.music.utils.VipUtils
 import me.wcy.music.utils.getDuration
 import me.wcy.music.utils.getSongId
 import me.wcy.music.utils.getSmallCover
@@ -135,6 +136,9 @@ class PlayBar @JvmOverloads constructor(
                     viewBinding.tvArtist.isVisible = false
                 }
 
+                // 显示VIP标签
+                updateVipLabel(currentSong)
+
                 // 更新收藏状态和显示
                 updateLikeState(currentSong.getSongId())
             } else {
@@ -184,6 +188,14 @@ class PlayBar @JvmOverloads constructor(
                 updatePlayProgress()
             }
         }
+    }
+
+    /**
+     * 更新VIP标签显示，使用优化的渲染方法
+     */
+    private fun updateVipLabel(song: androidx.media3.common.MediaItem) {
+        val fee = VipUtils.getSongFee(song)
+        VipUtils.updateVipLabelOptimized(viewBinding.tvVipLabel, fee)
     }
 
     /**

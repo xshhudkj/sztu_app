@@ -73,8 +73,28 @@ class ArtistDetailViewModel @Inject constructor() : ViewModel() {
             }
             val songs = songResult.songs
 
+            // 歌手详情页统一使用歌手头像作为歌曲封面
+            // 因为歌手歌曲API返回的专辑封面信息往往不完整，容易出现404错误
+            val artistCover = artistData?.picUrl ?: ""
+            val fixedSongs = if (artistCover.isNotEmpty()) {
+                songs.map { song ->
+                    // 统一使用歌手头像替换专辑封面
+                    song.copy(
+                        al = song.al.copy(
+                            picUrl = artistCover,
+                            // 保持原有的专辑信息，只替换封面
+                            pic = 0, // 清空pic字段，避免构建错误的URL
+                            picStr = "" // 清空picStr字段，直接使用完整的picUrl
+                        )
+                    )
+                }
+            } else {
+                // 如果歌手头像也没有，保持原状
+                songs
+            }
+
             _artistData.value = artistData
-            _songList.value = songs
+            _songList.value = fixedSongs
             CommonResult.success(Unit)
         }
     }

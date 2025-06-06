@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -48,6 +50,9 @@ public final class ActivityPlayingBinding implements ViewBinding {
   public final ConstraintLayout flCoverLrc;
 
   @NonNull
+  public final ImageView ivCloseButton;
+
+  @NonNull
   public final ImageView ivLrcBottomMask;
 
   @NonNull
@@ -66,7 +71,32 @@ public final class ActivityPlayingBinding implements ViewBinding {
   public final LrcView lrcView;
 
   @NonNull
+  public final LinearLayout songInfoLayout;
+
+  /**
+   * This binding is not available in all configurations.
+   * <p>
+   * Present:
+   * <ul>
+   *   <li>layout/</li>
+   * </ul>
+   *
+   * Absent:
+   * <ul>
+   *   <li>layout-land/</li>
+   * </ul>
+   */
+  @Nullable
   public final ActivityPlayingTitleBinding titleLayout;
+
+  @NonNull
+  public final TextView tvSongArtist;
+
+  @NonNull
+  public final TextView tvSongTitle;
+
+  @NonNull
+  public final TextView tvVipLabel;
 
   @NonNull
   public final ActivityPlayingVolumeBinding volumeLayout;
@@ -74,22 +104,29 @@ public final class ActivityPlayingBinding implements ViewBinding {
   private ActivityPlayingBinding(@NonNull FrameLayout rootView,
       @NonNull AlbumCoverView albumCoverView, @NonNull ActivityPlayingControlBinding controlLayout,
       @NonNull FrameLayout flBackground, @Nullable ConstraintLayout flCoverLrc,
-      @NonNull ImageView ivLrcBottomMask, @NonNull ImageView ivLrcTopMask,
-      @NonNull ImageView ivPlayingBg, @NonNull View llContent, @NonNull View lrcLayout,
-      @NonNull LrcView lrcView, @NonNull ActivityPlayingTitleBinding titleLayout,
+      @NonNull ImageView ivCloseButton, @NonNull ImageView ivLrcBottomMask,
+      @NonNull ImageView ivLrcTopMask, @NonNull ImageView ivPlayingBg, @NonNull View llContent,
+      @NonNull View lrcLayout, @NonNull LrcView lrcView, @NonNull LinearLayout songInfoLayout,
+      @Nullable ActivityPlayingTitleBinding titleLayout, @NonNull TextView tvSongArtist,
+      @NonNull TextView tvSongTitle, @NonNull TextView tvVipLabel,
       @NonNull ActivityPlayingVolumeBinding volumeLayout) {
     this.rootView = rootView;
     this.albumCoverView = albumCoverView;
     this.controlLayout = controlLayout;
     this.flBackground = flBackground;
     this.flCoverLrc = flCoverLrc;
+    this.ivCloseButton = ivCloseButton;
     this.ivLrcBottomMask = ivLrcBottomMask;
     this.ivLrcTopMask = ivLrcTopMask;
     this.ivPlayingBg = ivPlayingBg;
     this.llContent = llContent;
     this.lrcLayout = lrcLayout;
     this.lrcView = lrcView;
+    this.songInfoLayout = songInfoLayout;
     this.titleLayout = titleLayout;
+    this.tvSongArtist = tvSongArtist;
+    this.tvSongTitle = tvSongTitle;
+    this.tvVipLabel = tvVipLabel;
     this.volumeLayout = volumeLayout;
   }
 
@@ -142,6 +179,12 @@ public final class ActivityPlayingBinding implements ViewBinding {
       id = R.id.flCoverLrc;
       ConstraintLayout flCoverLrc = ViewBindings.findChildViewById(rootView, id);
 
+      id = R.id.ivCloseButton;
+      ImageView ivCloseButton = ViewBindings.findChildViewById(rootView, id);
+      if (ivCloseButton == null) {
+        break missingId;
+      }
+
       id = R.id.ivLrcBottomMask;
       ImageView ivLrcBottomMask = ViewBindings.findChildViewById(rootView, id);
       if (ivLrcBottomMask == null) {
@@ -178,12 +221,35 @@ public final class ActivityPlayingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.titleLayout;
-      View titleLayout = ViewBindings.findChildViewById(rootView, id);
-      if (titleLayout == null) {
+      id = R.id.songInfoLayout;
+      LinearLayout songInfoLayout = ViewBindings.findChildViewById(rootView, id);
+      if (songInfoLayout == null) {
         break missingId;
       }
-      ActivityPlayingTitleBinding binding_titleLayout = ActivityPlayingTitleBinding.bind(titleLayout);
+
+      id = R.id.titleLayout;
+      View titleLayout = ViewBindings.findChildViewById(rootView, id);
+      ActivityPlayingTitleBinding binding_titleLayout = titleLayout != null
+          ? ActivityPlayingTitleBinding.bind(titleLayout)
+          : null;
+
+      id = R.id.tvSongArtist;
+      TextView tvSongArtist = ViewBindings.findChildViewById(rootView, id);
+      if (tvSongArtist == null) {
+        break missingId;
+      }
+
+      id = R.id.tvSongTitle;
+      TextView tvSongTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvSongTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.tvVipLabel;
+      TextView tvVipLabel = ViewBindings.findChildViewById(rootView, id);
+      if (tvVipLabel == null) {
+        break missingId;
+      }
 
       id = R.id.volumeLayout;
       View volumeLayout = ViewBindings.findChildViewById(rootView, id);
@@ -193,8 +259,9 @@ public final class ActivityPlayingBinding implements ViewBinding {
       ActivityPlayingVolumeBinding binding_volumeLayout = ActivityPlayingVolumeBinding.bind(volumeLayout);
 
       return new ActivityPlayingBinding((FrameLayout) rootView, albumCoverView,
-          binding_controlLayout, flBackground, flCoverLrc, ivLrcBottomMask, ivLrcTopMask,
-          ivPlayingBg, llContent, lrcLayout, lrcView, binding_titleLayout, binding_volumeLayout);
+          binding_controlLayout, flBackground, flCoverLrc, ivCloseButton, ivLrcBottomMask,
+          ivLrcTopMask, ivPlayingBg, llContent, lrcLayout, lrcView, songInfoLayout,
+          binding_titleLayout, tvSongArtist, tvSongTitle, tvVipLabel, binding_volumeLayout);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,6 +4,7 @@ import me.wcy.music.common.OnItemClickListener2;
 import me.wcy.music.common.bean.SongData;
 import me.wcy.music.databinding.ItemSearchSongBinding;
 import me.wcy.music.utils.MusicUtils;
+import me.wcy.music.utils.VipUtils;
 import me.wcy.radapter3.RItemBinder;
 
 /**

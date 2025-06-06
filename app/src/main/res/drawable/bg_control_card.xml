@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+播放控制卡片背景
+作用：为播放控制区域提供美观的透明卡片背景
+特点：多层次渐变背景、圆角、发光边框效果
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 外层发光效果 -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:centerColor="#15FFFFFF"
+                android:endColor="#05FFFFFF"
+                android:startColor="#25FFFFFF"
+                android:type="linear" />
+            <corners android:radius="22dp" />
+        </shape>
+    </item>
+
+    <!-- 主体卡片 -->
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <!-- 主渐变背景：更丰富的层次 -->
+            <gradient
+                android:angle="135"
+                android:centerColor="#25FFFFFF"
+                android:endColor="#15FFFFFF"
+                android:startColor="#35FFFFFF"
+                android:type="linear" />
+
+            <!-- 圆角：现代化的圆角设计 -->
+            <corners android:radius="20dp" />
+
+            <!-- 边框：微妙的发光边框 -->
+            <stroke
+                android:width="1dp"
+                android:color="#40FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>
