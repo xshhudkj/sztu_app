@@ -21,7 +21,7 @@ import me.wcy.music.common.dialog.songmenu.items.ArtistMenuItem
 import me.wcy.music.common.dialog.songmenu.items.CollectMenuItem
 import me.wcy.music.common.dialog.songmenu.items.CommentMenuItem
 import me.wcy.music.consts.RoutePath
-import me.wcy.music.databinding.FragmentArtistDetailBinding
+import me.wcy.music.databinding.FragmentPlaylistDetailBinding
 import me.wcy.music.discover.playlist.detail.item.PlaylistSongItemBinder
 import me.wcy.music.service.PlayerController
 import me.wcy.music.utils.ImageUtils.loadCover
@@ -42,7 +42,7 @@ import javax.inject.Inject
 @Route(RoutePath.ARTIST_DETAIL)
 @AndroidEntryPoint
 class ArtistDetailFragment : BaseMusicFragment() {
-    private val viewBinding by viewBindings<FragmentArtistDetailBinding>()
+    private val viewBinding by viewBindings<FragmentPlaylistDetailBinding>()
     private val viewModel by viewModels<ArtistDetailViewModel>()
     private val adapter by lazy { RAdapter<SongData>() }
     private var collectMenu: View? = null
@@ -139,12 +139,6 @@ class ArtistDetailFragment : BaseMusicFragment() {
                 updateCollectState()
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.isSubscribed.collectLatest { isSubscribed ->
-                updateCollectState()
-            }
-        }
     }
 
     private fun initArtistInfo() {
@@ -153,7 +147,7 @@ class ArtistDetailFragment : BaseMusicFragment() {
                 artistData ?: return@collectLatest
                 getTitleLayout()?.setTitleText(artistData.name)
                 updateCollectState()
-
+                
                 // 加载歌手头像，添加图片尺寸参数优化显示效果
                 val imageUrl = if (artistData.picUrl.isNotEmpty()) {
                     artistData.picUrl + "?param=400y400"
@@ -161,8 +155,12 @@ class ArtistDetailFragment : BaseMusicFragment() {
                     ""
                 }
                 viewBinding.ivCover.loadCover(imageUrl, SizeUtils.dp2px(6f))
+                
+                // 隐藏播放次数（歌手没有播放次数概念）
+                viewBinding.tvPlayCount.isVisible = false
+                
                 viewBinding.tvName.text = artistData.name
-
+                
                 // 隐藏创建者头像，显示歌手别名
                 viewBinding.ivCreatorAvatar.isVisible = false
                 viewBinding.tvCreatorName.text = if (artistData.alias.isNotEmpty()) {
@@ -170,15 +168,31 @@ class ArtistDetailFragment : BaseMusicFragment() {
                 } else {
                     "歌手"
                 }
+                
+                val songCount = viewModel.songList.value.size
+                viewBinding.tvSongCount.text = "($songCount)"
 
-                // 隐藏标签区域
+                // 隐藏标签区域（歌手通常没有标签）
                 viewBinding.flTags.isVisible = false
 
-                // 显示歌手简介，如果没有简介则显示默认文本
+                // 显示歌手简介，如果没有简介则显示歌手统计信息
                 val description = if (artistData.briefDesc.isNotEmpty()) {
                     artistData.briefDesc
                 } else {
-                    "暂无歌手简介"
+                    buildString {
+                        if (artistData.musicSize > 0) {
+                            append("单曲数量：${artistData.musicSize}首\n")
+                        }
+                        if (artistData.albumSize > 0) {
+                            append("专辑数量：${artistData.albumSize}张\n")
+                        }
+                        if (artistData.mvSize > 0) {
+                            append("MV数量：${artistData.mvSize}个")
+                        }
+                        if (isEmpty()) {
+                            append("暂无歌手简介")
+                        }
+                    }
                 }
                 viewBinding.tvDesc.text = description
             }
@@ -220,6 +234,7 @@ class ArtistDetailFragment : BaseMusicFragment() {
         lifecycleScope.launch {
             viewModel.songList.collectLatest { songList ->
                 adapter.refresh(songList)
+                // 更新歌曲数量显示
                 viewBinding.tvSongCount.text = "(${songList.size})"
             }
         }

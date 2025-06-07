@@ -1,22 +1,89 @@
 package me.wcy.music.net.datasource
 
 import android.net.Uri
-import kotlinx.coroutines.runBlocking
+import android.util.Log
+import kotlinx.coroutines.*
 import me.wcy.music.discover.DiscoverApi
 import me.wcy.music.storage.preference.ConfigPreferences
 import me.wcy.music.utils.VipUtils
 import top.wangchenyan.common.net.apiCall
+import java.util.concurrent.ConcurrentHashMap
 
 /**
+ * 在线音乐URI获取器
+ * 负责获取在线歌曲的播放链接，支持缓存机制和异步获取
  * Created by wangchenyan.top on 2024/3/26.
  */
 object OnlineMusicUriFetcher {
+    private const val TAG = "OnlineMusicUriFetcher"
+
+    // URL获取任务缓存，避免重复请求同一首歌曲
+    private val fetchingTasks = ConcurrentHashMap<String, Deferred<String>>()
+
+    // 协程作用域，用于管理异步任务
+    private val fetchScope = CoroutineScope(Dispatchers.IO + SupervisorJob())
 
     fun fetchPlayUrl(uri: Uri): String {
         val songId = uri.getQueryParameter("id")?.toLongOrNull() ?: return uri.toString()
         val fee = uri.getQueryParameter("fee")?.toIntOrNull() ?: 0
+        val taskKey = "$songId-$fee"
 
-        return runBlocking {
+        return try {
+            // 使用超时的runBlocking，避免无限等待
+            runBlocking {
+                withTimeout(10_000) { // 10秒超时
+                    // 检查是否已有正在进行的获取任务
+                    val existingTask = fetchingTasks[taskKey]
+                    if (existingTask != null && existingTask.isActive) {
+                        Log.d(TAG, "复用正在进行的获取任务: songId=$songId")
+                        return@withTimeout existingTask.await()
+                    }
+
+                    // 创建新的获取任务
+                    val fetchTask = fetchScope.async {
+                        fetchUrlInternal(songId, fee)
+                    }
+
+                    // 缓存任务
+                    fetchingTasks[taskKey] = fetchTask
+
+                    try {
+                        val result = fetchTask.await()
+                        Log.d(TAG, "URL获取完成: songId=$songId, url=${if (result.isNotEmpty()) "成功" else "失败"}")
+                        result
+                    } finally {
+                        // 清理完成的任务
+                        fetchingTasks.remove(taskKey)
+                    }
+                }
+            }
+        } catch (e: TimeoutCancellationException) {
+            Log.e(TAG, "URL获取超时: songId=$songId", e)
+            // 清理超时的任务
+            fetchingTasks.remove(taskKey)
+            ""
+        } catch (e: Exception) {
+            Log.e(TAG, "URL获取失败: songId=$songId", e)
+            // 清理失败的任务
+            fetchingTasks.remove(taskKey)
+            ""
+        }
+    }
+
+    /**
+     * 内部URL获取逻辑
+     */
+    private suspend fun fetchUrlInternal(songId: Long, fee: Int): String {
+        try {
+            // 优先使用缓存的URL
+            val cachedUrl = MusicUrlCache.getCachedUrl(songId, fee)
+            if (!cachedUrl.isNullOrEmpty()) {
+                Log.d(TAG, "使用缓存的URL: songId=$songId")
+                return cachedUrl
+            }
+
+            Log.d(TAG, "缓存未命中，从网络获取URL: songId=$songId")
+            // 缓存未命中，从网络获取
             // 根据歌曲fee字段决定音质
             val quality = if (VipUtils.needQualityDowngrade(fee) &&
                              VipUtils.isHighQuality(ConfigPreferences.playSoundQuality)) {
@@ -31,11 +98,19 @@ object OnlineMusicUriFetcher {
                 DiscoverApi.get().getSongUrl(songId, quality)
             }
 
-            if (res.isSuccessWithData() && res.getDataOrThrow().isNotEmpty()) {
-                return@runBlocking res.getDataOrThrow().first().url
+            return if (res.isSuccessWithData() && res.getDataOrThrow().isNotEmpty()) {
+                val url = res.getDataOrThrow().first().url
+                // 将获取到的URL缓存起来
+                if (url.isNotEmpty()) {
+                    MusicUrlCache.cacheUrl(songId, fee, url, quality)
+                }
+                url
             } else {
-                return@runBlocking ""
+                ""
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "获取播放URL失败: songId=$songId", e)
+            return ""
         }
     }
 }

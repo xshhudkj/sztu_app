@@ -19,8 +19,12 @@ import me.wcy.music.storage.db.MusicDatabase
 import me.wcy.music.storage.preference.ConfigPreferences
 import me.wcy.music.utils.toMediaItem
 import me.wcy.music.utils.toSongEntity
+import me.wcy.music.utils.getSongId
+import me.wcy.music.utils.getFee
+import me.wcy.music.utils.VipUtils
 import top.wangchenyan.common.ext.toUnMutable
 import android.util.Log
+import me.wcy.music.net.datasource.MusicUrlCache
 import top.wangchenyan.common.ext.toast
 
 /**
@@ -103,6 +107,9 @@ class PlayerControllerImpl(
                 mediaItem ?: return
                 val playlist = _playlist.value ?: return
                 _currentSong.value = playlist.find { it.mediaId == mediaItem.mediaId }
+                
+                // 预加载下一首歌曲的URL
+                preloadNextSongUrls()
             }
 
             @OptIn(UnstableApi::class)
@@ -287,9 +294,23 @@ class PlayerControllerImpl(
             return
         }
 
-        stop()
-        player.seekTo(index, 0)
-        player.prepare()
+        // 优化播放逻辑，减少不必要的stop操作
+        val currentIndex = player.currentMediaItemIndex
+        if (currentIndex != index) {
+            // 只有在切换歌曲时才停止当前播放
+            if (player.isPlaying) {
+                player.pause()
+            }
+            player.seekTo(index, 0)
+        }
+
+        // 异步准备播放器，避免阻塞主线程
+        if (player.playbackState == Player.STATE_IDLE) {
+            player.prepare()
+        }
+
+        // 立即开始播放，不等待缓存完成
+        player.play()
 
         _currentSong.value = playlist[index]
         _playProgress.value = 0
@@ -387,6 +408,23 @@ class PlayerControllerImpl(
     @MainThread
     override fun seekTo(msec: Int) {
         if (player.playbackState == Player.STATE_READY) {
+            val currentSong = _currentSong.value
+            if (currentSong != null) {
+                // 检查VIP试听限制
+                val needTrial = VipUtils.needTrialLimit(currentSong)
+                if (needTrial) {
+                    val trialEndTime = VipUtils.getTrialEndTime(currentSong)
+                    // 如果seek位置在试听范围内，直接seek，不重新加载
+                    if (msec.toLong() <= trialEndTime) {
+                        player.seekTo(msec.toLong())
+                        return
+                    } else {
+                        // 超出试听范围，不允许seek
+                        return
+                    }
+                }
+            }
+            // 非VIP歌曲或VIP用户，正常seek
             player.seekTo(msec.toLong())
         }
     }
@@ -562,10 +600,57 @@ class PlayerControllerImpl(
     }
 
     /**
+     * 预加载下一首歌曲的URL
+     */
+    private fun preloadNextSongUrls() {
+        launch(Dispatchers.IO) {
+            try {
+                val currentSong = _currentSong.value ?: return@launch
+                val playlist = _playlist.value ?: return@launch
+                val currentIndex = playlist.indexOfFirst { it.mediaId == currentSong.mediaId }
+                
+                if (currentIndex < 0) return@launch
+                
+                // 获取接下来的3首歌曲
+                val nextSongs = mutableListOf<Pair<Long, Int>>()
+                for (i in 1..3) {
+                    val nextIndex = when (_playMode.value) {
+                        PlayMode.Loop -> (currentIndex + i) % playlist.size
+                        PlayMode.Single -> currentIndex // 单曲循环不预加载
+                        PlayMode.Shuffle -> {
+                            // 随机模式下预加载较难，暂时跳过
+                            -1
+                        }
+                    }
+                    
+                    if (nextIndex >= 0 && nextIndex < playlist.size) {
+                        val nextSong = playlist[nextIndex]
+                        // 只预加载在线歌曲
+                        val uri = nextSong.localConfiguration?.uri
+                        if (uri?.scheme != "file" && uri?.scheme != "content") {
+                            nextSongs.add(nextSong.getSongId() to nextSong.getFee())
+                        }
+                    }
+                }
+                
+                // 批量预加载URL
+                if (nextSongs.isNotEmpty()) {
+                    MusicUrlCache.preloadUrls(nextSongs)
+                    Log.d(TAG, "预加载${nextSongs.size}首歌曲的URL")
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "预加载URL失败", e)
+            }
+        }
+    }
+
+    /**
      * 清理资源，停止缓存监听
      */
     fun cleanup() {
         resetCacheState()
+        // 清理URL缓存
+        MusicUrlCache.cleanExpiredCache()
     }
 
     companion object {

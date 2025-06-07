@@ -106,6 +106,10 @@ class PlayingActivity : BaseMusicActivity() {
     // 简单的颜色缓存，避免重复计算
     private val colorCache = mutableMapOf<String, Int>()
     private val maxCacheSize = 20
+    
+    // 防止重复更新UI的标志
+    private var lastUpdateSongId: Long = -1
+    private var isUpdatingUI = false
 
 
 
@@ -372,9 +376,25 @@ class PlayingActivity : BaseMusicActivity() {
                 val playState = playerController.playState.value
                 if (playState.isPlaying || playState.isPausing) {
                     val progress = seekBar.progress
-                    playerController.seekTo(progress)
-                    if (viewBinding.lrcView.hasLrc()) {
-                        viewBinding.lrcView.updateTime(progress.toLong())
+                    val currentSong = playerController.currentSong.value
+
+                    // 检查VIP试听限制，确保在试听范围内的拖拽不会重新加载
+                    if (currentSong != null && VipUtils.needTrialLimit(currentSong)) {
+                        val trialEndTime = VipUtils.getTrialEndTime(currentSong)
+                        if (progress <= trialEndTime) {
+                            // 在试听范围内，正常seek
+                            playerController.seekTo(progress)
+                            if (viewBinding.lrcView.hasLrc()) {
+                                viewBinding.lrcView.updateTime(progress.toLong())
+                            }
+                        }
+                        // 超出试听范围的情况已经在VipTrialSeekBar中处理了
+                    } else {
+                        // 非VIP歌曲，正常处理
+                        playerController.seekTo(progress)
+                        if (viewBinding.lrcView.hasLrc()) {
+                            viewBinding.lrcView.updateTime(progress.toLong())
+                        }
                     }
                 } else {
                     seekBar.progress = 0
@@ -404,6 +424,14 @@ class PlayingActivity : BaseMusicActivity() {
     private fun initData() {
         playerController.currentSong.observe(this) { song ->
             if (song != null) {
+                // 避免重复更新相同的歌曲
+                val songId = song.getSongId()
+                if (songId == lastUpdateSongId || isUpdatingUI) {
+                    return@observe
+                }
+                
+                lastUpdateSongId = songId
+                isUpdatingUI = true
                 // 更新歌曲信息布局（在黑胶封面下方）- 横屏和竖屏模式都存在
                 viewBinding.tvSongTitle?.text = song.mediaMetadata.title
                 viewBinding.tvSongArtist?.text = song.mediaMetadata.artist
@@ -443,6 +471,9 @@ class PlayingActivity : BaseMusicActivity() {
                 viewBinding.albumCoverView.reset()
                 updatePlayState(playerController.playState.value)
                 updateOnlineActionsState(song)
+                
+                // 更新完成，重置标志
+                isUpdatingUI = false
             } else {
                 // 当前歌曲为null时，不要立即关闭播放页面
                 // 可能是临时状态，等待一段时间再决定是否关闭

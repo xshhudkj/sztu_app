@@ -18,12 +18,14 @@ object HttpClient {
 
     val okHttpClient: OkHttpClient by lazy {
         val builder = OkHttpClient.Builder()
-            .connectTimeout(125, TimeUnit.SECONDS)
-            .readTimeout(125, TimeUnit.SECONDS)
-            .writeTimeout(125, TimeUnit.SECONDS)
+            // 优化网络超时配置，提升播放启动速度
+            .connectTimeout(8, TimeUnit.SECONDS)  // 连接超时：8秒
+            .readTimeout(15, TimeUnit.SECONDS)    // 读取超时：15秒
+            .writeTimeout(10, TimeUnit.SECONDS)   // 写入超时：10秒
             // 忽略host验证
             .hostnameVerifier { hostname, session -> true }
-            .cache(Cache(File(FilePath.httpCache), 10 * 1024 * 1024))
+            // 增加HTTP缓存大小，提升重复请求性能
+            .cache(Cache(File(FilePath.httpCache), 50 * 1024 * 1024)) // 50MB缓存
             .addInterceptor(HeaderInterceptor())
             .addInterceptor(ServerTime)
         if (CommonApp.test) {

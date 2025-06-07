@@ -2,6 +2,7 @@ package me.wcy.music.common;
 
 import android.os.Bundle;
 import com.kingja.loadsir.callback.Callback;
+import me.wcy.music.utils.ScreenAdaptManager;
 import me.wcy.music.widget.loadsir.SoundWaveLoadingCallback;
 import top.wangchenyan.common.ui.activity.BaseActivity;
 

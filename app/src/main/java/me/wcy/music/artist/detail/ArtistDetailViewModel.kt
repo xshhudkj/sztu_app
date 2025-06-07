@@ -95,7 +95,27 @@ class ArtistDetailViewModel @Inject constructor() : ViewModel() {
 
             _artistData.value = artistData
             _songList.value = fixedSongs
+
+            // 加载收藏状态
+            loadSubscribeState()
+
             CommonResult.success(Unit)
+        }
+    }
+
+    /**
+     * 加载收藏状态
+     */
+    private suspend fun loadSubscribeState() {
+        val artistData = _artistData.value ?: return
+
+        kotlin.runCatching {
+            // 这里需要调用获取用户收藏歌手列表的API来检查是否已收藏
+            // 由于API文档中没有明确的检查单个歌手收藏状态的接口
+            // 暂时设置为false，实际项目中需要根据具体API实现
+            _isSubscribed.value = false
+        }.onFailure {
+            _isSubscribed.value = false
         }
     }
 

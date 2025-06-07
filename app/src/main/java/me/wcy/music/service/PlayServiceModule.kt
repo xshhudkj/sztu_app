@@ -34,10 +34,16 @@ object PlayServiceModule {
     fun providerPlayerController(db: MusicDatabase): PlayerController {
         return playerController ?: run {
             val player = player ?: run {
-                // 如果播放器还没准备好，等待一下再尝试
+                // 如果播放器还没准备好，使用更健壮的等待机制
                 android.util.Log.w("PlayServiceModule", "Player not ready yet, waiting...")
-                Thread.sleep(100) // 等待100ms
-                this.player ?: throw IllegalStateException("Player not prepared after waiting!")
+                var retryCount = 0
+                val maxRetries = 50 // 最多重试50次，总共5秒
+                while (retryCount < maxRetries) {
+                    this.player?.let { return@run it }
+                    Thread.sleep(100) // 每次等待100ms
+                    retryCount++
+                }
+                this.player ?: throw IllegalStateException("Player not prepared after ${maxRetries * 100}ms!")
             }
             PlayerControllerImpl(player, db).also {
                 playerController = it

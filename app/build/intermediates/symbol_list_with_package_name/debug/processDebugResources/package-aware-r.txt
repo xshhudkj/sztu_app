@@ -4982,8 +4982,6 @@ layout exo_styled_settings_list_item
 layout exo_styled_sub_settings_list_item
 layout exo_track_selection_dialog
 layout expand_button
-layout fragment_album_detail
-layout fragment_artist_detail
 layout fragment_collect_song
 layout fragment_current_playlist
 layout fragment_discover

@@ -2,6 +2,7 @@ package me.wcy.music.common
 
 import android.os.Bundle
 import com.kingja.loadsir.callback.Callback
+import me.wcy.music.utils.ScreenAdaptManager
 import me.wcy.music.widget.loadsir.SoundWaveLoadingCallback
 import top.wangchenyan.common.ui.activity.BaseActivity
 
@@ -13,6 +14,8 @@ abstract class BaseMusicActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // 在super.onCreate之前应用全屏沉浸式，确保从一开始就是全屏状态
         ImmersiveUtils.enableImmersiveMode(this)
+        // 初始化屏幕适配
+        ScreenAdaptManager.init(this)
         super.onCreate(savedInstanceState)
     }
 

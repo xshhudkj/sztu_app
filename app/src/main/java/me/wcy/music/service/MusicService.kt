@@ -14,9 +14,12 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.session.DefaultMediaNotificationProvider
 import androidx.media3.session.MediaSession
 import androidx.media3.session.MediaSessionService
+import androidx.media3.datasource.DataSource
 import com.blankj.utilcode.util.IntentUtils
 import me.wcy.music.R
 import me.wcy.music.net.datasource.MusicDataSource
+import me.wcy.music.net.datasource.ModernMusicCacheDataSourceFactory
+import me.wcy.music.service.AutomotiveMediaNotificationProvider
 import me.wcy.music.utils.MusicUtils
 import top.wangchenyan.common.CommonApp
 
@@ -42,7 +45,7 @@ class MusicService : MediaSessionService() {
             .setLoadControl(createOptimizedLoadControl())
             .setMediaSourceFactory(
                 DefaultMediaSourceFactory(applicationContext)
-                    .setDataSourceFactory(MusicDataSource.Factory(applicationContext))
+                    .setDataSourceFactory(createModernDataSourceFactory())
             )
             .build()
 
@@ -148,31 +151,42 @@ class MusicService : MediaSessionService() {
     }
 
     /**
-     * 创建优化的LoadControl配置，平衡性能与用户体验
+     * 创建现代音乐流媒体优化的LoadControl配置
+     * 基于ExoPlayer最佳实践，针对音乐播放场景优化
+     * 参考：Akamai、Pinterest等公司的音乐流媒体优化经验
      */
     private fun createOptimizedLoadControl(): DefaultLoadControl {
         return DefaultLoadControl.Builder()
-            // 设置缓存参数，优化车载环境性能
+            // 现代音乐流媒体缓存策略：快速启动 + 适度缓存
             .setBufferDurationsMs(
-                // 最小缓存时间：15秒，保证基本播放连续性
-                15_000,
-                // 最大缓存时间：60秒，避免过度缓存影响性能
-                60_000,
-                // 播放开始前的缓存时间：1.6秒，更快启动播放
-                1_600,
-                // 重新缓存时的缓存时间：8秒，网络恢复后快速恢复
-                8_000
+                // 最小缓存：3秒（保证基本播放连续性，避免频繁重新缓冲）
+                3_000,
+                // 最大缓存：20秒（音乐流媒体不需要过长缓存，避免内存浪费）
+                20_000,
+                // 起播缓存：1.5秒（现代音乐应用标准，快速启动体验）
+                1_500,
+                // 重新缓冲后起播：2秒（网络恢复后快速恢复播放）
+                2_000
             )
-            // 设置目标缓存字节数，控制内存使用
-            .setTargetBufferBytes(
-                // 最大缓存：8MB，平衡性能与内存使用
-                8 * 1024 * 1024
-            )
-            // 优先基于时间的缓存策略，适合音频流
+            // 目标缓存字节数：3MB（音频文件相对较小，3MB足够缓存多首歌曲片段）
+            .setTargetBufferBytes(3 * 1024 * 1024)
+            // 分配器配置：64KB块大小，适合音频流的特点，提高内存利用效率
+            .setAllocator(DefaultAllocator(true, 64 * 1024))
+            // 优先时间阈值：当缓存时间不足时优先保证时间而非大小
             .setPrioritizeTimeOverSizeThresholds(true)
-            // 设置分配器，优化内存分配
-            .setAllocator(DefaultAllocator(true, 64 * 1024)) // 64KB块大小
             .build()
+    }
+
+    /**
+     * 创建现代音乐流媒体数据源工厂
+     * 集成磁盘缓存和网络优化，提供最佳的音乐播放体验
+     */
+    private fun createModernDataSourceFactory(): DataSource.Factory {
+        // 使用现代缓存数据源工厂，集成磁盘缓存
+        val cacheDataSourceFactory = ModernMusicCacheDataSourceFactory.getCacheDataSourceFactory(applicationContext)
+
+        // 包装为MusicDataSource.Factory以支持自定义URI方案（如netease://）
+        return MusicDataSource.Factory(applicationContext, cacheDataSourceFactory)
     }
 
     companion object {

@@ -14,16 +14,19 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory;
 import androidx.media3.session.DefaultMediaNotificationProvider;
 import androidx.media3.session.MediaSession;
 import androidx.media3.session.MediaSessionService;
+import androidx.media3.datasource.DataSource;
 import com.blankj.utilcode.util.IntentUtils;
 import me.wcy.music.R;
 import me.wcy.music.net.datasource.MusicDataSource;
+import me.wcy.music.net.datasource.ModernMusicCacheDataSourceFactory;
+import me.wcy.music.service.AutomotiveMediaNotificationProvider;
 import me.wcy.music.utils.MusicUtils;
 import top.wangchenyan.common.CommonApp;
 
 /**
  * Created by wangchenyan.top on 2024/3/26.
  */
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u00006\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\u0018\u0000 \u00152\u00020\u0001:\u0001\u0015B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0007\u001a\u00020\bH\u0002J\b\u0010\t\u001a\u00020\nH\u0017J\b\u0010\u000b\u001a\u00020\nH\u0016J\u0012\u0010\f\u001a\u0004\u0018\u00010\u00062\u0006\u0010\r\u001a\u00020\u000eH\u0016J\u0012\u0010\u000f\u001a\u00020\n2\b\u0010\u0010\u001a\u0004\u0018\u00010\u0011H\u0016J\b\u0010\u0012\u001a\u00020\nH\u0003J\b\u0010\u0013\u001a\u00020\nH\u0003J\b\u0010\u0014\u001a\u00020\nH\u0003R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0016"}, d2 = {"Lme/wcy/music/service/MusicService;", "Landroidx/media3/session/MediaSessionService;", "()V", "player", "Landroidx/media3/common/Player;", "session", "Landroidx/media3/session/MediaSession;", "createOptimizedLoadControl", "Landroidx/media3/exoplayer/DefaultLoadControl;", "onCreate", "", "onDestroy", "onGetSession", "controllerInfo", "Landroidx/media3/session/MediaSession$ControllerInfo;", "onTaskRemoved", "rootIntent", "Landroid/content/Intent;", "setupAutomotiveNotification", "setupNotificationProvider", "setupPhoneNotification", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000<\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\u0018\u0000 \u00172\u00020\u0001:\u0001\u0017B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0007\u001a\u00020\bH\u0002J\b\u0010\t\u001a\u00020\nH\u0002J\b\u0010\u000b\u001a\u00020\fH\u0017J\b\u0010\r\u001a\u00020\fH\u0016J\u0012\u0010\u000e\u001a\u0004\u0018\u00010\u00062\u0006\u0010\u000f\u001a\u00020\u0010H\u0016J\u0012\u0010\u0011\u001a\u00020\f2\b\u0010\u0012\u001a\u0004\u0018\u00010\u0013H\u0016J\b\u0010\u0014\u001a\u00020\fH\u0003J\b\u0010\u0015\u001a\u00020\fH\u0003J\b\u0010\u0016\u001a\u00020\fH\u0003R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u0018"}, d2 = {"Lme/wcy/music/service/MusicService;", "Landroidx/media3/session/MediaSessionService;", "()V", "player", "Landroidx/media3/common/Player;", "session", "Landroidx/media3/session/MediaSession;", "createModernDataSourceFactory", "Landroidx/media3/datasource/DataSource$Factory;", "createOptimizedLoadControl", "Landroidx/media3/exoplayer/DefaultLoadControl;", "onCreate", "", "onDestroy", "onGetSession", "controllerInfo", "Landroidx/media3/session/MediaSession$ControllerInfo;", "onTaskRemoved", "rootIntent", "Landroid/content/Intent;", "setupAutomotiveNotification", "setupNotificationProvider", "setupPhoneNotification", "Companion", "app_debug"})
 public final class MusicService extends androidx.media3.session.MediaSessionService {
     private androidx.media3.common.Player player;
     private androidx.media3.session.MediaSession session;
@@ -85,9 +88,19 @@ public final class MusicService extends androidx.media3.session.MediaSessionServ
     }
     
     /**
-     * 创建优化的LoadControl配置，平衡性能与用户体验
+     * 创建现代音乐流媒体优化的LoadControl配置
+     * 基于ExoPlayer最佳实践，针对音乐播放场景优化
+     * 参考：Akamai、Pinterest等公司的音乐流媒体优化经验
      */
     private final androidx.media3.exoplayer.DefaultLoadControl createOptimizedLoadControl() {
+        return null;
+    }
+    
+    /**
+     * 创建现代音乐流媒体数据源工厂
+     * 集成磁盘缓存和网络优化，提供最佳的音乐播放体验
+     */
+    private final androidx.media3.datasource.DataSource.Factory createModernDataSourceFactory() {
         return null;
     }
     

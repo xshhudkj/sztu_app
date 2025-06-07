@@ -207,3 +207,7 @@ fun MediaItem.getLargeCover(): String {
         baseCover?.asLargeCover() ?: ""
     }
 }
+
+fun MediaItem.getFee(): Int {
+    return mediaMetadata.getFee()
+}

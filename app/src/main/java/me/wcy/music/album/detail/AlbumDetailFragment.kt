@@ -1,5 +1,6 @@
 package me.wcy.music.album.detail
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -21,7 +22,7 @@ import me.wcy.music.common.dialog.songmenu.items.ArtistMenuItem
 import me.wcy.music.common.dialog.songmenu.items.CollectMenuItem
 import me.wcy.music.common.dialog.songmenu.items.CommentMenuItem
 import me.wcy.music.consts.RoutePath
-import me.wcy.music.databinding.FragmentAlbumDetailBinding
+import me.wcy.music.databinding.FragmentPlaylistDetailBinding
 import me.wcy.music.discover.playlist.detail.item.PlaylistSongItemBinder
 import me.wcy.music.service.PlayerController
 import me.wcy.music.utils.ImageUtils.loadCover
@@ -33,6 +34,8 @@ import top.wangchenyan.common.ext.getColor
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.insets.WindowInsetsUtils.getStatusBarHeight
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 /**
@@ -42,7 +45,7 @@ import javax.inject.Inject
 @Route(RoutePath.ALBUM_DETAIL)
 @AndroidEntryPoint
 class AlbumDetailFragment : BaseMusicFragment() {
-    private val viewBinding by viewBindings<FragmentAlbumDetailBinding>()
+    private val viewBinding by viewBindings<FragmentPlaylistDetailBinding>()
     private val viewModel by viewModels<AlbumDetailViewModel>()
     private val adapter by lazy { RAdapter<SongData>() }
     private var collectMenu: View? = null
@@ -139,12 +142,6 @@ class AlbumDetailFragment : BaseMusicFragment() {
                 updateCollectState()
             }
         }
-
-        lifecycleScope.launch {
-            viewModel.isSubscribed.collectLatest { isSubscribed ->
-                updateCollectState()
-            }
-        }
     }
 
     private fun initAlbumInfo() {
@@ -154,6 +151,10 @@ class AlbumDetailFragment : BaseMusicFragment() {
                 getTitleLayout()?.setTitleText(albumData.name)
                 updateCollectState()
                 viewBinding.ivCover.loadCover(albumData.picUrl, SizeUtils.dp2px(6f))
+
+                // 隐藏播放次数（专辑没有播放次数概念）
+                viewBinding.tvPlayCount.isVisible = false
+
                 viewBinding.tvName.text = albumData.name
 
                 // 隐藏创建者头像，显示专辑艺术家信息
@@ -164,8 +165,9 @@ class AlbumDetailFragment : BaseMusicFragment() {
                     else -> "未知艺术家"
                 }
                 viewBinding.tvCreatorName.text = artistName
+                viewBinding.tvSongCount.text = "(${albumData.size})"
 
-                // 隐藏标签区域
+                // 隐藏标签区域（专辑通常没有标签）
                 viewBinding.flTags.isVisible = false
 
                 // 显示专辑描述，如果没有描述则显示专辑信息
@@ -177,8 +179,8 @@ class AlbumDetailFragment : BaseMusicFragment() {
                             append("发行公司：${albumData.company}\n")
                         }
                         if (albumData.publishTime > 0) {
-                            val publishDate = java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault())
-                                .format(java.util.Date(albumData.publishTime))
+                            val publishDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                                .format(Date(albumData.publishTime))
                             append("发行时间：$publishDate\n")
                         }
                         if (albumData.subType.isNotEmpty()) {
@@ -232,7 +234,6 @@ class AlbumDetailFragment : BaseMusicFragment() {
         lifecycleScope.launch {
             viewModel.songList.collectLatest { songList ->
                 adapter.refresh(songList)
-                viewBinding.tvSongCount.text = "(${songList.size})"
             }
         }
     }

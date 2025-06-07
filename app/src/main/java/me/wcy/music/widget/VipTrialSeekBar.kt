@@ -142,10 +142,8 @@ class VipTrialSeekBar @JvmOverloads constructor(
 
             addUpdateListener { animation ->
                 val animatedValue = animation.animatedValue as Int
-                progress = animatedValue
-
-                // 触发进度变化监听器，确保UI同步更新
-                seekBarChangeListener?.onProgressChanged(this@VipTrialSeekBar, animatedValue, false)
+                // 直接设置进度，不触发监听器，避免重新加载
+                super@VipTrialSeekBar.setProgress(animatedValue)
             }
 
             addListener(object : android.animation.Animator.AnimatorListener {
@@ -156,8 +154,8 @@ class VipTrialSeekBar @JvmOverloads constructor(
                 }
                 override fun onAnimationEnd(animation: android.animation.Animator) {
                     isAnimating = false
-                    // 动画结束后，触发拖拽结束事件
-                    seekBarChangeListener?.onStopTrackingTouch(this@VipTrialSeekBar)
+                    // 动画结束后不触发拖拽结束事件，避免重新加载
+                    // 只是静默回退到原位置，保持播放连续性
                 }
             })
         }
