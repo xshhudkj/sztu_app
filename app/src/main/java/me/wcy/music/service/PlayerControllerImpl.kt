@@ -25,6 +25,7 @@ import me.wcy.music.utils.VipUtils
 import top.wangchenyan.common.ext.toUnMutable
 import android.util.Log
 import me.wcy.music.net.datasource.MusicUrlCache
+import me.wcy.music.service.SmartPreloadManager
 import top.wangchenyan.common.ext.toast
 
 /**
@@ -55,13 +56,20 @@ class PlayerControllerImpl(
 
     private var audioSessionId = 0
 
-    // 持续缓存相关变量
+    // 智能预加载管理器
+    private val smartPreloadManager = SmartPreloadManager()
+
+    // 持续缓存相关变量 - 优化更新频率
     private var lastProgressCheckTime = 0L
-    private val progressCheckInterval = 1000L // 1秒检查一次进度，降低CPU负担
+    private val progressCheckInterval = 500L // 减少到500ms，提高响应性
     private var lastCacheCheckTime = 0L
-    private val cacheCheckInterval = 3000L // 3秒检查一次缓存状态，减少频繁检查
-    private val targetCacheLeadTime = 15_000L // 目标缓存领先时间：15秒，优化内存占用
+    private val cacheCheckInterval = 2000L // 减少到2秒，更及时的缓存状态更新
+    private val targetCacheLeadTime = 10_000L // 减少到10秒，优化内存占用
     private var isNextSongCaching = false // 是否正在缓存下一首歌曲
+
+    // UI更新优化
+    private var lastProgressUpdate = 0L
+    private val progressUpdateInterval = 200L // 200ms更新一次进度，平衡流畅度和性能
 
     init {
         player.playWhenReady = false
@@ -169,11 +177,19 @@ class PlayerControllerImpl(
             while (true) {
                 val currentTime = System.currentTimeMillis()
                 if (player.isPlaying) {
-                    _playProgress.value = player.currentPosition
+                    // 优化进度更新频率，减少UI刷新
+                    if (currentTime - lastProgressUpdate >= progressUpdateInterval) {
+                        _playProgress.value = player.currentPosition
+                        lastProgressUpdate = currentTime
+                    }
 
                     // 检查持续缓存状态
                     if (currentTime - lastProgressCheckTime >= progressCheckInterval) {
                         checkContinuousCache()
+
+                        // 智能预加载检查
+                        checkSmartPreload()
+
                         lastProgressCheckTime = currentTime
                     }
                 }
@@ -184,7 +200,7 @@ class PlayerControllerImpl(
                     lastCacheCheckTime = currentTime
                 }
 
-                delay(1000) // 1秒检查一次，平衡响应性与性能
+                delay(100) // 减少到100ms检查间隔，提高响应性
             }
         }
     }
@@ -294,30 +310,12 @@ class PlayerControllerImpl(
             return
         }
 
-        // 优化播放逻辑，减少不必要的stop操作
-        val currentIndex = player.currentMediaItemIndex
-        if (currentIndex != index) {
-            // 只有在切换歌曲时才停止当前播放
-            if (player.isPlaying) {
-                player.pause()
-            }
-            player.seekTo(index, 0)
-        }
+        // 标记当前歌曲开始播放，清理预加载记录
+        val songId = playlist[index].getSongId()
+        smartPreloadManager.markSongAsPlayed(songId)
 
-        // 异步准备播放器，避免阻塞主线程
-        if (player.playbackState == Player.STATE_IDLE) {
-            player.prepare()
-        }
-
-        // 立即开始播放，不等待缓存完成
-        player.play()
-
-        _currentSong.value = playlist[index]
-        _playProgress.value = 0
-        _bufferingPercent.value = 0
-
-        // 重置缓存状态
-        resetCacheState()
+        // 直接使用传统播放启动方式，确保性能监控正常工作
+        fallbackPlaybackStart(playlist, index, songId)
     }
 
     @MainThread
@@ -384,6 +382,16 @@ class PlayerControllerImpl(
     @MainThread
     override fun next() {
         if (player.mediaItemCount == 0) return
+
+        // 清理预加载记录
+        val playlist = _playlist.value
+        if (!playlist.isNullOrEmpty()) {
+            val nextIndex = (player.currentMediaItemIndex + 1) % playlist.size
+            val nextSong = playlist[nextIndex]
+            val songId = nextSong.getSongId()
+            smartPreloadManager.markSongAsPlayed(songId)
+        }
+
         player.seekToNextMediaItem()
         player.prepare()
         _playProgress.value = 0
@@ -396,6 +404,20 @@ class PlayerControllerImpl(
     @MainThread
     override fun prev() {
         if (player.mediaItemCount == 0) return
+
+        // 清理预加载记录
+        val playlist = _playlist.value
+        if (!playlist.isNullOrEmpty()) {
+            val prevIndex = if (player.currentMediaItemIndex > 0) {
+                player.currentMediaItemIndex - 1
+            } else {
+                playlist.size - 1
+            }
+            val prevSong = playlist[prevIndex]
+            val songId = prevSong.getSongId()
+            smartPreloadManager.markSongAsPlayed(songId)
+        }
+
         player.seekToPreviousMediaItem()
         player.prepare()
         _playProgress.value = 0
@@ -611,9 +633,9 @@ class PlayerControllerImpl(
                 
                 if (currentIndex < 0) return@launch
                 
-                // 获取接下来的3首歌曲
+                // 优化：只预加载接下来的2首歌曲，减少网络负担
                 val nextSongs = mutableListOf<Pair<Long, Int>>()
-                for (i in 1..3) {
+                for (i in 1..2) {
                     val nextIndex = when (_playMode.value) {
                         PlayMode.Loop -> (currentIndex + i) % playlist.size
                         PlayMode.Single -> currentIndex // 单曲循环不预加载
@@ -645,12 +667,83 @@ class PlayerControllerImpl(
     }
 
     /**
+     * 传统播放启动方式（回退方案）
+     */
+    private fun fallbackPlaybackStart(playlist: List<MediaItem>, index: Int, songId: Long) {
+        Log.d(TAG, "使用传统播放启动方式: songId=$songId")
+
+        // 极速播放优化：最小化状态切换操作
+        val currentIndex = player.currentMediaItemIndex
+        if (currentIndex != index) {
+            // 直接切换到目标歌曲，不暂停当前播放
+            player.seekTo(index, 0)
+        }
+
+        // 智能准备播放器：只在必要时准备
+        when (player.playbackState) {
+            Player.STATE_IDLE -> player.prepare()
+            Player.STATE_ENDED -> player.prepare()
+            // 其他状态直接播放，减少准备时间
+        }
+
+        // 立即开始播放，ExoPlayer会自动处理缓冲
+        player.play()
+
+        _currentSong.value = playlist[index]
+        _playProgress.value = 0
+        _bufferingPercent.value = 0
+
+        // 重置缓存状态
+        resetCacheState()
+    }
+
+    /**
+     * 智能预加载检查
+     * 根据当前播放进度智能决定是否预加载下一首歌曲
+     */
+    private fun checkSmartPreload() {
+        val currentSong = _currentSong.value ?: return
+        val playlist = _playlist.value ?: return
+
+        if (player.duration <= 0) return
+
+        val currentProgress = player.currentPosition.toFloat() / player.duration.toFloat()
+        val currentIndex = playlist.indexOfFirst { it.mediaId == currentSong.mediaId }
+
+        if (currentIndex >= 0) {
+            // 获取下一首歌曲
+            val nextSongs = mutableListOf<MediaItem>()
+            for (i in 1..2) { // 最多预加载2首
+                val nextIndex = when (_playMode.value) {
+                    PlayMode.Loop -> (currentIndex + i) % playlist.size
+                    PlayMode.Single -> -1 // 单曲循环不预加载
+                    PlayMode.Shuffle -> -1 // 随机模式暂时不预加载
+                }
+
+                if (nextIndex >= 0 && nextIndex < playlist.size) {
+                    val nextSong = playlist[nextIndex]
+                    // 只预加载在线歌曲
+                    val uri = nextSong.localConfiguration?.uri
+                    if (uri?.scheme != "file" && uri?.scheme != "content") {
+                        nextSongs.add(nextSong)
+                    }
+                }
+            }
+
+            // 使用智能预加载管理器
+            smartPreloadManager.checkPreload(currentSong, nextSongs, currentProgress)
+        }
+    }
+
+    /**
      * 清理资源，停止缓存监听
      */
     fun cleanup() {
         resetCacheState()
         // 清理URL缓存
         MusicUrlCache.cleanExpiredCache()
+        // 清理智能预加载
+        smartPreloadManager.clearAll()
     }
 
     companion object {

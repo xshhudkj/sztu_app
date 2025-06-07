@@ -12,16 +12,22 @@
         app:tlShowBack="false"
         app:tlTitleText="" />
 
-    <androidx.core.widget.NestedScrollView
+    <!-- 下拉刷新容器 -->
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingBottom="16dp">
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingBottom="16dp">
 
             <FrameLayout
                 android:id="@+id/flProfile"
@@ -38,14 +44,21 @@
                     android:paddingTop="32dp"
                     android:paddingBottom="16dp">
 
-                    <!-- 用户名和标签容器 -->
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+                    <!-- 头像 -->
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/ic_launcher_round" />
 
+                    <!-- 用户名和标签的约束布局容器 -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp">
+
+                        <!-- 用户名 (居中) -->
                         <TextView
                             android:id="@+id/tvNickName"
                             android:layout_width="wrap_content"
@@ -54,22 +67,29 @@
                             android:textColor="@color/common_text_h1_color"
                             android:textColorHint="@color/common_text_h1_color"
                             android:textSize="18dp"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <!-- VIP标签 -->
                         <TextView
                             android:id="@+id/tvVipLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="6dp"
-                            android:background="@drawable/bg_vip_label_gold"
-                            android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"
-                            android:text="VIP"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_vip_label_modern"
+                            android:paddingHorizontal="8dp"
+                            android:paddingVertical="3dp"
+                            android:text="黑胶VIP"
                             android:textColor="@color/white"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:textStyle="bold"
-                            android:visibility="gone" />
+                            android:elevation="2dp"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toEndOf="@id/tvNickName"
+                            app:layout_constraintTop_toTopOf="@id/tvNickName"
+                            app:layout_constraintBottom_toBottomOf="@id/tvNickName" />
 
                         <!-- 等级标签 -->
                         <TextView
@@ -77,22 +97,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
-                            android:background="@drawable/bg_level_label"
+                            android:background="@drawable/bg_level_label_modern"
                             android:paddingHorizontal="6dp"
-                            android:paddingVertical="2dp"
+                            android:paddingVertical="3dp"
+                            android:text="Lv.1"
                             android:textColor="@color/white"
                             android:textSize="10sp"
                             android:textStyle="bold"
-                            android:visibility="gone" />
-                    </LinearLayout>
-                </LinearLayout>
+                            android:elevation="2dp"
+                            android:visibility="gone"
+                            app:layout_constraintStart_toEndOf="@id/tvVipLabel"
+                            app:layout_constraintTop_toTopOf="@id/tvNickName"
+                            app:layout_constraintBottom_toBottomOf="@id/tvNickName" />
 
-                <ImageView
-                    android:id="@+id/ivAvatar"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_launcher_round" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
             </FrameLayout>
 
             <LinearLayout
@@ -206,4 +225,6 @@
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

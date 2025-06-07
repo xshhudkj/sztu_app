@@ -25,12 +25,12 @@
     <!-- 歌词显示优化尺寸 -->
     <dimen name="lrc_current_text_size">30sp</dimen>  <!-- 高亮行：32sp，确保清晰可读 -->
     <dimen name="lrc_normal_text_size">22sp</dimen>   <!-- 普通行：22sp，与高亮行形成良好对比 -->
-    <dimen name="lrc_divider_height">60dp</dimen>     <!-- 行间距：56dp，确保高亮歌词有足够显示空间 -->
+    <dimen name="lrc_divider_height">68dp</dimen>     <!-- 行间距：56dp，确保高亮歌词有足够显示空间 -->
     <dimen name="lrc_padding">30dp</dimen>            <!-- 左右内边距：30dp，歌词向右移动，相对时间线向左 -->
 
     <!-- 歌词智能换行和翻译间距 -->
     <dimen name="lrc_line_spacing_extra">20dp</dimen>  <!-- 换行歌词额外行间距：增大到20dp -->
-    <dimen name="lrc_translation_spacing">42dp</dimen> <!-- 翻译歌词与源歌词的间距：增大到32dp -->
+    <dimen name="lrc_translation_spacing">50dp</dimen> <!-- 翻译歌词与源歌词的间距：增大到32dp -->
 
     <!-- 歌词时间线相关尺寸 -->
     <dimen name="lrc_timeline_height">5dp</dimen>      <!-- 时间线高度：增大到6dp -->

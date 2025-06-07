@@ -27,11 +27,11 @@ import java.io.File
 object ModernMusicCacheDataSourceFactory {
     
     private const val CACHE_DIR_NAME = "music_cache"
-    private const val CACHE_SIZE = 100L * 1024 * 1024 // 100MB缓存大小
+    private const val CACHE_SIZE = 80L * 1024 * 1024 // 减少到80MB，优化内存使用
     
-    // 网络配置：针对音乐流媒体优化
-    private const val CONNECT_TIMEOUT_MS = 8000 // 8秒连接超时
-    private const val READ_TIMEOUT_MS = 8000 // 8秒读取超时
+    // 网络配置：针对快速启动优化，减少超时时间
+    private const val CONNECT_TIMEOUT_MS = 5000 // 5秒连接超时，快速失败策略
+    private const val READ_TIMEOUT_MS = 6000 // 6秒读取超时，平衡速度和稳定性
     
     @Volatile
     private var cache: SimpleCache? = null
@@ -61,11 +61,11 @@ object ModernMusicCacheDataSourceFactory {
         return CacheDataSource.Factory()
             .setCache(cache)
             .setUpstreamDataSourceFactory(upstreamFactory)
-            // 缓存策略：优先使用缓存，网络错误时忽略缓存错误
+            // 优化缓存策略：快速失败，优先播放体验
             .setCacheWriteDataSinkFactory(null) // 使用默认的缓存写入
             .setFlags(
                 CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR or // 缓存错误时忽略缓存
-                CacheDataSource.FLAG_BLOCK_ON_CACHE // 缓存可用时阻塞等待
+                CacheDataSource.FLAG_IGNORE_CACHE_FOR_UNSET_LENGTH_REQUESTS // 对未知长度请求忽略缓存，提高响应速度
             )
     }
     

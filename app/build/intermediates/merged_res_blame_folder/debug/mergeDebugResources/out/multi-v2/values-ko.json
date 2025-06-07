@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "me.wcy.music.app-mergeDebugResources-66:/values-ko/values-ko.xml",
+            "outputFile": "me.wcy.music.app-mergeDebugResources-67:/values-ko/values-ko.xml",
             "map": [
                 {
                     "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\e14d147c3d78b264e53fe39d2725f464\\transformed\\jetified-android-crop-1.0.1\\res\\values-ko\\values-ko.xml",

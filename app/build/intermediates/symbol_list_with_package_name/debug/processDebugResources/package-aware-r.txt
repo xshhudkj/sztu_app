@@ -1456,6 +1456,7 @@ attr summary
 attr summaryOff
 attr summaryOn
 attr surface_type
+attr swipeRefreshLayoutProgressSpinnerBackgroundColor
 attr switchMinWidth
 attr switchPadding
 attr switchPreferenceCompatStyle
@@ -3531,6 +3532,7 @@ drawable bg_card
 drawable bg_close_button
 drawable bg_control_card
 drawable bg_level_label
+drawable bg_level_label_modern
 drawable bg_play_bar_progress
 drawable bg_playing_cover_border
 drawable bg_playing_default
@@ -3544,6 +3546,7 @@ drawable bg_song_info_card
 drawable bg_vip_label
 drawable bg_vip_label_gold
 drawable bg_vip_label_gray
+drawable bg_vip_label_modern
 drawable bg_vip_trial_dialog
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -4624,6 +4627,7 @@ id surface_view
 id sv
 id svHistory
 id sweep
+id swipeRefreshLayout
 id switchWidget
 id tabBar
 id tabLayout
@@ -6896,6 +6900,7 @@ styleable StateListDrawable android_dither android_visible android_variablePaddi
 styleable StateListDrawableItem android_drawable
 styleable StateSet defaultState
 styleable SubsamplingScaleImageView assetName panEnabled quickScaleEnabled src tileBackgroundColor zoomEnabled
+styleable SwipeRefreshLayout swipeRefreshLayoutProgressSpinnerBackgroundColor
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable SwitchPreference android_summaryOn android_summaryOff android_disableDependentsState android_switchTextOn android_switchTextOff disableDependentsState summaryOff summaryOn switchTextOff switchTextOn

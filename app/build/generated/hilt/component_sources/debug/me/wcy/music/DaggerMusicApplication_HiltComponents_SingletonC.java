@@ -40,6 +40,7 @@ import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel_HiltModules_KeyModule_ProvideFactory;
 import me.wcy.music.account.service.UserService;
 import me.wcy.music.account.service.UserServiceImpl;
+import me.wcy.music.account.service.UserStateManager;
 import me.wcy.music.album.detail.AlbumDetailFragment;
 import me.wcy.music.album.detail.AlbumDetailFragment_MembersInjector;
 import me.wcy.music.album.detail.AlbumDetailViewModel;
@@ -580,6 +581,7 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     @CanIgnoreReturnValue
     private MineFragment injectMineFragment2(MineFragment instance) {
       MineFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
+      MineFragment_MembersInjector.injectUserStateManager(instance, singletonCImpl.userStateManagerProvider.get());
       return instance;
     }
 
@@ -891,6 +893,8 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
     private Provider<LikeSongProcessorImpl> likeSongProcessorImplProvider;
 
+    private Provider<UserStateManager> userStateManagerProvider;
+
     private SingletonCImpl() {
 
       initialize();
@@ -902,6 +906,7 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
       this.userServiceImplProvider = DoubleCheck.provider(new SwitchingProvider<UserServiceImpl>(singletonCImpl, 0));
       this.darkModeServiceProvider = DoubleCheck.provider(new SwitchingProvider<DarkModeService>(singletonCImpl, 1));
       this.likeSongProcessorImplProvider = DoubleCheck.provider(new SwitchingProvider<LikeSongProcessorImpl>(singletonCImpl, 2));
+      this.userStateManagerProvider = DoubleCheck.provider(new SwitchingProvider<UserStateManager>(singletonCImpl, 3));
     }
 
     @Override
@@ -969,6 +974,9 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
 
           case 2: // me.wcy.music.service.likesong.LikeSongProcessorImpl 
           return (T) new LikeSongProcessorImpl(singletonCImpl.userServiceImplProvider.get());
+
+          case 3: // me.wcy.music.account.service.UserStateManager 
+          return (T) new UserStateManager(singletonCImpl.userServiceImplProvider.get());
 
           default: throw new AssertionError(id);
         }

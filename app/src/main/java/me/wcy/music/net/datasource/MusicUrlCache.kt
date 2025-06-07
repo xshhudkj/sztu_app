@@ -1,8 +1,7 @@
 package me.wcy.music.net.datasource
 
 import android.util.LruCache
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import me.wcy.music.discover.DiscoverApi
 import me.wcy.music.storage.preference.ConfigPreferences
 import me.wcy.music.utils.VipUtils
@@ -24,11 +23,11 @@ object MusicUrlCache {
         val trialEndTime: Long = 0L        // 试听终点时间（毫秒）
     )
     
-    // LRU缓存，最多缓存100个URL
-    private val urlCache = LruCache<String, CachedUrl>(100)
-    
-    // 缓存有效期：20分钟（网易云音乐URL通常有效期为20分钟）
-    private const val CACHE_DURATION = 20 * 60 * 1000L
+    // LRU缓存，增加缓存容量提高命中率
+    private val urlCache = LruCache<String, CachedUrl>(200)
+
+    // 缓存有效期：延长到30分钟，减少重复网络请求
+    private const val CACHE_DURATION = 30 * 60 * 1000L
     
     // 预加载队列，用于后台预加载下一首歌曲的URL
     private val preloadQueue = mutableSetOf<Long>()
@@ -116,13 +115,20 @@ object MusicUrlCache {
     }
     
     /**
-     * 批量预加载URL
-     * 用于播放列表场景，预加载接下来的几首歌曲
+     * 批量预加载URL - 优化版本
+     * 用于播放列表场景，智能预加载接下来的几首歌曲
+     * 使用并发预加载提高效率
      */
-    suspend fun preloadUrls(songIds: List<Pair<Long, Int>>, maxCount: Int = 3) = withContext(Dispatchers.IO) {
-        songIds.take(maxCount).forEach { (songId, fee) ->
-            preloadUrl(songId, fee)
-        }
+    suspend fun preloadUrls(songIds: List<Pair<Long, Int>>, maxCount: Int = 2) = withContext(Dispatchers.IO) {
+        // 减少预加载数量到2首，避免过度预加载影响当前播放
+        val songsToPreload = songIds.take(maxCount)
+
+        // 并发预加载，提高效率
+        songsToPreload.map { (songId, fee) ->
+            async {
+                preloadUrl(songId, fee)
+            }
+        }.awaitAll()
     }
     
     /**

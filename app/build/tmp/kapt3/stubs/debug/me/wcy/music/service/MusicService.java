@@ -88,9 +88,9 @@ public final class MusicService extends androidx.media3.session.MediaSessionServ
     }
     
     /**
-     * 创建现代音乐流媒体优化的LoadControl配置
-     * 基于ExoPlayer最佳实践，针对音乐播放场景优化
-     * 参考：Akamai、Pinterest等公司的音乐流媒体优化经验
+     * 创建极速启动优化的LoadControl配置
+     * 基于ExoPlayer最佳实践，专门针对快速播放启动优化
+     * 目标：实现3秒内播放启动，优先响应速度而非缓存深度
      */
     private final androidx.media3.exoplayer.DefaultLoadControl createOptimizedLoadControl() {
         return null;

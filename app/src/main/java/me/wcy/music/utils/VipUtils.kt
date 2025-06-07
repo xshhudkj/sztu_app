@@ -4,15 +4,20 @@ import androidx.media3.common.MediaItem
 
 /**
  * VIP功能工具类
- * 简化的VIP功能实现，基于现有的歌曲数据
- * 
+ * 基于真实API数据的VIP功能实现
+ *
  * 功能说明：
  * 1. 检查歌曲是否为VIP歌曲（基于fee字段）
- * 2. 检查用户VIP状态（目前模拟为非VIP）
+ * 2. 检查用户VIP状态（基于真实的VIP API数据）
  * 3. 计算试听限制相关信息
  * 4. 提供试听终点检查功能
  */
 object VipUtils {
+
+    /**
+     * VIP状态提供者，用于获取当前用户的VIP状态
+     */
+    private var vipStatusProvider: (() -> Boolean)? = null
     
     /**
      * 试听时长：30秒
@@ -69,14 +74,19 @@ object VipUtils {
     }
     
     /**
+     * 设置VIP状态提供者
+     * 由UserStateManager调用，提供真实的VIP状态
+     */
+    fun setVipStatusProvider(provider: () -> Boolean) {
+        vipStatusProvider = provider
+    }
+
+    /**
      * 检查当前用户是否为VIP
-     * TODO: 这里需要根据实际的用户VIP状态来判断
-     * 目前返回false，表示非VIP用户
+     * 基于真实的VIP API数据判断
      */
     fun isUserVip(): Boolean {
-        // TODO: 实际项目中应该通过API获取真实的VIP状态
-        // 可以通过 /vip/info 或 /vip/info/v2 接口获取
-        return false
+        return vipStatusProvider?.invoke() ?: false
     }
     
     /**

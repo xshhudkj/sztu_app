@@ -29,9 +29,9 @@ object OnlineMusicUriFetcher {
         val taskKey = "$songId-$fee"
 
         return try {
-            // 使用超时的runBlocking，避免无限等待
+            // 优化：减少超时时间，使用更激进的策略提高响应速度
             runBlocking {
-                withTimeout(10_000) { // 10秒超时
+                withTimeout(5_000) { // 减少到5秒超时，快速失败策略
                     // 检查是否已有正在进行的获取任务
                     val existingTask = fetchingTasks[taskKey]
                     if (existingTask != null && existingTask.isActive) {
@@ -39,8 +39,8 @@ object OnlineMusicUriFetcher {
                         return@withTimeout existingTask.await()
                     }
 
-                    // 创建新的获取任务
-                    val fetchTask = fetchScope.async {
+                    // 创建新的获取任务，使用IO调度器优化
+                    val fetchTask = fetchScope.async(Dispatchers.IO) {
                         fetchUrlInternal(songId, fee)
                     }
 

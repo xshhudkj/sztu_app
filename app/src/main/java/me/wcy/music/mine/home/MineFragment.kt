@@ -1,6 +1,7 @@
 package me.wcy.music.mine.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -28,6 +29,7 @@ import top.wangchenyan.common.widget.decoration.SpacingDecoration
 import top.wangchenyan.common.widget.dialog.BottomItemsDialogBuilder
 import me.wcy.music.common.enableImmersiveMode
 import me.wcy.music.account.VipApi
+import me.wcy.music.account.service.UserStateManager
 import me.wcy.music.common.bean.VipInfoData
 import me.wcy.music.common.bean.UserLevelData
 import top.wangchenyan.common.net.apiCall
@@ -46,6 +48,9 @@ class MineFragment : BaseMusicFragment() {
     @Inject
     lateinit var userService: UserService
 
+    @Inject
+    lateinit var userStateManager: UserStateManager
+
     override fun getRootView(): View {
         return viewBinding.root
     }
@@ -58,7 +63,11 @@ class MineFragment : BaseMusicFragment() {
         initVipInfo()
         initLocalMusic()
         initPlaylist()
+        initSwipeRefresh()
         viewModel.updatePlaylistFromCache()
+
+        // 初始化用户状态管理器
+        userStateManager.init()
     }
 
     override fun onResume() {
@@ -121,6 +130,114 @@ class MineFragment : BaseMusicFragment() {
         // 初始状态隐藏所有标签
         viewBinding.tvVipLabel.visibility = android.view.View.GONE
         viewBinding.tvLevelLabel.visibility = android.view.View.GONE
+
+        // 监听用户详情变化
+        lifecycleScope.launch {
+            userStateManager.userDetail.collectLatest { userDetail ->
+                if (userDetail != null) {
+                    updateUserInfo(userDetail)
+                }
+            }
+        }
+
+        // 监听用户详情变化，更新VIP标签
+        lifecycleScope.launch {
+            userStateManager.userDetail.collectLatest { userDetail ->
+                if (userDetail != null) {
+                    updateVipLabelFromUserDetail(userDetail)
+                } else {
+                    viewBinding.tvVipLabel.visibility = android.view.View.GONE
+                }
+            }
+        }
+
+        // 监听用户详情变化，更新等级标签
+        lifecycleScope.launch {
+            userStateManager.userDetail.collectLatest { userDetail ->
+                if (userDetail != null) {
+                    updateLevelLabelFromUserDetail(userDetail)
+                } else {
+                    viewBinding.tvLevelLabel.visibility = android.view.View.GONE
+                }
+            }
+        }
+    }
+
+    /**
+     * 初始化下拉刷新功能
+     */
+    private fun initSwipeRefresh() {
+        viewBinding.swipeRefreshLayout.apply {
+            // 设置刷新颜色
+            setColorSchemeResources(
+                me.wcy.music.R.color.common_theme_color,
+                me.wcy.music.R.color.red_500,
+                me.wcy.music.R.color.red_700
+            )
+
+            // 设置刷新监听
+            setOnRefreshListener {
+                refreshUserInfo()
+            }
+        }
+
+        // 监听刷新状态
+        lifecycleScope.launch {
+            userStateManager.isRefreshing.collectLatest { isRefreshing ->
+                viewBinding.swipeRefreshLayout.isRefreshing = isRefreshing
+            }
+        }
+    }
+
+    /**
+     * 刷新用户信息
+     */
+    private fun refreshUserInfo() {
+        lifecycleScope.launch {
+            try {
+                val result = userStateManager.refreshUserState(forceRefresh = true)
+                when (result) {
+                    is UserStateManager.RefreshResult.Success -> {
+                        // 刷新成功，同时刷新播放列表
+                        viewModel.updatePlaylist()
+                    }
+                    is UserStateManager.RefreshResult.NotLoggedIn -> {
+                        // 用户未登录，不显示错误
+                    }
+                    is UserStateManager.RefreshResult.Failed -> {
+                        // 刷新失败，显示错误信息
+                        toast("刷新失败: ${result.message}")
+                    }
+                }
+            } catch (e: Exception) {
+                toast("刷新异常: ${e.message}")
+            }
+        }
+    }
+
+    /**
+     * 更新用户信息显示
+     * 根据用户详情数据更新头像、昵称等基本信息
+     */
+    private fun updateUserInfo(userDetail: me.wcy.music.account.bean.UserDetailData) {
+        userDetail.profile?.let { profile ->
+            // 更新用户昵称
+            viewBinding.tvNickName.text = profile.nickname
+
+            // 更新用户头像
+            profile.avatarUrl?.let { avatarUrl ->
+                // 使用Glide加载头像
+                com.bumptech.glide.Glide.with(this)
+                    .load(avatarUrl)
+                    .placeholder(me.wcy.music.R.drawable.ic_launcher_round)
+                    .error(me.wcy.music.R.drawable.ic_launcher_round)
+                    .circleCrop()
+                    .into(viewBinding.ivAvatar)
+            }
+
+            Log.d("MineFragment", "用户信息更新: 昵称=${profile.nickname}, 头像=${profile.avatarUrl}")
+            Log.d("MineFragment", "用户详情: 等级=${userDetail.level}, 听歌数=${userDetail.listenSongs}")
+        }
     }
 
     /**
@@ -159,7 +276,38 @@ class MineFragment : BaseMusicFragment() {
     }
 
     /**
-     * 更新VIP标签显示
+     * 基于用户详情更新VIP标签显示
+     * @param userDetail 用户详情数据
+     */
+    private fun updateVipLabelFromUserDetail(userDetail: me.wcy.music.account.bean.UserDetailData) {
+        userDetail.profile?.let { profile ->
+            val isVip = profile.vipType > 0
+            val vipTypeName = when (profile.vipType) {
+                0 -> ""
+                1 -> "VIP"
+                11 -> "黑胶VIP"
+                else -> if (profile.vipType > 0) "VIP" else ""
+            }
+
+            viewBinding.tvVipLabel.apply {
+                if (isVip && vipTypeName.isNotEmpty()) {
+                    visibility = android.view.View.VISIBLE
+                    text = vipTypeName
+                    setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
+                    // VIP用户显示现代化金色渐变标签
+                    setBackgroundResource(me.wcy.music.R.drawable.bg_vip_label_modern)
+
+                    Log.d("MineFragment", "VIP标签更新: vipType=${profile.vipType}, 显示文本=$vipTypeName")
+                } else {
+                    visibility = android.view.View.GONE
+                    Log.d("MineFragment", "非VIP用户，隐藏VIP标签: vipType=${profile.vipType}")
+                }
+            }
+        }
+    }
+
+    /**
+     * 更新VIP标签显示（保留原方法以兼容）
      * @param vipInfo VIP信息数据
      */
     private fun updateVipLabel(vipInfo: VipInfoData) {
@@ -180,7 +328,28 @@ class MineFragment : BaseMusicFragment() {
     }
 
     /**
-     * 更新等级标签显示
+     * 基于用户详情更新等级标签显示
+     * @param userDetail 用户详情数据
+     */
+    private fun updateLevelLabelFromUserDetail(userDetail: me.wcy.music.account.bean.UserDetailData) {
+        val level = userDetail.level ?: 0
+        if (level > 0) {
+            viewBinding.tvLevelLabel.apply {
+                visibility = android.view.View.VISIBLE
+                text = "Lv.$level"
+                setBackgroundResource(me.wcy.music.R.drawable.bg_level_label_modern)
+                setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
+
+                Log.d("MineFragment", "等级标签更新: level=$level")
+            }
+        } else {
+            viewBinding.tvLevelLabel.visibility = android.view.View.GONE
+            Log.d("MineFragment", "等级为0，隐藏等级标签")
+        }
+    }
+
+    /**
+     * 更新等级标签显示（保留原方法以兼容）
      * @param levelData 用户等级数据
      */
     private fun updateLevelLabel(levelData: UserLevelData) {

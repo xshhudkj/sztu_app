@@ -1,6 +1,7 @@
 package me.wcy.music.mine.home;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.View;
 import com.blankj.utilcode.util.SizeUtils;
 import dagger.hilt.android.AndroidEntryPoint;
@@ -19,6 +20,7 @@ import me.wcy.router.CRouter;
 import top.wangchenyan.common.widget.decoration.SpacingDecoration;
 import top.wangchenyan.common.widget.dialog.BottomItemsDialogBuilder;
 import me.wcy.music.account.VipApi;
+import me.wcy.music.account.service.UserStateManager;
 import me.wcy.music.common.bean.VipInfoData;
 import me.wcy.music.common.bean.UserLevelData;
 import javax.inject.Inject;
@@ -27,7 +29,7 @@ import javax.inject.Inject;
  * Created by wangchenyan.top on 2023/8/21.
  */
 @dagger.hilt.android.AndroidEntryPoint()
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000B\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\b\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\b\u0007\u0018\u00002\u00020\u0001:\u0001%B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u0014\u001a\u00020\u0015H\u0014J\b\u0010\u0016\u001a\u00020\u0017H\u0002J\b\u0010\u0018\u001a\u00020\u0017H\u0003J\b\u0010\u0019\u001a\u00020\u0017H\u0002J\b\u0010\u001a\u001a\u00020\u0017H\u0002J\b\u0010\u001b\u001a\u00020\u0017H\u0002J\b\u0010\u001c\u001a\u00020\u0017H\u0014J\b\u0010\u001d\u001a\u00020\u0017H\u0016J\u0010\u0010\u001e\u001a\u00020\u00172\u0006\u0010\u001f\u001a\u00020 H\u0002J\b\u0010!\u001a\u00020\u0017H\u0002J\u0010\u0010\"\u001a\u00020\u00172\u0006\u0010#\u001a\u00020$H\u0002R\u001e\u0010\u0003\u001a\u00020\u00048\u0006@\u0006X\u0087.\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0005\u0010\u0006\"\u0004\b\u0007\u0010\bR\u001b\u0010\t\u001a\u00020\n8BX\u0082\u0084\u0002\u00a2\u0006\f\n\u0004\b\r\u0010\u000e\u001a\u0004\b\u000b\u0010\fR\u001b\u0010\u000f\u001a\u00020\u00108BX\u0082\u0084\u0002\u00a2\u0006\f\n\u0004\b\u0013\u0010\u000e\u001a\u0004\b\u0011\u0010\u0012\u00a8\u0006&"}, d2 = {"Lme/wcy/music/mine/home/MineFragment;", "Lme/wcy/music/common/BaseMusicFragment;", "()V", "userService", "Lme/wcy/music/account/service/UserService;", "getUserService", "()Lme/wcy/music/account/service/UserService;", "setUserService", "(Lme/wcy/music/account/service/UserService;)V", "viewBinding", "Lme/wcy/music/databinding/FragmentMineBinding;", "getViewBinding", "()Lme/wcy/music/databinding/FragmentMineBinding;", "viewBinding$delegate", "Lkotlin/Lazy;", "viewModel", "Lme/wcy/music/mine/home/viewmodel/MineViewModel;", "getViewModel", "()Lme/wcy/music/mine/home/viewmodel/MineViewModel;", "viewModel$delegate", "getRootView", "Landroid/view/View;", "initLocalMusic", "", "initPlaylist", "initProfile", "initTitle", "initVipInfo", "onLazyCreate", "onResume", "updateLevelLabel", "levelData", "Lme/wcy/music/common/bean/UserLevelData;", "updateVipInfo", "updateVipLabel", "vipInfo", "Lme/wcy/music/common/bean/VipInfoData;", "ItemClickListener", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000R\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\n\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0007\u0018\u00002\u00020\u0001:\u00012B\u0005\u00a2\u0006\u0002\u0010\u0002J\b\u0010\u001a\u001a\u00020\u001bH\u0014J\b\u0010\u001c\u001a\u00020\u001dH\u0002J\b\u0010\u001e\u001a\u00020\u001dH\u0003J\b\u0010\u001f\u001a\u00020\u001dH\u0002J\b\u0010 \u001a\u00020\u001dH\u0002J\b\u0010!\u001a\u00020\u001dH\u0002J\b\u0010\"\u001a\u00020\u001dH\u0002J\b\u0010#\u001a\u00020\u001dH\u0014J\b\u0010$\u001a\u00020\u001dH\u0016J\b\u0010%\u001a\u00020\u001dH\u0002J\u0010\u0010&\u001a\u00020\u001d2\u0006\u0010\'\u001a\u00020(H\u0002J\u0010\u0010)\u001a\u00020\u001d2\u0006\u0010*\u001a\u00020+H\u0002J\u0010\u0010,\u001a\u00020\u001d2\u0006\u0010*\u001a\u00020+H\u0002J\b\u0010-\u001a\u00020\u001dH\u0002J\u0010\u0010.\u001a\u00020\u001d2\u0006\u0010/\u001a\u000200H\u0002J\u0010\u00101\u001a\u00020\u001d2\u0006\u0010*\u001a\u00020+H\u0002R\u001e\u0010\u0003\u001a\u00020\u00048\u0006@\u0006X\u0087.\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u0005\u0010\u0006\"\u0004\b\u0007\u0010\bR\u001e\u0010\t\u001a\u00020\n8\u0006@\u0006X\u0087.\u00a2\u0006\u000e\n\u0000\u001a\u0004\b\u000b\u0010\f\"\u0004\b\r\u0010\u000eR\u001b\u0010\u000f\u001a\u00020\u00108BX\u0082\u0084\u0002\u00a2\u0006\f\n\u0004\b\u0013\u0010\u0014\u001a\u0004\b\u0011\u0010\u0012R\u001b\u0010\u0015\u001a\u00020\u00168BX\u0082\u0084\u0002\u00a2\u0006\f\n\u0004\b\u0019\u0010\u0014\u001a\u0004\b\u0017\u0010\u0018\u00a8\u00063"}, d2 = {"Lme/wcy/music/mine/home/MineFragment;", "Lme/wcy/music/common/BaseMusicFragment;", "()V", "userService", "Lme/wcy/music/account/service/UserService;", "getUserService", "()Lme/wcy/music/account/service/UserService;", "setUserService", "(Lme/wcy/music/account/service/UserService;)V", "userStateManager", "Lme/wcy/music/account/service/UserStateManager;", "getUserStateManager", "()Lme/wcy/music/account/service/UserStateManager;", "setUserStateManager", "(Lme/wcy/music/account/service/UserStateManager;)V", "viewBinding", "Lme/wcy/music/databinding/FragmentMineBinding;", "getViewBinding", "()Lme/wcy/music/databinding/FragmentMineBinding;", "viewBinding$delegate", "Lkotlin/Lazy;", "viewModel", "Lme/wcy/music/mine/home/viewmodel/MineViewModel;", "getViewModel", "()Lme/wcy/music/mine/home/viewmodel/MineViewModel;", "viewModel$delegate", "getRootView", "Landroid/view/View;", "initLocalMusic", "", "initPlaylist", "initProfile", "initSwipeRefresh", "initTitle", "initVipInfo", "onLazyCreate", "onResume", "refreshUserInfo", "updateLevelLabel", "levelData", "Lme/wcy/music/common/bean/UserLevelData;", "updateLevelLabelFromUserDetail", "userDetail", "Lme/wcy/music/account/bean/UserDetailData;", "updateUserInfo", "updateVipInfo", "updateVipLabel", "vipInfo", "Lme/wcy/music/common/bean/VipInfoData;", "updateVipLabelFromUserDetail", "ItemClickListener", "app_debug"})
 public final class MineFragment extends me.wcy.music.common.BaseMusicFragment {
     @org.jetbrains.annotations.NotNull()
     private final kotlin.Lazy viewBinding$delegate = null;
@@ -35,6 +37,8 @@ public final class MineFragment extends me.wcy.music.common.BaseMusicFragment {
     private final kotlin.Lazy viewModel$delegate = null;
     @javax.inject.Inject()
     public me.wcy.music.account.service.UserService userService;
+    @javax.inject.Inject()
+    public me.wcy.music.account.service.UserStateManager userStateManager;
     
     public MineFragment() {
         super();
@@ -55,6 +59,15 @@ public final class MineFragment extends me.wcy.music.common.BaseMusicFragment {
     
     public final void setUserService(@org.jetbrains.annotations.NotNull()
     me.wcy.music.account.service.UserService p0) {
+    }
+    
+    @org.jetbrains.annotations.NotNull()
+    public final me.wcy.music.account.service.UserStateManager getUserStateManager() {
+        return null;
+    }
+    
+    public final void setUserStateManager(@org.jetbrains.annotations.NotNull()
+    me.wcy.music.account.service.UserStateManager p0) {
     }
     
     @java.lang.Override()
@@ -85,6 +98,25 @@ public final class MineFragment extends me.wcy.music.common.BaseMusicFragment {
     }
     
     /**
+     * 初始化下拉刷新功能
+     */
+    private final void initSwipeRefresh() {
+    }
+    
+    /**
+     * 刷新用户信息
+     */
+    private final void refreshUserInfo() {
+    }
+    
+    /**
+     * 更新用户信息显示
+     * 根据用户详情数据更新头像、昵称等基本信息
+     */
+    private final void updateUserInfo(me.wcy.music.account.bean.UserDetailData userDetail) {
+    }
+    
+    /**
      * 更新VIP信息显示
      * 获取并显示用户的VIP状态和等级信息
      */
@@ -92,14 +124,28 @@ public final class MineFragment extends me.wcy.music.common.BaseMusicFragment {
     }
     
     /**
-     * 更新VIP标签显示
+     * 基于用户详情更新VIP标签显示
+     * @param userDetail 用户详情数据
+     */
+    private final void updateVipLabelFromUserDetail(me.wcy.music.account.bean.UserDetailData userDetail) {
+    }
+    
+    /**
+     * 更新VIP标签显示（保留原方法以兼容）
      * @param vipInfo VIP信息数据
      */
     private final void updateVipLabel(me.wcy.music.common.bean.VipInfoData vipInfo) {
     }
     
     /**
-     * 更新等级标签显示
+     * 基于用户详情更新等级标签显示
+     * @param userDetail 用户详情数据
+     */
+    private final void updateLevelLabelFromUserDetail(me.wcy.music.account.bean.UserDetailData userDetail) {
+    }
+    
+    /**
+     * 更新等级标签显示（保留原方法以兼容）
      * @param levelData 用户等级数据
      */
     private final void updateLevelLabel(me.wcy.music.common.bean.UserLevelData levelData) {

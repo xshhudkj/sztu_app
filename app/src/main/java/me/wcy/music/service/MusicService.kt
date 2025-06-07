@@ -151,28 +151,28 @@ class MusicService : MediaSessionService() {
     }
 
     /**
-     * 创建现代音乐流媒体优化的LoadControl配置
-     * 基于ExoPlayer最佳实践，针对音乐播放场景优化
-     * 参考：Akamai、Pinterest等公司的音乐流媒体优化经验
+     * 创建极速启动优化的LoadControl配置
+     * 基于ExoPlayer最佳实践，专门针对快速播放启动优化
+     * 目标：实现3秒内播放启动，优先响应速度而非缓存深度
      */
     private fun createOptimizedLoadControl(): DefaultLoadControl {
         return DefaultLoadControl.Builder()
-            // 现代音乐流媒体缓存策略：快速启动 + 适度缓存
+            // 极速启动缓存策略：最小化启动延迟
             .setBufferDurationsMs(
-                // 最小缓存：3秒（保证基本播放连续性，避免频繁重新缓冲）
-                3_000,
-                // 最大缓存：20秒（音乐流媒体不需要过长缓存，避免内存浪费）
-                20_000,
-                // 起播缓存：1.5秒（现代音乐应用标准，快速启动体验）
-                1_500,
-                // 重新缓冲后起播：2秒（网络恢复后快速恢复播放）
-                2_000
+                // 最小缓存：2秒（减少到最低可用值，保证基本连续性）
+                2_000,
+                // 最大缓存：15秒（进一步减少，避免过度缓存影响启动速度）
+                15_000,
+                // 起播缓存：1秒（激进的快速启动策略）
+                1_000,
+                // 重新缓冲后起播：1.5秒（快速恢复播放）
+                1_500
             )
-            // 目标缓存字节数：3MB（音频文件相对较小，3MB足够缓存多首歌曲片段）
-            .setTargetBufferBytes(3 * 1024 * 1024)
-            // 分配器配置：64KB块大小，适合音频流的特点，提高内存利用效率
-            .setAllocator(DefaultAllocator(true, 64 * 1024))
-            // 优先时间阈值：当缓存时间不足时优先保证时间而非大小
+            // 目标缓存字节数：2MB（减少缓存大小，优先启动速度）
+            .setTargetBufferBytes(2 * 1024 * 1024)
+            // 分配器配置：32KB块大小，更小的块提高分配效率
+            .setAllocator(DefaultAllocator(true, 32 * 1024))
+            // 优先时间阈值：激进的时间优先策略
             .setPrioritizeTimeOverSizeThresholds(true)
             .build()
     }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import java.lang.NullPointerException;
@@ -50,6 +51,9 @@ public final class FragmentMineBinding implements ViewBinding {
   public final RecyclerView rvMyPlaylist;
 
   @NonNull
+  public final SwipeRefreshLayout swipeRefreshLayout;
+
+  @NonNull
   public final TextView tvCollectPlaylist;
 
   @NonNull
@@ -69,8 +73,9 @@ public final class FragmentMineBinding implements ViewBinding {
       @NonNull LinearLayout llLikePlaylist, @NonNull LinearLayout llMyPlaylist,
       @NonNull LinearLayout localMusic, @NonNull RecyclerView rvCollectPlaylist,
       @NonNull RecyclerView rvLikePlaylist, @NonNull RecyclerView rvMyPlaylist,
-      @NonNull TextView tvCollectPlaylist, @NonNull TextView tvLevelLabel,
-      @NonNull TextView tvMyPlaylist, @NonNull TextView tvNickName, @NonNull TextView tvVipLabel) {
+      @NonNull SwipeRefreshLayout swipeRefreshLayout, @NonNull TextView tvCollectPlaylist,
+      @NonNull TextView tvLevelLabel, @NonNull TextView tvMyPlaylist, @NonNull TextView tvNickName,
+      @NonNull TextView tvVipLabel) {
     this.rootView = rootView;
     this.flProfile = flProfile;
     this.ivAvatar = ivAvatar;
@@ -81,6 +86,7 @@ public final class FragmentMineBinding implements ViewBinding {
     this.rvCollectPlaylist = rvCollectPlaylist;
     this.rvLikePlaylist = rvLikePlaylist;
     this.rvMyPlaylist = rvMyPlaylist;
+    this.swipeRefreshLayout = swipeRefreshLayout;
     this.tvCollectPlaylist = tvCollectPlaylist;
     this.tvLevelLabel = tvLevelLabel;
     this.tvMyPlaylist = tvMyPlaylist;
@@ -169,6 +175,12 @@ public final class FragmentMineBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.swipeRefreshLayout;
+      SwipeRefreshLayout swipeRefreshLayout = ViewBindings.findChildViewById(rootView, id);
+      if (swipeRefreshLayout == null) {
+        break missingId;
+      }
+
       id = R.id.tvCollectPlaylist;
       TextView tvCollectPlaylist = ViewBindings.findChildViewById(rootView, id);
       if (tvCollectPlaylist == null) {
@@ -201,8 +213,8 @@ public final class FragmentMineBinding implements ViewBinding {
 
       return new FragmentMineBinding((LinearLayout) rootView, flProfile, ivAvatar,
           llCollectPlaylist, llLikePlaylist, llMyPlaylist, localMusic, rvCollectPlaylist,
-          rvLikePlaylist, rvMyPlaylist, tvCollectPlaylist, tvLevelLabel, tvMyPlaylist, tvNickName,
-          tvVipLabel);
+          rvLikePlaylist, rvMyPlaylist, swipeRefreshLayout, tvCollectPlaylist, tvLevelLabel,
+          tvMyPlaylist, tvNickName, tvVipLabel);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

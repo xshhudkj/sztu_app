@@ -6,6 +6,7 @@ import top.wangchenyan.common.utils.GsonUtils
 import top.wangchenyan.common.utils.ServerTime
 import me.wcy.music.common.bean.VipInfoData
 import me.wcy.music.common.bean.UserLevelData
+import me.wcy.music.account.bean.UserDetailData
 import me.wcy.music.net.HttpClient
 import me.wcy.music.storage.preference.ConfigPreferences
 import retrofit2.Retrofit
@@ -46,6 +47,16 @@ interface VipApi {
     suspend fun getUserLevel(
         @Query("timestamp") timestamp: Long = ServerTime.currentTimeMillis()
     ): UserLevelData
+
+    /**
+     * 获取用户详情
+     * @param uid 用户ID
+     */
+    @POST("user/detail")
+    suspend fun getUserDetail(
+        @Query("uid") uid: Long,
+        @Query("timestamp") timestamp: Long = ServerTime.currentTimeMillis()
+    ): UserDetailData
 
     companion object {
         private val api: VipApi by lazy {
