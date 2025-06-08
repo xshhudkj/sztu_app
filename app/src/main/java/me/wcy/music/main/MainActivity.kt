@@ -1,5 +1,6 @@
 package me.wcy.music.main
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -21,11 +22,13 @@ import me.wcy.music.common.BaseMusicActivity
 import me.wcy.music.common.ImmersiveDialogHelper
 import me.wcy.music.consts.RoutePath
 import me.wcy.music.databinding.ActivityMainBinding
+// import me.wcy.music.databinding.ActivitySplashBinding
 import me.wcy.music.databinding.NavigationHeaderBinding
 import me.wcy.music.databinding.TabItemBinding
 import me.wcy.music.service.MusicService
 import me.wcy.music.service.PlayServiceModule
 import me.wcy.music.service.PlayServiceModule.playerController
+import me.wcy.music.splash.SplashActivity
 import me.wcy.music.utils.QuitTimer
 import me.wcy.music.utils.TimeUtils
 import me.wcy.router.CRouter
@@ -34,6 +37,7 @@ import me.wcy.music.common.showImmersiveConfirmDialog
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.widget.pager.CustomTabPager
+// 启动页相关导入已移除
 import javax.inject.Inject
 
 /**
@@ -53,28 +57,26 @@ class MainActivity : BaseMusicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        PlayServiceModule.isPlayerReady.observe(this) { isReady ->
-            if (isReady) {
-                setContentView(viewBinding.root)
+        setContentView(viewBinding.root)
 
-                CustomTabPager(lifecycle, supportFragmentManager, viewBinding.viewPager).apply {
-                    NaviTab.ALL.onEach {
-                        val tabItem = getTabItem(it.icon, it.name)
-                        addFragment(it.newFragment(), tabItem.root)
-                    }
-                    setScrollable(false)
-                    setup()
-                }
-
-                initDrawer()
-                parseIntent()
+        CustomTabPager(lifecycle, supportFragmentManager, viewBinding.viewPager).apply {
+            NaviTab.ALL.onEach {
+                val tabItem = getTabItem(it.icon, it.name)
+                addFragment(it.newFragment(), tabItem.root)
             }
+            setScrollable(false)
+            setup()
         }
+
+        initDrawer()
+        parseIntent()
 
         configWindowInsets {
             navBarColor = getColorEx(R.color.tab_bg)
         }
     }
+
+
 
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
@@ -92,8 +94,18 @@ class MainActivity : BaseMusicActivity() {
         viewBinding.navigationView.setNavigationItemSelectedListener(onMenuSelectListener)
         lifecycleScope.launch {
             userService.profile.collectLatest { profile ->
+                val menuLogin = viewBinding.navigationView.menu.findItem(R.id.action_login)
                 val menuLogout = viewBinding.navigationView.menu.findItem(R.id.action_logout)
-                menuLogout.isVisible = profile != null
+                
+                if (profile != null) {
+                    // 已登录状态：显示退出登录，隐藏立即登录
+                    menuLogin.isVisible = false
+                    menuLogout.isVisible = true
+                } else {
+                    // 未登录状态：显示立即登录，隐藏退出登录
+                    menuLogin.isVisible = true
+                    menuLogout.isVisible = false
+                }
             }
         }
     }
@@ -134,6 +146,14 @@ class MainActivity : BaseMusicActivity() {
 
                 R.id.action_timer -> {
                     timerDialog()
+                    return true
+                }
+
+                R.id.action_login -> {
+                    // 跳转到登录页面
+                    CRouter.with(this@MainActivity)
+                        .url(RoutePath.LOGIN)
+                        .start()
                     return true
                 }
 
@@ -200,7 +220,17 @@ class MainActivity : BaseMusicActivity() {
     private fun logout() {
         showImmersiveConfirmDialog(message = "确认退出登录？") {
             lifecycleScope.launch {
-                userService.logout()
+                try {
+                    userService.logout()
+                    toast("已退出登录")
+                    // 跳转到登录页面
+                    CRouter.with(this@MainActivity)
+                        .url(RoutePath.LOGIN)
+                        .start()
+                    finish() // 关闭当前MainActivity
+                } catch (e: Exception) {
+                    toast("退出登录异常：${e.message}")
+                }
             }
         }
     }

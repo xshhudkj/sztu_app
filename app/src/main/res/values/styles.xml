@@ -43,6 +43,37 @@
         <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
     </style>
 
+    <!-- 启动页专用主题 - 完全禁用系统默认启动画面 -->
+    <style name="AppTheme.CarImmersive.Splash" parent="AppTheme.CarImmersive">
+        <!-- 设置启动页背景为渐变色，避免白屏 -->
+        <item name="android:windowBackground">@drawable/splash_gradient</item>
+
+        <!-- 完全禁用系统启动窗口预览 -->
+        <item name="android:windowDisablePreview">true</item>
+
+        <!-- 禁用启动时的系统动画和透明效果 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+
+        <!-- 确保无标题栏和系统装饰 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Android 12+ Splash Screen API 配置 -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@drawable/splash_gradient</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@null</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">0</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@android:color/transparent</item>
+
+        <!-- 强制禁用系统启动画面相关属性 -->
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <!-- 确保窗口立即可见 -->
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+    </style>
+
     <!-- 播放页面专用主题，带滑动动画 -->
     <style name="AppTheme.CarImmersive.Playing" parent="AppTheme.CarImmersive">
         <item name="android:windowAnimationStyle">@style/AnimationPlaying</item>

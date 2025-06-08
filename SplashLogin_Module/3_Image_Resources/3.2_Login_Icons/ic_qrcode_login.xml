@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- 简化而加粗的二维码图标，更易于车载环境识别 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M3,3h7v7h-7z M5,5v3h3v-3h-3z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M14,3h7v7h-7z M16,5v3h3v-3h-3z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M3,14h7v7h-7z M5,16v3h3v-3h-3z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M14,14h7v7h-7z"/>
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,16h3v3h-3z"/>
+</vector>

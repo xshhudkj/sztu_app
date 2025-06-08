@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="24dp"
+    android:background="@drawable/sakura_dialog_background">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫码登录"
+        android:textColor="@color/sakura_text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_marginTop="8dp"
+        android:text="使用网易云音乐APP扫码"
+        android:textColor="@color/sakura_text_secondary"
+        android:textSize="14sp"/>
+
+    <FrameLayout
+        android:id="@+id/qr_container"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_below="@+id/tv_subtitle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:background="@color/color_white"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/qr_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"/>
+
+        <ProgressBar
+            android:id="@+id/qr_loading"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/sakura_accent"/>
+
+        <LinearLayout
+            android:id="@+id/qr_error_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/qr_error_icon"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_dialog_alert"
+                android:tint="@color/sakura_accent"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/qr_error_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:text="二维码加载失败"
+                android:textColor="@color/sakura_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/btn_reload_qr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sakura_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="重新加载"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:elevation="2dp"
+                android:minHeight="48dp"/>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- 将状态提示移到二维码容器外部，避免遮挡 -->
+    <TextView
+        android:id="@+id/qr_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qr_container"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="正在加载二维码..."
+        android:textColor="@color/sakura_accent"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_tip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/qr_status"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="扫描二维码登录"
+        android:textColor="@color/sakura_text_secondary"
+        android:textSize="13sp"/>
+
+    <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tip"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/sakura_button_secondary"
+        android:text="取消"
+        android:textColor="@android:color/white"
+        android:minHeight="48dp"/>
+
+</RelativeLayout>

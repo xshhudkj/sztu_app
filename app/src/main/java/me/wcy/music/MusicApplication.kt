@@ -1,8 +1,12 @@
 package me.wcy.music
 
+import android.app.Activity
 import android.app.Application
 import android.content.ComponentName
+import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import androidx.media3.session.MediaController
 import androidx.media3.session.SessionToken
 import com.blankj.utilcode.util.ActivityUtils
@@ -35,6 +39,11 @@ class MusicApplication : Application() {
     @Inject
     lateinit var likeSongProcessor: LikeSongProcessor
 
+    companion object {
+        private const val PREFS_NAME = "app_launch_state"
+        private const val KEY_LAST_PAUSE_TIME = "last_pause_time"
+    }
+
     override fun onCreate() {
         super.onCreate()
 
@@ -60,6 +69,9 @@ class MusicApplication : Application() {
         initCRouter()
         darkModeService.init()
         likeSongProcessor.init()
+        
+        // 注册应用生命周期监听，用于判断启动页显示逻辑
+        registerActivityLifecycleCallbacks(AppLifecycleCallbacks())
 
         val sessionToken =
             SessionToken(this, ComponentName(this, MusicService::class.java))
@@ -90,5 +102,46 @@ class MusicApplication : Application() {
                 }
                 .build()
         )
+    }
+
+    /**
+     * 应用生命周期监听器
+     * 用于记录应用进入后台的时间，判断是否需要显示启动页
+     */
+    inner class AppLifecycleCallbacks : ActivityLifecycleCallbacks {
+        private var activityReferences = 0
+        private var isActivityChangingConfigurations = false
+
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {}
+
+        override fun onActivityStarted(activity: Activity) {
+            if (++activityReferences == 1 && !isActivityChangingConfigurations) {
+                // 应用从后台回到前台
+                // 这里不需要特殊处理，启动页逻辑在SplashActivity中处理
+            }
+        }
+
+        override fun onActivityResumed(activity: Activity) {}
+
+        override fun onActivityPaused(activity: Activity) {}
+
+        override fun onActivityStopped(activity: Activity) {
+            isActivityChangingConfigurations = activity.isChangingConfigurations
+            if (--activityReferences == 0 && !isActivityChangingConfigurations) {
+                // 应用进入后台，记录时间
+                recordAppPauseTime()
+            }
+        }
+
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
+
+        override fun onActivityDestroyed(activity: Activity) {}
+
+        private fun recordAppPauseTime() {
+            val prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+            prefs.edit()
+                .putLong(KEY_LAST_PAUSE_TIME, System.currentTimeMillis())
+                .apply()
+        }
     }
 }

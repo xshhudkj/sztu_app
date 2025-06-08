@@ -51,6 +51,10 @@ class MineFragment : BaseMusicFragment() {
     @Inject
     lateinit var userStateManager: UserStateManager
 
+    // 刷新间隔控制 - 5分钟内不重复自动刷新
+    private var lastAutoRefreshTime = 0L
+    private val AUTO_REFRESH_INTERVAL = 5 * 60 * 1000L // 5分钟
+
     override fun getRootView(): View {
         return viewBinding.root
     }
@@ -72,6 +76,31 @@ class MineFragment : BaseMusicFragment() {
 
     override fun onResume() {
         super.onResume()
+        
+        // 智能刷新用户信息
+        if (userService.isLogin()) {
+            val currentTime = System.currentTimeMillis()
+            val shouldAutoRefresh = when {
+                // 首次进入（从未刷新过）
+                lastAutoRefreshTime == 0L -> true
+                // 超过间隔时间
+                currentTime - lastAutoRefreshTime > AUTO_REFRESH_INTERVAL -> true
+                // 用户信息为空（可能登录状态刚变化）
+                userStateManager.userDetail.value == null -> true
+                // 其他情况不自动刷新
+                else -> false
+            }
+            
+            if (shouldAutoRefresh) {
+                android.util.Log.d("MineFragment", "触发自动刷新用户信息")
+                refreshUserInfo()
+                lastAutoRefreshTime = currentTime
+            } else {
+                android.util.Log.d("MineFragment", "跳过自动刷新，距离上次刷新${(currentTime - lastAutoRefreshTime) / 1000}秒")
+            }
+        }
+        
+        // 刷新播放列表（保持原有逻辑）
         viewModel.updatePlaylist()
     }
 
@@ -102,22 +131,104 @@ class MineFragment : BaseMusicFragment() {
     private fun initProfile() {
         lifecycleScope.launch {
             userService.profile.collectLatest { profile ->
-                viewBinding.ivAvatar.loadAvatar(profile?.avatarUrl)
+                // 强制重新加载头像，确保显示最新头像
+                if (profile?.avatarUrl != null) {
+                    com.bumptech.glide.Glide.with(this@MineFragment)
+                        .load(profile.avatarUrl)
+                        .placeholder(me.wcy.music.R.drawable.ic_launcher_round)
+                        .error(me.wcy.music.R.drawable.ic_launcher_round)
+                        .skipMemoryCache(true) // 跳过内存缓存
+                        .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.NONE) // 跳过磁盘缓存
+                        .circleCrop()
+                        .into(viewBinding.ivAvatar)
+                } else {
+                    viewBinding.ivAvatar.setImageResource(me.wcy.music.R.drawable.ic_launcher_round)
+                }
+                
                 viewBinding.tvNickName.text = profile?.nickname
+                
+                // 设置头像区域点击事件
                 viewBinding.flProfile.setOnClickListener {
                     if (ApiDomainDialog.checkApiDomain(requireActivity())) {
                         if (userService.isLogin().not()) {
+                            // 未登录时跳转到登录页面
                             CRouter.with(requireActivity())
                                 .url(RoutePath.LOGIN)
                                 .start()
+                        } else {
+                            // 已登录时显示用户操作菜单
+                            showUserMenu()
                         }
                     }
                 }
 
-                // 用户登录后更新VIP信息
+                // 用户登录后立即更新VIP信息
                 if (profile != null && userService.isLogin()) {
                     updateVipInfo()
+                    // 立即刷新用户详细信息
+                    lifecycleScope.launch {
+                        userStateManager.refreshUserState(forceRefresh = true)
+                    }
                 }
+            }
+        }
+    }
+
+    /**
+     * 显示用户操作菜单
+     * 包含退出登录等功能
+     */
+    private fun showUserMenu() {
+        val dialog = BottomItemsDialogBuilder(requireActivity())
+            .items(listOf("退出登录"))
+            .onClickListener { dialog, which ->
+                when (which) {
+                    0 -> showLogoutConfirmDialog()
+                }
+            }
+            .build()
+
+        // 应用全屏沉浸式模式
+        dialog.enableImmersiveMode()
+        dialog.show()
+    }
+
+    /**
+     * 显示退出登录确认对话框
+     */
+    private fun showLogoutConfirmDialog() {
+        val dialog = androidx.appcompat.app.AlertDialog.Builder(requireActivity())
+            .setTitle("退出登录")
+            .setMessage("确定要退出登录吗？")
+            .setPositiveButton("确定") { _, _ ->
+                performLogout()
+            }
+            .setNegativeButton("取消", null)
+            .create()
+
+        // 应用全屏沉浸式模式
+        dialog.enableImmersiveMode()
+        dialog.show()
+    }
+
+    /**
+     * 执行退出登录操作
+     */
+    private fun performLogout() {
+        lifecycleScope.launch {
+            try {
+                showLoading()
+                userService.logout()
+                dismissLoading()
+                
+                toast("已退出登录")
+                // 跳转到登录页面
+                CRouter.with(requireActivity())
+                    .url(RoutePath.LOGIN)
+                    .start()
+            } catch (e: Exception) {
+                dismissLoading()
+                toast("退出登录异常：${e.message}")
             }
         }
     }
@@ -177,7 +288,7 @@ class MineFragment : BaseMusicFragment() {
 
             // 设置刷新监听
             setOnRefreshListener {
-                refreshUserInfo()
+                refreshUserInfo(isManualRefresh = true)
             }
         }
 
@@ -191,28 +302,103 @@ class MineFragment : BaseMusicFragment() {
 
     /**
      * 刷新用户信息
+     * 完整刷新用户头像、昵称、VIP状态、等级等所有信息
+     * @param isManualRefresh 是否为手动刷新（如下拉刷新），手动刷新会忽略时间间隔限制
      */
-    private fun refreshUserInfo() {
+    private fun refreshUserInfo(isManualRefresh: Boolean = false) {
+        if (!userService.isLogin()) {
+            return
+        }
+        
+        // 更新刷新时间（只有在实际执行刷新时才更新）
+        if (isManualRefresh) {
+            lastAutoRefreshTime = System.currentTimeMillis()
+        }
+        
         lifecycleScope.launch {
             try {
+                // 强制刷新用户状态，确保获取最新信息
                 val result = userStateManager.refreshUserState(forceRefresh = true)
                 when (result) {
                     is UserStateManager.RefreshResult.Success -> {
-                        // 刷新成功，同时刷新播放列表
+                        // 刷新成功后，手动触发用户信息更新
+                        userStateManager.userDetail.value?.let { userDetail ->
+                            updateUserInfo(userDetail)
+                            updateVipLabelFromUserDetail(userDetail)
+                            updateLevelLabelFromUserDetail(userDetail)
+                        }
+                        
+                        // 同时刷新播放列表
                         viewModel.updatePlaylist()
+                        
+                        // 刷新用户基本Profile信息
+                        refreshUserProfile()
+                        
+                        android.util.Log.d("MineFragment", "用户信息刷新完成${if (isManualRefresh) "（手动刷新）" else "（自动刷新）"}")
                     }
                     is UserStateManager.RefreshResult.NotLoggedIn -> {
-                        // 用户未登录，不显示错误
+                        // 用户未登录，清空显示
+                        clearUserDisplay()
                     }
                     is UserStateManager.RefreshResult.Failed -> {
-                        // 刷新失败，显示错误信息
-                        toast("刷新失败: ${result.message}")
+                        // 刷新失败，显示错误信息（可选）
+                        if (isManualRefresh) {
+                            // 手动刷新失败时提示用户
+                            android.widget.Toast.makeText(requireContext(), "刷新失败，请稍后重试", android.widget.Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             } catch (e: Exception) {
-                toast("刷新异常: ${e.message}")
+                // 异常处理，不显示错误给用户，避免干扰体验
+                android.util.Log.e("MineFragment", "刷新用户信息异常", e)
+                if (isManualRefresh) {
+                    android.widget.Toast.makeText(requireContext(), "刷新异常，请稍后重试", android.widget.Toast.LENGTH_SHORT).show()
+                }
             }
         }
+    }
+
+    /**
+     * 刷新用户基本Profile信息
+     * 确保头像和昵称是最新的
+     */
+    private fun refreshUserProfile() {
+        lifecycleScope.launch {
+            try {
+                // 重新获取用户Profile信息
+                val currentProfile = userService.profile.value
+                if (currentProfile != null) {
+                    // 强制重新加载头像
+                    if (currentProfile.avatarUrl != null) {
+                        com.bumptech.glide.Glide.with(this@MineFragment)
+                            .load(currentProfile.avatarUrl)
+                            .placeholder(me.wcy.music.R.drawable.ic_launcher_round)
+                            .error(me.wcy.music.R.drawable.ic_launcher_round)
+                            .skipMemoryCache(true) // 跳过内存缓存
+                            .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.NONE) // 跳过磁盘缓存
+                            .circleCrop()
+                            .into(viewBinding.ivAvatar)
+                    }
+                    
+                    // 更新昵称
+                    viewBinding.tvNickName.text = currentProfile.nickname
+                    
+                    android.util.Log.d("MineFragment", "用户Profile刷新完成: ${currentProfile.nickname}")
+                }
+            } catch (e: Exception) {
+                android.util.Log.e("MineFragment", "刷新用户Profile异常", e)
+            }
+        }
+    }
+
+    /**
+     * 清空用户显示信息
+     */
+    private fun clearUserDisplay() {
+        viewBinding.ivAvatar.setImageResource(R.drawable.ic_launcher_round)
+        viewBinding.tvNickName.text = "未登录"
+        viewBinding.tvVipLabel.visibility = android.view.View.GONE
+        viewBinding.tvLevelLabel.visibility = android.view.View.GONE
     }
 
     /**
@@ -224,19 +410,23 @@ class MineFragment : BaseMusicFragment() {
             // 更新用户昵称
             viewBinding.tvNickName.text = profile.nickname
 
-            // 更新用户头像
+            // 强制重新加载用户头像，清除缓存确保显示最新头像
             profile.avatarUrl?.let { avatarUrl ->
-                // 使用Glide加载头像
+                // 使用Glide强制重新加载头像，跳过缓存
                 com.bumptech.glide.Glide.with(this)
                     .load(avatarUrl)
                     .placeholder(me.wcy.music.R.drawable.ic_launcher_round)
                     .error(me.wcy.music.R.drawable.ic_launcher_round)
+                    .skipMemoryCache(true) // 跳过内存缓存
+                    .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.NONE) // 跳过磁盘缓存
                     .circleCrop()
                     .into(viewBinding.ivAvatar)
+                    
+                android.util.Log.d("MineFragment", "强制重新加载头像: $avatarUrl")
             }
 
-            Log.d("MineFragment", "用户信息更新: 昵称=${profile.nickname}, 头像=${profile.avatarUrl}")
-            Log.d("MineFragment", "用户详情: 等级=${userDetail.level}, 听歌数=${userDetail.listenSongs}")
+            android.util.Log.d("MineFragment", "用户信息更新完成: 昵称=${profile.nickname}, 头像=${profile.avatarUrl}")
+            android.util.Log.d("MineFragment", "用户详情: 等级=${userDetail.level}, 听歌数=${userDetail.listenSongs}")
         }
     }
 
@@ -296,11 +486,14 @@ class MineFragment : BaseMusicFragment() {
                     setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
                     // VIP用户显示现代化金色渐变标签
                     setBackgroundResource(me.wcy.music.R.drawable.bg_vip_label_modern)
+                    // 强制刷新视图
+                    invalidate()
+                    requestLayout()
 
-                    Log.d("MineFragment", "VIP标签更新: vipType=${profile.vipType}, 显示文本=$vipTypeName")
+                    android.util.Log.d("MineFragment", "VIP标签更新完成: vipType=${profile.vipType}, 显示文本=$vipTypeName")
                 } else {
                     visibility = android.view.View.GONE
-                    Log.d("MineFragment", "非VIP用户，隐藏VIP标签: vipType=${profile.vipType}")
+                    android.util.Log.d("MineFragment", "非VIP用户，隐藏VIP标签: vipType=${profile.vipType}")
                 }
             }
         }
@@ -333,18 +526,22 @@ class MineFragment : BaseMusicFragment() {
      */
     private fun updateLevelLabelFromUserDetail(userDetail: me.wcy.music.account.bean.UserDetailData) {
         val level = userDetail.level ?: 0
-        if (level > 0) {
+        // 修改逻辑：只要有等级信息就显示，包括0级
+        if (level >= 0) {
             viewBinding.tvLevelLabel.apply {
                 visibility = android.view.View.VISIBLE
                 text = "Lv.$level"
                 setBackgroundResource(me.wcy.music.R.drawable.bg_level_label_modern)
                 setTextColor(resources.getColor(me.wcy.music.R.color.white, null))
+                // 强制刷新视图
+                invalidate()
+                requestLayout()
 
-                Log.d("MineFragment", "等级标签更新: level=$level")
+                android.util.Log.d("MineFragment", "等级标签更新完成: level=$level")
             }
         } else {
             viewBinding.tvLevelLabel.visibility = android.view.View.GONE
-            Log.d("MineFragment", "等级为0，隐藏等级标签")
+            android.util.Log.d("MineFragment", "等级信息无效，隐藏等级标签")
         }
     }
 

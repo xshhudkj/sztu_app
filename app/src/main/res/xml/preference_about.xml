@@ -13,7 +13,7 @@
             android:summary="前往项目地址给个 Star，鼓励作者"
             android:title="给我点赞" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="关于作者">
+    <PreferenceCategory android:title="致谢开源作者">
         <Preference
             android:key="weibo"
             android:summary="@string/about_weibo"

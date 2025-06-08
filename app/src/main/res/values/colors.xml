@@ -47,5 +47,28 @@
     <!-- 搜索建议相关颜色 -->
     <color name="search_suggest_bg">#F0F8FF</color>            <!-- 搜索建议背景：淡蓝色 -->
     <color name="search_suggest_border">#B0C4DE</color>        <!-- 搜索建议边框：钢蓝色 -->
+    
+    <!-- SplashLogin Module 新增颜色 -->
+    <!-- 基础颜色 -->
+    <color name="color_black">#FF000000</color>
+    <color name="color_white">#FFFFFFFF</color>
+    
+    <!-- 文本颜色 -->
+    <color name="text_light">#FFFFFF</color>
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    
+    <!-- 启动页颜色 -->
+    <color name="ui_splash_background">#1E3A5F</color>
+    <color name="splash_background">@color/ui_splash_background</color>
+    
+    <!-- 樱花主题颜色 -->
+    <color name="sakura_primary">#FFBAD3</color>
+    <color name="sakura_primary_dark">#FF9CB6</color>
+    <color name="sakura_accent">#FE8BC6</color>
+    <color name="sakura_background">#FFF5F8</color>
+    <color name="sakura_text_primary">#66304D</color>
+    <color name="sakura_text_secondary">#976681</color>
+    <color name="sakura_divider">#E0E0E0</color>
 </resources>
 

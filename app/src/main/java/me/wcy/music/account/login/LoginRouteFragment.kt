@@ -11,8 +11,10 @@ import me.wcy.router.annotation.Route
 
 /**
  * Created by wangchenyan.top on 2024/1/3.
+ * 
+ * 已废弃：现在使用LoginActivity代替
  */
-@Route(RoutePath.LOGIN)
+// @Route(RoutePath.LOGIN) // 已移除，现在使用LoginActivity
 class LoginRouteFragment : BaseMusicFragment() {
     private val viewBinding by viewBindings<FragmentLoginRouteBinding>()
 

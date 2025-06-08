@@ -1,5 +1,6 @@
 package me.wcy.music.main;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import me.wcy.music.databinding.NavigationHeaderBinding;
 import me.wcy.music.databinding.TabItemBinding;
 import me.wcy.music.service.MusicService;
 import me.wcy.music.service.PlayServiceModule;
+import me.wcy.music.splash.SplashActivity;
 import me.wcy.music.utils.QuitTimer;
 import me.wcy.music.utils.TimeUtils;
 import me.wcy.router.CRouter;

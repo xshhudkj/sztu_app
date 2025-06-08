@@ -10,4 +10,21 @@
     <color name="tab_bg">@color/black</color>
     <color name="card_bg">@color/grey_800</color>
     <color name="play_bar_bg">@color/grey_900</color>
+    
+    <!-- 夜间模式樱花主题颜色适配 -->
+    <color name="sakura_primary">#CC8FA8</color>              <!-- 夜间模式樱花主色调：更深的粉色 -->
+    <color name="sakura_primary_dark">#B8799C</color>         <!-- 夜间模式樱花深色：更暗的粉色 -->
+    <color name="sakura_accent">#D896B6</color>               <!-- 夜间模式樱花强调色：适中的粉色 -->
+    <color name="sakura_background">#2A2A2A</color>           <!-- 夜间模式樱花背景：深灰色 -->
+    <color name="sakura_text_primary">#E8C4D0</color>         <!-- 夜间模式樱花主文本：浅粉色 -->
+    <color name="sakura_text_secondary">#B8A0AC</color>       <!-- 夜间模式樱花次文本：中等粉灰色 -->
+    <color name="sakura_divider">#424242</color>              <!-- 夜间模式樱花分割线：深灰色 -->
+    
+    <!-- 夜间模式文本颜色适配 -->
+    <color name="text_light">#FFFFFF</color>                  <!-- 夜间模式浅色文本 -->
+    <color name="text_primary">#FFFFFF</color>                <!-- 夜间模式主文本：白色 -->
+    <color name="text_secondary">#B0B0B0</color>              <!-- 夜间模式次文本：浅灰色 -->
+    
+    <!-- 夜间模式启动页颜色 -->
+    <color name="splash_background">#1A1A1A</color>           <!-- 夜间模式启动页背景：深黑色 -->
 </resources>

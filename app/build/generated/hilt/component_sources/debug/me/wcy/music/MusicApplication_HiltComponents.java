@@ -63,6 +63,8 @@ import me.wcy.music.discover.playlist.square.PlaylistSquareFragment_GeneratedInj
 import me.wcy.music.discover.playlist.square.PlaylistTabFragment_GeneratedInjector;
 import me.wcy.music.discover.ranking.RankingFragment_GeneratedInjector;
 import me.wcy.music.discover.recommend.song.RecommendSongFragment_GeneratedInjector;
+import me.wcy.music.login.LoginActivity_GeneratedInjector;
+import me.wcy.music.login.LoginViewModel_HiltModules;
 import me.wcy.music.main.MainActivity_GeneratedInjector;
 import me.wcy.music.main.SettingsActivity_GeneratedInjector;
 import me.wcy.music.main.SettingsActivity_SettingsFragment_GeneratedInjector;
@@ -81,6 +83,8 @@ import me.wcy.music.search.song.SearchSongFragment_GeneratedInjector;
 import me.wcy.music.search.user.SearchUserFragment_GeneratedInjector;
 import me.wcy.music.service.PlayServiceModule;
 import me.wcy.music.service.likesong.LikeSongProcessorModule;
+import me.wcy.music.splash.SplashActivity_GeneratedInjector;
+import me.wcy.music.splash.SplashViewModel_HiltModules;
 import me.wcy.music.storage.db.DatabaseModule;
 
 @Generated("dagger.hilt.processor.internal.root.RootProcessor")
@@ -199,12 +203,14 @@ public final class MusicApplication_HiltComponents {
           CollectSongViewModel_HiltModules.KeyModule.class,
           DiscoverViewModel_HiltModules.KeyModule.class,
           HiltWrapper_ActivityRetainedComponentManager_LifecycleModule.class,
+          LoginViewModel_HiltModules.KeyModule.class,
           MineViewModel_HiltModules.KeyModule.class,
           ActivityCBuilderModule.class,
           ViewModelCBuilderModule.class,
           PhoneLoginViewModel_HiltModules.KeyModule.class,
           PlaylistViewModel_HiltModules.KeyModule.class,
-          QrcodeLoginViewModel_HiltModules.KeyModule.class
+          QrcodeLoginViewModel_HiltModules.KeyModule.class,
+          SplashViewModel_HiltModules.KeyModule.class
       }
   )
   @ActivityRetainedScoped
@@ -233,9 +239,11 @@ public final class MusicApplication_HiltComponents {
       ViewComponentManager.ViewComponentBuilderEntryPoint,
       GeneratedComponent,
       MusicFragmentContainerActivity_GeneratedInjector,
+      LoginActivity_GeneratedInjector,
       MainActivity_GeneratedInjector,
       SettingsActivity_GeneratedInjector,
-      PlayingActivity_GeneratedInjector {
+      PlayingActivity_GeneratedInjector,
+      SplashActivity_GeneratedInjector {
     @Subcomponent.Builder
     abstract interface Builder extends ActivityComponentBuilder {
     }
@@ -248,10 +256,12 @@ public final class MusicApplication_HiltComponents {
           CollectSongViewModel_HiltModules.BindsModule.class,
           DiscoverViewModel_HiltModules.BindsModule.class,
           HiltWrapper_HiltViewModelFactory_ViewModelModule.class,
+          LoginViewModel_HiltModules.BindsModule.class,
           MineViewModel_HiltModules.BindsModule.class,
           PhoneLoginViewModel_HiltModules.BindsModule.class,
           PlaylistViewModel_HiltModules.BindsModule.class,
-          QrcodeLoginViewModel_HiltModules.BindsModule.class
+          QrcodeLoginViewModel_HiltModules.BindsModule.class,
+          SplashViewModel_HiltModules.BindsModule.class
       }
   )
   @ViewModelScoped

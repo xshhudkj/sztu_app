@@ -1,9 +1,12 @@
 package me.wcy.music.search.user
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleCoroutineScope
 import kotlinx.coroutines.launch
+import me.wcy.music.account.service.UserService
 import me.wcy.music.databinding.ItemSearchUserBinding
 import me.wcy.music.search.SearchApi
 import me.wcy.music.search.bean.UserData
@@ -17,7 +20,9 @@ import top.wangchenyan.common.net.apiCall
  * Created by wangchenyan.top on 2024/12/20.
  */
 class SearchUserItemBinder(
-    private val lifecycleScope: LifecycleCoroutineScope
+    private val lifecycleScope: LifecycleCoroutineScope,
+    private val userService: UserService,
+    private val context: Context
 ) : RItemBinder<ItemSearchUserBinding, UserData>() {
 
     override fun onBind(viewBinding: ItemSearchUserBinding, item: UserData, position: Int) {
@@ -53,20 +58,23 @@ class SearchUserItemBinder(
     }
 
     private fun followUser(viewBinding: ItemSearchUserBinding, user: UserData) {
-        lifecycleScope.launch {
-            try {
-                val t = if (user.followed) 0 else 1 // 1为关注，0为取消关注
-                val result = apiCall { SearchApi.get().followUser(user.userId, t) }
-                if (result.isSuccess()) {
-                    user.followed = !user.followed
-                    updateFollowState(viewBinding, user.followed)
-                    val message = if (user.followed) "关注成功" else "取消关注成功"
-                    toast(message)
-                } else {
-                    toast(result.msg ?: "操作失败")
+        // 检查登录状态
+        userService.checkLogin(context as Activity) {
+            lifecycleScope.launch {
+                try {
+                    val t = if (user.followed) 0 else 1 // 1为关注，0为取消关注
+                    val result = apiCall { SearchApi.get().followUser(user.userId, t) }
+                    if (result.isSuccess()) {
+                        user.followed = !user.followed
+                        updateFollowState(viewBinding, user.followed)
+                        val message = if (user.followed) "关注成功" else "取消关注成功"
+                        toast(message)
+                    } else {
+                        toast(result.msg ?: "操作失败")
+                    }
+                } catch (e: Exception) {
+                    toast("网络错误")
                 }
-            } catch (e: Exception) {
-                toast("网络错误")
             }
         }
     }

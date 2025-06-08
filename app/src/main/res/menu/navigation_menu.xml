@@ -14,6 +14,10 @@
             android:icon="@drawable/ic_menu_timer"
             android:title="@string/menu_timer" />
         <item
+            android:id="@+id/action_login"
+            android:icon="@drawable/ic_qrcode_login"
+            android:title="立即登录" />
+        <item
             android:id="@+id/action_logout"
             android:icon="@drawable/ic_menu_logout"
             android:title="退出登录" />

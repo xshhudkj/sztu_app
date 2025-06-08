@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Android Automotive专用主题 -->
+    <style name="Theme.AIMusicPlayer.Automotive" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- 全屏设置 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        
+        <!-- 状态栏和导航栏设置 -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        
+        <!-- 窗口标志 -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        
+        <!-- 主题颜色 -->
+        <item name="colorPrimary">@color/sakura_primary</item>
+        <item name="colorPrimaryVariant">@color/sakura_primary_dark</item>
+        <item name="colorOnPrimary">@color/color_white</item>
+        <item name="colorSecondary">@color/sakura_accent</item>
+        <item name="colorOnSecondary">@color/color_white</item>
+        <item name="android:colorBackground">@color/sakura_background</item>
+        <item name="colorOnBackground">@color/sakura_text_primary</item>
+        <item name="colorSurface">@color/color_white</item>
+        <item name="colorOnSurface">@color/sakura_text_primary</item>
+    </style>
+
+    <!-- 全屏主题 - 用于启动页和登录页 -->
+    <style name="FullScreenTheme" parent="Theme.AIMusicPlayer.Automotive">
+        <!-- 强制全屏 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        
+        <!-- 隐藏系统UI -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        
+        <!-- 沉浸式体验 -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+
+    <!-- 樱花主题对话框样式 -->
+    <style name="SakuraDialogTheme" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorPrimary">@color/sakura_primary</item>
+        <item name="colorSecondary">@color/sakura_accent</item>
+        <item name="android:windowBackground">@drawable/sakura_dialog_background</item>
+        <item name="android:textColorPrimary">@color/sakura_text_primary</item>
+        <item name="android:textColorSecondary">@color/sakura_text_secondary</item>
+    </style>
+
+    <!-- 樱花主题按钮样式 -->
+    <style name="SakuraButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/sakura_button</item>
+        <item name="android:textColor">@color/color_white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <!-- 樱花主题次要按钮样式 -->
+    <style name="SakuraButtonSecondary" parent="SakuraButton">
+        <item name="android:background">@drawable/sakura_button_secondary</item>
+        <item name="android:elevation">2dp</item>
+    </style>
+
+    <!-- 樱花主题输入框样式 -->
+    <style name="SakuraEditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:background">@drawable/sakura_edit_background</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColorHint">@color/text_secondary</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

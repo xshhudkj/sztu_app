@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import me.wcy.music.account.service.UserService
 import me.wcy.music.common.SimpleMusicRefreshFragment
 import me.wcy.music.consts.Consts
 import me.wcy.music.search.SearchApi
@@ -14,6 +15,7 @@ import me.wcy.music.search.bean.UserData
 import me.wcy.radapter3.RAdapter
 import top.wangchenyan.common.model.CommonResult
 import top.wangchenyan.common.net.apiCall
+import javax.inject.Inject
 
 /**
  * 搜索用户Fragment
@@ -22,8 +24,12 @@ import top.wangchenyan.common.net.apiCall
 @AndroidEntryPoint
 class SearchUserFragment : SimpleMusicRefreshFragment<UserData>() {
     private val viewModel by activityViewModels<SearchViewModel>()
+    
+    @Inject
+    lateinit var userService: UserService
+    
     private val itemBinder by lazy {
-        SearchUserItemBinder(lifecycleScope)
+        SearchUserItemBinder(lifecycleScope, userService, requireActivity())
     }
 
     override fun isShowTitle(): Boolean {

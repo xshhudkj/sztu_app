@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:2:1-82:12
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:2:1-82:12
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:2:1-96:12
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:2:1-96:12
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:2:1-28:12
 MERGED from [com.github.wangchenyan:radapter3:3.1.1] C:\Users\86158\.gradle\caches\transforms-4\b622df0a4bcc713688ff314c6d6cb1fd\transformed\jetified-radapter3-3.1.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.databinding:viewbinding:8.5.2] C:\Users\86158\.gradle\caches\transforms-4\d38f102b94af1564cb8ab3597da658e2\transformed\jetified-viewbinding-8.5.2\AndroidManifest.xml:2:1-7:12
@@ -103,23 +103,23 @@ MERGED from [com.soundcloud.android:android-crop:1.0.1] C:\Users\86158\.gradle\c
 MERGED from [com.github.getActivity:ShapeDrawable:3.2] C:\Users\86158\.gradle\caches\transforms-4\872814dde57cc26585340a57c712db13\transformed\jetified-ShapeDrawable-3.2\AndroidManifest.xml:2:1-9:12
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\86158\.gradle\caches\transforms-4\1d78fa585898a65b2b2237096416fca7\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:2:1-11:12
 	package
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:4:5-67
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:4:5-67
 MERGED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:17:5-67
 MERGED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:17:5-67
 MERGED from [com.github.wangchenyan:lrcview:2.2.2] C:\Users\86158\.gradle\caches\transforms-4\6b30b950621389767111d64e2aa84c72\transformed\jetified-lrcview-2.2.2\AndroidManifest.xml:7:5-67
 MERGED from [com.github.wangchenyan:lrcview:2.2.2] C:\Users\86158\.gradle\caches\transforms-4\6b30b950621389767111d64e2aa84c72\transformed\jetified-lrcview-2.2.2\AndroidManifest.xml:7:5-67
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:4:22-64
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:4:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:5:5-79
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:5:5-79
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:7:5-79
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:7:5-79
 MERGED from [androidx.media3:media3-common:1.6.0] C:\Users\86158\.gradle\caches\transforms-4\76fd4db86bc355c77deef9260ce2b81f\transformed\jetified-media3-common-1.6.0\AndroidManifest.xml:22:5-79
@@ -127,48 +127,48 @@ MERGED from [androidx.media3:media3-common:1.6.0] C:\Users\86158\.gradle\caches\
 MERGED from [androidx.media3:media3-exoplayer:1.6.0] C:\Users\86158\.gradle\caches\transforms-4\d39d455421d47e53e1ece1e8bac9789b\transformed\jetified-media3-exoplayer-1.6.0\AndroidManifest.xml:22:5-79
 MERGED from [androidx.media3:media3-exoplayer:1.6.0] C:\Users\86158\.gradle\caches\transforms-4\d39d455421d47e53e1ece1e8bac9789b\transformed\jetified-media3-exoplayer-1.6.0\AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:5:22-76
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:6:5-76
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:6:5-76
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:6:22-73
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:6:22-73
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:7:5-81
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:7:5-81
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:10:5-81
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:10:5-81
 MERGED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:18:5-81
 MERGED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:18:5-81
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:7:22-78
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:7:22-78
 uses-permission#android.permission.FOREGROUND_SERVICE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:8:5-77
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:8:5-77
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:9:5-77
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:9:5-77
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:8:22-74
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:8:22-74
 uses-permission#android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:9:5-92
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:9:5-92
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:9:22-89
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:9:22-89
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:12:5-77
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:12:5-77
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:12:22-74
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:12:22-74
 uses-permission#android.permission.WAKE_LOCK
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:13:5-68
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:13:5-68
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:13:22-65
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:13:22-65
 uses-permission#android.car.permission.CAR_CONTROL_AUDIO_VOLUME
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:16:5-87
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:16:5-87
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:16:22-84
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:16:22-84
 uses-permission#android.car.permission.ACCESS_CAR_AUDIO
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:17:5-79
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:17:5-79
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:17:22-76
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:17:22-76
 application
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:19:5-80:19
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:19:5-80:19
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:19:5-94:19
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:19:5-94:19
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:22:5-26:19
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:22:5-26:19
 MERGED from [com.github.li-xiaojun:XPopup:2.7.9] C:\Users\86158\.gradle\caches\transforms-4\3597477602625afeffa5d8efbcacac71\transformed\jetified-XPopup-2.7.9\AndroidManifest.xml:10:5-18:19
@@ -208,119 +208,143 @@ MERGED from [com.github.soulqw:SoulPermission:1.4.0] C:\Users\86158\.gradle\cach
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:11:5-16:19
 MERGED from [com.liulishuo.filedownloader:library:1.7.7] C:\Users\86158\.gradle\caches\transforms-4\5b3b292ae8cd49ed7f53f6be56e5417c\transformed\jetified-library-1.7.7\AndroidManifest.xml:11:5-16:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] C:\Users\86158\.gradle\caches\transforms-4\9151924b14ac859a0a182a0b1a1df226\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
 		ADDED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:26:9-35
 	android:label
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:23:9-41
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:23:9-41
 	android:roundIcon
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:25:9-56
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:25:9-56
 	android:icon
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:22:9-45
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:22:9-45
 	android:allowBackup
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:21:9-35
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:21:9-35
 	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:26:9-40
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:26:9-40
 	android:networkSecurityConfig
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:24:9-69
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:24:9-69
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:20:9-41
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:20:9-41
 service#me.wcy.music.service.MusicService
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:28:9-35:19
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:28:9-35:19
 	android:exported
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:30:13-36
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:30:13-36
 	android:foregroundServiceType
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:31:13-58
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:31:13-58
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:29:13-49
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:29:13-49
 intent-filter#action:name:androidx.media3.session.MediaSessionService
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:32:13-34:29
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:32:13-34:29
 action#androidx.media3.session.MediaSessionService
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:33:17-86
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:33:17-86
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:33:25-83
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:33:25-83
 receiver#me.wcy.music.download.DownloadReceiver
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:37:9-43:20
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:37:9-43:20
 	android:exported
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:39:13-36
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:39:13-36
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:38:13-54
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:38:13-54
 intent-filter#action:name:android.intent.action.DOWNLOAD_COMPLETE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:40:13-42:29
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:40:13-42:29
 action#android.intent.action.DOWNLOAD_COMPLETE
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:41:17-82
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:41:17-82
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:41:25-79
-activity#me.wcy.music.main.MainActivity
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:45:9-56:20
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:41:25-79
+activity#me.wcy.music.splash.SplashActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:45:9-56:20
 	android:label
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:48:13-45
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:48:13-45
 	android:launchMode
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:49:13-43
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:49:13-43
 	android:exported
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:47:13-36
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:47:13-36
 	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:50:13-57
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:50:13-64
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:46:13-46
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:46:13-50
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:51:13-55:29
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:51:13-55:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:17-69
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:52:17-69
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:52:25-66
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:52:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:54:17-77
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:54:17-77
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:54:27-74
-activity#me.wcy.music.common.MusicFragmentContainerActivity
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:57:9-59:60
-	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:59:13-57
-	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:58:13-66
-activity#me.wcy.music.main.SettingsActivity
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:60:9-63:60
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:54:27-74
+activity#me.wcy.music.main.MainActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:57:9-63:20
 	android:label
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:62:13-49
-	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:63:13-57
-	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:61:13-50
-activity#me.wcy.music.main.AboutActivity
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:64:9-67:60
-	android:label
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:66:13-47
-	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:67:13-57
-	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:65:13-47
-activity#me.wcy.music.main.playing.PlayingActivity
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:68:9-71:68
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:60:13-45
 	android:launchMode
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:70:13-43
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:61:13-43
+	android:exported
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:59:13-37
 	android:theme
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:71:13-65
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:62:13-57
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:69:13-69
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:58:13-46
+activity#me.wcy.music.login.LoginActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:64:9-70:20
+	android:label
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:67:13-31
+	android:launchMode
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:68:13-43
+	android:exported
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:66:13-37
+	android:theme
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:69:13-57
+	android:name
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:65:13-48
+activity#me.wcy.music.common.MusicFragmentContainerActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:71:9-73:60
+	android:theme
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:73:13-57
+	android:name
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:72:13-66
+activity#me.wcy.music.main.SettingsActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:74:9-77:60
+	android:label
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:76:13-49
+	android:theme
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:77:13-57
+	android:name
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:75:13-50
+activity#me.wcy.music.main.AboutActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:78:9-81:60
+	android:label
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:80:13-47
+	android:theme
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:81:13-57
+	android:name
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:79:13-47
+activity#me.wcy.music.main.playing.PlayingActivity
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:82:9-85:68
+	android:launchMode
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:84:13-43
+	android:theme
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:85:13-65
+	android:name
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:83:13-69
 meta-data#com.android.automotive
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:74:9-76:59
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:88:9-90:59
 	android:resource
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:76:13-56
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:90:13-56
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:75:13-50
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:89:13-50
 meta-data#androidx.media3.session.MediaSessionService
-ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:77:9-79:65
+ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:91:9-93:65
 	android:value
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:79:13-62
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:93:13-62
 	android:name
-		ADDED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml:78:13-71
+		ADDED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml:92:13-71
 uses-sdk
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.github.wangchenyan:radapter3:3.1.1] C:\Users\86158\.gradle\caches\transforms-4\b622df0a4bcc713688ff314c6d6cb1fd\transformed\jetified-radapter3-3.1.1\AndroidManifest.xml:5:5-7:41
@@ -518,9 +542,9 @@ MERGED from [com.github.getActivity:ShapeDrawable:3.2] C:\Users\86158\.gradle\ca
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\86158\.gradle\caches\transforms-4\1d78fa585898a65b2b2237096416fca7\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:7:5-9:41
 MERGED from [io.github.scwang90:refresh-drawable-paint:2.0.5] C:\Users\86158\.gradle\caches\transforms-4\1d78fa585898a65b2b2237096416fca7\transformed\jetified-refresh-drawable-paint-2.0.5\AndroidManifest.xml:7:5-9:41
 	android:targetSdkVersion
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\86158\Desktop\ponymusic\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\86158\Desktop\ponymusic1\ponymusic\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.VIBRATE
 ADDED from [com.github.wangchenyan:android-common:1.0.2] C:\Users\86158\.gradle\caches\transforms-4\03c19d3e6f54fd9df39daa5089142c13\transformed\jetified-android-common-1.0.2\AndroidManifest.xml:8:5-66
 MERGED from [cn.bertsir.zbarLibary:zbarlibary:1.4.2] C:\Users\86158\.gradle\caches\transforms-4\ed10cb5ec4666c40869ce00b9160eb62\transformed\jetified-zbarlibary-1.4.2\AndroidManifest.xml:21:5-66

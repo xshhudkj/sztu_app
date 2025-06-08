@@ -1,14 +1,14 @@
-## {Project Name} (init from readme/docs)
+## PonyMusic - Android Automotive 音乐播放器
 
-> {Project Description}
+> 基于Android Automotive平台的现代化音乐播放器应用，专为车载环境优化设计
 
-> {Project Purpose}
+> 提供网易云音乐API集成、本地音乐播放、用户账户管理等功能，支持横屏车载大屏显示
 
-> {Project Status}
+> 开发状态：活跃开发中，当前版本 2.3.0-beta01
 
-> {Project Team}
+> 开发团队：个人项目
 
-> {Framework/language/other(you think it is important to know)}
+> 技术栈：Kotlin + Android Automotive + MVVM架构 + Hilt依赖注入 + Media3播放框架
 
 
 

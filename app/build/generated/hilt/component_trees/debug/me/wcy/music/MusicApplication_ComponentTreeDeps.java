@@ -61,6 +61,9 @@ import hilt_aggregated_deps._me_wcy_music_discover_playlist_square_PlaylistSquar
 import hilt_aggregated_deps._me_wcy_music_discover_playlist_square_PlaylistTabFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_discover_ranking_RankingFragment_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_discover_recommend_song_RecommendSongFragment_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_login_LoginActivity_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_login_LoginViewModel_HiltModules_BindsModule;
+import hilt_aggregated_deps._me_wcy_music_login_LoginViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._me_wcy_music_main_MainActivity_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_main_SettingsActivity_GeneratedInjector;
 import hilt_aggregated_deps._me_wcy_music_main_SettingsActivity_SettingsFragment_GeneratedInjector;
@@ -84,6 +87,9 @@ import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_LikeSongProc
 import hilt_aggregated_deps._me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint;
 import hilt_aggregated_deps._me_wcy_music_service_likesong_LikeSongProcessorModule;
 import hilt_aggregated_deps._me_wcy_music_service_likesong_LikeSongProcessorModule_LikeSongProcessorEntryPoint;
+import hilt_aggregated_deps._me_wcy_music_splash_SplashActivity_GeneratedInjector;
+import hilt_aggregated_deps._me_wcy_music_splash_SplashViewModel_HiltModules_BindsModule;
+import hilt_aggregated_deps._me_wcy_music_splash_SplashViewModel_HiltModules_KeyModule;
 import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
 
 @ComponentTreeDeps(
@@ -150,6 +156,9 @@ import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
         _me_wcy_music_discover_playlist_square_PlaylistTabFragment_GeneratedInjector.class,
         _me_wcy_music_discover_ranking_RankingFragment_GeneratedInjector.class,
         _me_wcy_music_discover_recommend_song_RecommendSongFragment_GeneratedInjector.class,
+        _me_wcy_music_login_LoginActivity_GeneratedInjector.class,
+        _me_wcy_music_login_LoginViewModel_HiltModules_BindsModule.class,
+        _me_wcy_music_login_LoginViewModel_HiltModules_KeyModule.class,
         _me_wcy_music_main_MainActivity_GeneratedInjector.class,
         _me_wcy_music_main_SettingsActivity_GeneratedInjector.class,
         _me_wcy_music_main_SettingsActivity_SettingsFragment_GeneratedInjector.class,
@@ -173,6 +182,9 @@ import hilt_aggregated_deps._me_wcy_music_storage_db_DatabaseModule;
         _me_wcy_music_service_PlayServiceModule_PlayerControllerEntryPoint.class,
         _me_wcy_music_service_likesong_LikeSongProcessorModule.class,
         _me_wcy_music_service_likesong_LikeSongProcessorModule_LikeSongProcessorEntryPoint.class,
+        _me_wcy_music_splash_SplashActivity_GeneratedInjector.class,
+        _me_wcy_music_splash_SplashViewModel_HiltModules_BindsModule.class,
+        _me_wcy_music_splash_SplashViewModel_HiltModules_KeyModule.class,
         _me_wcy_music_storage_db_DatabaseModule.class
     }
 )
