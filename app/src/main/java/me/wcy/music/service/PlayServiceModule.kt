@@ -32,22 +32,30 @@ object PlayServiceModule {
 
     @Provides
     fun providerPlayerController(db: MusicDatabase): PlayerController {
-        return playerController ?: run {
-            val player = player ?: run {
-                // 如果播放器还没准备好，使用更健壮的等待机制
-                android.util.Log.w("PlayServiceModule", "Player not ready yet, waiting...")
-                var retryCount = 0
-                val maxRetries = 50 // 最多重试50次，总共5秒
-                while (retryCount < maxRetries) {
-                    this.player?.let { return@run it }
-                    Thread.sleep(100) // 每次等待100ms
-                    retryCount++
+        return playerController ?: synchronized(this) {
+            // 双重检查锁定模式
+            playerController ?: run {
+                val player = player ?: run {
+                    // 等待播放器准备，但不阻塞太久
+                    android.util.Log.w("PlayServiceModule", "Player not ready yet, waiting briefly...")
+                    var retryCount = 0
+                    val maxRetries = 5 // 只等待500ms
+                    while (retryCount < maxRetries) {
+                        this.player?.let { return@run it }
+                        try {
+                            Thread.sleep(100)
+                        } catch (e: InterruptedException) {
+                            Thread.currentThread().interrupt()
+                            break
+                        }
+                        retryCount++
+                    }
+                    this.player ?: throw IllegalStateException("Player not prepared after ${maxRetries * 100}ms! Please restart the app.")
                 }
-                this.player ?: throw IllegalStateException("Player not prepared after ${maxRetries * 100}ms!")
-            }
-            PlayerControllerImpl(player, db).also {
-                playerController = it
-                android.util.Log.d("PlayServiceModule", "PlayerController created successfully")
+                PlayerControllerImpl(player, db).also {
+                    playerController = it
+                    android.util.Log.d("PlayServiceModule", "PlayerController created successfully")
+                }
             }
         }
     }

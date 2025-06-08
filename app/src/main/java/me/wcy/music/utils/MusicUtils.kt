@@ -5,7 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.audiofx.AudioEffect
 import android.text.TextUtils
-import android.util.Log
+import me.wcy.music.utils.LogUtils
 import androidx.core.text.buildSpannedString
 import top.wangchenyan.common.ext.getColorEx
 import top.wangchenyan.common.widget.CustomSpan.appendStyle
@@ -47,10 +47,10 @@ object MusicUtils {
             val isCarMode = uiModeManager.currentModeType == android.content.res.Configuration.UI_MODE_TYPE_CAR
 
             val result = hasAutomotiveFeature || isCarMode
-            Log.d(TAG, "isAndroidAutomotive() - 系统检测结果: $result (特性检测: $hasAutomotiveFeature, 车载模式: $isCarMode)")
+            LogUtils.d(TAG) { "isAndroidAutomotive() - 系统检测结果: $result (特性检测: $hasAutomotiveFeature, 车载模式: $isCarMode)" }
             result
         } catch (e: Exception) {
-            Log.e(TAG, "isAndroidAutomotive() - 系统检测失败，默认为非车载系统", e)
+            LogUtils.e(TAG, "isAndroidAutomotive() - 系统检测失败，默认为非车载系统", e)
             false
         }
     }

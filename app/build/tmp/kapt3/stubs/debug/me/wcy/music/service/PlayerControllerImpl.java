@@ -12,14 +12,20 @@ import kotlinx.coroutines.flow.StateFlow;
 import me.wcy.music.storage.db.MusicDatabase;
 import me.wcy.music.storage.preference.ConfigPreferences;
 import me.wcy.music.utils.VipUtils;
-import android.util.Log;
 import me.wcy.music.net.datasource.MusicUrlCache;
+import me.wcy.music.utils.LogUtils;
 import me.wcy.music.service.SmartPreloadManager;
+import me.wcy.music.utils.SmartCacheManager;
+import me.wcy.music.utils.CacheStrategy;
+import me.wcy.music.utils.SmartUIUpdateManager;
+import me.wcy.music.utils.PerformanceLevel;
+import me.wcy.music.utils.FirstPlayOptimizer;
+import top.wangchenyan.common.CommonApp;
 
 /**
  * Created by wangchenyan.top on 2024/3/27.
  */
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u0082\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0002\b\u000e\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u0002\n\u0002\b\u0014\n\u0002\u0010\u000e\n\u0002\b\u0012\u0018\u0000 ^2\u00020\u00012\u00020\u0002:\u0001^B\u0015\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0006\u00a2\u0006\u0002\u0010\u0007J\u0010\u00107\u001a\u0002082\u0006\u00109\u001a\u00020\rH\u0017J\u0016\u0010:\u001a\u0002082\f\u0010;\u001a\b\u0012\u0004\u0012\u00020\r0\u0015H\u0017J\u0018\u0010<\u001a\u0002082\u0006\u0010=\u001a\u00020\r2\u0006\u0010>\u001a\u00020\u0011H\u0002J\b\u0010?\u001a\u000208H\u0002J\b\u0010@\u001a\u000208H\u0002J\u0006\u0010A\u001a\u000208J\b\u0010B\u001a\u000208H\u0017J\u0010\u0010C\u001a\u0002082\u0006\u00109\u001a\u00020\rH\u0017J&\u0010D\u001a\u0002082\f\u00100\u001a\b\u0012\u0004\u0012\u00020\r0\u00152\u0006\u0010E\u001a\u00020\n2\u0006\u0010F\u001a\u00020\u0011H\u0002J\b\u0010G\u001a\u00020\nH\u0017J\u001e\u0010H\u001a\u00020\n2\u0006\u0010I\u001a\u00020\n2\f\u00100\u001a\b\u0012\u0004\u0012\u00020\r0\u0015H\u0002J\b\u0010J\u001a\u000208H\u0017J\u0010\u0010K\u001a\u0002082\u0006\u0010L\u001a\u00020MH\u0017J\b\u0010N\u001a\u000208H\u0017J\u001a\u0010O\u001a\u0002082\u0006\u0010L\u001a\u00020M2\b\b\u0002\u0010P\u001a\u00020\u0011H\u0007J\b\u0010Q\u001a\u000208H\u0002J\b\u0010R\u001a\u000208H\u0017J\u001e\u0010S\u001a\u0002082\f\u0010;\u001a\b\u0012\u0004\u0012\u00020\r0\u00152\u0006\u00109\u001a\u00020\rH\u0017J\b\u0010T\u001a\u000208H\u0002J\u0010\u0010U\u001a\u0002082\u0006\u0010V\u001a\u00020\nH\u0017J\u0010\u0010W\u001a\u0002082\u0006\u0010X\u001a\u00020\u000fH\u0017J\u0010\u0010Y\u001a\u00020&2\u0006\u0010=\u001a\u00020\rH\u0002J\u0010\u0010Z\u001a\u0002082\u0006\u0010[\u001a\u00020\u0011H\u0002J\b\u0010\\\u001a\u000208H\u0017J\b\u0010]\u001a\u000208H\u0002R\u0014\u0010\b\u001a\b\u0012\u0004\u0012\u00020\n0\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\u000b\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\r0\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u000e\u001a\b\u0012\u0004\u0012\u00020\u000f0\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00110\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0012\u001a\b\u0012\u0004\u0012\u00020\u00130\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R(\u0010\u0014\u001a\u001c\u0012\u0018\u0012\u0016\u0012\u0004\u0012\u00020\r \u0016*\n\u0012\u0004\u0012\u00020\r\u0018\u00010\u00150\u00150\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\nX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0018\u001a\b\u0012\u0004\u0012\u00020\n0\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001a\u0010\u001bR\u000e\u0010\u001c\u001a\u00020\u0011X\u0082D\u00a2\u0006\u0002\n\u0000R\u0012\u0010\u001d\u001a\u00020\u001eX\u0096\u0005\u00a2\u0006\u0006\u001a\u0004\b\u001f\u0010 R\u001c\u0010!\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\r0\"X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b#\u0010$R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010%\u001a\u00020&X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\'\u001a\u00020\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010(\u001a\u00020\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010)\u001a\u00020\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010*\u001a\b\u0012\u0004\u0012\u00020\u000f0\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b+\u0010\u001bR\u001a\u0010,\u001a\b\u0012\u0004\u0012\u00020\u00110\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b-\u0010\u001bR\u001a\u0010.\u001a\b\u0012\u0004\u0012\u00020\u00130\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b/\u0010\u001bR\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R.\u00100\u001a\u001c\u0012\u0018\u0012\u0016\u0012\u0004\u0012\u00020\r \u0016*\n\u0012\u0004\u0012\u00020\r\u0018\u00010\u00150\u00150\"X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b1\u0010$R\u000e\u00102\u001a\u00020\u0011X\u0082D\u00a2\u0006\u0002\n\u0000R\u000e\u00103\u001a\u00020\u0011X\u0082D\u00a2\u0006\u0002\n\u0000R\u000e\u00104\u001a\u000205X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u00106\u001a\u00020\u0011X\u0082D\u00a2\u0006\u0002\n\u0000\u00a8\u0006_"}, d2 = {"Lme/wcy/music/service/PlayerControllerImpl;", "Lme/wcy/music/service/PlayerController;", "Lkotlinx/coroutines/CoroutineScope;", "player", "Landroidx/media3/common/Player;", "db", "Lme/wcy/music/storage/db/MusicDatabase;", "(Landroidx/media3/common/Player;Lme/wcy/music/storage/db/MusicDatabase;)V", "_bufferingPercent", "Lkotlinx/coroutines/flow/MutableStateFlow;", "", "_currentSong", "Landroidx/lifecycle/MutableLiveData;", "Landroidx/media3/common/MediaItem;", "_playMode", "Lme/wcy/music/service/PlayMode;", "_playProgress", "", "_playState", "Lme/wcy/music/service/PlayState;", "_playlist", "", "kotlin.jvm.PlatformType", "audioSessionId", "bufferingPercent", "Lkotlinx/coroutines/flow/StateFlow;", "getBufferingPercent", "()Lkotlinx/coroutines/flow/StateFlow;", "cacheCheckInterval", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "currentSong", "Landroidx/lifecycle/LiveData;", "getCurrentSong", "()Landroidx/lifecycle/LiveData;", "isNextSongCaching", "", "lastCacheCheckTime", "lastProgressCheckTime", "lastProgressUpdate", "playMode", "getPlayMode", "playProgress", "getPlayProgress", "playState", "getPlayState", "playlist", "getPlaylist", "progressCheckInterval", "progressUpdateInterval", "smartPreloadManager", "Lme/wcy/music/service/SmartPreloadManager;", "targetCacheLeadTime", "addAndPlay", "", "song", "appendToPlaylist", "songList", "cacheNextSongData", "mediaItem", "cacheTime", "checkContinuousCache", "checkSmartPreload", "cleanup", "clearPlaylist", "delete", "fallbackPlaybackStart", "index", "songId", "getAudioSessionId", "getNextSongIndex", "currentIndex", "next", "play", "mediaId", "", "playPause", "playWhenAvailable", "maxWaitTime", "preloadNextSongUrls", "prev", "replaceAll", "resetCacheState", "seekTo", "msec", "setPlayMode", "mode", "shouldCacheNextSong", "startNextSongCache", "remainingCacheTime", "stop", "updateBufferingPercent", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000\u00ae\u0001\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0000\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\t\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u000b\n\u0002\b\f\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0002\b\u0010\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000e\n\u0002\b\u0016\u0018\u0000 l2\u00020\u00012\u00020\u0002:\u0001lB\u0015\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\u0006\u0010\u0005\u001a\u00020\u0006\u00a2\u0006\u0002\u0010\u0007J\u0010\u0010=\u001a\u00020>2\u0006\u0010?\u001a\u00020\rH\u0017J\u0016\u0010@\u001a\u00020>2\f\u0010A\u001a\b\u0012\u0004\u0012\u00020\r0\u0015H\u0017J\u0018\u0010B\u001a\u00020>2\u0006\u0010C\u001a\u00020\r2\u0006\u0010D\u001a\u00020\u0011H\u0002J\b\u0010E\u001a\u00020>H\u0002J\b\u0010F\u001a\u00020>H\u0002J\u0006\u0010G\u001a\u00020>J\b\u0010H\u001a\u00020>H\u0017J\u0010\u0010I\u001a\u00020>2\u0006\u0010?\u001a\u00020\rH\u0017J&\u0010J\u001a\u00020>2\f\u00100\u001a\b\u0012\u0004\u0012\u00020\r0\u00152\u0006\u0010K\u001a\u00020\n2\u0006\u0010L\u001a\u00020\u0011H\u0002J\b\u0010M\u001a\u00020\nH\u0017J\u0006\u0010N\u001a\u00020OJ\u001e\u0010P\u001a\u00020\n2\u0006\u0010Q\u001a\u00020\n2\f\u00100\u001a\b\u0012\u0004\u0012\u00020\r0\u0015H\u0002J\u0006\u0010R\u001a\u00020SJ\b\u0010T\u001a\u00020>H\u0017J\u0010\u0010U\u001a\u00020>2\u0006\u0010V\u001a\u00020WH\u0017J\b\u0010X\u001a\u00020>H\u0017J\u001a\u0010Y\u001a\u00020>2\u0006\u0010V\u001a\u00020W2\b\b\u0002\u0010Z\u001a\u00020\u0011H\u0007J\b\u0010[\u001a\u00020>H\u0002J\b\u0010\\\u001a\u00020>H\u0017J\u001e\u0010]\u001a\u00020>2\f\u0010A\u001a\b\u0012\u0004\u0012\u00020\r0\u00152\u0006\u0010?\u001a\u00020\rH\u0017J\b\u0010^\u001a\u00020>H\u0002J\u0010\u0010_\u001a\u00020>2\u0006\u0010`\u001a\u00020\nH\u0017J\u0010\u0010a\u001a\u00020>2\u0006\u0010b\u001a\u00020\u000fH\u0017J\u000e\u0010c\u001a\u00020>2\u0006\u0010d\u001a\u00020\'J\u000e\u0010e\u001a\u00020>2\u0006\u0010f\u001a\u00020\'J\u0010\u0010g\u001a\u00020\'2\u0006\u0010C\u001a\u00020\rH\u0002J\u0010\u0010h\u001a\u00020>2\u0006\u0010i\u001a\u00020\u0011H\u0002J\b\u0010j\u001a\u00020>H\u0017J\b\u0010k\u001a\u00020>H\u0002R\u0014\u0010\b\u001a\b\u0012\u0004\u0012\u00020\n0\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0016\u0010\u000b\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\r0\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u000e\u001a\b\u0012\u0004\u0012\u00020\u000f0\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0010\u001a\b\u0012\u0004\u0012\u00020\u00110\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0012\u001a\b\u0012\u0004\u0012\u00020\u00130\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000R(\u0010\u0014\u001a\u001c\u0012\u0018\u0012\u0016\u0012\u0004\u0012\u00020\r \u0016*\n\u0012\u0004\u0012\u00020\r\u0018\u00010\u00150\u00150\fX\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0017\u001a\u00020\nX\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010\u0018\u001a\b\u0012\u0004\u0012\u00020\n0\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001a\u0010\u001bR\u0012\u0010\u001c\u001a\u00020\u001dX\u0096\u0005\u00a2\u0006\u0006\u001a\u0004\b\u001e\u0010\u001fR\u001c\u0010 \u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\r0!X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b\"\u0010#R\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010$\u001a\u00020%X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010&\u001a\u00020\'X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010(\u001a\u00020\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010)\u001a\u00020\u0011X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001a\u0010*\u001a\b\u0012\u0004\u0012\u00020\u000f0\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b+\u0010\u001bR\u001a\u0010,\u001a\b\u0012\u0004\u0012\u00020\u00110\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b-\u0010\u001bR\u001a\u0010.\u001a\b\u0012\u0004\u0012\u00020\u00130\u0019X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b/\u0010\u001bR\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R.\u00100\u001a\u001c\u0012\u0018\u0012\u0016\u0012\u0004\u0012\u00020\r \u0016*\n\u0012\u0004\u0012\u00020\r\u0018\u00010\u00150\u00150!X\u0096\u0004\u00a2\u0006\b\n\u0000\u001a\u0004\b1\u0010#R\u000e\u00102\u001a\u00020\u0011X\u0082D\u00a2\u0006\u0002\n\u0000R\u000e\u00103\u001a\u000204X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u00105\u001a\u000206X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u00107\u001a\u000208X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u00109\u001a\u00020:X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010;\u001a\u00020<X\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006m"}, d2 = {"Lme/wcy/music/service/PlayerControllerImpl;", "Lme/wcy/music/service/PlayerController;", "Lkotlinx/coroutines/CoroutineScope;", "player", "Landroidx/media3/common/Player;", "db", "Lme/wcy/music/storage/db/MusicDatabase;", "(Landroidx/media3/common/Player;Lme/wcy/music/storage/db/MusicDatabase;)V", "_bufferingPercent", "Lkotlinx/coroutines/flow/MutableStateFlow;", "", "_currentSong", "Landroidx/lifecycle/MutableLiveData;", "Landroidx/media3/common/MediaItem;", "_playMode", "Lme/wcy/music/service/PlayMode;", "_playProgress", "", "_playState", "Lme/wcy/music/service/PlayState;", "_playlist", "", "kotlin.jvm.PlatformType", "audioSessionId", "bufferingPercent", "Lkotlinx/coroutines/flow/StateFlow;", "getBufferingPercent", "()Lkotlinx/coroutines/flow/StateFlow;", "coroutineContext", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineContext", "()Lkotlin/coroutines/CoroutineContext;", "currentSong", "Landroidx/lifecycle/LiveData;", "getCurrentSong", "()Landroidx/lifecycle/LiveData;", "firstPlayOptimizer", "Lme/wcy/music/utils/FirstPlayOptimizer;", "isNextSongCaching", "", "lastCacheCheckTime", "lastProgressCheckTime", "playMode", "getPlayMode", "playProgress", "getPlayProgress", "playState", "getPlayState", "playlist", "getPlaylist", "progressCheckInterval", "smartBufferUpdater", "Lme/wcy/music/utils/SmartUIUpdateManager$SmartBufferUpdater;", "smartCacheManager", "Lme/wcy/music/utils/SmartCacheManager;", "smartPreloadManager", "Lme/wcy/music/service/SmartPreloadManager;", "smartProgressUpdater", "Lme/wcy/music/utils/SmartUIUpdateManager$SmartProgressUpdater;", "smartUIUpdateManager", "Lme/wcy/music/utils/SmartUIUpdateManager;", "addAndPlay", "", "song", "appendToPlaylist", "songList", "cacheNextSongData", "mediaItem", "cacheTime", "checkContinuousCache", "checkSmartPreload", "cleanup", "clearPlaylist", "delete", "fallbackPlaybackStart", "index", "songId", "getAudioSessionId", "getCachePerformanceReport", "Lme/wcy/music/utils/CachePerformanceReport;", "getNextSongIndex", "currentIndex", "getUIPerformanceReport", "Lme/wcy/music/utils/UIPerformanceReport;", "next", "play", "mediaId", "", "playPause", "playWhenAvailable", "maxWaitTime", "preloadNextSongUrls", "prev", "replaceAll", "resetCacheState", "seekTo", "msec", "setPlayMode", "mode", "setUIVisible", "visible", "setUserInteracting", "interacting", "shouldCacheNextSong", "startNextSongCache", "remainingCacheTime", "stop", "updateBufferingPercent", "Companion", "app_debug"})
 public final class PlayerControllerImpl implements me.wcy.music.service.PlayerController, kotlinx.coroutines.CoroutineScope {
     @org.jetbrains.annotations.NotNull()
     private final androidx.media3.common.Player player = null;
@@ -52,14 +58,20 @@ public final class PlayerControllerImpl implements me.wcy.music.service.PlayerCo
     private int audioSessionId = 0;
     @org.jetbrains.annotations.NotNull()
     private final me.wcy.music.service.SmartPreloadManager smartPreloadManager = null;
+    @org.jetbrains.annotations.NotNull()
+    private final me.wcy.music.utils.SmartCacheManager smartCacheManager = null;
+    @org.jetbrains.annotations.NotNull()
+    private final me.wcy.music.utils.SmartUIUpdateManager smartUIUpdateManager = null;
+    @org.jetbrains.annotations.NotNull()
+    private final me.wcy.music.utils.FirstPlayOptimizer firstPlayOptimizer = null;
     private long lastProgressCheckTime = 0L;
     private final long progressCheckInterval = 500L;
     private long lastCacheCheckTime = 0L;
-    private final long cacheCheckInterval = 2000L;
-    private final long targetCacheLeadTime = 10000L;
     private boolean isNextSongCaching = false;
-    private long lastProgressUpdate = 0L;
-    private final long progressUpdateInterval = 200L;
+    @org.jetbrains.annotations.NotNull()
+    private final me.wcy.music.utils.SmartUIUpdateManager.SmartProgressUpdater smartProgressUpdater = null;
+    @org.jetbrains.annotations.NotNull()
+    private final me.wcy.music.utils.SmartUIUpdateManager.SmartBufferUpdater smartBufferUpdater = null;
     @org.jetbrains.annotations.NotNull()
     private static final java.lang.String TAG = "PlayerControllerImpl";
     @org.jetbrains.annotations.NotNull()
@@ -197,7 +209,7 @@ public final class PlayerControllerImpl implements me.wcy.music.service.PlayerCo
     }
     
     /**
-     * 检查持续缓存状态
+     * 检查持续缓存状态 - 智能优化版本
      */
     private final void checkContinuousCache() {
     }
@@ -257,6 +269,34 @@ public final class PlayerControllerImpl implements me.wcy.music.service.PlayerCo
      * 清理资源，停止缓存监听
      */
     public final void cleanup() {
+    }
+    
+    /**
+     * 获取缓存性能报告
+     */
+    @org.jetbrains.annotations.NotNull()
+    public final me.wcy.music.utils.CachePerformanceReport getCachePerformanceReport() {
+        return null;
+    }
+    
+    /**
+     * 获取UI性能报告
+     */
+    @org.jetbrains.annotations.NotNull()
+    public final me.wcy.music.utils.UIPerformanceReport getUIPerformanceReport() {
+        return null;
+    }
+    
+    /**
+     * 设置UI可见状态（供Activity调用）
+     */
+    public final void setUIVisible(boolean visible) {
+    }
+    
+    /**
+     * 设置用户交互状态（供Activity调用）
+     */
+    public final void setUserInteracting(boolean interacting) {
     }
     
     @java.lang.Override()

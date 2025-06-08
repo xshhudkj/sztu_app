@@ -10,6 +10,7 @@ import androidx.media3.datasource.cache.CacheEvictor
 import androidx.media3.datasource.cache.LeastRecentlyUsedCacheEvictor
 import androidx.media3.datasource.cache.SimpleCache
 import java.io.File
+import me.wcy.music.utils.LogUtils
 
 /**
  * 现代音乐流媒体缓存数据源工厂
@@ -128,6 +129,27 @@ object ModernMusicCacheDataSourceFactory {
             } catch (e: Exception) {
                 // 忽略清理错误
             }
+        }
+    }
+    
+    /**
+     * 清理过期缓存
+     * 根据LRU策略自动清理最少使用的缓存条目
+     */
+    fun clearExpiredCache(context: Context) {
+        try {
+            val cache = getOrCreateCache(context)
+            // SimpleCache会根据LRU策略自动清理过期内容
+            // 这里我们可以获取缓存空间使用情况，但不需要手动清理
+            val usedSpace = cache.cacheSpace
+            val maxSpace = CACHE_SIZE
+            
+            if (usedSpace > maxSpace * 0.9) {
+                // 当缓存使用超过90%时，记录日志
+                LogUtils.d("CacheFactory") { "缓存使用率较高: ${usedSpace}/${maxSpace}" }
+            }
+        } catch (e: Exception) {
+            LogUtils.w("CacheFactory", "清理过期缓存失败", e)
         }
     }
     

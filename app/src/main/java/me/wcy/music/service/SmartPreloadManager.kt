@@ -1,11 +1,11 @@
 package me.wcy.music.service
 
-import android.util.Log
 import androidx.media3.common.MediaItem
 import kotlinx.coroutines.*
 import me.wcy.music.net.datasource.MusicUrlCache
 import me.wcy.music.utils.getSongId
 import me.wcy.music.utils.getFee
+import me.wcy.music.utils.LogUtils
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -60,7 +60,7 @@ class SmartPreloadManager {
         
         // 限制并发预加载数量
         if (preloadingTasks.size >= MAX_CONCURRENT_PRELOADS) {
-            Log.d(TAG, "达到最大并发预加载数量，跳过预加载")
+            LogUtils.d(TAG, "达到最大并发预加载数量，跳过预加载")
             return
         }
         
@@ -80,11 +80,11 @@ class SmartPreloadManager {
         
         // 避免重复预加载
         if (preloadedSongs.contains(songId) || preloadingTasks.containsKey(songId)) {
-            Log.d(TAG, "歌曲已预加载或正在预加载: songId=$songId")
+            LogUtils.d(TAG) { "歌曲已预加载或正在预加载: songId=$songId" }
             return
         }
         
-        Log.d(TAG, "开始预加载歌曲: songId=$songId, title=${song.mediaMetadata.title}")
+        LogUtils.d(TAG) { "开始预加载歌曲: songId=$songId, title=${song.mediaMetadata.title}" }
         
         val preloadJob = preloadScope.launch {
             try {
@@ -92,12 +92,12 @@ class SmartPreloadManager {
                 val url = MusicUrlCache.getCachedUrl(songId, fee)
                 if (!url.isNullOrEmpty()) {
                     preloadedSongs.add(songId)
-                    Log.d(TAG, "预加载完成: songId=$songId")
+                    LogUtils.d(TAG) { "预加载完成: songId=$songId" }
                 } else {
-                    Log.w(TAG, "预加载失败: songId=$songId")
+                    LogUtils.w(TAG, "预加载失败: songId=$songId")
                 }
             } catch (e: Exception) {
-                Log.e(TAG, "预加载异常: songId=$songId", e)
+                LogUtils.e(TAG, "预加载异常: songId=$songId", e)
             } finally {
                 preloadingTasks.remove(songId)
             }
@@ -121,10 +121,10 @@ class SmartPreloadManager {
                         val url = MusicUrlCache.getCachedUrl(songId, fee)
                         if (!url.isNullOrEmpty()) {
                             preloadedSongs.add(songId)
-                            Log.d(TAG, "强制预加载完成: songId=$songId")
+                            LogUtils.d(TAG) { "强制预加载完成: songId=$songId" }
                         }
                     } catch (e: Exception) {
-                        Log.e(TAG, "强制预加载失败: songId=$songId", e)
+                        LogUtils.e(TAG, "强制预加载失败: songId=$songId", e)
                     }
                 }
             }
@@ -139,7 +139,7 @@ class SmartPreloadManager {
         preloadedSongs.remove(songId)
         preloadingTasks[songId]?.cancel()
         preloadingTasks.remove(songId)
-        Log.d(TAG, "清理预加载记录: songId=$songId")
+        LogUtils.d(TAG) { "清理预加载记录: songId=$songId" }
     }
     
     /**
@@ -149,7 +149,7 @@ class SmartPreloadManager {
         preloadingTasks.values.forEach { it.cancel() }
         preloadingTasks.clear()
         preloadedSongs.clear()
-        Log.d(TAG, "清理所有预加载任务")
+        LogUtils.d(TAG, "清理所有预加载任务")
     }
     
     /**
@@ -177,7 +177,7 @@ class SmartPreloadManager {
             if (preloadedSongs.size > 50) {
                 val toRemove = preloadedSongs.take(preloadedSongs.size - 30)
                 preloadedSongs.removeAll(toRemove.toSet())
-                Log.d(TAG, "清理过期预加载记录: ${toRemove.size}个")
+                LogUtils.d(TAG) { "清理过期预加载记录: ${toRemove.size}个" }
             }
         }
     }

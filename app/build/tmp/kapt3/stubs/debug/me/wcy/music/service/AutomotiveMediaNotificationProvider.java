@@ -6,7 +6,6 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import androidx.annotation.OptIn;
 import androidx.core.app.NotificationCompat;
 import androidx.media3.common.MediaMetadata;
@@ -17,6 +16,7 @@ import androidx.media3.session.MediaNotification;
 import androidx.media3.session.MediaSession;
 import com.google.common.collect.ImmutableList;
 import me.wcy.music.R;
+import me.wcy.music.utils.LogUtils;
 
 /**
  * Android Automotive专用的MediaNotificationProvider

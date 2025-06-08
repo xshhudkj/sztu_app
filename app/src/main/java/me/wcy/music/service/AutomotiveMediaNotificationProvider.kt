@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import androidx.annotation.OptIn
 import androidx.core.app.NotificationCompat
 import androidx.media3.common.MediaMetadata
@@ -18,6 +17,7 @@ import androidx.media3.session.MediaSession
 
 import com.google.common.collect.ImmutableList
 import me.wcy.music.R
+import me.wcy.music.utils.LogUtils
 
 /**
  * Android Automotive专用的MediaNotificationProvider
@@ -43,7 +43,7 @@ class AutomotiveMediaNotificationProvider(
 
     init {
         createNotificationChannel()
-        Log.d(TAG, "AutomotiveMediaNotificationProvider 初始化完成 - 遵循官方文档")
+        LogUtils.d(TAG, "AutomotiveMediaNotificationProvider 初始化完成 - 遵循官方文档")
     }
 
     override fun createNotification(
@@ -52,7 +52,7 @@ class AutomotiveMediaNotificationProvider(
         actionFactory: MediaNotification.ActionFactory,
         onNotificationChangedCallback: MediaNotification.Provider.Callback
     ): MediaNotification {
-        Log.d(TAG, "createNotification() - 创建标准化Android Automotive媒体通知")
+        LogUtils.d(TAG, "createNotification() - 创建标准化Android Automotive媒体通知")
 
         val player = mediaSession.player
         val mediaMetadata = player.mediaMetadata
@@ -68,7 +68,7 @@ class AutomotiveMediaNotificationProvider(
             actionFactory
         )
 
-        Log.d(TAG, "createNotification() - 标准化媒体通知创建完成，播放状态: ${player.playWhenReady}")
+        LogUtils.d(TAG) { "createNotification() - 标准化媒体通知创建完成，播放状态: ${player.playWhenReady}" }
         return MediaNotification(NOTIFICATION_ID, notification)
     }
 
@@ -77,7 +77,7 @@ class AutomotiveMediaNotificationProvider(
         action: String,
         extras: Bundle
     ): Boolean {
-        Log.d(TAG, "handleCustomCommand() - 处理自定义命令: $action")
+        LogUtils.d(TAG) { "handleCustomCommand() - 处理自定义命令: $action" }
         // 根据官方文档，MediaStyle通知由系统管理，返回false让系统处理
         return false
     }
@@ -101,7 +101,7 @@ class AutomotiveMediaNotificationProvider(
                 lockscreenVisibility = Notification.VISIBILITY_PUBLIC
             }
             notificationManager.createNotificationChannel(channel)
-            Log.d(TAG, "createNotificationChannel() - 通知渠道创建完成")
+            LogUtils.d(TAG, "createNotificationChannel() - 通知渠道创建完成")
         }
     }
 
@@ -119,7 +119,7 @@ class AutomotiveMediaNotificationProvider(
         player: Player,
         actionFactory: MediaNotification.ActionFactory
     ): Notification {
-        Log.d(TAG, "buildStandardizedMediaNotification() - 构建标准化媒体通知")
+        LogUtils.d(TAG, "buildStandardizedMediaNotification() - 构建标准化媒体通知")
 
         // 创建基础通知构建器，按照官方文档标准
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
@@ -145,7 +145,7 @@ class AutomotiveMediaNotificationProvider(
         // 设置标准化的MediaStyle
         setupStandardizedMediaStyle(builder, mediaSession)
 
-        Log.d(TAG, "buildStandardizedMediaNotification() - 标准化媒体通知构建完成")
+        LogUtils.d(TAG, "buildStandardizedMediaNotification() - 标准化媒体通知构建完成")
         return builder.build()
     }
 
@@ -159,7 +159,7 @@ class AutomotiveMediaNotificationProvider(
         actionFactory: MediaNotification.ActionFactory,
         mediaSession: MediaSession
     ) {
-        Log.d(TAG, "addOptimizedPlaybackActions() - 添加优化的播放控制按钮")
+        LogUtils.d(TAG, "addOptimizedPlaybackActions() - 添加优化的播放控制按钮")
 
         // 上一首按钮 - 使用优化的图标
         builder.addAction(
@@ -202,7 +202,7 @@ class AutomotiveMediaNotificationProvider(
             )
         )
 
-        Log.d(TAG, "addOptimizedPlaybackActions() - 优化的播放控制按钮添加完成，播放状态: ${player.playWhenReady}")
+        LogUtils.d(TAG) { "addOptimizedPlaybackActions() - 优化的播放控制按钮添加完成，播放状态: ${player.playWhenReady}" }
     }
 
     /**
@@ -215,17 +215,17 @@ class AutomotiveMediaNotificationProvider(
         mediaSession: MediaSession
     ) {
         try {
-            Log.d(TAG, "setupStandardizedMediaStyle() - 设置标准化MediaStyle")
+            LogUtils.d(TAG, "setupStandardizedMediaStyle() - 设置标准化MediaStyle")
 
             // 根据官方文档：MediaStyle通知会被隐藏，Android Automotive OS管理媒体通知和播放的界面互动
             // 官方文档关键要求：必须使用非null令牌调用setMediaSession()，这样通知才能被识别为媒体播放
             // 但由于MediaStyle会被隐藏，我们只需要确保通知包含正确的基本信息和播放控制按钮即可
             // 系统会自动识别这是媒体播放通知
 
-            Log.d(TAG, "setupStandardizedMediaStyle() - 标准化MediaStyle设置完成，系统自动管理")
+            LogUtils.d(TAG, "setupStandardizedMediaStyle() - 标准化MediaStyle设置完成，系统自动管理")
 
         } catch (e: Exception) {
-            Log.e(TAG, "setupStandardizedMediaStyle() - MediaStyle设置失败", e)
+            LogUtils.e(TAG, "setupStandardizedMediaStyle() - MediaStyle设置失败", e)
         }
     }
 
@@ -234,9 +234,9 @@ class AutomotiveMediaNotificationProvider(
      */
     fun cleanup() {
         try {
-            Log.d(TAG, "cleanup() - 资源清理完成")
+            LogUtils.d(TAG, "cleanup() - 资源清理完成")
         } catch (e: Exception) {
-            Log.e(TAG, "cleanup() - 资源清理失败", e)
+            LogUtils.e(TAG, "cleanup() - 资源清理失败", e)
         }
     }
 }

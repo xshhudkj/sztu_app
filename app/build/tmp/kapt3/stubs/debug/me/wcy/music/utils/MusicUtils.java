@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.audiofx.AudioEffect;
 import android.text.TextUtils;
-import android.util.Log;
+import me.wcy.music.utils.LogUtils;
 import me.wcy.music.R;
 
 /**

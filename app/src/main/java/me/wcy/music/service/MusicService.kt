@@ -2,7 +2,7 @@ package me.wcy.music.service
 
 import android.app.PendingIntent
 import android.content.Intent
-import android.util.Log
+import me.wcy.music.utils.LogUtils
 import androidx.annotation.OptIn
 import androidx.media3.common.AudioAttributes
 import androidx.media3.common.Player
@@ -21,6 +21,7 @@ import me.wcy.music.net.datasource.MusicDataSource
 import me.wcy.music.net.datasource.ModernMusicCacheDataSourceFactory
 import me.wcy.music.service.AutomotiveMediaNotificationProvider
 import me.wcy.music.utils.MusicUtils
+import me.wcy.music.utils.FirstPlayOptimizer
 import top.wangchenyan.common.CommonApp
 
 /**
@@ -33,7 +34,7 @@ class MusicService : MediaSessionService() {
     @OptIn(UnstableApi::class)
     override fun onCreate() {
         super.onCreate()
-        Log.d(TAG, "MusicService onCreate() - 初始化Android Automotive音乐服务")
+        LogUtils.i(TAG, "MusicService onCreate() - 初始化Android Automotive音乐服务")
 
         @OptIn(UnstableApi::class)
         player = ExoPlayer.Builder(applicationContext)
@@ -68,7 +69,7 @@ class MusicService : MediaSessionService() {
 
         // 根据系统类型配置通知栏
         setupNotificationProvider()
-        Log.d(TAG, "MusicService onCreate() - 通知栏配置完成")
+        LogUtils.i(TAG, "MusicService onCreate() - 通知栏配置完成")
     }
 
     /**
@@ -79,7 +80,7 @@ class MusicService : MediaSessionService() {
     @OptIn(UnstableApi::class)
     private fun setupNotificationProvider() {
         val isAutomotive = MusicUtils.isAndroidAutomotive(applicationContext)
-        Log.d(TAG, "setupNotificationProvider() - 检测到系统类型: ${if (isAutomotive) "Android Automotive" else "手机Android"}")
+        LogUtils.i(TAG, "setupNotificationProvider() - 检测到系统类型: ${if (isAutomotive) "Android Automotive" else "手机Android"}")
 
         if (isAutomotive) {
             setupAutomotiveNotification()
@@ -99,9 +100,9 @@ class MusicService : MediaSessionService() {
             // 解决Android Automotive环境下通知栏背景颜色不稳定的问题
             val automotiveNotificationProvider = AutomotiveMediaNotificationProvider(applicationContext)
             setMediaNotificationProvider(automotiveNotificationProvider)
-            Log.d(TAG, "setupAutomotiveNotification() - Android Automotive专用通知栏配置成功")
+            LogUtils.i(TAG, "setupAutomotiveNotification() - Android Automotive专用通知栏配置成功")
         } catch (e: Exception) {
-            Log.e(TAG, "setupAutomotiveNotification() - 通知栏配置失败，回退到默认配置", e)
+            LogUtils.e(TAG, "setupAutomotiveNotification() - 通知栏配置失败，回退到默认配置", e)
             // 回退到默认配置
             setupPhoneNotification()
         }
@@ -123,9 +124,9 @@ class MusicService : MediaSessionService() {
                     setSmallIcon(R.drawable.ic_notification)
                 }
             setMediaNotificationProvider(defaultProvider)
-            Log.d(TAG, "setupPhoneNotification() - 手机Android原始通知栏配置成功")
+            LogUtils.i(TAG, "setupPhoneNotification() - 手机Android原始通知栏配置成功")
         } catch (e: Exception) {
-            Log.e(TAG, "setupPhoneNotification() - 手机通知栏配置失败", e)
+            LogUtils.e(TAG, "setupPhoneNotification() - 手机通知栏配置失败", e)
         }
     }
 
@@ -135,16 +136,16 @@ class MusicService : MediaSessionService() {
 
     override fun onTaskRemoved(rootIntent: Intent?) {
         super.onTaskRemoved(rootIntent)
-        Log.d(TAG, "onTaskRemoved() - 任务被移除，播放状态: ${player.playWhenReady}")
+        LogUtils.i(TAG, "onTaskRemoved() - 任务被移除，播放状态: ${player.playWhenReady}")
         if (!player.playWhenReady) {
-            Log.d(TAG, "onTaskRemoved() - 停止播放并停止服务")
+            LogUtils.i(TAG, "onTaskRemoved() - 停止播放并停止服务")
             player.stop()
             stopSelf()
         }
     }
 
     override fun onDestroy() {
-        Log.d(TAG, "onDestroy() - 销毁MusicService")
+        LogUtils.i(TAG, "onDestroy() - 销毁MusicService")
         super.onDestroy()
         player.release()
         session.release()
@@ -152,28 +153,30 @@ class MusicService : MediaSessionService() {
 
     /**
      * 创建极速启动优化的LoadControl配置
-     * 基于ExoPlayer最佳实践，专门针对快速播放启动优化
-     * 目标：实现3秒内播放启动，优先响应速度而非缓存深度
+     * 🔥 使用FirstPlayOptimizer的超激进配置，专门解决用户反馈的首次播放慢问题
+     * 目标：实现500ms内播放启动，最大化响应速度
      */
     private fun createOptimizedLoadControl(): DefaultLoadControl {
+        // 获取首次播放优化器的建议配置
+        val firstPlayOptimizer = FirstPlayOptimizer(applicationContext)
+        val config = firstPlayOptimizer.getOptimalLoadControlConfig()
+        
+        LogUtils.i(TAG, "createOptimizedLoadControl() - 应用超激进LoadControl配置: 起播缓存=${config.bufferForPlaybackMs}ms, 最小缓存=${config.minBufferMs}ms")
+        
         return DefaultLoadControl.Builder()
-            // 极速启动缓存策略：最小化启动延迟
+            // 🔥 超激进缓存策略：最大化首次播放启动速度
             .setBufferDurationsMs(
-                // 最小缓存：2秒（减少到最低可用值，保证基本连续性）
-                2_000,
-                // 最大缓存：15秒（进一步减少，避免过度缓存影响启动速度）
-                15_000,
-                // 起播缓存：1秒（激进的快速启动策略）
-                1_000,
-                // 重新缓冲后起播：1.5秒（快速恢复播放）
-                1_500
+                config.minBufferMs,        // 500ms最小缓存（更激进）
+                config.maxBufferMs,        // 8秒最大缓存（更激进）
+                config.bufferForPlaybackMs, // 200ms起播缓存（极度激进）
+                config.bufferForPlaybackAfterRebufferMs // 500ms重新缓冲起播（激进）
             )
-            // 目标缓存字节数：2MB（减少缓存大小，优先启动速度）
-            .setTargetBufferBytes(2 * 1024 * 1024)
-            // 分配器配置：32KB块大小，更小的块提高分配效率
-            .setAllocator(DefaultAllocator(true, 32 * 1024))
-            // 优先时间阈值：激进的时间优先策略
-            .setPrioritizeTimeOverSizeThresholds(true)
+            // 目标缓存字节数：1MB（更激进的缓存大小）
+            .setTargetBufferBytes(config.targetBufferBytes)
+            // 分配器配置：16KB块大小，更小的块提高分配效率和响应速度
+            .setAllocator(DefaultAllocator(true, 16 * 1024))
+            // 优先时间阈值：极度激进的时间优先策略
+            .setPrioritizeTimeOverSizeThresholds(config.prioritizeTimeOverSizeThresholds)
             .build()
     }
 

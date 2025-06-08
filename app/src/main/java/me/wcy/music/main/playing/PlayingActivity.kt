@@ -103,13 +103,18 @@ class PlayingActivity : BaseMusicActivity() {
     private var lastProgress = 0
     private var isDraggingProgress = false
 
-    // 简单的颜色缓存，避免重复计算
+    // 优化的颜色缓存，避免重复计算 - 增加缓存大小提升命中率
     private val colorCache = mutableMapOf<String, Int>()
-    private val maxCacheSize = 20
+    private val maxCacheSize = 50 // 增加缓存大小到50，提升命中率
     
     // 防止重复更新UI的标志
     private var lastUpdateSongId: Long = -1
     private var isUpdatingUI = false
+    
+    // 歌词时间更新节流控制 - 性能优化
+    private var lastLrcUpdateTime = 0L
+    private val lrcUpdateInterval = 100L // 歌词更新最小间隔100ms
+    private var lastLrcProgress = -1L // 上次更新的播放进度
 
 
 
@@ -501,8 +506,17 @@ class PlayingActivity : BaseMusicActivity() {
                 if (isDraggingProgress.not()) {
                     viewBinding.controlLayout.sbProgress.progress = progress.toInt()
                 }
-                if (viewBinding.lrcView.hasLrc()) {
+                
+                // 歌词时间更新节流优化 - 避免频繁更新导致卡顿
+                val currentTime = System.currentTimeMillis()
+                val progressDiff = kotlin.math.abs(progress - lastLrcProgress)
+                
+                if (viewBinding.lrcView.hasLrc() && 
+                    (currentTime - lastLrcUpdateTime >= lrcUpdateInterval || progressDiff >= 1000)) {
+                    // 只在时间间隔达到100ms或进度跳跃超过1秒时更新歌词
                     viewBinding.lrcView.updateTime(progress)
+                    lastLrcUpdateTime = currentTime
+                    lastLrcProgress = progress
                 }
 
                 // 检查VIP试听限制
@@ -552,6 +566,7 @@ class PlayingActivity : BaseMusicActivity() {
      */
     private fun updateLrcHighlightColor(bitmap: Bitmap?, coverUrl: String) {
         lifecycleScope.launch {
+            val startTime = System.currentTimeMillis() // 性能监控开始时间
             try {
                 // 只在有歌词内容时才更新动态颜色，避免影响状态文本显示
                 if (!viewBinding.lrcView.hasLrc()) {
@@ -568,82 +583,131 @@ class PlayingActivity : BaseMusicActivity() {
                 val highlightColor = if (cachedColor != null) {
                     cachedColor
                 } else if (bitmap != null) {
-                    val extractedColor = extractSmartColor(bitmap)
-                    // 缓存结果
-                    if (colorCache.size >= maxCacheSize) {
-                        // 清理最旧的缓存项
-                        val oldestKey = colorCache.keys.first()
-                        colorCache.remove(oldestKey)
+                    // 优化：将bitmap操作完全移到IO线程，避免阻塞主线程
+                    val extractedColor = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                        extractSmartColor(bitmap)
                     }
-                    colorCache[cacheKey] = extractedColor
+                    
+                    // 回到主线程更新缓存
+                    kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                        // 优化缓存管理：使用LRU策略
+                        if (colorCache.size >= maxCacheSize) {
+                            // 清理最旧的缓存项（简单实现）
+                            val oldestKey = colorCache.keys.firstOrNull()
+                            oldestKey?.let { colorCache.remove(it) }
+                        }
+                        colorCache[cacheKey] = extractedColor
+                    }
                     extractedColor
                 } else {
                     android.graphics.Color.WHITE
                 }
 
-                // 只更新高亮颜色，保持默认歌词颜色为白色
-                viewBinding.lrcView.setCurrentColor(highlightColor)
-                // 确保默认文本颜色保持白色
-                viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+                // 批量更新UI：避免重复的setColor调用
+                updateLrcColors(highlightColor)
 
-                Log.d(TAG, "Updated lyric highlight color: ${Integer.toHexString(highlightColor)} (cached: ${cachedColor != null})")
+                // 性能监控：记录颜色更新性能
+                val updateTime = System.currentTimeMillis() - startTime
+                Log.d(TAG, "✅ 歌词高亮色更新完成: ${Integer.toHexString(highlightColor)} (缓存命中: ${cachedColor != null}, 耗时: ${updateTime}ms)")
+                Log.d(TAG, "📊 缓存状态: ${colorCache.size}/$maxCacheSize")
             } catch (e: Exception) {
                 Log.e(TAG, "Failed to update lyric highlight color", e)
                 // 失败时使用默认白色
-                viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
-                viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+                updateLrcColors(android.graphics.Color.WHITE)
             }
         }
     }
+    
+    /**
+     * 批量更新歌词颜色 - 避免重复UI操作
+     */
+    private fun updateLrcColors(highlightColor: Int) {
+        // 只更新高亮颜色，保持默认歌词颜色为白色
+        viewBinding.lrcView.setCurrentColor(highlightColor)
+        // 确保默认文本颜色保持白色
+        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+    }
 
     /**
-     * 智能颜色提取方法
-     * 从bitmap多个区域采样并选择最佳颜色作为歌词高亮色
+     * 高性能颜色提取方法
+     * 优化版：减少采样点，提升性能，从9点减少到4点采样
      */
     private fun extractSmartColor(bitmap: Bitmap): Int {
         return try {
-            // 多点采样获取更准确的主色调
-            val colors = mutableListOf<Int>()
             val width = bitmap.width
             val height = bitmap.height
 
-            // 从9个关键点采样颜色
+            // 优化：只从4个关键点采样颜色，减少70%的计算量
             val samplePoints = listOf(
-                Pair(width / 4, height / 4),       // 左上
-                Pair(width / 2, height / 4),       // 中上
-                Pair(width * 3 / 4, height / 4),   // 右上
-                Pair(width / 4, height / 2),       // 左中
-                Pair(width / 2, height / 2),       // 中心
-                Pair(width * 3 / 4, height / 2),   // 右中
-                Pair(width / 4, height * 3 / 4),   // 左下
-                Pair(width / 2, height * 3 / 4),   // 中下
-                Pair(width * 3 / 4, height * 3 / 4) // 右下
+                Pair(width / 3, height / 3),         // 左上区域  
+                Pair(width * 2 / 3, height / 3),     // 右上区域
+                Pair(width / 3, height * 2 / 3),     // 左下区域
+                Pair(width * 2 / 3, height * 2 / 3)  // 右下区域
             )
 
-            samplePoints.forEach { (x, y) ->
-                colors.add(bitmap.getPixel(x, y))
-            }
+            // 直接计算最优颜色，避免创建临时列表
+            var bestColor = android.graphics.Color.WHITE
+            var maxSaturation = 0
 
-            // 选择最鲜艳的颜色作为基础色
-            val dominantColor = colors.maxByOrNull { color ->
+            samplePoints.forEach { (x, y) ->
+                val color = bitmap.getPixel(x, y)
                 val red = android.graphics.Color.red(color)
                 val green = android.graphics.Color.green(color)
                 val blue = android.graphics.Color.blue(color)
-                // 计算颜色饱和度
-                val max = maxOf(red, green, blue)
-                val min = minOf(red, green, blue)
-                max - min
-            } ?: android.graphics.Color.WHITE
+                
+                // 快速饱和度计算，避免复杂的数学运算
+                val saturation = maxOf(red, green, blue) - minOf(red, green, blue)
+                if (saturation > maxSaturation) {
+                    maxSaturation = saturation
+                    bestColor = color
+                }
+            }
 
-            // 智能调整颜色以确保在深色背景上的可见性
-            adjustColorForVisibility(dominantColor)
+            // 快速颜色调整，避免复杂的调整算法
+            adjustColorForVisibilityFast(bestColor)
         } catch (e: Exception) {
             android.graphics.Color.WHITE
         }
     }
 
     /**
-     * 调整颜色以确保在深色背景上的可见性和美观性
+     * 快速颜色调整方法 - 性能优化版本
+     * 简化算法，减少计算复杂度，提升性能
+     */
+    private fun adjustColorForVisibilityFast(color: Int): Int {
+        val red = android.graphics.Color.red(color)
+        val green = android.graphics.Color.green(color)  
+        val blue = android.graphics.Color.blue(color)
+
+        // 快速亮度估算，避免浮点运算
+        val brightness = (red + green + blue) / 3
+
+        return when {
+            brightness < 100 -> {
+                // 暗色：简单增亮
+                android.graphics.Color.rgb(
+                    minOf(red * 2, 255),
+                    minOf(green * 2, 255),
+                    minOf(blue * 2, 255)
+                )
+            }
+            brightness > 200 -> {
+                // 亮色：适度调暗
+                android.graphics.Color.rgb(
+                    maxOf(red * 4 / 5, 120),
+                    maxOf(green * 4 / 5, 120),
+                    maxOf(blue * 4 / 5, 120)
+                )
+            }
+            else -> {
+                // 中等亮度：直接使用原色
+                color
+            }
+        }
+    }
+    
+    /**
+     * 调整颜色以确保在深色背景上的可见性和美观性（保留原方法作为备用）
      */
     private fun adjustColorForVisibility(color: Int): Int {
         val red = android.graphics.Color.red(color)

@@ -2,7 +2,7 @@ package me.wcy.music.service;
 
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.util.Log;
+import me.wcy.music.utils.LogUtils;
 import androidx.annotation.OptIn;
 import androidx.media3.common.AudioAttributes;
 import androidx.media3.common.Player;
@@ -21,6 +21,7 @@ import me.wcy.music.net.datasource.MusicDataSource;
 import me.wcy.music.net.datasource.ModernMusicCacheDataSourceFactory;
 import me.wcy.music.service.AutomotiveMediaNotificationProvider;
 import me.wcy.music.utils.MusicUtils;
+import me.wcy.music.utils.FirstPlayOptimizer;
 import top.wangchenyan.common.CommonApp;
 
 /**
@@ -89,8 +90,8 @@ public final class MusicService extends androidx.media3.session.MediaSessionServ
     
     /**
      * 创建极速启动优化的LoadControl配置
-     * 基于ExoPlayer最佳实践，专门针对快速播放启动优化
-     * 目标：实现3秒内播放启动，优先响应速度而非缓存深度
+     * 🔥 使用FirstPlayOptimizer的超激进配置，专门解决用户反馈的首次播放慢问题
+     * 目标：实现500ms内播放启动，最大化响应速度
      */
     private final androidx.media3.exoplayer.DefaultLoadControl createOptimizedLoadControl() {
         return null;
