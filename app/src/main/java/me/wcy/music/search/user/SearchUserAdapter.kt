@@ -2,10 +2,9 @@ package me.wcy.music.search.user
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.wcy.music.databinding.ItemSearchUserBinding
+import me.wcy.music.search.SearchAdapterBase
 import me.wcy.music.search.bean.UserData
 import me.wcy.music.utils.ImageUtils.loadCover
 
@@ -13,7 +12,7 @@ import me.wcy.music.utils.ImageUtils.loadCover
  * 搜索用户适配器
  * Created by wangchenyan.top on 2024/12/20.
  */
-class SearchUserAdapter : ListAdapter<UserData, SearchUserAdapter.ViewHolder>(DiffCallback()) {
+class SearchUserAdapter : SearchAdapterBase<UserData, SearchUserAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSearchUserBinding.inflate(
@@ -41,16 +40,6 @@ class SearchUserAdapter : ListAdapter<UserData, SearchUserAdapter.ViewHolder>(Di
             binding.root.setOnClickListener {
                 // TODO: 跳转到用户详情页面
             }
-        }
-    }
-
-    private class DiffCallback : DiffUtil.ItemCallback<UserData>() {
-        override fun areItemsTheSame(oldItem: UserData, newItem: UserData): Boolean {
-            return oldItem.userId == newItem.userId
-        }
-
-        override fun areContentsTheSame(oldItem: UserData, newItem: UserData): Boolean {
-            return oldItem == newItem
         }
     }
 }

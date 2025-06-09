@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+缓存限制设置对话框布局
+特点：现代化Material Design风格、Android Automotive横屏优化
+设计理念：简洁明了、操作便捷、数值输入友好
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="500dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_modern_cache_dialog"
+        android:padding="32dp">
+
+        <!-- 标题 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="缓存限制设置"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/common_text_h1_color"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 当前状态 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_action_button_modern"
+            android:padding="20dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当前缓存大小："
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tvCurrentCacheSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="计算中..."
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/common_theme_color"
+                android:gravity="center"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+        <!-- 限制选项 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="选择缓存限制："
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/common_text_h1_color"
+            android:layout_marginBottom="16dp" />
+
+        <RadioGroup
+            android:id="@+id/rgLimitOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp">
+
+            <RadioButton
+                android:id="@+id/rbUnlimited"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="无限制"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb100MB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="100 MB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb200MB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="200 MB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb500MB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="500 MB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb1GB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 GB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rb2GB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2 GB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+
+            <RadioButton
+                android:id="@+id/rb5GB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5 GB"
+                android:textSize="16sp"
+                android:textColor="@color/common_text_h2_color"
+                android:paddingVertical="8dp" />
+        </RadioGroup>
+
+        <!-- 分配预览 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="缓存分配预览："
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/common_text_h1_color"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:id="@+id/tvAllocationPreview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="总限制: 1GB\n├─ 音频缓存: 700MB (70%)\n└─ 其他缓存: 300MB (30%)"
+            android:textSize="14sp"
+            android:textColor="@color/common_text_h2_color"
+            android:background="@drawable/bg_action_button_modern"
+            android:padding="16dp"
+            android:fontFamily="monospace"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 操作按钮 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnCancel"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="16dp"
+                android:text="取消"
+                android:textSize="16sp"
+                android:background="@drawable/bg_button_outlined"
+                android:textColor="@color/common_theme_color" />
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="确认设置"
+                android:textSize="16sp"
+                android:background="@color/common_theme_color"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

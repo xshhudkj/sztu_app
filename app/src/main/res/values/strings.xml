@@ -31,6 +31,9 @@
     <string name="menu_exit">关闭应用</string>
     <string name="play">播放</string>
     <string name="sound_effect">音效调节</string>
+    <string name="auto_play_on_startup_title_enabled">启动自动播放音乐</string>
+    <string name="auto_play_on_startup_title_disabled">关闭自动播放音乐</string>
+    <string name="auto_play_on_startup_summary">开启后应用启动时将自动开始播放音乐</string>
     <string name="tips">温馨提示</string>
     <string name="play_tips">当前处于移动网络，确定打开移动网络播放开关吗？</string>
     <string name="play_tips_sure">立即打开</string>
@@ -104,4 +107,129 @@
     <string name="captcha_format_error">验证码应为4位或6位数字</string>
     <string name="captcha_sent">验证码已发送</string>
     <string name="captcha_send_failed">发送验证码失败，请重试</string>
+    
+    <!-- 缓存管理相关字符串 -->
+    <string name="cache_management">缓存管理</string>
+    <string name="cache_clear_title">清理缓存</string>
+    <string name="cache_clear_summary">点击清理所有缓存文件</string>
+    <string name="cache_limit_title">缓存限制</string>
+    <string name="cache_limit_summary">设置最大缓存大小</string>
+    
+    <!-- 缓存限制选项 -->
+    <string name="cache_limit_unlimited">无限制</string>
+    <string name="cache_limit_100mb">100MB</string>
+    <string name="cache_limit_200mb">200MB</string>
+    <string name="cache_limit_500mb">500MB</string>
+    <string name="cache_limit_1gb">1GB</string>
+    <string name="cache_limit_2gb">2GB</string>
+    <string name="cache_limit_5gb">5GB</string>
+    
+    <!-- 自动清理功能 -->
+    <string name="auto_cache_clean_title">自动清理缓存</string>
+    <string name="auto_cache_clean_summary">定期自动清理过期缓存</string>
+    <string name="auto_clean_interval_title">清理间隔</string>
+    <string name="auto_clean_interval_summary">设置自动清理的时间间隔</string>
+    <string name="auto_clean_threshold_title">清理阈值</string>
+    <string name="auto_clean_threshold_summary">缓存使用率达到此值时自动清理</string>
+    
+    <!-- 自动清理间隔选项 -->
+    <string name="auto_clean_interval_1day">每天</string>
+    <string name="auto_clean_interval_3days">每3天</string>
+    <string name="auto_clean_interval_1week">每周</string>
+    <string name="auto_clean_interval_2weeks">每2周</string>
+    <string name="auto_clean_interval_1month">每月</string>
+    
+    <!-- 新增自动清理相关字符串 -->
+    <string name="auto_clean_settings_title">定期自动清理设置</string>
+    <string name="auto_clean_description">启用后将定期自动清理过期缓存，释放存储空间</string>
+    <string name="auto_clean_current_status">当前状态</string>
+    <string name="auto_clean_enable">启用定期自动清理</string>
+    <string name="auto_clean_daily">每天</string>
+    <string name="auto_clean_weekly">每周</string>
+    <string name="auto_clean_monthly">每月</string>
+    
+    <!-- 自动清理阈值选项 -->
+    <string name="auto_clean_threshold_50">50%</string>
+    <string name="auto_clean_threshold_70">70%</string>
+    <string name="auto_clean_threshold_80">80%</string>
+    <string name="auto_clean_threshold_90">90%</string>
+    <string name="auto_clean_threshold_95">95%</string>
+    
+    <!-- 缓存管理对话框相关 -->
+    <string name="cache_dialog_title">缓存管理</string>
+    <string name="cache_management_title">缓存管理</string>
+    <string name="cache_current_size">当前大小</string>
+    <string name="cache_available_space">可用空间</string>
+    <string name="cache_usage_percentage">使用率</string>
+    <string name="cache_status_healthy">健康</string>
+    <string name="cache_status_warning">警告</string>
+    <string name="cache_clear_button">清理缓存</string>
+    <string name="cache_settings_button">设置</string>
+    <string name="cache_close_button">关闭</string>
+    
+    <!-- 清理相关消息 -->
+    <string name="cache_clearing">正在清理缓存...</string>
+    <string name="cache_clear_in_progress">正在清理缓存...</string>
+    <string name="cache_clear_success">缓存清理成功</string>
+    <string name="cache_clear_failed">缓存清理失败</string>
+    <string name="cache_auto_clean_enabled">自动清理已启用</string>
+    <string name="cache_auto_clean_disabled">自动清理已禁用</string>
+    
+    <!-- 现代化缓存管理界面字符串 -->
+    <string name="cache_overview_title">缓存概览</string>
+    <string name="cache_file_count">文件数量</string>
+    <string name="cache_actions_title">管理操作</string>
+    <string name="manual_clear_cache">手动清理</string>
+    <string name="set_cache_limit">设置限制</string>
+    <string name="auto_clean_settings">自动清理</string>
+    <string name="refresh_cache_info">刷新信息</string>
+    <string name="please_wait">请稍候...</string>
+
+    <!-- 缓存状态描述 -->
+    <string name="cache_status_excellent">缓存状态优秀</string>
+    <string name="cache_status_good">缓存状态良好</string>
+    <string name="cache_status_normal">缓存状态正常</string>
+    <string name="cache_status_high">缓存使用率较高</string>
+    <string name="cache_status_critical">缓存使用率过高</string>
+
+    <!-- 清理进度相关 -->
+    <string name="cache_analyzing">正在分析缓存...</string>
+    <string name="cache_clearing_audio">正在清理音频缓存...</string>
+    <string name="cache_clearing_images">正在清理图片缓存...</string>
+    <string name="cache_clearing_temp">正在清理临时文件...</string>
+    <string name="cache_clearing_complete">清理完成</string>
+
+    <!-- 格式化字符串 -->
+    <string name="cache_size_format" formatted="false">%s / %s</string>
+    <string name="cache_percentage_format">%d%%</string>
+    <string name="cache_freed_format" formatted="false">已释放 %s 空间</string>
+    <string name="cache_file_count_format" formatted="false">%,d 个文件</string>
+
+    <!-- 缓存清理确认对话框 -->
+    <string name="cache_clear_confirm_title">确认清理缓存</string>
+    <string name="cache_clear_confirm_message">您即将清理所有缓存文件，此操作不可撤销。清理后可能需要重新下载音乐和图片。</string>
+    <string name="cache_clear_confirm_button">确认清理</string>
+    <string name="cache_clear_warning">注意：清理缓存后，已下载的音乐和图片将被删除，下次播放时需要重新下载。</string>
+    <string name="cache_clear_success_detail" formatted="false">缓存清理成功！释放了 %s 存储空间，删除了 %d 个文件。</string>
+    <string name="cache_clear_failed_detail">缓存清理失败：%s</string>
+    <string name="no_cache_to_clear">无缓存可清理</string>
+    <string name="no_cache_message">当前没有缓存文件需要清理。</string>
+
+    <!-- 缓存限制设置对话框 -->
+    <string name="cache_limit_settings_title">缓存限制设置</string>
+    <string name="cache_limit_description">设置缓存大小上限，超过限制时系统将自动清理部分缓存文件以保持在限制范围内。</string>
+    <string name="current_cache_status">当前缓存状态</string>
+    <string name="current_cache_limit">当前限制</string>
+    <string name="set_cache_limit_title">设置缓存限制</string>
+    <string name="cache_limit_custom">自定义</string>
+    <string name="cache_limit_custom_hint">输入数值</string>
+    <string name="cache_limit_apply">应用设置</string>
+    <string name="cache_limit_warning">注意：设置过小的缓存限制可能影响播放体验，建议至少保留500MB空间。</string>
+    <string name="cache_limit_success">缓存限制设置成功！系统将自动监控并管理缓存大小。</string>
+    <string name="cache_limit_invalid">请输入有效的缓存限制值（10MB - 50GB）</string>
+    <string name="cache_limit_too_small">缓存限制过小，建议至少设置100MB以确保正常播放</string>
+
+    <!-- 其他对话框设置 -->
+    <string name="auto_clean_apply">应用设置</string>
+    <string name="auto_clean_success">自动清理设置成功！</string>
 </resources>

@@ -7,9 +7,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
-import me.wcy.music.utils.MusicUtils.asLargeCover
-import me.wcy.music.utils.MusicUtils.asSmallCover
 import me.wcy.music.utils.generateUniqueId
+import me.wcy.music.utils.CoverUtils
 
 /**
  * Created by wangchenyan.top on 2023/8/29.
@@ -87,13 +86,11 @@ data class SongEntity(
     fun isLocal() = type == LOCAL
 
     fun getSmallCover(): String {
-        if (isLocal()) return albumCover
-        return albumCover.asSmallCover()
+        return CoverUtils.getSmallCover(isLocal(), albumCover)
     }
 
     fun getLargeCover(): String {
-        if (isLocal()) return albumCover
-        return albumCover.asLargeCover()
+        return CoverUtils.getLargeCover(isLocal(), albumCover)
     }
 
     companion object {

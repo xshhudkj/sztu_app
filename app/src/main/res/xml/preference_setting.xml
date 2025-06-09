@@ -26,6 +26,12 @@
         <Preference
             android:key="@string/setting_key_sound_effect"
             android:title="@string/sound_effect" />
+
+        <Preference
+            android:key="@string/setting_key_auto_play_on_startup"
+            android:title="@string/auto_play_on_startup_title_enabled"
+            android:summary="@string/auto_play_on_startup_summary"
+            android:iconSpaceReserved="false" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="下载">
@@ -38,6 +44,36 @@
             android:key="@string/setting_key_download_sound_quality"
             android:summary="标准"
             android:title="下载音质" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/cache_management"
+        android:iconSpaceReserved="false">
+
+        <!-- 清理缓存 - 移除图标，简化显示 -->
+        <Preference
+            android:key="@string/setting_key_cache_clear"
+            android:title="@string/cache_clear_title"
+            android:summary="@string/cache_clear_summary"
+            android:iconSpaceReserved="false" />
+
+        <!-- 缓存限制 - 移除图标，简化显示 -->
+        <ListPreference
+            android:key="@string/setting_key_cache_limit"
+            android:title="@string/cache_limit_title"
+            android:summary="@string/cache_limit_summary"
+            android:entries="@array/cache_limit_entries"
+            android:entryValues="@array/cache_limit_values"
+            android:defaultValue="-1"
+            android:iconSpaceReserved="false" />
+
+        <!-- 定期自动清理 - 新增第三行 -->
+        <Preference
+            android:key="@string/setting_key_auto_cache_clean"
+            android:title="@string/auto_cache_clean_title"
+            android:summary="@string/auto_cache_clean_summary"
+            android:iconSpaceReserved="false" />
+
     </PreferenceCategory>
 
     <PreferenceCategory android:title="文件过滤">

@@ -29,13 +29,19 @@ import me.wcy.music.service.MusicService
 import me.wcy.music.service.PlayServiceModule
 import me.wcy.music.service.PlayServiceModule.playerController
 import me.wcy.music.splash.SplashActivity
+import me.wcy.music.storage.preference.ConfigPreferences
 import me.wcy.music.utils.QuitTimer
 import me.wcy.music.utils.TimeUtils
+import android.os.Handler
+import android.os.Looper
+import kotlinx.coroutines.launch
+
 import me.wcy.router.CRouter
 import top.wangchenyan.common.ext.getColorEx
 import me.wcy.music.common.showImmersiveConfirmDialog
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
+
 import top.wangchenyan.common.widget.pager.CustomTabPager
 // 启动页相关导入已移除
 import javax.inject.Inject
@@ -70,6 +76,9 @@ class MainActivity : BaseMusicActivity() {
 
         initDrawer()
         parseIntent()
+
+        // 检查并执行自动播放
+        checkAndExecuteAutoPlay()
 
         configWindowInsets {
             navBarColor = getColorEx(R.color.tab_bg)
@@ -143,6 +152,8 @@ class MainActivity : BaseMusicActivity() {
                     CRouter.with(this@MainActivity).url("/settings").start()
                     return true
                 }
+
+
 
                 R.id.action_timer -> {
                     timerDialog()
@@ -240,11 +251,58 @@ class MainActivity : BaseMusicActivity() {
         finish()
     }
 
+
+
     private fun getTabItem(@DrawableRes icon: Int, text: CharSequence): TabItemBinding {
         val binding = TabItemBinding.inflate(layoutInflater, viewBinding.tabBar, true)
         binding.ivIcon.setImageResource(icon)
         binding.tvTitle.text = text
         return binding
+    }
+
+    /**
+     * 检查并执行自动播放功能
+     * 根据用户设置在应用启动时自动开始播放音乐
+     */
+    private fun checkAndExecuteAutoPlay() {
+        // 检查是否启用了自动播放设置
+        if (!ConfigPreferences.autoPlayOnStartup) {
+            android.util.Log.d("MainActivity", "自动播放功能已关闭，跳过自动播放")
+            return
+        }
+
+        android.util.Log.d("MainActivity", "自动播放功能已启用，准备执行自动播放")
+
+        // 延迟执行自动播放，确保播放器和UI完全初始化
+        Handler(Looper.getMainLooper()).postDelayed({
+            lifecycleScope.launch {
+                try {
+                    val playerController = application.playerController()
+
+                    // 检查当前播放列表是否为空
+                    val currentPlaylist = playerController.playlist.value
+                    if (currentPlaylist.isNullOrEmpty()) {
+                        android.util.Log.d("MainActivity", "播放列表为空，无法执行自动播放")
+                        return@launch
+                    }
+
+                    // 检查当前是否已经在播放
+                    val currentPlayState = playerController.playState.value
+                    if (currentPlayState.isPlaying) {
+                        android.util.Log.d("MainActivity", "音乐已在播放中，跳过自动播放")
+                        return@launch
+                    }
+
+                    // 开始播放音乐
+                    playerController.playPause()
+                    android.util.Log.d("MainActivity", "自动播放已执行")
+
+                } catch (e: Exception) {
+                    android.util.Log.e("MainActivity", "自动播放执行失败: ${e.message}", e)
+                    // 不显示错误提示给用户，避免影响启动体验
+                }
+            }
+        }, 1500) // 延迟1.5秒，确保所有组件都已初始化完成
     }
 
     override fun onDestroy() {

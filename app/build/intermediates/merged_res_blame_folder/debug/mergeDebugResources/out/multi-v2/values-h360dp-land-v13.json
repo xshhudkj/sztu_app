@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "me.wcy.music.app-mergeDebugResources-67:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
+            "outputFile": "me.wcy.music.app-mergeDebugResources-2:/values-h360dp-land-v13/values-h360dp-land-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\ed9553fb9af75b90a85668bb0aac2cdb\\transformed\\material-1.12.0\\res\\values-h360dp-land-v13\\values-h360dp-land-v13.xml",
+                    "source": "D:\\Android Studio\\caches\\transforms-4\\ed9553fb9af75b90a85668bb0aac2cdb\\transformed\\material-1.12.0\\res\\values-h360dp-land-v13\\values-h360dp-land-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10",
                         "startColumns": "4,4,4,4,4,4,4,4,4",

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+缓存清理确认对话框布局
+特点：现代化Material Design风格、Android Automotive横屏优化
+设计理念：简洁明了、信息清晰、操作便捷
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="600dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_modern_cache_dialog"
+    android:elevation="24dp"
+    android:padding="0dp">
+
+    <!-- 现代化标题栏 -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clTitleBar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_title_bar_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 警告图标 -->
+        <ImageView
+            android:id="@+id/ivWarningIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="24dp"
+            android:src="@drawable/ic_warning"
+            android:tint="@color/orange_warning"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 标题文字 -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/cache_clear_confirm_title"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivClose"
+            app:layout_constraintStart_toEndOf="@+id/ivWarningIcon"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 关闭按钮 -->
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_close_button_modern"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="10dp"
+            android:src="@drawable/ic_close"
+            android:tint="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- 主要内容区域 -->
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/clTitleBar">
+
+        <!-- 确认信息 -->
+        <TextView
+            android:id="@+id/tvConfirmMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cache_clear_confirm_message"
+            android:textColor="@color/common_text_h1_color"
+            android:textSize="16sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- 缓存信息卡片 -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!-- 当前缓存大小 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_folder_size"
+                        android:tint="@color/common_theme_color"
+                        android:layout_marginEnd="12dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/cache_current_size"
+                        android:textColor="@color/common_text_h2_color"
+                        android:textSize="14sp"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/tvCurrentCacheSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/common_theme_color"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="256.5 MB" />
+                </LinearLayout>
+
+                <!-- 文件数量 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_file_count"
+                        android:tint="@color/orange_warning"
+                        android:layout_marginEnd="12dp"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/cache_file_count"
+                        android:textColor="@color/common_text_h2_color"
+                        android:textSize="14sp"
+                        android:layout_gravity="center_vertical" />
+
+                    <TextView
+                        android:id="@+id/tvFileCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/orange_warning"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        tools:text="1,234 个文件" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 警告提示 -->
+        <TextView
+            android:id="@+id/tvWarningText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cache_clear_warning"
+            android:textColor="@color/red_danger"
+            android:textSize="14sp"
+            android:lineSpacingExtra="2dp"
+            android:layout_marginBottom="24dp" />
+
+    </LinearLayout>
+
+    <!-- 底部操作按钮 -->
+    <LinearLayout
+        android:id="@+id/llActionButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="24dp"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llContent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/cancel"
+            android:textSize="14sp"
+            android:paddingHorizontal="24dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="@string/cache_clear_confirm_button"
+            android:textSize="14sp"
+            android:paddingHorizontal="24dp"
+            app:icon="@drawable/ic_clear_cache"
+            style="@style/Widget.MaterialComponents.Button" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

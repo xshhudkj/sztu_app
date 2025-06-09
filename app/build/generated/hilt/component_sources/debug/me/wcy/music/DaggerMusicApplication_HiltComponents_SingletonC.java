@@ -30,12 +30,8 @@ import java.util.Map;
 import java.util.Set;
 import javax.annotation.processing.Generated;
 import javax.inject.Provider;
-import me.wcy.music.account.login.phone.PhoneLoginFragment;
-import me.wcy.music.account.login.phone.PhoneLoginFragment_MembersInjector;
 import me.wcy.music.account.login.phone.PhoneLoginViewModel;
 import me.wcy.music.account.login.phone.PhoneLoginViewModel_HiltModules_KeyModule_ProvideFactory;
-import me.wcy.music.account.login.qrcode.QrcodeLoginFragment;
-import me.wcy.music.account.login.qrcode.QrcodeLoginFragment_MembersInjector;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel_HiltModules_KeyModule_ProvideFactory;
 import me.wcy.music.account.service.UserService;
@@ -422,16 +418,6 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     }
 
     @Override
-    public void injectPhoneLoginFragment(PhoneLoginFragment phoneLoginFragment) {
-      injectPhoneLoginFragment2(phoneLoginFragment);
-    }
-
-    @Override
-    public void injectQrcodeLoginFragment(QrcodeLoginFragment qrcodeLoginFragment) {
-      injectQrcodeLoginFragment2(qrcodeLoginFragment);
-    }
-
-    @Override
     public void injectAlbumDetailFragment(AlbumDetailFragment albumDetailFragment) {
       injectAlbumDetailFragment2(albumDetailFragment);
     }
@@ -519,18 +505,6 @@ public final class DaggerMusicApplication_HiltComponents_SingletonC {
     @Override
     public void injectSearchUserFragment(SearchUserFragment searchUserFragment) {
       injectSearchUserFragment2(searchUserFragment);
-    }
-
-    @CanIgnoreReturnValue
-    private PhoneLoginFragment injectPhoneLoginFragment2(PhoneLoginFragment instance) {
-      PhoneLoginFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
-      return instance;
-    }
-
-    @CanIgnoreReturnValue
-    private QrcodeLoginFragment injectQrcodeLoginFragment2(QrcodeLoginFragment instance) {
-      QrcodeLoginFragment_MembersInjector.injectUserService(instance, singletonCImpl.userServiceImplProvider.get());
-      return instance;
     }
 
     @CanIgnoreReturnValue

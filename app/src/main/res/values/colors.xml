@@ -17,13 +17,16 @@
     <color name="ic_launcher_background">@color/red_500</color>
 
     <color name="common_theme_color" tools:override="true">@color/red_500</color>
+    <color name="common_theme_color_dark" tools:override="true">@color/red_700</color>
     <color name="common_background_color" tools:override="true">#FAFAFA</color>
+    <color name="common_bg_color" tools:override="true">@color/common_background_color</color>
     <color name="common_title_bar_color" tools:override="true">@color/common_theme_color</color>
     <color name="common_dialog_background_color" tools:override="true">@color/white</color>
     <color name="common_text_h1_color" tools:override="true">#202020</color>
     <color name="common_text_h2_color" tools:override="true">@color/grey</color>
     <color name="common_text_theme" tools:override="true">@color/common_theme_color</color>
     <color name="common_divider" tools:override="true">@color/grey_100</color>
+    <color name="common_divider_color" tools:override="true">@color/common_divider</color>
 
     <color name="tab_bg">@color/white</color>
     <color name="card_bg">@color/white</color>
@@ -33,7 +36,11 @@
 
     <!-- 半透明颜色 -->
     <color name="translucent_black_p30">#4D000000</color>
+    <color name="translucent_black_p20">#33000000</color>
+    <color name="translucent_black_p10">#1A000000</color>
+    <color name="translucent_black_p05">#0D000000</color>
     <color name="translucent_white_p30">#4DFFFFFF</color>
+    <color name="translucent_white_p20">#33FFFFFF</color>
 
     <!-- 排行榜颜色 -->
     <color name="rank_first">#FFD700</color>
@@ -70,5 +77,42 @@
     <color name="sakura_text_primary">#66304D</color>
     <color name="sakura_text_secondary">#976681</color>
     <color name="sakura_divider">#E0E0E0</color>
+    
+    <!-- 缓存管理相关颜色 -->
+    <!-- 绿色系列 (健康状态) -->
+    <color name="green_50">#E8F5E8</color>
+    <color name="green_200">#A5D6A7</color>
+    <color name="green_500">#4CAF50</color>
+    
+    <!-- 橙色系列 (警告状态) -->
+    <color name="orange_50">#FFF3E0</color>
+    <color name="orange_200">#FFCC02</color>
+    <color name="orange_500">#FF9800</color>
+    
+    <!-- 对话框和图标颜色 -->
+    <color name="icon_primary">#1976D2</color>
+    <color name="divider">#E0E0E0</color>
+    <color name="text_tertiary">#9E9E9E</color>
+
+    <!-- 现代化缓存管理界面颜色 -->
+    <!-- 状态颜色 -->
+    <color name="green_success">#10B981</color>
+    <color name="red_danger">#EF4444</color>
+    <color name="orange_warning">#F59E0B</color>
+    <color name="blue_info">#3B82F6</color>
+
+    <!-- 进度条颜色 -->
+    <color name="progress_track_color">#E5E7EB</color>
+
+    <!-- 半透明背景 -->
+    <color name="translucent_black_p50">#80000000</color>
+
+    <!-- 卡片和背景颜色 -->
+    <color name="card_background">#FFFFFF</color>
+    <color name="surface_color">#F8F9FA</color>
+    <color name="border_color">#E9ECEF</color>
+    
+    <!-- 加载界面颜色 -->
+    <color name="loading_overlay">#80000000</color>
 </resources>
 

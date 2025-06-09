@@ -1,10 +1,27 @@
 {
     "logs": [
         {
-            "outputFile": "me.wcy.music.app-mergeDebugResources-67:/values-zh/values-zh.xml",
+            "outputFile": "me.wcy.music.app-mergeDebugResources-2:/values-zh/values-zh.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\f32dec6a4022a9a504ce4323317954bd\\transformed\\jetified-refresh-footer-classics-2.0.5\\res\\values-zh\\values-zh.xml",
+                    "source": "D:\\Android Studio\\caches\\transforms-4\\e14d147c3d78b264e53fe39d2725f464\\transformed\\jetified-android-crop-1.0.1\\res\\values-zh\\values-zh.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "215,283,325,376,425",
+                        "endColumns": "67,41,50,48,43",
+                        "endOffsets": "278,320,371,420,464"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "100,168,210,261,310",
+                        "endColumns": "67,41,50,48,43",
+                        "endOffsets": "163,205,256,305,349"
+                    }
+                },
+                {
+                    "source": "D:\\Android Studio\\caches\\transforms-4\\f32dec6a4022a9a504ce4323317954bd\\transformed\\jetified-refresh-footer-classics-2.0.5\\res\\values-zh\\values-zh.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -21,24 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\3597477602625afeffa5d8efbcacac71\\transformed\\jetified-XPopup-2.7.9\\res\\values-zh\\values-zh.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "55,100,157,198,241",
-                        "endColumns": "44,56,40,42,58",
-                        "endOffsets": "95,152,193,236,295"
-                    },
-                    "to": {
-                        "startLines": "16,17,18,19,20",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "932,977,1034,1075,1118",
-                        "endColumns": "44,56,40,42,58",
-                        "endOffsets": "972,1029,1070,1113,1172"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\bb5eb680fc11b2e9b49beb6be8b1f622\\transformed\\jetified-refresh-layout-kernel-2.0.5\\res\\values-zh\\values-zh.xml",
+                    "source": "D:\\Android Studio\\caches\\transforms-4\\bb5eb680fc11b2e9b49beb6be8b1f622\\transformed\\jetified-refresh-layout-kernel-2.0.5\\res\\values-zh\\values-zh.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -55,20 +55,20 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\86158\\.gradle\\caches\\transforms-4\\e14d147c3d78b264e53fe39d2725f464\\transformed\\jetified-android-crop-1.0.1\\res\\values-zh\\values-zh.xml",
+                    "source": "D:\\Android Studio\\caches\\transforms-4\\3597477602625afeffa5d8efbcacac71\\transformed\\jetified-XPopup-2.7.9\\res\\values-zh\\values-zh.xml",
                     "from": {
-                        "startLines": "4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "215,283,325,376,425",
-                        "endColumns": "67,41,50,48,43",
-                        "endOffsets": "278,320,371,420,464"
-                    },
-                    "to": {
                         "startLines": "2,3,4,5,6",
                         "startColumns": "4,4,4,4,4",
-                        "startOffsets": "100,168,210,261,310",
-                        "endColumns": "67,41,50,48,43",
-                        "endOffsets": "163,205,256,305,349"
+                        "startOffsets": "55,100,157,198,241",
+                        "endColumns": "44,56,40,42,58",
+                        "endOffsets": "95,152,193,236,295"
+                    },
+                    "to": {
+                        "startLines": "16,17,18,19,20",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "932,977,1034,1075,1118",
+                        "endColumns": "44,56,40,42,58",
+                        "endOffsets": "972,1029,1070,1113,1172"
                     }
                 }
             ]

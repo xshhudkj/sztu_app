@@ -1,230 +1,246 @@
 [
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_phone_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_phone_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_main.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_main.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/dialog_phone_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/dialog_phone_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\load_sir_loading_sound_wave.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\load_sir_loading_sound_wave.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_ranking.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_ranking.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_login_route.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_login_route.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/navigation_header.xml",
-        "source": "me.wcy.music.app-main-71:/layout/navigation_header.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_settings.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_user_playlist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_user_playlist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\notification.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\notification.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/notification.xml",
-        "source": "me.wcy.music.app-main-71:/layout/notification.xml"
+        "merged": "me.wcy.music.app-mergeDebugResources-3:/layout/dialog_cache_clear.xml",
+        "source": "me.wcy.music.app-main-6:/layout/dialog_cache_clear.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_history.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_history.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\title_discover.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\title_discover.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_search_list.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_search_list.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_local_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_local_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/dialog_qr_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/dialog_qr_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_user.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_user.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_discover_ranking_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_discover_ranking_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_current_playlist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_current_playlist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_main.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_main.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_album.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_album.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/dialog_vip_trial.xml",
-        "source": "me.wcy.music.app-main-71:/layout/dialog_vip_trial.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_artist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_artist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/layout_play_bar.xml",
-        "source": "me.wcy.music.app-main-71:/layout/layout_play_bar.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_playlist_detail.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_playlist_detail.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_recommend_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_recommend_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_selected_ranking.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_selected_ranking.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_playing_control.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_playing_control.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_official_ranking_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_official_ranking_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/tab_item.xml",
-        "source": "me.wcy.music.app-main-71:/layout/tab_item.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_discover_ranking.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_discover_ranking.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_current_playlist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_current_playlist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\layout_play_bar.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\layout_play_bar.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_current_playlist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_current_playlist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_playing_control.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_playing_control.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_selected_ranking.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_selected_ranking.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_splash.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_splash.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_official_ranking.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_official_ranking.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_qr_login.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_qr_login.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_ranking_title.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_ranking_title.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_discover_playlist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_discover_playlist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_artist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_artist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_playlist_square.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_playlist_square.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_search.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_search.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_vip_trial.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_vip_trial.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_playlist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_playlist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_history.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_history.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_about.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_about.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_auto_cache_clean_settings.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_auto_cache_clean_settings.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_new_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_new_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_discover.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_discover.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_album.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_album.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_recommend_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_recommend_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_official_ranking_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_official_ranking_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_about.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_about.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/title_discover.xml",
-        "source": "me.wcy.music.app-main-71:/layout/title_discover.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_song_more_menu.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_song_more_menu.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_recommend_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_recommend_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\title_search.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\title_search.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_discover_ranking.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_discover_ranking.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_hot_search.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_hot_search.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_user.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_user.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_cache_management.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_cache_management.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_playing_title.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_playing_title.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_playing_title.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_playing_title.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_login_route.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_login_route.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_cache_clear.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_cache_clear.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_local_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_local_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_login.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_login.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_playing_volume.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_playing_volume.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_playlist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_playlist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_song_more_menu.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_song_more_menu.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_playlist_tag.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_playlist_tag.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_playlist_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_playlist_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_phone_login.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_phone_login.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/dialog_api_domain.xml",
-        "source": "me.wcy.music.app-main-71:/layout/dialog_api_domain.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_cache_limit_settings.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_cache_limit_settings.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_playlist_tag.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_playlist_tag.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_search_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_search_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_collect_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_collect_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_ranking.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_ranking.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_settings.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_settings.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_search_list.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_search_list.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_discover.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_discover.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_api_domain.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_api_domain.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_playlist_spuare.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_playlist_spuare.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_collect_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_collect_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_playing.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_playing.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_discover_ranking_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_discover_ranking_song.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_discover_playlist.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_discover_playlist.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_cache_clear_confirm.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_cache_clear_confirm.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/title_search.xml",
-        "source": "me.wcy.music.app-main-71:/layout/title_search.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_ranking_title.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_ranking_title.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_local_music.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_local_music.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_song_more_menu.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_song_more_menu.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_playlist_detail.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_playlist_detail.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_local_music.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_local_music.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_search_song.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_search_song.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_user_playlist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_user_playlist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/dialog_song_more_menu.xml",
-        "source": "me.wcy.music.app-main-71:/layout/dialog_song_more_menu.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_current_playlist.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_current_playlist.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_splash.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_splash.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\tab_item.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\tab_item.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/activity_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/activity_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_search.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_search.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_mine.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_mine.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_official_ranking.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_official_ranking.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/fragment_qrcode_login.xml",
-        "source": "me.wcy.music.app-main-71:/layout/fragment_qrcode_login.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\navigation_header.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\navigation_header.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/item_hot_search.xml",
-        "source": "me.wcy.music.app-main-71:/layout/item_hot_search.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\dialog_cache_management_simple.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\dialog_cache_management_simple.xml"
     },
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout/load_sir_loading_sound_wave.xml",
-        "source": "me.wcy.music.app-main-71:/layout/load_sir_loading_sound_wave.xml"
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_mine.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_mine.xml"
+    },
+    {
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_playing.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_playing.xml"
+    },
+    {
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\item_playlist_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\item_playlist_song.xml"
+    },
+    {
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\activity_playing_volume.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\activity_playing_volume.xml"
+    },
+    {
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout\\fragment_recommend_song.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout\\fragment_recommend_song.xml"
     }
 ]

@@ -46,11 +46,8 @@ object MusicUtils {
             val uiModeManager = context.getSystemService(Context.UI_MODE_SERVICE) as android.app.UiModeManager
             val isCarMode = uiModeManager.currentModeType == android.content.res.Configuration.UI_MODE_TYPE_CAR
 
-            val result = hasAutomotiveFeature || isCarMode
-            LogUtils.d(TAG) { "isAndroidAutomotive() - 系统检测结果: $result (特性检测: $hasAutomotiveFeature, 车载模式: $isCarMode)" }
-            result
+            hasAutomotiveFeature || isCarMode
         } catch (e: Exception) {
-            LogUtils.e(TAG, "isAndroidAutomotive() - 系统检测失败，默认为非车载系统", e)
             false
         }
     }

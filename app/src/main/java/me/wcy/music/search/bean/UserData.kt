@@ -1,6 +1,7 @@
 package me.wcy.music.search.bean
 
 import com.google.gson.annotations.SerializedName
+import me.wcy.music.search.SearchAdapterBase
 
 /**
  * 搜索用户数据
@@ -23,4 +24,6 @@ data class UserData(
     val followeds: Int = 0,
     @SerializedName("follows")
     val follows: Int = 0,
-)
+) : SearchAdapterBase.SearchItem {
+    override val searchId: Long get() = userId
+}

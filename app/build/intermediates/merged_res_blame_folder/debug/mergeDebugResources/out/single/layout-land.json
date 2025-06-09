@@ -1,6 +1,10 @@
 [
     {
-        "merged": "me.wcy.music.app-mergeDebugResources-68:/layout-land/activity_playing.xml",
-        "source": "me.wcy.music.app-main-71:/layout-land/activity_playing.xml"
+        "merged": "me.wcy.music.app-mergeDebugResources-3:/layout-land/activity_playing.xml",
+        "source": "me.wcy.music.app-main-6:/layout-land/activity_playing.xml"
+    },
+    {
+        "merged": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-mergeDebugResources-3:\\layout-land\\activity_playing.xml",
+        "source": "D:\\Android Studio\\daemon\\8.7\\me.wcy.music.app-main-6:\\layout-land\\activity_playing.xml"
     }
 ]

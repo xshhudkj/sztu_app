@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+自动缓存清理设置对话框布局（简化版）
+特点：现代化Material Design风格、Android Automotive横屏优化
+设计理念：简洁明了、操作便捷、专注核心功能
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@android:color/white"
+        android:paddingHorizontal="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自动清理"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- 清理选项 -->
+    <RadioGroup
+        android:id="@+id/rgCleanInterval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <RadioButton
+            android:id="@+id/rbNone"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="关闭"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbOnAppClose"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="应用关闭时"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:id="@+id/rbDaily"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="每天清理"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:id="@+id/rbWeekly"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="每周清理"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:id="@+id/rbMonthly"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="每月清理"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+    </RadioGroup>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- 底部按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:padding="24dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="取消"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginEnd="24dp"
+            android:minWidth="80dp" />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="确定"
+            android:textColor="@color/common_theme_color"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:minWidth="80dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

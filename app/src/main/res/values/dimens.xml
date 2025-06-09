@@ -23,9 +23,9 @@
     <dimen name="playing_volume_padding_horizontal">20dp</dimen>
 
     <!-- 歌词显示优化尺寸 -->
-    <dimen name="lrc_current_text_size">30sp</dimen>  <!-- 高亮行：32sp，确保清晰可读 -->
+    <dimen name="lrc_current_text_size">32sp</dimen>  <!-- 高亮行：32sp，确保清晰可读 -->
     <dimen name="lrc_normal_text_size">22sp</dimen>   <!-- 普通行：22sp，与高亮行形成良好对比 -->
-    <dimen name="lrc_divider_height">68dp</dimen>     <!-- 行间距：56dp，确保高亮歌词有足够显示空间 -->
+    <dimen name="lrc_divider_height">64dp</dimen>     <!-- 行间距：56dp，确保高亮歌词有足够显示空间 -->
     <dimen name="lrc_padding">30dp</dimen>            <!-- 左右内边距：30dp，歌词向右移动，相对时间线向左 -->
 
     <!-- 歌词智能换行和翻译间距 -->

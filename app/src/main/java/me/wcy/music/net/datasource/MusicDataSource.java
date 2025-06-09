@@ -416,7 +416,8 @@ public final class MusicDataSource implements DataSource {
 
     private DataSource getNeteaseDataSource() {
         if (neteaseDataSource == null) {
-            neteaseDataSource = new OnlineMusicDataSource((Call.Factory) HttpClient.INSTANCE.getOkHttpClient());
+            // 使用缓存数据源包装网易云音乐数据源，实现音频缓存
+            neteaseDataSource = new CachedOnlineMusicDataSource(context, baseDataSource);
             addListenersToDataSource(neteaseDataSource);
         }
         return neteaseDataSource;

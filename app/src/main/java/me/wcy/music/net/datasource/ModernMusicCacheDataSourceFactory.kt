@@ -62,11 +62,11 @@ object ModernMusicCacheDataSourceFactory {
         return CacheDataSource.Factory()
             .setCache(cache)
             .setUpstreamDataSourceFactory(upstreamFactory)
-            // 优化缓存策略：快速失败，优先播放体验
-            .setCacheWriteDataSinkFactory(null) // 使用默认的缓存写入
+            // 优化缓存策略：启用音频缓存，提升播放体验
+            // 不设置CacheWriteDataSinkFactory，让它使用默认的文件写入器
             .setFlags(
                 CacheDataSource.FLAG_IGNORE_CACHE_ON_ERROR or // 缓存错误时忽略缓存
-                CacheDataSource.FLAG_IGNORE_CACHE_FOR_UNSET_LENGTH_REQUESTS // 对未知长度请求忽略缓存，提高响应速度
+                CacheDataSource.FLAG_BLOCK_ON_CACHE // 阻塞直到缓存可用，确保缓存写入
             )
     }
     
@@ -79,7 +79,12 @@ object ModernMusicCacheDataSourceFactory {
             val cacheDir = File(context.cacheDir, CACHE_DIR_NAME)
             val databaseProvider = StandaloneDatabaseProvider(context)
             val cacheEvictor: CacheEvictor = LeastRecentlyUsedCacheEvictor(CACHE_SIZE)
-            
+
+            // 确保缓存目录存在
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs()
+            }
+
             cache = SimpleCache(cacheDir, cacheEvictor, databaseProvider)
         }
         return cache!!
@@ -108,27 +113,165 @@ object ModernMusicCacheDataSourceFactory {
      */
     fun getCacheStats(context: Context): CacheStats {
         val cache = getOrCreateCache(context)
+        val cacheSize = cache.cacheSpace
+        val keys = cache.keys
         return CacheStats(
-            cacheSize = cache.cacheSpace,
+            cacheSize = cacheSize,
             maxCacheSize = CACHE_SIZE,
-            cachedBytes = cache.cacheSpace,
+            cachedBytes = cacheSize,
             cacheHitRate = 0.0 // SimpleCache不直接提供命中率统计
         )
     }
     
     /**
      * 清理缓存
+     * 真实清理SimpleCache中的所有缓存文件和数据库记录
      */
     fun clearCache() {
-        cache?.let { cache ->
+        cache?.let { cacheInstance ->
             try {
-                val keys = cache.keys
+                LogUtils.i("CacheFactory", "开始清理缓存...")
+                
+                // 获取所有缓存的key
+                val keys = cacheInstance.keys.toList()
+                LogUtils.i("CacheFactory", "找到 ${keys.size} 个缓存条目")
+                
+                // 逐个移除缓存资源
+                var removedCount = 0
                 for (key in keys) {
-                    cache.removeResource(key)
+                    try {
+                        cacheInstance.removeResource(key)
+                        removedCount++
+                    } catch (e: Exception) {
+                        LogUtils.w("CacheFactory", "移除缓存资源失败: $key", e)
+                    }
                 }
+                
+                LogUtils.i("CacheFactory", "缓存清理完成，移除了 $removedCount 个缓存条目")
+                
+                // 额外清理：直接删除缓存目录中的文件
+                clearCacheDirectory()
+                
             } catch (e: Exception) {
-                // 忽略清理错误
+                LogUtils.e("CacheFactory", "清理缓存时发生异常", e)
             }
+        }
+    }
+    
+    /**
+     * 直接清理缓存目录
+     * 作为额外的清理手段，确保所有缓存文件都被删除
+     */
+    private fun clearCacheDirectory() {
+        try {
+            cache?.let { cacheInstance ->
+                // 获取缓存目录
+                val cacheField = cacheInstance.javaClass.getDeclaredField("cacheDir")
+                cacheField.isAccessible = true
+                val cacheDir = cacheField.get(cacheInstance) as? File
+                
+                if (cacheDir?.exists() == true) {
+                    val sizeBefore = calculateDirectorySize(cacheDir)
+                    deleteDirectoryContents(cacheDir)
+                    val sizeAfter = calculateDirectorySize(cacheDir)
+                    val freedSize = sizeBefore - sizeAfter
+                    
+                    LogUtils.i("CacheFactory", "直接清理缓存目录完成，释放: ${formatBytes(freedSize)}")
+                }
+            }
+        } catch (e: Exception) {
+            LogUtils.w("CacheFactory", "直接清理缓存目录时发生异常", e)
+        }
+    }
+    
+    /**
+     * 计算目录大小
+     */
+    private fun calculateDirectorySize(directory: File): Long {
+        if (!directory.exists() || !directory.isDirectory) {
+            return 0L
+        }
+        
+        var size = 0L
+        try {
+            val files = directory.listFiles()
+            if (files != null) {
+                for (file in files) {
+                    size += if (file.isDirectory) {
+                        calculateDirectorySize(file)
+                    } else {
+                        file.length()
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            LogUtils.w("CacheFactory", "计算目录大小时发生异常: ${directory.absolutePath}", e)
+        }
+        
+        return size
+    }
+    
+    /**
+     * 删除目录内容但保留目录本身
+     */
+    private fun deleteDirectoryContents(directory: File) {
+        if (!directory.exists() || !directory.isDirectory) {
+            return
+        }
+        
+        try {
+            val files = directory.listFiles()
+            if (files != null) {
+                for (file in files) {
+                    if (file.isDirectory) {
+                        deleteDirectoryRecursively(file)
+                    } else {
+                        if (!file.delete()) {
+                            LogUtils.w("CacheFactory", "无法删除文件: ${file.absolutePath}")
+                        }
+                    }
+                }
+            }
+        } catch (e: Exception) {
+            LogUtils.w("CacheFactory", "删除目录内容时发生异常: ${directory.absolutePath}", e)
+        }
+    }
+    
+    /**
+     * 递归删除目录及其所有内容
+     */
+    private fun deleteDirectoryRecursively(directory: File) {
+        if (!directory.exists()) {
+            return
+        }
+        
+        try {
+            if (directory.isDirectory) {
+                val files = directory.listFiles()
+                if (files != null) {
+                    for (file in files) {
+                        deleteDirectoryRecursively(file)
+                    }
+                }
+            }
+            
+            if (!directory.delete()) {
+                LogUtils.w("CacheFactory", "无法删除目录: ${directory.absolutePath}")
+            }
+        } catch (e: Exception) {
+            LogUtils.w("CacheFactory", "递归删除目录时发生异常: ${directory.absolutePath}", e)
+        }
+    }
+    
+    /**
+     * 格式化字节大小
+     */
+    private fun formatBytes(bytes: Long): String {
+        return when {
+            bytes < 1024 -> "${bytes}B"
+            bytes < 1024 * 1024 -> "${"%.1f".format(bytes / 1024.0)}KB"
+            bytes < 1024 * 1024 * 1024 -> "${"%.1f".format(bytes / (1024.0 * 1024.0))}MB"
+            else -> "${"%.1f".format(bytes / (1024.0 * 1024.0 * 1024.0))}GB"
         }
     }
     
@@ -144,10 +287,7 @@ object ModernMusicCacheDataSourceFactory {
             val usedSpace = cache.cacheSpace
             val maxSpace = CACHE_SIZE
             
-            if (usedSpace > maxSpace * 0.9) {
-                // 当缓存使用超过90%时，记录日志
-                LogUtils.d("CacheFactory") { "缓存使用率较高: ${usedSpace}/${maxSpace}" }
-            }
+            // 当缓存使用超过90%时，LRU会自动清理
         } catch (e: Exception) {
             LogUtils.w("CacheFactory", "清理过期缓存失败", e)
         }

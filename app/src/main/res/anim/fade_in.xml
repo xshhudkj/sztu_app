@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+淡入动画
+用途：登录成功后的页面切换过渡动画
+持续时间：300ms，提供流畅的视觉体验
+-->
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="300"
+    android:fromAlpha="0.0"
+    android:toAlpha="1.0"
+    android:interpolator="@android:anim/decelerate_interpolator" />

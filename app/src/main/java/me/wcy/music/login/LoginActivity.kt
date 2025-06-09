@@ -1,7 +1,10 @@
 package me.wcy.music.login
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AnimationUtils
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,20 +60,26 @@ class LoginActivity : BaseMusicActivity() {
     }
 
     private fun setupViews() {
-        // 游客登录
-        binding.btnGuestLogin.setOnClickListener {
-            ToastUtils.show("游客登录成功")
-            navigateToMain()
+        // 游客登录 - 移除Toast提示，添加视觉反馈和平滑过渡
+        binding.btnGuestLogin.setOnClickListener { view ->
+            // 添加按钮点击视觉反馈
+            addClickFeedback(view) {
+                navigateToMainWithAnimation()
+            }
         }
 
-        // 二维码登录
-        binding.btnQrCodeLogin.setOnClickListener {
-            showQrCodeLogin()
+        // 二维码登录 - 添加视觉反馈
+        binding.btnQrCodeLogin.setOnClickListener { view ->
+            addClickFeedback(view) {
+                showQrCodeLogin()
+            }
         }
 
-        // 手机号登录
-        binding.btnPhoneLogin.setOnClickListener {
-            showPhoneLogin()
+        // 手机号登录 - 添加视觉反馈
+        binding.btnPhoneLogin.setOnClickListener { view ->
+            addClickFeedback(view) {
+                showPhoneLogin()
+            }
         }
     }
 
@@ -103,14 +112,50 @@ class LoginActivity : BaseMusicActivity() {
     }
 
     private fun handleLoginSuccess() {
-        navigateToMain()
+        navigateToMainWithAnimation()
     }
 
-    private fun navigateToMain() {
+    /**
+     * 带动画效果的主界面跳转
+     * 提供流畅的视觉过渡体验，消除空白跳转
+     */
+    private fun navigateToMainWithAnimation() {
         val intent = Intent(this, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+
+        // 创建淡入淡出过渡动画
+        val options = ActivityOptions.makeCustomAnimation(
+            this,
+            R.anim.fade_in,   // 新Activity淡入
+            R.anim.fade_out   // 当前Activity淡出
+        )
+
+        startActivity(intent, options.toBundle())
         finish()
+    }
+
+    /**
+     * 添加按钮点击视觉反馈
+     * 提供更好的用户体验，确保用户知道按钮已被点击
+     */
+    private fun addClickFeedback(view: View, action: () -> Unit) {
+        // 添加缩放动画作为点击反馈
+        view.animate()
+            .scaleX(0.95f)
+            .scaleY(0.95f)
+            .setDuration(100)
+            .withEndAction {
+                view.animate()
+                    .scaleX(1.0f)
+                    .scaleY(1.0f)
+                    .setDuration(100)
+                    .withEndAction {
+                        // 动画完成后执行实际操作
+                        action()
+                    }
+                    .start()
+            }
+            .start()
     }
 
     override fun onBackPressed() {

@@ -1,8 +1,6 @@
 package me.wcy.router.generate.register;
 
 import kotlin.jvm.JvmName;
-import me.wcy.music.account.login.phone.PhoneLoginFragment;
-import me.wcy.music.account.login.qrcode.QrcodeLoginFragment;
 import me.wcy.music.album.detail.AlbumDetailFragment;
 import me.wcy.music.artist.detail.ArtistDetailFragment;
 import me.wcy.music.discover.playlist.detail.PlaylistDetailFragment;

@@ -456,9 +456,9 @@ class PlayingActivity : BaseMusicActivity() {
                     viewBinding.titleLayout?.tvArtist?.text = song.mediaMetadata.artist
                 }
 
+                // 立即重置进度条UI - 歌曲切换时的即时反馈
                 viewBinding.controlLayout.sbProgress.max = song.mediaMetadata.getDuration().toInt()
-                viewBinding.controlLayout.sbProgress.progress =
-                    playerController.playProgress.value.toInt()
+                viewBinding.controlLayout.sbProgress.progress = 0  // 立即重置为0，提供即时反馈
                 viewBinding.controlLayout.sbProgress.secondaryProgress = 0
 
                 // 设置VIP试听标记
@@ -467,8 +467,9 @@ class PlayingActivity : BaseMusicActivity() {
                 // 重置VIP对话框状态
                 hasShownVipDialog = false
                 lastProgress = 0
-                viewBinding.controlLayout.tvCurrentTime.text =
-                    TimeUtils.formatMs(playerController.playProgress.value)
+                
+                // 立即更新时间显示 - 显示00:00而不是等待播放器更新
+                viewBinding.controlLayout.tvCurrentTime.text = TimeUtils.formatMs(0)
                 viewBinding.controlLayout.tvTotalTime.text =
                     TimeUtils.formatMs(song.mediaMetadata.getDuration())
                 updateCover(song)

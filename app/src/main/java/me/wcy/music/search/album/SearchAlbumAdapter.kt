@@ -2,18 +2,17 @@ package me.wcy.music.search.album
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import me.wcy.music.common.bean.AlbumData
 import me.wcy.music.databinding.ItemSearchAlbumBinding
+import me.wcy.music.search.SearchAdapterBase
 import me.wcy.music.utils.ImageUtils.loadCover
 
 /**
  * 搜索专辑适配器
  * Created by wangchenyan.top on 2024/12/20.
  */
-class SearchAlbumAdapter : ListAdapter<AlbumData, SearchAlbumAdapter.ViewHolder>(DiffCallback()) {
+class SearchAlbumAdapter : SearchAdapterBase<AlbumData, SearchAlbumAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemSearchAlbumBinding.inflate(
@@ -37,16 +36,6 @@ class SearchAlbumAdapter : ListAdapter<AlbumData, SearchAlbumAdapter.ViewHolder>
             binding.root.setOnClickListener {
                 // TODO: 跳转到专辑详情页面
             }
-        }
-    }
-
-    private class DiffCallback : DiffUtil.ItemCallback<AlbumData>() {
-        override fun areItemsTheSame(oldItem: AlbumData, newItem: AlbumData): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: AlbumData, newItem: AlbumData): Boolean {
-            return oldItem == newItem
         }
     }
 }

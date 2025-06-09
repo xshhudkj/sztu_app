@@ -7,6 +7,7 @@ import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import kotlinx.parcelize.IgnoredOnParcel;
 import kotlinx.parcelize.Parcelize;
+import me.wcy.music.utils.CoverUtils;
 
 /**
  * Created by wangchenyan.top on 2023/8/29.

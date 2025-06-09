@@ -1,6 +1,7 @@
 package me.wcy.music.common.bean
 
 import com.google.gson.annotations.SerializedName
+import me.wcy.music.search.SearchAdapterBase
 
 /**
  * Created by wangchenyan.top on 2023/9/6.
@@ -28,4 +29,6 @@ data class ArtistData(
     val mvSize: Int = 0,
     @SerializedName("followed")
     val followed: Boolean = false
-)
+) : SearchAdapterBase.SearchItem {
+    override val searchId: Long get() = id
+}

@@ -1,13 +1,10 @@
 package me.wcy.music.login
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import me.wcy.music.account.service.UserService
+import me.wcy.music.common.BaseViewModel
 import javax.inject.Inject
 
 /**
@@ -19,6 +16,7 @@ import javax.inject.Inject
  * 3. 提供响应式数据流给UI层
  * 
  * 遵循MVVM架构原则：
+ * - 继承BaseViewModel，使用统一的状态管理
  * - ViewModel不持有View的直接引用
  * - 通过StateFlow提供响应式数据
  * - 处理业务逻辑，不涉及UI操作
@@ -26,15 +24,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val userService: UserService
-) : ViewModel() {
-
-    // 登录加载状态
-    private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
-
-    // 错误信息
-    private val _errorMessage = MutableStateFlow<String?>(null)
-    val errorMessage: StateFlow<String?> = _errorMessage.asStateFlow()
+) : BaseViewModel() {
 
     /**
      * 检查用户是否已登录
@@ -49,23 +39,30 @@ class LoginViewModel @Inject constructor(
     fun getUserProfile() = userService.profile
 
     /**
-     * 清除错误信息
+     * 执行登录操作
+     * 使用BaseViewModel的safeExecute方法，自动处理加载状态和错误
      */
-    fun clearError() {
-        _errorMessage.value = null
-    }
-
-    /**
-     * 设置加载状态
-     */
-    fun setLoading(loading: Boolean) {
-        _isLoading.value = loading
-    }
-
-    /**
-     * 设置错误信息
-     */
-    fun setError(message: String) {
-        _errorMessage.value = message
+    fun performLogin(username: String, password: String) {
+        viewModelScope.launch {
+            safeExecute(
+                operation = {
+                    // 这里应该调用实际的登录API
+                    // userService.login(username, password)
+                    // 为了演示，暂时模拟
+                    if (username.isNotEmpty() && password.isNotEmpty()) {
+                        "登录成功"
+                    } else {
+                        throw IllegalArgumentException("用户名或密码不能为空")
+                    }
+                },
+                onSuccess = { result ->
+                    // 登录成功处理
+                },
+                onError = { message, isNetworkError ->
+                    // 使用BaseViewModel的错误处理
+                    setError(message, isNetworkError)
+                }
+            )
+        }
     }
 } 

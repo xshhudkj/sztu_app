@@ -75,6 +75,12 @@
             </intent-filter>
         </service>
 
+        <!-- 自动缓存清理服务 -->
+        <service
+            android:name="me.wcy.music.service.AutoCacheCleanService"
+            android:enabled="true"
+            android:exported="false" />
+
         <receiver
             android:name="me.wcy.music.download.DownloadReceiver"
             android:exported="true" >

@@ -92,7 +92,7 @@ Android Automotive 横屏播放页面布局
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="-16dp"
                 android:layout_marginTop="-20dp"
                 android:layout_marginEnd="-8dp">
 
@@ -155,12 +155,14 @@ Android Automotive 横屏播放页面布局
             右侧歌词区域容器
             作用：包含歌曲信息、音量控制和歌词显示
             调整：layout_weight控制左右区域比例(当前1:1，可改为3:2等)
+                 layout_marginStart负值向左移动整个右侧区域
             -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/lrcLayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_marginStart="-16dp">
 
                 <!--
                 歌曲信息布局（移动到歌词区域正上方）
@@ -285,7 +287,7 @@ Android Automotive 横屏播放页面布局
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/songInfoLayout"
-                    app:layout_constraintWidth_max="450dp" />
+                    app:layout_constraintWidth_max="550dp" />
 
                 <!--
                 歌词显示区域
@@ -319,7 +321,7 @@ Android Automotive 横屏播放页面布局
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/songInfoLayout"
                     app:layout_constraintTop_toBottomOf="@+id/volumeLayout"
-                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintVertical_bias="0.864"
                     app:lrcAnimationDuration="1000"
                     app:lrcCurrentTextColor="@color/white"
                     app:lrcDividerHeight="@dimen/lrc_divider_height"

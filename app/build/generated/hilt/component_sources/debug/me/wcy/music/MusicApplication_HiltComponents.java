@@ -45,9 +45,7 @@ import dagger.hilt.internal.GeneratedComponent;
 import dagger.hilt.migration.DisableInstallInCheck;
 import javax.annotation.processing.Generated;
 import javax.inject.Singleton;
-import me.wcy.music.account.login.phone.PhoneLoginFragment_GeneratedInjector;
 import me.wcy.music.account.login.phone.PhoneLoginViewModel_HiltModules;
-import me.wcy.music.account.login.qrcode.QrcodeLoginFragment_GeneratedInjector;
 import me.wcy.music.account.login.qrcode.QrcodeLoginViewModel_HiltModules;
 import me.wcy.music.account.service.UserServiceModule;
 import me.wcy.music.album.detail.AlbumDetailFragment_GeneratedInjector;
@@ -290,8 +288,6 @@ public final class MusicApplication_HiltComponents {
       DefaultViewModelFactories.FragmentEntryPoint,
       ViewComponentManager.ViewWithFragmentComponentBuilderEntryPoint,
       GeneratedComponent,
-      PhoneLoginFragment_GeneratedInjector,
-      QrcodeLoginFragment_GeneratedInjector,
       AlbumDetailFragment_GeneratedInjector,
       ArtistDetailFragment_GeneratedInjector,
       DiscoverFragment_GeneratedInjector,

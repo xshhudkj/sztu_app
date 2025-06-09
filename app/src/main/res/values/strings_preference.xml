@@ -4,7 +4,15 @@
     <string name="setting_key_play_sound_quality">play_sound_quality</string>
     <string name="setting_key_download_sound_quality">download_sound_quality</string>
     <string name="setting_key_sound_effect">sound_effect</string>
+    <string name="setting_key_auto_play_on_startup">auto_play_on_startup</string>
     <string name="setting_key_filter_size">filter_size</string>
     <string name="setting_key_filter_time">filter_time</string>
-
+    
+    <!-- 缓存管理相关 -->
+    <string name="setting_key_cache_clear">cache_clear</string>
+    <string name="setting_key_cache_limit">cache_limit</string>
+    <string name="setting_key_auto_cache_clean">auto_cache_clean</string>
+    <string name="auto_cache_clean_enabled">auto_cache_clean_enabled</string>
+    <string name="auto_cache_clean_interval">auto_cache_clean_interval</string>
+    <string name="auto_cache_clean_threshold">auto_cache_clean_threshold</string>
 </resources>

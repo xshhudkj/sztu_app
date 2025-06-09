@@ -34,6 +34,12 @@
             </intent-filter>
         </service>
 
+        <!-- 自动缓存清理服务 -->
+        <service
+            android:name=".service.AutoCacheCleanService"
+            android:exported="false"
+            android:enabled="true" />
+
         <receiver
             android:name=".download.DownloadReceiver"
             android:exported="true">

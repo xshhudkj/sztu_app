@@ -1,6 +1,7 @@
 package me.wcy.music.common.bean
 
 import com.google.gson.annotations.SerializedName
+import me.wcy.music.search.SearchAdapterBase
 import me.wcy.music.utils.MusicUtils.asLargeCover
 import me.wcy.music.utils.MusicUtils.asSmallCover
 
@@ -39,7 +40,9 @@ data class AlbumData(
     val subType: String = "",
     @SerializedName("type")
     val type: String = ""
-) {
+) : SearchAdapterBase.SearchItem {
+    override val searchId: Long get() = id
+
     fun getSmallCover(): String {
         return picUrl.asSmallCover()
     }

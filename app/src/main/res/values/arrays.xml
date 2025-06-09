@@ -91,5 +91,70 @@
         <item>120</item>
     </string-array>
 
+    <!-- 缓存限制选项 -->
+    <string-array name="cache_limit_entries">
+        <item>@string/cache_limit_unlimited</item>
+        <item>@string/cache_limit_100mb</item>
+        <item>@string/cache_limit_200mb</item>
+        <item>@string/cache_limit_500mb</item>
+        <item>@string/cache_limit_1gb</item>
+        <item>@string/cache_limit_2gb</item>
+        <item>@string/cache_limit_5gb</item>
+    </string-array>
+
+    <string-array name="cache_limit_values">
+        <item>-1</item>
+        <item>104857600</item>
+        <item>209715200</item>
+        <item>524288000</item>
+        <item>1073741824</item>
+        <item>2147483648</item>
+        <item>5368709120</item>
+    </string-array>
+
+    <!-- 缓存限制单位选项 -->
+    <string-array name="cache_unit_entries">
+        <item>MB</item>
+        <item>GB</item>
+    </string-array>
+
+    <string-array name="cache_unit_values">
+        <item>1048576</item>
+        <item>1073741824</item>
+    </string-array>
+
+    <!-- 自动清理间隔选项 -->
+    <string-array name="auto_clean_interval_entries">
+        <item>@string/auto_clean_interval_1day</item>
+        <item>@string/auto_clean_interval_3days</item>
+        <item>@string/auto_clean_interval_1week</item>
+        <item>@string/auto_clean_interval_2weeks</item>
+        <item>@string/auto_clean_interval_1month</item>
+    </string-array>
+
+    <string-array name="auto_clean_interval_values">
+        <item>86400000</item>
+        <item>259200000</item>
+        <item>604800000</item>
+        <item>1209600000</item>
+        <item>2592000000</item>
+    </string-array>
+
+    <!-- 自动清理阈值选项 -->
+    <string-array name="auto_clean_threshold_entries">
+        <item>@string/auto_clean_threshold_50</item>
+        <item>@string/auto_clean_threshold_70</item>
+        <item>@string/auto_clean_threshold_80</item>
+        <item>@string/auto_clean_threshold_90</item>
+        <item>@string/auto_clean_threshold_95</item>
+    </string-array>
+
+    <string-array name="auto_clean_threshold_values">
+        <item>50</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>95</item>
+    </string-array>
 
 </resources>

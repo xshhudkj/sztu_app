@@ -1,973 +1,210 @@
-2025-06-05 08:50:55.158 27211-27306 MusicHttp               me.wcy.music                         W  │ CCF211EE8BE850D4529D23B534E77B5D7043577DCFE3F0327FE687017BFAAFAE643D0471939B70A61FEEEB85CC3B03DC5A8B763FEFB85B
-2025-06-05 08:50:55.159 27211-27306 MusicHttp               me.wcy.music                         W  │ 52FA5028760F5D56EB2CAC969F9DF8BD9DC2BB6F49E26760A31CBBBC05E6FD153669ABC084DE4ACDA7287E0B29F2C7AF; Max-Age=1555
-2025-06-05 08:50:55.160 27211-27306 MusicHttp               me.wcy.music                         W  │ 2000; Expires=Sat, 29 Nov 2025 12:18:05 GMT; Path=\/; HTTPOnly;MUSIC_A_T=1745806254313; Max-Age=2147483647; Ex
-2025-06-05 08:50:55.161 27211-27306 MusicHttp               me.wcy.music                         W  │ pires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/eapi\/feedback; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=21474836
-2025-06-05 08:50:55.161 27211-27306 MusicHttp               me.wcy.music                         W  │ 47; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/eapi\/clientlog; HTTPOnly;MUSIC_A_T=1745806254313; Max-Age=2
-2025-06-05 08:50:55.162 27211-27306 MusicHttp               me.wcy.music                         W  │ 147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/eapi\/clientlog; HTTPOnly;MUSIC_A_T=1745806254313; Ma
-2025-06-05 08:50:55.162 27211-27306 MusicHttp               me.wcy.music                         W  │ x-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/neapi\/feedback; HTTPOnly;MUSIC_R_T=1745806254
-2025-06-05 08:50:55.162 27211-27306 MusicHttp               me.wcy.music                         W  │ 456; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/weapi\/clientlog; HTTPOnly;MUSIC_A_T=17
-2025-06-05 08:50:55.162 27211-27306 MusicHttp               me.wcy.music                         W  │ 45806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/openapi\/clientlog; HTTPOnly;MU
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ SIC_A_T=1745806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/api\/feedback; HTTPOn
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ ly;MUSIC_A_T=1745806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/weapi\/clientlog
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ ; HTTPOnly;MUSIC_A_T=1745806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/api\/cli
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ entlog; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/we
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ api\/feedback; HTTPOnly;MUSIC_A_T=1745806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Pa
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ th=\/wapi\/clientlog; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ GMT; Path=\/api\/feedback; HTTPOnly;__csrf=fc25b41f1dc18b5c529d2baefef75f25; Max-Age=1296010; Expires=Tue, 17 
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ Jun 2025 12:18:15 GMT; Path=\/;;MUSIC_R_T=1745806254456; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │  GMT; Path=\/api\/clientlog; HTTPOnly;MUSIC_A_T=1745806254313; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ :32:12 GMT; Path=\/wapi\/feedback; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=2147483647; Expires=Sat, 20 Jun 2
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ 093 15:32:12 GMT; Path=\/openapi\/clientlog; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=2147483647; Expires=Sat
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ , 20 Jun 2093 15:32:12 GMT; Path=\/wapi\/feedback; HTTPOnly;NMTID=00O3rbh7UEK4o4Mw0TbhqBa380P57kAAAGXMJPaPQ; M
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ ax-Age=315360000; Expires=Thu, 31 May 2035 12:18:05 GMT; Path=\/;;MUSIC_A_T=1745806254313; Max-Age=2147483647;
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │  Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/neapi\/clientlog; HTTPOnly;MUSIC_R_T=1745806254456; Max-Age=214
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ 7483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/neapi\/feedback; HTTPOnly;MUSIC_A_T=1745806254313; Max-
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/weapi\/feedback; HTTPOnly;MUSIC_R_T=174580625445
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ 6; Max-Age=2147483647; Expires=Sat, 20 Jun 2093 15:32:12 GMT; Path=\/wapi\/clientlog; HTTPOnly;MUSIC_SNS=; Max
-2025-06-05 08:50:55.164 27211-27306 MusicHttp               me.wcy.music                         W  │ -Age=0; Expires=Mon, 02 Jun 2025 12:18:05 GMT; Path=\/"
-2025-06-05 08:50:55.166 27211-27306 MusicHttp               me.wcy.music                         W  │ }
-2025-06-05 08:50:55.166 27211-27306 MusicHttp               me.wcy.music                         W  │ 4045-byte body
-2025-06-05 08:50:55.166 27211-27306 MusicHttp               me.wcy.music                         W  └───────────────────────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.170 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 1919ms, 缓存位置: 30040ms, 领先时间: 28121ms
-2025-06-05 08:50:55.170 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:50:55.172 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 创建标准化Android Automotive媒体通知
-2025-06-05 08:50:55.172 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 构建标准化媒体通知
-2025-06-05 08:50:55.173 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 添加优化的播放控制按钮
-2025-06-05 08:50:55.178   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.187 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 优化的播放控制按钮添加完成，播放状态: true
-2025-06-05 08:50:55.187 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 设置标准化MediaStyle
-2025-06-05 08:50:55.187 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 标准化MediaStyle设置完成，系统自动管理
-2025-06-05 08:50:55.187 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 标准化媒体通知构建完成
-2025-06-05 08:50:55.190 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 标准化媒体通知创建完成，播放状态: true
-2025-06-05 08:50:55.214   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.224   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(3)
-2025-06-05 08:50:55.250 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 创建标准化Android Automotive媒体通知
-2025-06-05 08:50:55.250 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 构建标准化媒体通知
-2025-06-05 08:50:55.250 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 添加优化的播放控制按钮
-2025-06-05 08:50:55.261   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.273  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:55.275  1094-1302  EGL_emulation           com.android.systemui                 D  app_time_stats: avg=442.05ms min=207.22ms max=806.44ms count=4
-2025-06-05 08:50:55.278  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:55.288 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 优化的播放控制按钮添加完成，播放状态: true
-2025-06-05 08:50:55.288 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 设置标准化MediaStyle
-2025-06-05 08:50:55.288 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 标准化MediaStyle设置完成，系统自动管理
-2025-06-05 08:50:55.288 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 标准化媒体通知构建完成
-2025-06-05 08:50:55.290 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 标准化媒体通知创建完成，播放状态: true
-2025-06-05 08:50:55.303   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.339  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:55.341   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.351   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:55.358   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:55.382   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.412  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  ┌────── Response ───────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  │ URL: https://ncm.zhenxin.me/song/url/v1?id=1958031074&level=exhigh
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  │ /song/url/v1 - [is success : true] - Received in: 237ms
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.414 27211-27306 MusicHttp               me.wcy.music                         W  │ Status Code: 200 / 
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ Headers:
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ server: openresty
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ date: Thu, 05 Jun 2025 00:51:04 GMT
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ content-type: application/json; charset=utf-8
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ content-length: 1088
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ x-powered-by: Express
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ access-control-allow-credentials: true
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ access-control-allow-origin: *
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ access-control-allow-headers: X-Requested-With,Content-Type
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ access-control-allow-methods: PUT,POST,GET,DELETE,OPTIONS
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ set-cookie: NMTID=00Oe9f1NbNsSvQXw0S1n4-ZF3gTEz4AAAGXPZH0QQ; Max-Age=315360000; Expires=Sun, 03 Jun 2035 00:51
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ :04 GMT; Path=/;; SameSite=None; Secure
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ etag: W/"440-MAmWjk8RUscU0AcslATcNGz7BMA"
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ cache-control: max-age=120
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ strict-transport-security: max-age=31536000
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ alt-svc: h3=":443"; ma=2592000
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ Body:
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │ {
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │    "data": [
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │       {
-2025-06-05 08:50:55.415 27211-27306 MusicHttp               me.wcy.music                         W  │          "id": 1958031074,
-2025-06-05 08:50:55.424   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.424 27211-27306 MusicHttp               me.wcy.music                         W  │          "url": "http:\/\/m802.music.126.net\/20250605091604\/5c91ca500900694dcf8d72259891607e\/jd-musicrep-ts
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │ \/6fe0\/f3a7\/e53a\/f05edf9492f127cd0fd756dbd60c1638.mp3?vuutv=gmZABpW3kZOEnVTpsoeii4k3wyb\/90Q\/VwkTfrDfOqoV2
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │ hqCxije2dfvqFHWTNFxBSqYy9P2f6swqf+lWy9NnxgiLy25E3nyeOipb4AXMUk=",
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "br": 128012,
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "size": 481115,
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "md5": "f05edf9492f127cd0fd756dbd60c1638",
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "code": 200,
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "expi": 1200,
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "type": "mp3",
-2025-06-05 08:50:55.425 27211-27306 MusicHttp               me.wcy.music                         W  │          "gain": 0,
-2025-06-05 08:50:55.436  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:55.449 27211-27306 MusicHttp               me.wcy.music                         W  │          "peak": 0,
-2025-06-05 08:50:55.449 27211-27306 MusicHttp               me.wcy.music                         W  │          "closedGain": 0,
-2025-06-05 08:50:55.449 27211-27306 MusicHttp               me.wcy.music                         W  │          "closedPeak": 0,
-2025-06-05 08:50:55.466 27211-27306 MusicHttp               me.wcy.music                         W  │          "fee": 1,
-2025-06-05 08:50:55.466 27211-27306 MusicHttp               me.wcy.music                         W  │          "uf": null,
-2025-06-05 08:50:55.467 27211-27306 MusicHttp               me.wcy.music                         W  │          "payed": 0,
-2025-06-05 08:50:55.467 27211-27306 MusicHttp               me.wcy.music                         W  │          "flag": 1284,
-2025-06-05 08:50:55.467 27211-27306 MusicHttp               me.wcy.music                         W  │          "canExtend": false,
-2025-06-05 08:50:55.468 27211-27306 MusicHttp               me.wcy.music                         W  │          "freeTrialInfo": {
-2025-06-05 08:50:55.468 27211-27306 MusicHttp               me.wcy.music                         W  │             "fragmentType": -1,
-2025-06-05 08:50:55.468 27211-27306 MusicHttp               me.wcy.music                         W  │             "start": 0,
-2025-06-05 08:50:55.468 27211-27306 MusicHttp               me.wcy.music                         W  │             "end": 30,
-2025-06-05 08:50:55.469 27211-27306 MusicHttp               me.wcy.music                         W  │             "algData": {
-2025-06-05 08:50:55.469 27211-27306 MusicHttp               me.wcy.music                         W  │                "fragSource": "singleFrag"
-2025-06-05 08:50:55.469 27211-27306 MusicHttp               me.wcy.music                         W  │             }
-2025-06-05 08:50:55.469 27211-27306 MusicHttp               me.wcy.music                         W  │          },
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          "level": "standard",
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          "encodeType": "mp3",
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          "channelLayout": null,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          "freeTrialPrivilege": {
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "resConsumable": false,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "userConsumable": false,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "listenType": 0,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "cannotListenReason": 1,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "playReason": null,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "freeLimitTagType": null
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          },
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          "freeTimeTrialPrivilege": {
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "resConsumable": false,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "userConsumable": false,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "type": 0,
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │             "remainTime": 0
-2025-06-05 08:50:55.470 27211-27306 MusicHttp               me.wcy.music                         W  │          },
-2025-06-05 08:50:55.472 27211-27306 MusicHttp               me.wcy.music                         W  │          "urlSource": 0,
-2025-06-05 08:50:55.473 27211-27306 MusicHttp               me.wcy.music                         W  │          "rightSource": 0,
-2025-06-05 08:50:55.475 27211-27306 MusicHttp               me.wcy.music                         W  │          "podcastCtrp": null,
-2025-06-05 08:50:55.475 27211-27306 MusicHttp               me.wcy.music                         W  │          "effectTypes": null,
-2025-06-05 08:50:55.475   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.486  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:55.497 27211-27306 MusicHttp               me.wcy.music                         W  │          "time": 30040,
-2025-06-05 08:50:55.501 27211-27306 MusicHttp               me.wcy.music                         W  │          "message": null,
-2025-06-05 08:50:55.501 27211-27306 MusicHttp               me.wcy.music                         W  │          "levelConfuse": null,
-2025-06-05 08:50:55.502 27211-27306 MusicHttp               me.wcy.music                         W  │          "musicId": "9236369099",
-2025-06-05 08:50:55.504 27211-27306 MusicHttp               me.wcy.music                         W  │          "accompany": null,
-2025-06-05 08:50:55.505 27211-27306 MusicHttp               me.wcy.music                         W  │          "sr": 44100,
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  │          "auEff": null
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  │       }
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  │    ],
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  │    "code": 200
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  │ }
-2025-06-05 08:50:55.512 27211-27306 MusicHttp               me.wcy.music                         W  └───────────────────────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.514   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.535  1094-1302  EGL_emulation           com.android.systemui                 D  app_time_stats: avg=272.41ms min=44.88ms max=824.07ms count=4
-2025-06-05 08:50:55.544 27211-27306 MusicHttp               me.wcy.music                         W  ┌────── Request ────────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.551   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.554 27211-27306 MusicHttp               me.wcy.music                         W  │ URL: http://m802.music.126.net/20250605091604/5c91ca500900694dcf8d72259891607e/jd-musicrep-ts/6fe0/f3a7/e53a/f05edf9492f127cd0fd756dbd60c1638.mp3?vuutv=gmZABpW3kZOEnVTpsoeii4k3wyb/90Q/VwkTfrDfOqoV2hqCxije2dfvqFHWTNFxBSqYy9P2f6swqf+lWy9NnxgiLy25E3nyeOipb4AXMUk=
-2025-06-05 08:50:55.554 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.555 27211-27306 MusicHttp               me.wcy.music                         W  │ Method: @GET
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  │ Headers:
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  │ Icy-MetaData: 1
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  │ Accept-Encoding: identity
-2025-06-05 08:50:55.556  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.556 27211-27306 MusicHttp               me.wcy.music                         W  └───────────────────────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.573  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:55.579 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=46.28ms min=6.68ms max=220.65ms count=23
-2025-06-05 08:50:55.604   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.610   368-521   AF::Track               audioserver                          D  interceptBuffer: took 3667us to intercept 0 tracks
-2025-06-05 08:50:55.650   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.660   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.660   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:55.739   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.790   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.794   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:55.809   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:55.878 27211-27306 MusicHttp               me.wcy.music                         W  ┌────── Response ───────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.878 27211-27306 MusicHttp               me.wcy.music                         W  │ URL: http://m802.music.126.net/20250605091604/5c91ca500900694dcf8d72259891607e/jd-musicrep-ts/6fe0/f3a7/e53a/f
-2025-06-05 08:50:55.878 27211-27306 MusicHttp               me.wcy.music                         W  │ 05edf9492f127cd0fd756dbd60c1638.mp3?vuutv=gmZABpW3kZOEnVTpsoeii4k3wyb/90Q/VwkTfrDfOqoV2hqCxije2dfvqFHWTNFxBSqY
-2025-06-05 08:50:55.878 27211-27306 MusicHttp               me.wcy.music                         W  │ y9P2f6swqf+lWy9NnxgiLy25E3nyeOipb4AXMUk=
-2025-06-05 08:50:55.878 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ /20250605091604/5c91ca500900694dcf8d72259891607e/jd-musicrep-ts/6fe0/f3a7/e53a/f05edf9492f127cd0fd756dbd60c163
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ 8.mp3 - [is success : true] - Received in: 79ms
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Status Code: 200 / OK
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Headers:
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Server: Tengine
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Content-Type: audio/mpeg;charset=UTF-8
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Content-Length: 481115
-2025-06-05 08:50:55.879 27211-27306 MusicHttp               me.wcy.music                         W  │ Connection: keep-alive
-2025-06-05 08:50:55.880 27211-27306 MusicHttp               me.wcy.music                         W  │ Date: Wed, 18 Dec 2024 10:50:03 GMT
-2025-06-05 08:50:55.880 27211-27306 MusicHttp               me.wcy.music                         W  │ Content-Disposition: inline; filename="6fe0%2Ff3a7%2Fe53a%2Ff05edf9492f127cd0fd756dbd60c1638.mp3"
-2025-06-05 08:50:55.894   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.910 27211-27306 MusicHttp               me.wcy.music                         W  │ Etag: "f05edf9492f127cd0fd756dbd60c1638"
-2025-06-05 08:50:55.911 27211-27306 MusicHttp               me.wcy.music                         W  │ Last-Modified: Wed, 16 Oct 2024 22:19:36 GMT
-2025-06-05 08:50:55.912 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Nos-Meta-Origin-Md5: f05edf9492f127cd0fd756dbd60c1638
-2025-06-05 08:50:55.912 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Nos-Object-Name: 6fe0%2Ff3a7%2Fe53a%2Ff05edf9492f127cd0fd756dbd60c1638.mp3
-2025-06-05 08:50:55.913 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Nos-Request-Id: 8880cc3e-faac-4f4d-8985-35b3988a8921
-2025-06-05 08:50:55.913 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Nos-Requesttype: GetObject
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Nos-Storage-Class: STANDARD
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ Via: cache51.l2cn8060[0,1,206-0,H], cache6.l2cn8060[3,0], cache6.cn3062[0,0,200-0,H], cache9.cn3062[4,0]
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ Age: 14565662
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ Ali-Swift-Global-Savetime: 1734519003
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Cache: HIT TCP_HIT dirn:10:57241891
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Swift-SaveTime: Sat, 01 Mar 2025 09:24:38 GMT
-2025-06-05 08:50:55.926 27211-27306 MusicHttp               me.wcy.music                         W  │ X-Swift-CacheTime: 25233925
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ cdn-user-ip: 2001:250:3c0a:1::1:2
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ cdn-ip: 240e:97e:1000:900:3::3eb
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ cdn-source: ali
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ Access-Control-Allow-Methods: GET,POST,OPTIONS
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ Access-Control-Allow-Credentials: true
-2025-06-05 08:50:55.927 27211-27306 MusicHttp               me.wcy.music                         W  │ Access-Control-Allow-Headers: DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cach
-2025-06-05 08:50:55.928 27211-27306 MusicHttp               me.wcy.music                         W  │ e-Control,Content-Type
-2025-06-05 08:50:55.928 27211-27306 MusicHttp               me.wcy.music                         W  │ Access-Control-Allow-Origin: *
-2025-06-05 08:50:55.928 27211-27306 MusicHttp               me.wcy.music                         W  │ Timing-Allow-Origin: *
-2025-06-05 08:50:55.929 27211-27306 MusicHttp               me.wcy.music                         W  │ EagleId: 7171659f17490846651318698e
-2025-06-05 08:50:55.929 27211-27306 MusicHttp               me.wcy.music                         W  │ 
-2025-06-05 08:50:55.930 27211-27306 MusicHttp               me.wcy.music                         W  │ Body:
-2025-06-05 08:50:55.930 27211-27306 MusicHttp               me.wcy.music                         W  │ End request - binary 481115:byte body omitted
-2025-06-05 08:50:55.930 27211-27306 MusicHttp               me.wcy.music                         W  └───────────────────────────────────────────────────────────────────────────────────────
-2025-06-05 08:50:55.941   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:55.971  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=36.70ms min=7.04ms max=160.16ms count=25
-2025-06-05 08:50:55.981   627-766   ActivityManager         system_server                        D  freezing 21287 com.google.android.carassistant:search
-2025-06-05 08:50:55.987   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.012 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 创建标准化Android Automotive媒体通知
-2025-06-05 08:50:56.012 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 构建标准化媒体通知
-2025-06-05 08:50:56.012 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 添加优化的播放控制按钮
-2025-06-05 08:50:56.022   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.029 27211-27211 AutomotiveNotification  me.wcy.music                         D  addOptimizedPlaybackActions() - 优化的播放控制按钮添加完成，播放状态: true
-2025-06-05 08:50:56.029 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 设置标准化MediaStyle
-2025-06-05 08:50:56.029 27211-27211 AutomotiveNotification  me.wcy.music                         D  setupStandardizedMediaStyle() - 标准化MediaStyle设置完成，系统自动管理
-2025-06-05 08:50:56.029 27211-27211 AutomotiveNotification  me.wcy.music                         D  buildStandardizedMediaNotification() - 标准化媒体通知构建完成
-2025-06-05 08:50:56.032 27211-27211 AutomotiveNotification  me.wcy.music                         D  createNotification() - 标准化媒体通知创建完成，播放状态: true
-2025-06-05 08:50:56.064   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.118   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.130  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:56.140   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:56.144  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=41.05ms min=5.78ms max=216.56ms count=25
-2025-06-05 08:50:56.148   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:56.157  1094-1094  PreprocessingManager    com.android.systemui                 D  -1|android|34|NetworkPolicy:55809203:34|1000 is not a foreground notification.
-2025-06-05 08:50:56.161   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.179 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 2928ms, 缓存位置: 30040ms, 领先时间: 27112ms
-2025-06-05 08:50:56.179 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:50:56.194   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.207  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:56.248  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:56.251   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.252 27211-27211 KeyboardUtils           me.wcy.music                         D  getDecorViewInvisibleHeight: -99400
-2025-06-05 08:50:56.273  1094-1094  CarNotificationAdapter  com.android.systemui                 I  Big text style is not supported as a car notification
-2025-06-05 08:50:56.290   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.332   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.373   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.406 27211-27211 Common-Fragment         me.wcy.music                         D  ArtistDetailFragment -> onPause
-2025-06-05 08:50:56.411   372-372   BpBinder                surfaceflinger                       I  onLastStrongRef automatically unlinking death recipients: <uncached descriptor>
-2025-06-05 08:50:56.415   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.424  1907-1918  ndroid.systemui         com.android.systemui                 W  Reducing the number of considered missed Gc histogram windows from 1052 to 100
-2025-06-05 08:50:56.464   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.482 27211-27211 OnBackInvokedCallback   me.wcy.music                         W  OnBackInvokedCallback is not enabled for the application.
-                                                                                                    Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
-2025-06-05 08:50:56.486   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522098238 , only wrote 522097920
-2025-06-05 08:50:56.487   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522097986 , only wrote 522097920
-2025-06-05 08:50:56.495 27211-27211 Common-Fragment         me.wcy.music                         D  SearchFragment -> onResume
-2025-06-05 08:50:56.496 27211-27211 Common-Fragment         me.wcy.music                         D  SearchArtistFragment -> onResume
-2025-06-05 08:50:56.498   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522098429 , only wrote 522098400
-2025-06-05 08:50:56.525 27211-27291 TrafficStats            me.wcy.music                         D  tagSocket(141) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:50:56.547   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.554   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:56.559   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:56.575   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(1)
-2025-06-05 08:50:56.596 27211-27241 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
-2025-06-05 08:50:56.649  1094-1302  EGL_emulation           com.android.systemui                 D  app_time_stats: avg=228.95ms min=53.90ms max=582.89ms count=6
-2025-06-05 08:50:56.670   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.672   627-808   BestClock               system_server                        W  java.time.DateTimeException: Missing NTP fix
-2025-06-05 08:50:56.706 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=32.71ms min=2.37ms max=252.94ms count=27
-2025-06-05 08:50:56.715   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.742   368-521   AF::Track               audioserver                          D  interceptBuffer: took 11269us to intercept 0 tracks
-2025-06-05 08:50:56.742   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:56.750   182-182   EmulatedVehicleHardware and...e.vehicle@V1-emulator-service  D  Set value for property ID: 290459441
-2025-06-05 08:50:56.754   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.760   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:56.767   627-808   BestClock               system_server                        W  java.time.DateTimeException: Missing NTP fix
-2025-06-05 08:50:56.788   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(3)
-2025-06-05 08:50:56.810   368-521   AF::Track               audioserver                          D  interceptBuffer: took 831us to intercept 0 tracks
-2025-06-05 08:50:56.826   913-913   CarPackage...gerService com.android.car                      D  onWindowChange event received
-2025-06-05 08:50:56.843   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.879 27211-27211 Glide                   me.wcy.music                         W  Load failed for https://p1.music.126.net/109951170507596130/109951170507596130.jpg?param=200y200 with size [41x41]
-                                                                                                    class com.bumptech.glide.load.engine.GlideException: Failed to load resource
-                                                                                                    There was 1 root cause:
-                                                                                                    com.bumptech.glide.load.HttpException(Failed to connect or obtain data, status code: 404)
-                                                                                                     call GlideException#logRootCauses(String) for more detail
-                                                                                                      Cause (1 of 1): class com.bumptech.glide.load.engine.GlideException: Fetching data failed, class java.io.InputStream, REMOTE
-                                                                                                    There was 1 root cause:
-                                                                                                    com.bumptech.glide.load.HttpException(Failed to connect or obtain data, status code: 404)
-                                                                                                     call GlideException#logRootCauses(String) for more detail
-                                                                                                        Cause (1 of 1): class com.bumptech.glide.load.engine.GlideException: Fetch failed
-                                                                                                    There was 1 root cause:
-                                                                                                    com.bumptech.glide.load.HttpException(Failed to connect or obtain data, status code: 404)
-                                                                                                     call GlideException#logRootCauses(String) for more detail
-                                                                                                          Cause (1 of 1): class com.bumptech.glide.load.HttpException: Failed to connect or obtain data, status code: 404
-2025-06-05 08:50:56.884   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:56.893 27211-27211 Glide                   me.wcy.music                         I  Root cause (1 of 1) (Ask Gemini)
-                                                                                                    com.bumptech.glide.load.HttpException: Failed to connect or obtain data, status code: 404
-                                                                                                    	at com.bumptech.glide.load.data.HttpUrlFetcher.loadDataWithRedirects(HttpUrlFetcher.java:98)
-                                                                                                    	at com.bumptech.glide.load.data.HttpUrlFetcher.loadData(HttpUrlFetcher.java:58)
-                                                                                                    	at com.bumptech.glide.load.model.MultiModelLoader$MultiFetcher.loadData(MultiModelLoader.java:100)
-                                                                                                    	at com.bumptech.glide.load.engine.SourceGenerator.startNextLoad(SourceGenerator.java:95)
-                                                                                                    	at com.bumptech.glide.load.engine.SourceGenerator.startNext(SourceGenerator.java:88)
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.runGenerators(DecodeJob.java:311)
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.runWrapped(DecodeJob.java:280)
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.run(DecodeJob.java:235)
-                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137)
-                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637)
-                                                                                                    	at com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(GlideExecutor.java:413)
-                                                                                                    	at java.lang.Thread.run(Thread.java:1012)
-                                                                                                    	at com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultPriorityThreadFactory$1.run(GlideExecutor.java:372)
-                                                                                                    Caused by: java.io.FileNotFoundException: https://p1.music.126.net/109951170507596130/109951170507596130.jpg?param=200y200
-                                                                                                    	at com.android.okhttp.internal.huc.HttpURLConnectionImpl.getInputStream(HttpURLConnectionImpl.java:255)
-                                                                                                    	at com.android.okhttp.internal.huc.DelegatingHttpsURLConnection.getInputStream(DelegatingHttpsURLConnection.java:211)
-                                                                                                    	at com.android.okhttp.internal.huc.HttpsURLConnectionImpl.getInputStream(HttpsURLConnectionImpl.java:30)
-                                                                                                    	at com.bumptech.glide.load.data.HttpUrlFetcher.loadDataWithRedirects(HttpUrlFetcher.java:95)
-                                                                                                    	at com.bumptech.glide.load.data.HttpUrlFetcher.loadData(HttpUrlFetcher.java:58) 
-                                                                                                    	at com.bumptech.glide.load.model.MultiModelLoader$MultiFetcher.loadData(MultiModelLoader.java:100) 
-                                                                                                    	at com.bumptech.glide.load.engine.SourceGenerator.startNextLoad(SourceGenerator.java:95) 
-                                                                                                    	at com.bumptech.glide.load.engine.SourceGenerator.startNext(SourceGenerator.java:88) 
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.runGenerators(DecodeJob.java:311) 
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.runWrapped(DecodeJob.java:280) 
-                                                                                                    	at com.bumptech.glide.load.engine.DecodeJob.run(DecodeJob.java:235) 
-                                                                                                    	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1137) 
-                                                                                                    	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:637) 
-                                                                                                    	at com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultThreadFactory$1.run(GlideExecutor.java:413) 
-                                                                                                    	at java.lang.Thread.run(Thread.java:1012) 
-                                                                                                    	at com.bumptech.glide.load.engine.executor.GlideExecutor$DefaultPriorityThreadFactory$1.run(GlideExecutor.java:372) 
-2025-06-05 08:50:56.911   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(1)
-2025-06-05 08:50:56.945   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:56.950   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:56.964   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.004   913-913   CarPackage...gerService com.android.car                      D  onWindowChange event received
-2025-06-05 08:50:57.019   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522123431 , only wrote 522122400
-2025-06-05 08:50:57.019   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522122408 , only wrote 522122400
-2025-06-05 08:50:57.029  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=43.47ms min=4.87ms max=101.18ms count=22
-2025-06-05 08:50:57.052   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.062   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522124438 , only wrote 522124320
-2025-06-05 08:50:57.062   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522124331 , only wrote 522124320
-2025-06-05 08:50:57.073   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522124820 , only wrote 522124800
-2025-06-05 08:50:57.094   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.120   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.120   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:57.131   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.175   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.194  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=37.81ms min=6.99ms max=77.45ms count=27
-2025-06-05 08:50:57.221   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.243   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(6)
-2025-06-05 08:50:57.263   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.296 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 4045ms, 缓存位置: 30040ms, 领先时间: 25995ms
-2025-06-05 08:50:57.296 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:50:57.296 27211-27211 PlayerControllerImpl    me.wcy.music                         D  缓存状态 - 当前位置: 4045ms, 缓存位置: 30040ms, 领先时间: 25995ms, 歌曲总长: 30040ms
-2025-06-05 08:50:57.309   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.310   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.310   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:57.310   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.310   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:57.342   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:57.351   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.354   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:57.385   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.397 27211-27211 me.wcy.music            me.wcy.music                         W  Accessing hidden field Landroid/view/inputmethod/InputMethodManager;->mCurRootView:Landroid/view/ViewRootImpl; (blocked, reflection, denied)
-2025-06-05 08:50:57.423   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(33)
-2025-06-05 08:50:57.436 27211-27211 Common-Fragment         me.wcy.music                         D  ArtistDetailFragment -> onLazyDestroy
-2025-06-05 08:50:57.442   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.444 27211-27211 Common-Activity         me.wcy.music                         D  MusicFragmentContainerActivity: onDestroy
-2025-06-05 08:50:57.455   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522143159 , only wrote 522143040
-2025-06-05 08:50:57.455   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522143047 , only wrote 522143040
-2025-06-05 08:50:57.462   627-1912  CoreBackPreview         system_server                        D  Window{ef9f9bd u10 me.wcy.music/me.wcy.music.common.MusicFragmentContainerActivity}: Setting back callback null
-2025-06-05 08:50:57.466   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522143549 , only wrote 522143520
-2025-06-05 08:50:57.466   627-1912  InputManager-JNI        system_server                        W  Input channel object 'ef9f9bd me.wcy.music/me.wcy.music.common.MusicFragmentContainerActivity (client)' was disposed without first being removed with the input manager!
-2025-06-05 08:50:57.571   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.599   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:57.607   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.607   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:57.653   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.677   627-680   ActivityManager         system_server                        I  PendingStartActivityUids startActivity to updateOomAdj delay:1247ms, uid:1010208
-2025-06-05 08:50:57.691   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.726 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=49.28ms min=1.56ms max=177.75ms count=19
-2025-06-05 08:50:57.730   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.744  1081-1081  TelephonyManager        com.android.phone                    D  requestModemActivityInfo: Sending result to app: ModemActivityInfo{ mTimestamp=42816597 mSleepTimeMs=0 mIdleTimeMs=40664847 mActivityStatsTechSpecificInfo=[{mRat=UNKNOWN,mFrequencyRange=UNKNOWN,mTxTimeMs[]=[0, 0, 0, 0, 0],mRxTimeMs=0}]}
-2025-06-05 08:50:57.768   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.774 26960-27061 TrafficStats            com.android.vending                  D  tagSocket(83) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:50:57.822   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.859   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.900   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.935   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:57.938   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:57.954   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:57.990   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.029   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.084  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=34.71ms min=12.15ms max=69.74ms count=28
-2025-06-05 08:50:58.084   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.098 27211-27403 BufferPoolAccessor2.0   me.wcy.music                         D  bufferpool2 0x7c622897c058 : 5(40960 size) total buffers - 3(24576 size) used buffers - 200/205 (recycle/alloc) - 6/405 (fetch/transfer)
-2025-06-05 08:50:58.099   457-27404 BufferPoolAccessor2.0   mediaswcodec                         D  bufferpool2 0x722e05e7d598 : 4(18432 size) total buffers - 2(9216 size) used buffers - 199/203 (recycle/alloc) - 4/202 (fetch/transfer)
-2025-06-05 08:50:58.123   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.137   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:58.142   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:58.182   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.204   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:50:58.215   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522179487 , only wrote 522178080
-2025-06-05 08:50:58.215   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522178088 , only wrote 522178080
-2025-06-05 08:50:58.226   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522178573 , only wrote 522178560
-2025-06-05 08:50:58.252   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.319   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522183017 , only wrote 522180000
-2025-06-05 08:50:58.319   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522180007 , only wrote 522180000
-2025-06-05 08:50:58.336   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522180851 , only wrote 522180480
-2025-06-05 08:50:58.346  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=39.34ms min=8.11ms max=212.30ms count=28
-2025-06-05 08:50:58.436   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:50:58.469   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522186823 , only wrote 522181920
-2025-06-05 08:50:58.469   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.470   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:58.481   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522182505 , only wrote 522182400
-2025-06-05 08:50:58.481   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522182408 , only wrote 522182400
-2025-06-05 08:50:58.494   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522183033 , only wrote 522182880
-2025-06-05 08:50:58.504 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 5253ms, 缓存位置: 30040ms, 领先时间: 24787ms
-2025-06-05 08:50:58.504 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:50:58.514   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:58.523   627-1785  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
-2025-06-05 08:50:58.527   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(20)
-2025-06-05 08:50:58.531   627-1785  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
-2025-06-05 08:50:58.553   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.585   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.627   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522189244 , only wrote 522188160
-2025-06-05 08:50:58.627   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522188197 , only wrote 522188160
-2025-06-05 08:50:58.682   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.742   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522193641 , only wrote 522192480
-2025-06-05 08:50:58.742   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522192488 , only wrote 522192480
-2025-06-05 08:50:58.743   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:58.753   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522192996 , only wrote 522192960
-2025-06-05 08:50:58.766   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.766   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:58.774 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=12.21ms min=1.97ms max=95.11ms count=31
-2025-06-05 08:50:58.777   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.784   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522194444 , only wrote 522194400
-2025-06-05 08:50:58.784   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522194408 , only wrote 522194400
-2025-06-05 08:50:58.790   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:58.825   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522196378 , only wrote 522194880
-2025-06-05 08:50:58.864   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(17)
-2025-06-05 08:50:58.936   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:58.942   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:58.946   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:58.975   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.009   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.027   368-521   AF::Track               audioserver                          D  interceptBuffer: took 4274us to intercept 0 tracks
-2025-06-05 08:50:59.052   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.067   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(16)
-2025-06-05 08:50:59.068   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.068   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:50:59.093  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=76.37ms min=5.15ms max=371.21ms count=12
-2025-06-05 08:50:59.149   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.150   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(5)
-2025-06-05 08:50:59.150   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:59.158   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:59.178   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522211840 , only wrote 522210720
-2025-06-05 08:50:59.178   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522210729 , only wrote 522210720
-2025-06-05 08:50:59.190   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522211251 , only wrote 522211200
-2025-06-05 08:50:59.246   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.258   627-1912  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:50:59.270  2127-2127  MediaSessionHelper      com.android.car.carlauncher          I  Saving last active media source me.wcy.music
-2025-06-05 08:50:59.270  2127-2127  MediaViewModel          com.android.car.carlauncher          I  Setting Media view to source 波尼音乐
-2025-06-05 08:50:59.271  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.271  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.279   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.310  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.310  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.312  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.312  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.315  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.315  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.319 26960-27167 TrafficStats            com.android.vending                  D  tagSocket(5) with statsTag=0x8001, statsUid=-1
-2025-06-05 08:50:59.323   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.331  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.331  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.342  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.342  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.353  2127-11130 TrafficStats            com.android.car.carlauncher          D  tagSocket(89) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:50:59.366  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=60.94ms min=13.94ms max=201.10ms count=16
-2025-06-05 08:50:59.381   913-1066  CAR.WatchdogStorage     com.android.car                      I  Database marked dirty.
-2025-06-05 08:50:59.383   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.398   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522221197 , only wrote 522220800
-2025-06-05 08:50:59.398   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522220808 , only wrote 522220800
-2025-06-05 08:50:59.409   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522221330 , only wrote 522221280
-2025-06-05 08:50:59.413   627-2008  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:50:59.429  2127-11130 ImageFetcher            com.android.car.carlauncher          E  ImageLoadingTask#doInBackground: java.io.FileNotFoundException: https://p1.music.126.net/109951170507596130/109951170507596130.jpg?param=800y800
-2025-06-05 08:50:59.435  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.435  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:50:59.440   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(12)
-2025-06-05 08:50:59.500   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.506 26960-27069 TrafficStats            com.android.vending                  D  tagSocket(94) with statsTag=0x4be64f9b, statsUid=-1
-2025-06-05 08:50:59.515 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 6188ms, 缓存位置: 30040ms, 领先时间: 23852ms
-2025-06-05 08:50:59.516 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:50:59.535   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:59.536   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:59.543   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.620   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.662   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.708   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.752   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.809   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.865 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=16.79ms min=1.74ms max=104.75ms count=39
-2025-06-05 08:50:59.875   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522243625 , only wrote 522241440
-2025-06-05 08:50:59.877   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522241573 , only wrote 522241440
-2025-06-05 08:50:59.887   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:50:59.914   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.919   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522243423 , only wrote 522243360
-2025-06-05 08:50:59.930   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522243903 , only wrote 522243840
-2025-06-05 08:50:59.947   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:50:59.948   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:50:59.955   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:50:59.988   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.024   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522248317 , only wrote 522247680
-2025-06-05 08:51:00.028   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522247894 , only wrote 522247680
-2025-06-05 08:51:00.052   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522248854 , only wrote 522248160
-2025-06-05 08:51:00.090   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.132   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.132   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522252009 , only wrote 522249600
-2025-06-05 08:51:00.133   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522249624 , only wrote 522249600
-2025-06-05 08:51:00.135   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.156   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.158   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.163   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522251053 , only wrote 522251040
-2025-06-05 08:51:00.164   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.164   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.178   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522251753 , only wrote 522251520
-2025-06-05 08:51:00.178   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522251528 , only wrote 522251520
-2025-06-05 08:51:00.190   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522252061 , only wrote 522252000
-2025-06-05 08:51:00.202   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:51:00.202  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=51.58ms min=11.20ms max=182.96ms count=19
-2025-06-05 08:51:00.216   627-627   Looper                  system_server                        W  Slow dispatch took 181ms main h=com.android.server.alarm.AlarmManagerService$AlarmHandler c=com.android.server.alarm.AlarmManagerService$3$$ExternalSyntheticLambda0@ddc1756 m=0
-2025-06-05 08:51:00.236   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.236   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.276   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.318   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.337  1094-1302  EGL_emulation           com.android.systemui                 D  app_time_stats: avg=1600.56ms min=55.84ms max=4153.89ms count=3
-2025-06-05 08:51:00.356   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:00.359   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:00.367 26960-27081 TrafficStats            com.android.vending                  D  tagSocket(75) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:51:00.367  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=42.95ms min=10.84ms max=180.68ms count=22
-2025-06-05 08:51:00.393   368-521   AF::Track               audioserver                          D  interceptBuffer: took 27297us to intercept 0 tracks
-2025-06-05 08:51:00.404   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.449   368-521   AF::Track               audioserver                          D  interceptBuffer: took 927us to intercept 0 tracks
-2025-06-05 08:51:00.469   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.482   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(2)
-2025-06-05 08:51:00.489   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522266330 , only wrote 522265920
-2025-06-05 08:51:00.489   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522265974 , only wrote 522265920
-2025-06-05 08:51:00.500   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522266425 , only wrote 522266400
-2025-06-05 08:51:00.530   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522267847 , only wrote 522267840
-2025-06-05 08:51:00.530   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522267847 , only wrote 522267840
-2025-06-05 08:51:00.541   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522268378 , only wrote 522268320
-2025-06-05 08:51:00.558   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:00.573   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:00.579 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 7253ms, 缓存位置: 30040ms, 领先时间: 22787ms
-2025-06-05 08:51:00.579 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:00.593 27211-27211 PlayerControllerImpl    me.wcy.music                         D  缓存状态 - 当前位置: 7267ms, 缓存位置: 30040ms, 领先时间: 22773ms, 歌曲总长: 30040ms
-2025-06-05 08:51:00.626 21856-22060 TrafficStats            com.android.vending                  D  tagSocket(5) with statsTag=0x8001, statsUid=-1
-2025-06-05 08:51:00.642   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.672   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522274606 , only wrote 522274560
-2025-06-05 08:51:00.704   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.721   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522276910 , only wrote 522276000
-2025-06-05 08:51:00.721   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522276010 , only wrote 522276000
-2025-06-05 08:51:00.732   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522276505 , only wrote 522276480
-2025-06-05 08:51:00.754   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.769   368-521   AF::Track               audioserver                          D  interceptBuffer: took 11411us to intercept 0 tracks
-2025-06-05 08:51:00.795   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.795   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.851   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:00.870   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522283097 , only wrote 522278400
-2025-06-05 08:51:00.870   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522278418 , only wrote 522278400
-2025-06-05 08:51:00.881   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522278923 , only wrote 522278880
-2025-06-05 08:51:00.881   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522278888 , only wrote 522278880
-2025-06-05 08:51:00.891 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=36.45ms min=2.18ms max=97.59ms count=19
-2025-06-05 08:51:00.892   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522279374 , only wrote 522279360
-2025-06-05 08:51:00.914   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:00.937   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:00.955   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:00.972   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522283226 , only wrote 522280320
-2025-06-05 08:51:00.973   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522280356 , only wrote 522280320
-2025-06-05 08:51:00.988   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522281053 , only wrote 522280800
-2025-06-05 08:51:01.012   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.055   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.093   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.116   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522286925 , only wrote 522286560
-2025-06-05 08:51:01.116   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522286573 , only wrote 522286560
-2025-06-05 08:51:01.127   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522287076 , only wrote 522287040
-2025-06-05 08:51:01.158   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.163   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522288761 , only wrote 522288480
-2025-06-05 08:51:01.163   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522288490 , only wrote 522288480
-2025-06-05 08:51:01.175   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522289041 , only wrote 522288960
-2025-06-05 08:51:01.246  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=66.17ms min=10.89ms max=205.61ms count=14
-2025-06-05 08:51:01.271   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.312   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.340   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:01.363   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:01.371  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=65.99ms min=10.98ms max=153.99ms count=15
-2025-06-05 08:51:01.418   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.431   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522301283 , only wrote 522300960
-2025-06-05 08:51:01.432   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522300969 , only wrote 522300960
-2025-06-05 08:51:01.444   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522301548 , only wrote 522301440
-2025-06-05 08:51:01.471   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.478   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(7)
-2025-06-05 08:51:01.478   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522303066 , only wrote 522302880
-2025-06-05 08:51:01.478   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522302886 , only wrote 522302880
-2025-06-05 08:51:01.511   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.540   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522305878 , only wrote 522304800
-2025-06-05 08:51:01.541   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522304852 , only wrote 522304800
-2025-06-05 08:51:01.591   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.591   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:01.650 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 8324ms, 缓存位置: 30040ms, 领先时间: 21716ms
-2025-06-05 08:51:01.650 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:01.712   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522312968 , only wrote 522312960
-2025-06-05 08:51:01.712   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522312972 , only wrote 522312960
-2025-06-05 08:51:01.722   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522313451 , only wrote 522313440
-2025-06-05 08:51:01.739   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.742   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:01.742   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:01.749   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.749   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:01.763   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522315419 , only wrote 522314880
-2025-06-05 08:51:01.764   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522314889 , only wrote 522314880
-2025-06-05 08:51:01.779   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522315628 , only wrote 522315360
-2025-06-05 08:51:01.806   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.857  1537-1551  tant:interactor         com.google.android.carassistant      I  Background young concurrent copying GC freed 120336(4925KB) AllocSpace objects, 0(0B) LOS objects, 39% free, 7354KB/11MB, paused 20.950ms,54us total 247.244ms
-2025-06-05 08:51:01.894   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.901   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522321215 , only wrote 522321120
-2025-06-05 08:51:01.901   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522321130 , only wrote 522321120
-2025-06-05 08:51:01.903 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=26.56ms min=2.77ms max=119.78ms count=27
-2025-06-05 08:51:01.911   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522321603 , only wrote 522321600
-2025-06-05 08:51:01.934   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.962   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:01.970   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:01.974  1537-3718  native                  com.google.android.carassistant      W  W0000 00:00:1749084662.046465    3718 lag_detector.cc:36] Pipeline lagging by 2m46.131548922s. Continue processing samples.
-2025-06-05 08:51:01.987   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:02.081   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.083   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522329812 , only wrote 522329280
-2025-06-05 08:51:02.083   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522329291 , only wrote 522329280
-2025-06-05 08:51:02.091   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(9)
-2025-06-05 08:51:02.106   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522330299 , only wrote 522329760
-2025-06-05 08:51:02.167   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.189   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522333838 , only wrote 522333600
-2025-06-05 08:51:02.190   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522333627 , only wrote 522333600
-2025-06-05 08:51:02.207   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522334423 , only wrote 522334080
-2025-06-05 08:51:02.255   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.280   627-2008  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:51:02.301   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.305  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=42.64ms min=6.64ms max=103.16ms count=20
-2025-06-05 08:51:02.310  2127-2127  MediaSessionHelper      com.android.car.carlauncher          I  Saving last active media source me.wcy.music
-2025-06-05 08:51:02.310  2127-2127  MediaViewModel          com.android.car.carlauncher          I  Setting Media view to source 波尼音乐
-2025-06-05 08:51:02.331  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.332  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.350   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:02.359   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:02.369  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.370  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.370  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.370  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.384  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.386   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.388  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.430  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.430  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.430   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.446  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.446  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:02.454  2127-11137 TrafficStats            com.android.car.carlauncher          D  tagSocket(95) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:51:02.481   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.487  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=55.44ms min=13.59ms max=205.75ms count=20
-2025-06-05 08:51:02.493 27211-27220 me.wcy.music            me.wcy.music                         I  Background concurrent copying GC freed 76413(5641KB) AllocSpace objects, 19(756KB) LOS objects, 49% free, 13MB/27MB, paused 7.360ms,205us total 795.500ms
-2025-06-05 08:51:02.520   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.548   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:02.548   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522350484 , only wrote 522349920
-2025-06-05 08:51:02.549   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522349930 , only wrote 522349920
-2025-06-05 08:51:02.554   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:02.560   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522350458 , only wrote 522350400
-2025-06-05 08:51:02.578   627-4540  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:51:02.602   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522352418 , only wrote 522352320
-2025-06-05 08:51:02.627   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.643   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522354298 , only wrote 522353760
-2025-06-05 08:51:02.643   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522353770 , only wrote 522353760
-2025-06-05 08:51:02.647   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(2)
-2025-06-05 08:51:02.665   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522354778 , only wrote 522354240
-2025-06-05 08:51:02.684   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.684   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:02.691   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.706 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 8668ms, 缓存位置: 30040ms, 领先时间: 21372ms
-2025-06-05 08:51:02.706 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:02.711   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(4)
-2025-06-05 08:51:02.725   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.752   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522358450 , only wrote 522358080
-2025-06-05 08:51:02.753   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522358090 , only wrote 522358080
-2025-06-05 08:51:02.753   368-521   AF::Track               audioserver                          D  interceptBuffer: took 9844us to intercept 0 tracks
-2025-06-05 08:51:02.758   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.763   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522358578 , only wrote 522358560
-2025-06-05 08:51:02.770   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:02.790   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522359833 , only wrote 522359520
-2025-06-05 08:51:02.793   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.793   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:02.805   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.805   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:02.849   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.907   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:02.908 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=33.25ms min=1.85ms max=81.64ms count=21
-2025-06-05 08:51:02.935   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:02.948   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:02.984   368-521   AF::Track               audioserver                          D  interceptBuffer: took 739us to intercept 0 tracks
-2025-06-05 08:51:03.026   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.068   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.082  1537-3718  native                  com.google.android.carassistant      I  I0000 00:00:1749084663.082253    3718 soda_async_impl.cc:1594] Current audio timestamp: 1749084497044915
-2025-06-05 08:51:03.116   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.142   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:03.163   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.168   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:03.202   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522379300 , only wrote 522378720
-2025-06-05 08:51:03.202   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522378727 , only wrote 522378720
-2025-06-05 08:51:03.217   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522379421 , only wrote 522379200
-2025-06-05 08:51:03.238   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.249   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522380769 , only wrote 522380640
-2025-06-05 08:51:03.249   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522380649 , only wrote 522380640
-2025-06-05 08:51:03.259   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522381129 , only wrote 522381120
-2025-06-05 08:51:03.287   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.308  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=58.87ms min=5.91ms max=199.19ms count=15
-2025-06-05 08:51:03.322   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.330   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522384513 , only wrote 522384480
-2025-06-05 08:51:03.332   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522384550 , only wrote 522384480
-2025-06-05 08:51:03.360 27211-27399 BufferPoolAccessor2.0   me.wcy.music                         D  bufferpool2 0x7c622897c058 : 5(40960 size) total buffers - 3(24576 size) used buffers - 361/366 (recycle/alloc) - 8/726 (fetch/transfer)
-2025-06-05 08:51:03.362   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.406   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.416   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(3)
-2025-06-05 08:51:03.441   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522389708 , only wrote 522388800
-2025-06-05 08:51:03.441   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522388810 , only wrote 522388800
-2025-06-05 08:51:03.452   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522389334 , only wrote 522389280
-2025-06-05 08:51:03.494  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=45.74ms min=15.44ms max=76.73ms count=21
-2025-06-05 08:51:03.498   457-27404 BufferPoolAccessor2.0   mediaswcodec                         D  bufferpool2 0x722e05e7d598 : 4(18432 size) total buffers - 1(4608 size) used buffers - 363/367 (recycle/alloc) - 6/366 (fetch/transfer)
-2025-06-05 08:51:03.509   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.542   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:03.548   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:03.552   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.595   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.613   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522397005 , only wrote 522396960
-2025-06-05 08:51:03.641   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.654   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522398941 , only wrote 522398880
-2025-06-05 08:51:03.654   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522398890 , only wrote 522398880
-2025-06-05 08:51:03.753   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(4)
-2025-06-05 08:51:03.764   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.767 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 9727ms, 缓存位置: 30040ms, 领先时间: 20313ms
-2025-06-05 08:51:03.768 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:03.768 27211-27211 PlayerControllerImpl    me.wcy.music                         D  缓存状态 - 当前位置: 9730ms, 缓存位置: 30040ms, 领先时间: 20310ms, 歌曲总长: 30040ms
-2025-06-05 08:51:03.780  2127-11137 ImageFetcher            com.android.car.carlauncher          E  ImageLoadingTask#doInBackground: java.io.FileNotFoundException: https://p1.music.126.net/109951170507596130/109951170507596130.jpg?param=800y800
-2025-06-05 08:51:03.810   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522406365 , only wrote 522405600
-2025-06-05 08:51:03.812   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522405662 , only wrote 522405600
-2025-06-05 08:51:03.819   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.819   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:03.819   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.820   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:03.826   368-521   AF::Track               audioserver                          D  interceptBuffer: took 6065us to intercept 0 tracks
-2025-06-05 08:51:03.840   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.840  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:03.840  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:03.852   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(2)
-2025-06-05 08:51:03.857   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522407788 , only wrote 522407040
-2025-06-05 08:51:03.858   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522407049 , only wrote 522407040
-2025-06-05 08:51:03.866   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:03.866   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:03.867   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522407521 , only wrote 522407520
-2025-06-05 08:51:03.953   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:03.955   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:03.969 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=30.82ms min=4.66ms max=87.73ms count=25
-2025-06-05 08:51:04.013   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.055   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.108   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(19)
-2025-06-05 08:51:04.143   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.170   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522422032 , only wrote 522421920
-2025-06-05 08:51:04.190   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.234   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.260   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.260   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:04.264   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522426446 , only wrote 522425760
-2025-06-05 08:51:04.264   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522425766 , only wrote 522425760
-2025-06-05 08:51:04.286   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:51:04.298   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.307   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522427795 , only wrote 522427680
-2025-06-05 08:51:04.307   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522427689 , only wrote 522427680
-2025-06-05 08:51:04.317   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522428163 , only wrote 522428160
-2025-06-05 08:51:04.330  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=33.29ms min=6.05ms max=104.58ms count=20
-2025-06-05 08:51:04.341   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:04.345   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:04.362   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.382   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(1)
-2025-06-05 08:51:04.416   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.452   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.459   368-521   AF::Track               audioserver                          D  interceptBuffer: took 1089us to intercept 0 tracks
-2025-06-05 08:51:04.492   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.517  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=37.55ms min=6.12ms max=92.47ms count=25
-2025-06-05 08:51:04.529   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.532 26960-27069 TrafficStats            com.android.vending                  D  tagSocket(94) with statsTag=0x4be64f9b, statsUid=-1
-2025-06-05 08:51:04.574   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.620   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.662   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(6)
-2025-06-05 08:51:04.672   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.710   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.761   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:04.771   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:04.839 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 10801ms, 缓存位置: 30040ms, 领先时间: 19239ms
-2025-06-05 08:51:04.839 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:04.893   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522455824 , only wrote 522454560
-2025-06-05 08:51:04.921   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.946   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(20)
-2025-06-05 08:51:04.963   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:04.983   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522458867 , only wrote 522458400
-2025-06-05 08:51:04.983   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522458418 , only wrote 522458400
-2025-06-05 08:51:04.997   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522459069 , only wrote 522458880
-2025-06-05 08:51:05.019   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.024   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(3)
-2025-06-05 08:51:05.025 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=19.49ms min=2.72ms max=50.58ms count=31
-2025-06-05 08:51:05.042   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522460997 , only wrote 522460800
-2025-06-05 08:51:05.106   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.125   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522464819 , only wrote 522464640
-2025-06-05 08:51:05.125   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522464653 , only wrote 522464640
-2025-06-05 08:51:05.139   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522465279 , only wrote 522465120
-2025-06-05 08:51:05.150   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:05.154   913-933   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:05.164   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.185   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(8)
-2025-06-05 08:51:05.202   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.220   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522469002 , only wrote 522468960
-2025-06-05 08:51:05.242   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.278   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.278   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:05.298   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.311   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522473352 , only wrote 522472800
-2025-06-05 08:51:05.311   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522472809 , only wrote 522472800
-2025-06-05 08:51:05.321   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522473287 , only wrote 522473280
-2025-06-05 08:51:05.333  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=43.80ms min=6.83ms max=142.53ms count=20
-2025-06-05 08:51:05.335   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(16)
-2025-06-05 08:51:05.355   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:05.363   913-931   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:05.366   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.390   627-4540  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:51:05.413  2127-2127  MediaSessionHelper      com.android.car.carlauncher          I  Saving last active media source me.wcy.music
-2025-06-05 08:51:05.413  2127-2127  MediaViewModel          com.android.car.carlauncher          I  Setting Media view to source 波尼音乐
-2025-06-05 08:51:05.419  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.419  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.483   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.483   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:05.483   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522481041 , only wrote 522480480
-2025-06-05 08:51:05.489   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.489   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:05.495   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(20)
-2025-06-05 08:51:05.510   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522481792 , only wrote 522481440
-2025-06-05 08:51:05.531  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.531  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.533  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.533  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.533  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.533  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.535  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.538  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.544  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=51.21ms min=18.96ms max=118.76ms count=20
-2025-06-05 08:51:05.544  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.545  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.561  2127-11186 TrafficStats            com.android.car.carlauncher          D  tagSocket(102) with statsTag=0xffffffff, statsUid=-1
-2025-06-05 08:51:05.606   627-1912  MediaSessionService     system_server                        I  tempAllowlistTargetPkgIfPossible callingPackage:com.android.car.carlauncher targetPackage:me.wcy.music reason:MediaSessionRecord:android.support.v4.media.session.command.GET_EXTRA_BINDER [FGS]
-2025-06-05 08:51:05.609   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.633   368-521   AF::Track               audioserver                          D  interceptBuffer: took 862us to intercept 0 tracks
-2025-06-05 08:51:05.644   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.685   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.685  2127-11186 ImageFetcher            com.android.car.carlauncher          E  ImageLoadingTask#doInBackground: java.io.FileNotFoundException: https://p1.music.126.net/109951170507596130/109951170507596130.jpg?param=800y800
-2025-06-05 08:51:05.689  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.690  2127-2127  RenderScript            com.android.car.carlauncher          V  User-backed allocation failed stride requirement, falling back to separate allocation
-2025-06-05 08:51:05.707   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(29)
-2025-06-05 08:51:05.761   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.766   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:05.790   913-1199  CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:05.811   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522495845 , only wrote 522494400
-2025-06-05 08:51:05.811   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522494408 , only wrote 522494400
-2025-06-05 08:51:05.821   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522494909 , only wrote 522494880
-2025-06-05 08:51:05.822   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522494888 , only wrote 522494880
-2025-06-05 08:51:05.829   368-521   AF::Track               audioserver                          D  interceptBuffer: took 942us to intercept 0 tracks
-2025-06-05 08:51:05.839   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522495734 , only wrote 522495360
-2025-06-05 08:51:05.852   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.861   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.863   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:05.876   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522497092 , only wrote 522496320
-2025-06-05 08:51:05.877   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522496388 , only wrote 522496320
-2025-06-05 08:51:05.887   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.899   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.899   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522497387 , only wrote 522496800
-2025-06-05 08:51:05.899   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522496806 , only wrote 522496800
-2025-06-05 08:51:05.903   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:05.910   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522497325 , only wrote 522497280
-2025-06-05 08:51:05.910   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522497291 , only wrote 522497280
-2025-06-05 08:51:05.921   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522497770 , only wrote 522497760
-2025-06-05 08:51:05.953   913-26630 CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:05.958   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:05.989   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522501039 , only wrote 522500640
-2025-06-05 08:51:05.992   913-26630 CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:05.993   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522500853 , only wrote 522500640
-2025-06-05 08:51:06.012 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 11632ms, 缓存位置: 30040ms, 领先时间: 18408ms
-2025-06-05 08:51:06.012 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:06.028   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.030   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.030   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:06.033   368-521   AF::Track               audioserver                          D  interceptBuffer: took 2423us to intercept 0 tracks
-2025-06-05 08:51:06.047   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522503224 , only wrote 522502560
-2025-06-05 08:51:06.047   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522502570 , only wrote 522502560
-2025-06-05 08:51:06.051   368-521   AF::Track               audioserver                          D  interceptBuffer: took 2877us to intercept 0 tracks
-2025-06-05 08:51:06.058   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522503070 , only wrote 522503040
-2025-06-05 08:51:06.111   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.164 27211-27241 EGL_emulation           me.wcy.music                         D  app_time_stats: avg=43.01ms min=9.91ms max=173.82ms count=19
-2025-06-05 08:51:06.198   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.224   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522510978 , only wrote 522510720
-2025-06-05 08:51:06.231   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522511094 , only wrote 522510720
-2025-06-05 08:51:06.360   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.377   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:06.408   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.421   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:06.447   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.489   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.499  2155-2709  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=72.12ms min=10.09ms max=214.48ms count=14
-2025-06-05 08:51:06.548   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.549   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:06.574   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:06.594   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.643  2155-2874  EGL_emulation           com.google.android.apps.maps         D  app_time_stats: avg=62.97ms min=12.18ms max=212.12ms count=17
-2025-06-05 08:51:06.704   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.704   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:06.713   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522533821 , only wrote 522533760
-2025-06-05 08:51:06.764   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522536197 , only wrote 522535680
-2025-06-05 08:51:06.768   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(11)
-2025-06-05 08:51:06.784   913-26630 CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:06.790   913-26630 CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
-2025-06-05 08:51:06.853   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.853   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:06.854   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(10)
-2025-06-05 08:51:06.872   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:06.872   332-3708  audio_hw_generic_caremu and...hardware.audio.service-caremu  W  in_read_worker only could write 0 / 240 frames
-2025-06-05 08:51:06.880   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(4)
-2025-06-05 08:51:06.883   368-521   AF::Track               audioserver                          D  interceptBuffer: took 596us to intercept 0 tracks
-2025-06-05 08:51:06.915   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522542963 , only wrote 522542400
-2025-06-05 08:51:06.915   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522542413 , only wrote 522542400
-2025-06-05 08:51:06.934   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522543311 , only wrote 522542880
-2025-06-05 08:51:06.957   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(4)
-2025-06-05 08:51:06.977   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522544933 , only wrote 522544800
-2025-06-05 08:51:07.003   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:07.008   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522546260 , only wrote 522546240
-2025-06-05 08:51:07.008   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522546248 , only wrote 522546240
-2025-06-05 08:51:07.020   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  W  Not supplying enough data to HAL, expected position 522546842 , only wrote 522546720
-2025-06-05 08:51:07.077   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:07.080 27211-27211 PlayerControllerImpl    me.wcy.music                         D  持续缓存检查 - 当前位置: 12700ms, 缓存位置: 30040ms, 领先时间: 17340ms
-2025-06-05 08:51:07.080 27211-27211 PlayerControllerImpl    me.wcy.music                         D  当前歌曲已完全缓存
-2025-06-05 08:51:07.080 27211-27211 PlayerControllerImpl    me.wcy.music                         D  缓存状态 - 当前位置: 12700ms, 缓存位置: 30040ms, 领先时间: 17340ms, 歌曲总长: 30040ms
-2025-06-05 08:51:07.121   332-10466 audio_hw_generic_caremu and...hardware.audio.service-caremu  D  audio_vbuffer_write audio_vbuffer is full
-2025-06-05 08:51:07.123   368-521   AudioFlinger            audioserver                          D  mixer(0x72ac701c09a0) throttle end: throttle time(15)
-2025-06-05 08:51:07.135   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 1
-2025-06-05 08:51:07.140   913-930   CarPropertyService      com.android.car                      D  mSyncGetSetPropertyOpCount: 0
+2025-06-09 13:54:00.467  1021-1021  CellBroadcastUtils      com.android.phone                    E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:54:00.771  1021-1021  SmsApplication          com.android.phone                    E  com.android.mms.service does not have system signature
+2025-06-09 13:54:00.771  1021-1021  CellBroadcastUtils      com.android.phone                    E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:54:00.779  1021-1021  SmsApplication          com.android.phone                    E  com.android.mms.service does not have system signature
+2025-06-09 13:54:00.789  1021-1021  CellBroadcastUtils      com.android.phone                    E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:54:00.952  1021-1021  SmsApplication          com.android.phone                    E  com.android.mms.service does not have system signature
+2025-06-09 13:54:00.980  2078-2078  ChimeraRcvrProxy        com.google.android.gms               E  com.google.android.gms.gass.chimera.PackageChangeBroadcastReceiver dropping broadcast android.intent.action.PACKAGE_ADDED
+2025-06-09 13:54:01.087  1021-1021  SmsApplication          com.android.phone                    E  com.android.mms.service does not have system signature
+2025-06-09 13:54:01.130  1949-1949  ChimeraRcvrProxy        com.google.android.gms               E  com.google.android.gms.gass.chimera.PackageChangeBroadcastReceiver dropping broadcast android.intent.action.PACKAGE_ADDED
+2025-06-09 13:54:01.141  2078-2078  ChimeraRcvrProxy        com.google.android.gms               E  com.google.android.gms.gass.chimera.PackageChangeBroadcastReceiver dropping broadcast android.intent.action.PACKAGE_REPLACED
+2025-06-09 13:54:01.319  1949-1949  ChimeraRcvrProxy        com.google.android.gms               E  com.google.android.gms.gass.chimera.PackageChangeBroadcastReceiver dropping broadcast android.intent.action.PACKAGE_REPLACED
+2025-06-09 13:54:02.050   590-835   IPCThreadState          system_server                        E  Process seems to be sending too many oneway calls.
+2025-06-09 13:54:09.070   590-778   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:54:10.630 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:54:12.435   590-628   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:54:12.607 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:54:13.151   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:54:13.151   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:54:16.227   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:54:16.227   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:24.089   350-350   android.ha...rvice-mock and....power.stats@1.0-service.mock  E  Failed to getEnergyData
+2025-06-09 13:55:39.119  2814-3004  PlayCommon              com.android.vending                  E  [228] ypn.j(1620): Failed to connect to server for server timestamp: java.net.SocketTimeoutException: failed to connect to play.googleapis.com/2001:4860:4802:34::223 (port 443) from /fec0::5054:ff:fe12:3456 (port 45168) after 40000ms
+2025-06-09 13:55:41.942 15394-15394 Toast                   me.wcy.music                         E  setGravity() shouldn't be called on text toasts, the values won't be used
+2025-06-09 13:55:41.960   590-957   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:42.066  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:42.121 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:42.720 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:43.713  3650-3716  PlayCommon              com.android.vending                  E  [281] ypn.j(1620): Failed to connect to server for server timestamp: java.net.SocketTimeoutException: failed to connect to play.googleapis.com/2001:4860:4802:34::223 (port 443) from /fec0::5054:ff:fe12:3456 (port 45180) after 40000ms
+2025-06-09 13:55:45.517   590-628   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:45.676 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:46.045   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:46.045   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:46.746 15394-15394 Toast                   me.wcy.music                         E  setGravity() shouldn't be called on text toasts, the values won't be used
+2025-06-09 13:55:46.756   590-1161  CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:46.842  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:46.992 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:47.186 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:49.732   590-956   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:49.929 15394-15417 OpenGLRenderer          me.wcy.music                         E  Unable to match the desired swap behavior.
+2025-06-09 13:55:50.303   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:50.304   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:51.657 15394-15394 AndroidRuntime          me.wcy.music                         E  FATAL EXCEPTION: main (Ask Gemini)
+                                                                                                    Process: me.wcy.music, PID: 15394
+                                                                                                    android.view.InflateException: Binary XML file line #100 in me.wcy.music:layout/dialog_cache_management: Binary XML file line #100 in me.wcy.music:layout/dialog_cache_management: Error inflating class com.google.android.material.card.MaterialCardView
+                                                                                                    Caused by: android.view.InflateException: Binary XML file line #100 in me.wcy.music:layout/dialog_cache_management: Error inflating class com.google.android.material.card.MaterialCardView
+                                                                                                    Caused by: java.lang.reflect.InvocationTargetException
+                                                                                                    	at java.lang.reflect.Constructor.newInstance0(Native Method)
+                                                                                                    	at java.lang.reflect.Constructor.newInstance(Constructor.java:343)
+                                                                                                    	at android.view.LayoutInflater.createView(LayoutInflater.java:858)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1010)
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:965)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1127)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1130)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088)
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1130)
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:686)
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:538)
+                                                                                                    	at me.wcy.music.databinding.DialogCacheManagementBinding.inflate(DialogCacheManagementBinding.java:154)
+                                                                                                    	at me.wcy.music.widget.CacheManagementDialog.onCreateView(CacheManagementDialog.kt:47)
+                                                                                                    	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3115)
+                                                                                                    	at androidx.fragment.app.DialogFragment.performCreateView(DialogFragment.java:770)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:569)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:278)
+                                                                                                    	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:2152)
+                                                                                                    	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:2053)
+                                                                                                    	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1990)
+                                                                                                    	at androidx.fragment.app.FragmentManager$5.run(FragmentManager.java:702)
+                                                                                                    	at android.os.Handler.handleCallback(Handler.java:942)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:99)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:201)
+                                                                                                    	at android.os.Looper.loop(Looper.java:288)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:7924)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
+                                                                                                    Caused by: java.lang.IllegalArgumentException: The style on this component requires your app theme to be Theme.MaterialComponents (or a descendant).
+                                                                                                    	at com.google.android.material.internal.ThemeEnforcement.checkTheme(ThemeEnforcement.java:247)
+                                                                                                    	at com.google.android.material.internal.ThemeEnforcement.checkMaterialTheme(ThemeEnforcement.java:216)
+                                                                                                    	at com.google.android.material.internal.ThemeEnforcement.checkCompatibleTheme(ThemeEnforcement.java:144)
+                                                                                                    	at com.google.android.material.internal.ThemeEnforcement.obtainStyledAttributes(ThemeEnforcement.java:76)
+                                                                                                    	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:175)
+                                                                                                    	at com.google.android.material.card.MaterialCardView.<init>(MaterialCardView.java:165)
+                                                                                                    	at java.lang.reflect.Constructor.newInstance0(Native Method) 
+                                                                                                    	at java.lang.reflect.Constructor.newInstance(Constructor.java:343) 
+                                                                                                    	at android.view.LayoutInflater.createView(LayoutInflater.java:858) 
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:1010) 
+                                                                                                    	at android.view.LayoutInflater.createViewFromTag(LayoutInflater.java:965) 
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1127) 
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088) 
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1130) 
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088) 
+                                                                                                    	at android.view.LayoutInflater.rInflate(LayoutInflater.java:1130) 
+                                                                                                    	at android.view.LayoutInflater.rInflateChildren(LayoutInflater.java:1088) 
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:686) 
+                                                                                                    	at android.view.LayoutInflater.inflate(LayoutInflater.java:538) 
+                                                                                                    	at me.wcy.music.databinding.DialogCacheManagementBinding.inflate(DialogCacheManagementBinding.java:154) 
+                                                                                                    	at me.wcy.music.widget.CacheManagementDialog.onCreateView(CacheManagementDialog.kt:47) 
+                                                                                                    	at androidx.fragment.app.Fragment.performCreateView(Fragment.java:3115) 
+                                                                                                    	at androidx.fragment.app.DialogFragment.performCreateView(DialogFragment.java:770) 
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.createView(FragmentStateManager.java:569) 
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:278) 
+                                                                                                    	at androidx.fragment.app.FragmentManager.executeOpsTogether(FragmentManager.java:2152) 
+                                                                                                    	at androidx.fragment.app.FragmentManager.removeRedundantOperationsAndExecute(FragmentManager.java:2053) 
+                                                                                                    	at androidx.fragment.app.FragmentManager.execPendingActions(FragmentManager.java:1990) 
+                                                                                                    	at androidx.fragment.app.FragmentManager$5.run(FragmentManager.java:702) 
+                                                                                                    	at android.os.Handler.handleCallback(Handler.java:942) 
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:99) 
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:201) 
+                                                                                                    	at android.os.Looper.loop(Looper.java:288) 
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:7924) 
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548) 
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936) 
+2025-06-09 13:55:51.924   590-1607  InputDispatcher         system_server                        E  But another display has a focused window
+                                                                                                      FocusedWindows:
+                                                                                                        displayId=5, name='bbe4e29 com.android.systemui/com.android.systemui.car.distantdisplay.activity.NavigationTaskViewWallpaperActivity'
+                                                                                                        displayId=6, name='e6345e6 com.android.systemui/com.android.systemui.car.distantdisplay.activity.RootTaskViewWallpaperActivity'
+                                                                                                        displayId=3, name='aa6d413 com.android.systemui/com.android.systemui.car.distantdisplay.activity.DistantDisplayActivity'
+                                                                                                        displayId=2, name='b7b3387 com.android.car.cluster.osdouble/com.android.car.cluster.osdouble.ClusterOsDoubleActivity'
+2025-06-09 13:55:51.946  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:52.004   372-372   ClientCache             surfaceflinger                       E  failed to get buffer, invalid process token
+2025-06-09 13:55:52.005   372-372   BpTransact...edListener surfaceflinger                       E  Failed to transact (-32)
+2025-06-09 13:55:53.719 15752-15752 AndroidRuntime          me.wcy.music                         E  FATAL EXCEPTION: main (Ask Gemini)
+                                                                                                    Process: me.wcy.music, PID: 15752
+                                                                                                    java.lang.RuntimeException: Unable to start activity ComponentInfo{me.wcy.music/me.wcy.music.main.MainActivity}: java.lang.IllegalStateException: Player not prepared after 500ms! Please restart the app.
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3645)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3782)
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:101)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:138)
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2307)
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:106)
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:201)
+                                                                                                    	at android.os.Looper.loop(Looper.java:288)
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:7924)
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method)
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548)
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936)
+                                                                                                    Caused by: java.lang.IllegalStateException: Player not prepared after 500ms! Please restart the app.
+                                                                                                    	at me.wcy.music.service.PlayServiceModule.providerPlayerController(PlayServiceModule.kt:53)
+                                                                                                    	at me.wcy.music.service.PlayServiceModule_ProviderPlayerControllerFactory.providerPlayerController(PlayServiceModule_ProviderPlayerControllerFactory.java:43)
+                                                                                                    	at me.wcy.music.DaggerMusicApplication_HiltComponents_SingletonC$SingletonCImpl.playerController(DaggerMusicApplication_HiltComponents_SingletonC.java:968)
+                                                                                                    	at me.wcy.music.DaggerMusicApplication_HiltComponents_SingletonC$FragmentCImpl.injectDiscoverFragment2(DaggerMusicApplication_HiltComponents_SingletonC.java:527)
+                                                                                                    	at me.wcy.music.DaggerMusicApplication_HiltComponents_SingletonC$FragmentCImpl.injectDiscoverFragment(DaggerMusicApplication_HiltComponents_SingletonC.java:432)
+                                                                                                    	at me.wcy.music.discover.home.Hilt_DiscoverFragment.inject(Hilt_DiscoverFragment.java:104)
+                                                                                                    	at me.wcy.music.discover.home.Hilt_DiscoverFragment.onAttach(Hilt_DiscoverFragment.java:54)
+                                                                                                    	at androidx.fragment.app.Fragment.onAttach(Fragment.java:1884)
+                                                                                                    	at me.wcy.music.discover.home.Hilt_DiscoverFragment.onAttach(Hilt_DiscoverFragment.java:41)
+                                                                                                    	at androidx.fragment.app.Fragment.performAttach(Fragment.java:3071)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.attach(FragmentStateManager.java:502)
+                                                                                                    	at androidx.fragment.app.FragmentStateManager.moveToExpectedState(FragmentStateManager.java:271)
+                                                                                                    	at androidx.fragment.app.FragmentStore.moveToExpectedState(FragmentStore.java:114)
+                                                                                                    	at androidx.fragment.app.FragmentManager.moveToState(FragmentManager.java:1663)
+                                                                                                    	at androidx.fragment.app.FragmentManager.dispatchStateChange(FragmentManager.java:3247)
+                                                                                                    	at androidx.fragment.app.FragmentManager.dispatchCreate(FragmentManager.java:3154)
+                                                                                                    	at androidx.fragment.app.FragmentController.dispatchCreate(FragmentController.java:252)
+                                                                                                    	at androidx.fragment.app.FragmentActivity.onCreate(FragmentActivity.java:219)
+                                                                                                    	at top.wangchenyan.common.ui.activity.BaseActivity.onCreate(BaseActivity.kt:23)
+                                                                                                    	at me.wcy.music.common.BaseMusicActivity.onCreate(BaseMusicActivity.kt:19)
+                                                                                                    	at me.wcy.music.main.MainActivity.onCreate(MainActivity.kt:58)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:8342)
+                                                                                                    	at android.app.Activity.performCreate(Activity.java:8321)
+                                                                                                    	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1417)
+                                                                                                    	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3626)
+                                                                                                    	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3782) 
+                                                                                                    	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:101) 
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:138) 
+                                                                                                    	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95) 
+                                                                                                    	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2307) 
+                                                                                                    	at android.os.Handler.dispatchMessage(Handler.java:106) 
+                                                                                                    	at android.os.Looper.loopOnce(Looper.java:201) 
+                                                                                                    	at android.os.Looper.loop(Looper.java:288) 
+                                                                                                    	at android.app.ActivityThread.main(ActivityThread.java:7924) 
+                                                                                                    	at java.lang.reflect.Method.invoke(Native Method) 
+                                                                                                    	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:548) 
+                                                                                                    	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:936) 
+2025-06-09 13:55:53.864  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=0
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=1
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=2
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=3
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=4
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=5
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=6
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=7
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=8
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=9
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=10
+2025-06-09 13:55:53.864  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=11
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=0
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=1
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=2
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=3
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=4
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=5
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=6
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=7
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=8
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=9
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=10
+2025-06-09 13:55:53.887  1880-1880  SurfaceSyncer           com.android.car.carlauncher          E  Failed to find sync for id=11
+2025-06-09 13:55:55.367   590-702   CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:55.392   590-2157  CellBroadcastUtils      system_server                        E  getDefaultCellBroadcastReceiverPackageName: no package found
+2025-06-09 13:55:55.523  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:55.570  1880-2033  OpenGLRenderer          com.android.car.carlauncher          E  Unable to match the desired swap behavior.
+2025-06-09 13:55:56.582   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:55:56.582   590-1693  TaskPersister           system_server                        E  File error accessing recents directory (directory doesn't exist?).
+2025-06-09 13:56:25.070   590-757   WifiScoringParams       system_server                        E  Invalid frequency(-1), using 5G as default rssi array

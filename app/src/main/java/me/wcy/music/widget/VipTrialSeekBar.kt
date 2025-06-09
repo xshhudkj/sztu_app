@@ -97,12 +97,14 @@ class VipTrialSeekBar @JvmOverloads constructor(
             MotionEvent.ACTION_DOWN -> {
                 // 记录拖拽开始时的进度
                 dragStartProgress = progress
+                android.util.Log.d("VipTrialSeekBar", "Touch down, dragStartProgress: $dragStartProgress")
             }
             MotionEvent.ACTION_MOVE -> {
                 // 检查是否超过试听终点
                 if (showTrialMark && trialPosition > 0f) {
                     val maxAllowedProgress = (max * trialPosition).toInt()
                     if (progress > maxAllowedProgress) {
+                        android.util.Log.d("VipTrialSeekBar", "Progress exceeded trial limit: $progress > $maxAllowedProgress")
                         // 超过试听终点，回退到拖拽开始前的原播放位置
                         animateBackToOriginalPosition(dragStartProgress)
                         return true
@@ -114,11 +116,13 @@ class VipTrialSeekBar @JvmOverloads constructor(
                 if (showTrialMark && trialPosition > 0f) {
                     val maxAllowedProgress = (max * trialPosition).toInt()
                     if (progress > maxAllowedProgress) {
+                        android.util.Log.d("VipTrialSeekBar", "Final progress exceeded trial limit: $progress > $maxAllowedProgress")
                         // 超过试听终点，回退到拖拽开始前的原播放位置
                         animateBackToOriginalPosition(dragStartProgress)
                         return true
                     }
                 }
+                android.util.Log.d("VipTrialSeekBar", "Touch up/cancel, final progress: $progress")
             }
         }
 
@@ -135,6 +139,8 @@ class VipTrialSeekBar @JvmOverloads constructor(
         val startProgress = progress
         isAnimating = true
 
+        android.util.Log.d("VipTrialSeekBar", "Starting animation from $startProgress to $targetProgress")
+
         // 创建平滑回退动画
         val animator = ValueAnimator.ofInt(startProgress, targetProgress).apply {
             duration = 200 // 200ms动画时长，确保流畅体验
@@ -147,15 +153,21 @@ class VipTrialSeekBar @JvmOverloads constructor(
             }
 
             addListener(object : android.animation.Animator.AnimatorListener {
-                override fun onAnimationStart(animation: android.animation.Animator) {}
+                override fun onAnimationStart(animation: android.animation.Animator) {
+                    android.util.Log.d("VipTrialSeekBar", "Animation started")
+                }
                 override fun onAnimationRepeat(animation: android.animation.Animator) {}
                 override fun onAnimationCancel(animation: android.animation.Animator) {
+                    android.util.Log.d("VipTrialSeekBar", "Animation cancelled")
                     isAnimating = false
+                    // 恢复正常的进度条更新
+                    restoreProgressUpdates()
                 }
                 override fun onAnimationEnd(animation: android.animation.Animator) {
+                    android.util.Log.d("VipTrialSeekBar", "Animation ended, restoring progress updates")
                     isAnimating = false
-                    // 动画结束后不触发拖拽结束事件，避免重新加载
-                    // 只是静默回退到原位置，保持播放连续性
+                    // 动画结束后恢复正常的进度条更新机制
+                    restoreProgressUpdates()
                 }
             })
         }
@@ -164,6 +176,25 @@ class VipTrialSeekBar @JvmOverloads constructor(
         performHapticFeedback(android.view.HapticFeedbackConstants.VIRTUAL_KEY)
 
         animator.start()
+    }
+
+    /**
+     * 恢复正常的进度条更新机制
+     * 修复VIP试听回退后进度条不更新的问题
+     */
+    private fun restoreProgressUpdates() {
+        // 确保拖拽状态被正确重置
+        // 通过模拟onStopTrackingTouch来重置PlayingActivity中的isDraggingProgress状态
+        seekBarChangeListener?.onStopTrackingTouch(this)
+
+        // 通知监听器当前进度，确保后续更新正常
+        seekBarChangeListener?.onProgressChanged(this, progress, false)
+
+        // 强制重绘，确保UI状态正确
+        invalidate()
+
+        // 添加日志以便调试
+        android.util.Log.d("VipTrialSeekBar", "Progress updates restored, current progress: $progress")
     }
 
     override fun onDraw(canvas: Canvas) {
