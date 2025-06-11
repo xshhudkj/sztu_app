@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.wcy.music"
+    package="me.ckn.music"
     android:versionCode="2030001"
     android:versionName="2.3.0-beta01" >
 
@@ -48,13 +48,13 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <permission
-        android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="me.ckn.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="me.wcy.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="me.ckn.music.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
-        android:name="me.wcy.music.MusicApplication"
+        android:name="me.ckn.music.MusicApplication"
         android:allowBackup="true"
         android:appComponentFactory="androidx.core.app.CoreComponentFactory"
         android:debuggable="true"
@@ -67,7 +67,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <service
-            android:name="me.wcy.music.service.MusicService"
+            android:name="me.ckn.music.service.MusicService"
             android:exported="true"
             android:foregroundServiceType="mediaPlayback" >
             <intent-filter>
@@ -77,12 +77,12 @@
 
         <!-- 自动缓存清理服务 -->
         <service
-            android:name="me.wcy.music.service.AutoCacheCleanService"
+            android:name="me.ckn.music.service.AutoCacheCleanService"
             android:enabled="true"
             android:exported="false" />
 
         <receiver
-            android:name="me.wcy.music.download.DownloadReceiver"
+            android:name="me.ckn.music.download.DownloadReceiver"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
@@ -90,7 +90,7 @@
         </receiver>
 
         <activity
-            android:name="me.wcy.music.splash.SplashActivity"
+            android:name="me.ckn.music.splash.SplashActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:launchMode="singleTop"
@@ -102,32 +102,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="me.wcy.music.main.MainActivity"
+            android:name="me.ckn.music.main.MainActivity"
             android:exported="false"
             android:label="@string/app_name"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.CarImmersive" >
         </activity>
         <activity
-            android:name="me.wcy.music.login.LoginActivity"
+            android:name="me.ckn.music.login.LoginActivity"
             android:exported="false"
             android:label="登录"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.CarImmersive" >
         </activity>
         <activity
-            android:name="me.wcy.music.common.MusicFragmentContainerActivity"
+            android:name="me.ckn.music.common.MusicFragmentContainerActivity"
             android:theme="@style/AppTheme.CarImmersive" />
         <activity
-            android:name="me.wcy.music.main.SettingsActivity"
+            android:name="me.ckn.music.main.SettingsActivity"
             android:label="@string/menu_setting"
             android:theme="@style/AppTheme.CarImmersive" />
         <activity
-            android:name="me.wcy.music.main.AboutActivity"
+            android:name="me.ckn.music.main.AboutActivity"
             android:label="@string/menu_about"
             android:theme="@style/AppTheme.CarImmersive" />
         <activity
-            android:name="me.wcy.music.main.playing.PlayingActivity"
+            android:name="me.ckn.music.main.playing.PlayingActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.CarImmersive.Playing" />
 
@@ -137,7 +137,7 @@
             android:resource="@xml/automotive_app_desc" />
         <meta-data
             android:name="androidx.media3.session.MediaSessionService"
-            android:value="me.wcy.music.service.MusicService" />
+            android:value="me.ckn.music.service.MusicService" />
 
         <activity
             android:name="top.wangchenyan.common.ui.activity.FragmentContainerActivity"
@@ -152,7 +152,7 @@
 
         <provider
             android:name="cn.bertsir.zbar.utils.QrFileProvider"
-            android:authorities="me.wcy.music.zbar.FileProvider"
+            android:authorities="me.ckn.music.zbar.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -183,7 +183,7 @@
 
         <provider
             android:name="com.blankj.utilcode.util.UtilsFileProvider"
-            android:authorities="me.wcy.music.utilcode.fileprovider"
+            android:authorities="me.ckn.music.utilcode.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -195,7 +195,7 @@
             android:name="com.blankj.utilcode.util.MessengerUtils$ServerService"
             android:exported="false" >
             <intent-filter>
-                <action android:name="me.wcy.music.messenger" />
+                <action android:name="me.ckn.music.messenger" />
             </intent-filter>
         </service>
         <service
@@ -205,7 +205,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="me.wcy.music.androidx-startup"
+            android:authorities="me.ckn.music.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
@@ -227,7 +227,7 @@
 
         <provider
             android:name="me.wcy.router.RouterProvider"
-            android:authorities="me.wcy.music.crouter.provider"
+            android:authorities="me.ckn.music.crouter.provider"
             android:exported="false"
             android:multiprocess="true" />
 
@@ -253,7 +253,7 @@
 
         <provider
             android:name="com.qw.soul.permission.InitProvider"
-            android:authorities="me.wcy.music.permission.provider"
+            android:authorities="me.ckn.music.permission.provider"
             android:exported="false"
             android:multiprocess="true" />
 

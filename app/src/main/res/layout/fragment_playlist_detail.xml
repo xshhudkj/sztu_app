@@ -201,7 +201,7 @@
             tools:listitem="@layout/item_playlist_song" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    <me.wcy.music.widget.PlayBar
+    <me.ckn.music.widget.PlayBar
         android:id="@+id/play_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

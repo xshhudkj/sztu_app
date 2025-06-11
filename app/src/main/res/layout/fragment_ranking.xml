@@ -21,7 +21,7 @@
         android:paddingBottom="16dp"
         tools:listitem="@layout/item_official_ranking" />
 
-    <me.wcy.music.widget.PlayBar
+    <me.ckn.music.widget.PlayBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

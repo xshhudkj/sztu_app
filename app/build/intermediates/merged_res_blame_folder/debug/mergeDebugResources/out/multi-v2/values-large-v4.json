@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "me.wcy.music.app-mergeDebugResources-2:/values-large-v4/values-large-v4.xml",
+            "outputFile": "me.ckn.music.app-mergeDebugResources-2:/values-large-v4/values-large-v4.xml",
             "map": [
                 {
                     "source": "D:\\Android Studio\\caches\\transforms-4\\e14d147c3d78b264e53fe39d2725f464\\transformed\\jetified-android-crop-1.0.1\\res\\values-large\\values-large.xml",

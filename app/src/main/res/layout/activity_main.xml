@@ -17,7 +17,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <me.wcy.music.widget.PlayBar
+        <me.ckn.music.widget.PlayBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

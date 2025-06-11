@@ -1,4 +1,4 @@
-# PonyMusic 项目变更日志
+# WhisperPlay 项目变更日志
 
 ## [2024-12-21] Android Automotive音乐应用全面优化
 
@@ -188,7 +188,7 @@
 ---
 
 ## 项目信息
-- **项目名称**: PonyMusic - Android Automotive 音乐播放器
+- **项目名称**: WhisperPlay - Android Automotive 音乐播放器
 - **当前版本**: 2.3.0-beta01
 - **技术栈**: Kotlin + Android Automotive + MVVM + Hilt + Media3
 - **开发状态**: 活跃开发中

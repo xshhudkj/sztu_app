@@ -69,7 +69,7 @@
             app:layout_constraintTop_toBottomOf="@+id/titleLayout"
             app:layout_constraintWidth_max="450dp">
 
-            <me.wcy.music.widget.AlbumCoverView
+            <me.ckn.music.widget.AlbumCoverView
                 android:id="@+id/albumCoverView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

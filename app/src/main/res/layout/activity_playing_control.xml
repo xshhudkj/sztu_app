@@ -123,7 +123,7 @@
              progressDrawable自定义进度条样式
              thumb自定义拖拽手柄样式
         -->
-        <me.wcy.music.widget.VipTrialSeekBar
+        <me.ckn.music.widget.VipTrialSeekBar
             android:id="@+id/sbProgress"
             android:layout_width="0dp"
             android:layout_height="64dp"

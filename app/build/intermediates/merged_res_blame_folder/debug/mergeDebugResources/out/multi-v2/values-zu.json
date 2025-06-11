@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "me.wcy.music.app-mergeDebugResources-2:/values-zu/values-zu.xml",
+            "outputFile": "me.ckn.music.app-mergeDebugResources-2:/values-zu/values-zu.xml",
             "map": [
                 {
                     "source": "D:\\Android Studio\\caches\\transforms-4\\40b0160c565c3675e15a0634390e90ad\\transformed\\preference-1.2.1\\res\\values-zu\\values-zu.xml",

@@ -16,11 +16,11 @@ plugins {
 }
 
 android {
-    namespace = "me.wcy.music"
+    namespace = "me.ckn.music"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "me.wcy.music"
+        applicationId = "me.ckn.music"
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = libs.versions.versionCode.get().toInt()
@@ -40,7 +40,7 @@ android {
         applicationVariants.all {
             outputs.all {
                 if (this is com.android.build.gradle.internal.api.ApkVariantOutputImpl) {
-                    this.outputFileName = "ponymusic-$versionName.apk"
+                    this.outputFileName = "whisperplay-$versionName.apk"
                 }
             }
         }
@@ -55,7 +55,7 @@ android {
         register("release") {
             enableV1Signing = true
             enableV2Signing = true
-            storeFile = file("wangchenyan.keystore")
+            storeFile = file("ckn.keystore")
             storePassword = getLocalValue("STORE_PASSWORD")
             keyAlias = getLocalValue("KEY_ALIAS")
             keyPassword = getLocalValue("KEY_PASSWORD")
@@ -157,7 +157,7 @@ ksp {
     // crouter 默认 scheme
     arg("defaultScheme", "app")
     // crouter 默认 host
-    arg("defaultHost", "music")
+    arg("defaultHost", "whisperplay")
     arg("room.schemaLocation", "$projectDir/schemas")
 }
 

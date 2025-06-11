@@ -116,7 +116,7 @@ Android Automotive 横屏播放页面布局
                      layout_constraintWidth_max恢复原始大小
                 -->
 
-                <me.wcy.music.widget.AlbumCoverView
+                <me.ckn.music.widget.AlbumCoverView
                     android:id="@+id/albumCoverView"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

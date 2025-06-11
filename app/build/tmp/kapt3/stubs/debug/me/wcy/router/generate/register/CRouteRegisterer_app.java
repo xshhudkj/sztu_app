@@ -1,17 +1,17 @@
 package me.wcy.router.generate.register;
 
 import kotlin.jvm.JvmName;
-import me.wcy.music.album.detail.AlbumDetailFragment;
-import me.wcy.music.artist.detail.ArtistDetailFragment;
-import me.wcy.music.discover.playlist.detail.PlaylistDetailFragment;
-import me.wcy.music.discover.playlist.square.PlaylistSquareFragment;
-import me.wcy.music.discover.ranking.RankingFragment;
-import me.wcy.music.discover.recommend.song.RecommendSongFragment;
-import me.wcy.music.login.LoginActivity;
-import me.wcy.music.main.SettingsActivity;
-import me.wcy.music.main.playing.PlayingActivity;
-import me.wcy.music.mine.local.LocalMusicFragment;
-import me.wcy.music.search.SearchFragment;
+import me.ckn.music.album.detail.AlbumDetailFragment;
+import me.ckn.music.artist.detail.ArtistDetailFragment;
+import me.ckn.music.discover.playlist.detail.PlaylistDetailFragment;
+import me.ckn.music.discover.playlist.square.PlaylistSquareFragment;
+import me.ckn.music.discover.ranking.RankingFragment;
+import me.ckn.music.discover.recommend.song.RecommendSongFragment;
+import me.ckn.music.login.LoginActivity;
+import me.ckn.music.main.SettingsActivity;
+import me.ckn.music.main.playing.PlayingActivity;
+import me.ckn.music.mine.local.LocalMusicFragment;
+import me.ckn.music.search.SearchFragment;
 import me.wcy.router.CRouter;
 import me.wcy.router.annotation.RouteMeta;
 

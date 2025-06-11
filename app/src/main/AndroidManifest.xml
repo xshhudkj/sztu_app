@@ -86,7 +86,7 @@
             android:label="@string/menu_about"
             android:theme="@style/AppTheme.CarImmersive" />
         <activity
-            android:name="me.wcy.music.main.playing.PlayingActivity"
+            android:name=".main.playing.PlayingActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.CarImmersive.Playing" />
 
@@ -96,7 +96,7 @@
             android:resource="@xml/automotive_app_desc" />
         <meta-data
             android:name="androidx.media3.session.MediaSessionService"
-            android:value="me.wcy.music.service.MusicService" />
+            android:value="me.ckn.music.service.MusicService" />
     </application>
 
 </manifest>
