@@ -15,7 +15,17 @@ import me.ckn.music.utils.ImageUtils.loadCover
 import me.ckn.music.utils.getSimpleArtist
 
 /**
- * Created by wangchenyan.top on 2023/10/11.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/11
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：歌曲更多菜单对话框
+ * File Description: Song more menu dialog
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SongMoreMenuDialog {
     private val context: Context

@@ -17,7 +17,16 @@ import top.wangchenyan.common.net.apiCall
 
 /**
  * 搜索歌手Fragment
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索歌手Fragment
+ * File Description: Search Artist Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class SearchArtistFragment : SimpleMusicRefreshFragment<ArtistData>() {

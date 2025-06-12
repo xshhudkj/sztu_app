@@ -13,7 +13,17 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Created by wangchenyan.top on 2024/3/21.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2024/3/21
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：喜欢歌曲处理器实现
+ * File Description: Like song processor implementation
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Singleton
 class LikeSongProcessorImpl @Inject constructor(

@@ -5,7 +5,16 @@ import me.ckn.music.utils.AnimationUtils
 
 /**
  * View扩展函数，提供便捷的动画方法
- * Created by wangchenyan.top on 2024/3/26.
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：View扩展函数
+ * File Description: View extension functions
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 
 /**

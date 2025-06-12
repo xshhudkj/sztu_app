@@ -11,7 +11,16 @@ import java.util.concurrent.TimeUnit
 /**
  * 音频URL缓存管理器
  * 用于缓存歌曲播放链接，避免重复网络请求，提升播放启动速度
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：音乐URL缓存
+ * File Description: Music URL cache
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object MusicUrlCache {
     // URL缓存数据类

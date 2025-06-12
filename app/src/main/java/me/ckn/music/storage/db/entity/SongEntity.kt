@@ -11,7 +11,17 @@ import me.ckn.music.utils.generateUniqueId
 import me.ckn.music.utils.CoverUtils
 
 /**
- * Created by wangchenyan.top on 2023/8/29.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/8/29
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：歌曲实体类
+ * File Description: Song entity class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Parcelize
 @Entity("play_list", indices = [Index("title"), Index("artist"), Index("album")])

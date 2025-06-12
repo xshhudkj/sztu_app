@@ -18,7 +18,17 @@ import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.widget.pager.TabLayoutPager
 
 /**
- * Created by wangchenyan.top on 2023/9/26.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：歌单广场Fragment
+ * File Description: Playlist square Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Route(RoutePath.PLAYLIST_SQUARE)
 @AndroidEntryPoint

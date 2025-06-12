@@ -12,7 +12,17 @@ import java.io.File
 import java.util.concurrent.TimeUnit
 
 /**
- * Created by wangchenyan.top on 2022/6/22.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2022/6/22
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：HTTP客户端
+ * File Description: HTTP client
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object HttpClient {
 

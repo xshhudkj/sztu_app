@@ -10,7 +10,16 @@ import me.ckn.music.utils.ImageUtils.loadCover
 
 /**
  * 搜索歌手适配器
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索歌手列表适配器
+ * File Description: Search artist list adapter
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SearchArtistAdapter : SearchAdapterBase<ArtistData, SearchArtistAdapter.ViewHolder>() {
 

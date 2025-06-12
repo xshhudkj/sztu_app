@@ -9,7 +9,16 @@ import me.ckn.music.service.PlayerController
 /**
  * 分批播放列表加载器
  * 智能处理歌单的分批加载和播放
- * Created by wangchenyan.top on 2024/3/26.
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：批量歌单加载器
+ * File Description: Batch playlist loader
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class BatchPlaylistLoader(
     private val playerController: PlayerController,

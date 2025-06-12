@@ -6,7 +6,17 @@ import androidx.media3.common.MediaItem
 import kotlinx.coroutines.flow.StateFlow
 
 /**
- * Created by wangchenyan.top on 2024/3/26.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：播放控制器接口
+ * File Description: Player controller interface
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 interface PlayerController {
     val playlist: LiveData<List<MediaItem>>

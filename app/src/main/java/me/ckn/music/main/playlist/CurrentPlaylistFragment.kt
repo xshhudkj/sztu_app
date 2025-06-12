@@ -27,7 +27,17 @@ import top.wangchenyan.common.widget.CustomSpan.appendStyle
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/10/13.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/13
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：当前播放列表Fragment
+ * File Description: Current playlist Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class CurrentPlaylistFragment : BaseMusicBottomSheetFragment() {

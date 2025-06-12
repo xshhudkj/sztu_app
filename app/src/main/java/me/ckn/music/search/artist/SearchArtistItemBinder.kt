@@ -11,7 +11,16 @@ import me.wcy.router.CRouter
 
 /**
  * 搜索歌手ItemBinder
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索歌手列表项绑定器
+ * File Description: Search artist item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SearchArtistItemBinder : RItemBinder<ItemSearchArtistBinding, ArtistData>() {
 

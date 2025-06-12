@@ -14,7 +14,17 @@ import top.wangchenyan.common.utils.GsonUtils
 import top.wangchenyan.common.utils.ServerTime
 
 /**
- * Created by wangchenyan.top on 2023/9/26.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：我的页面API
+ * File Description: Mine page API
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 interface MineApi {
 

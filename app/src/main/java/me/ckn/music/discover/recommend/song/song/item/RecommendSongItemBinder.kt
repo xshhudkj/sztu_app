@@ -10,7 +10,17 @@ import me.ckn.music.utils.getSimpleArtist
 import me.wcy.radapter3.RItemBinder
 
 /**
- * Created by wangchenyan.top on 2023/9/15.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/15
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：每日推荐歌曲列表项绑定器
+ * File Description: Recommend song item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class RecommendSongItemBinder(private val listener: OnItemClickListener2<SongData>) :
     RItemBinder<ItemRecommendSongBinding, SongData>() {

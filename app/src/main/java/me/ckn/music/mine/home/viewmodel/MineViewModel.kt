@@ -17,7 +17,17 @@ import top.wangchenyan.common.net.apiCall
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/9/28.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/28
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：我的页面ViewModel
+ * File Description: Mine page ViewModel
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @HiltViewModel
 class MineViewModel @Inject constructor() : ViewModel() {

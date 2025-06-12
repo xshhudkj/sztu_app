@@ -9,7 +9,17 @@ import me.ckn.music.mine.collect.song.CollectSongFragment
 import top.wangchenyan.common.ext.findActivity
 
 /**
- * Created by wangchenyan.top on 2023/10/11.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/11
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：收藏菜单项
+ * File Description: Collect menu item
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class CollectMenuItem(
     private val scope: CoroutineScope,

@@ -5,7 +5,17 @@ import top.wangchenyan.common.ext.format
 import java.math.RoundingMode
 
 /**
- * Created by wangchenyan.top on 2023/9/21.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/21
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：转换工具类
+ * File Description: Conversion utility class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object ConvertUtils {
 

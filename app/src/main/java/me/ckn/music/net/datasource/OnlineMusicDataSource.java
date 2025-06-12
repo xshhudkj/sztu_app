@@ -235,6 +235,7 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
     /**
      * @deprecated Use {@link OnlineMusicDataSource.Factory} instead.
      */
+    @SuppressWarnings("deprecation")
     @UnstableApi
     @Deprecated
     public OnlineMusicDataSource(
@@ -268,6 +269,7 @@ public class OnlineMusicDataSource extends BaseDataSource implements HttpDataSou
     /**
      * @deprecated Use {@link OnlineMusicDataSource.Factory#setContentTypePredicate(Predicate)} instead.
      */
+    @SuppressWarnings("deprecation")
     @UnstableApi
     @Deprecated
     public void setContentTypePredicate(@Nullable Predicate<String> contentTypePredicate) {

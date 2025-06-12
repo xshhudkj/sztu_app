@@ -6,7 +6,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 /**
- * Created by wangchenyan.top on 2024/1/4.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2024/1/4
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：网络缓存
+ * File Description: Network cache
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class NetCache(name: String) {
     private val cache by lazy {

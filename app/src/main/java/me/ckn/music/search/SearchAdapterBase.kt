@@ -7,7 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * 搜索适配器基类
  * 统一DiffCallback的重复实现，减少代码冗余
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索适配器基类
+ * File Description: Search adapter base class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 abstract class SearchAdapterBase<T : SearchAdapterBase.SearchItem, VH : RecyclerView.ViewHolder>(
 ) : ListAdapter<T, VH>(SearchDiffCallback<T>()) {

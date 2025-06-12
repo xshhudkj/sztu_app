@@ -17,7 +17,17 @@ import me.wcy.radapter3.RItemBinder
 import kotlin.reflect.KClass
 
 /**
- * Created by wangchenyan.top on 2023/10/24.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/24
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：官方排行榜列表项绑定器
+ * File Description: Official ranking item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class OfficialRankingItemBinder(private val listener: OnItemClickListener) :
     RItemBinder<ItemOfficialRankingBinding, PlaylistData>() {

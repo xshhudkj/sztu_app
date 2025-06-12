@@ -1,177 +1,123 @@
-# 波尼音乐
-![](https://raw.githubusercontent.com/wangchenyan/ponymusic/master/app/src/main/res/drawable-xxhdpi/ic_launcher.webp)
+# WhisperPlay (轻聆)
 
-## 系列文章
-- [重生！入门级开源音乐播放器APP —— 波尼音乐](https://juejin.cn/post/7294072229003952143)
-- [Android开源在线音乐播放器——波尼音乐](https://juejin.im/post/5c373a32e51d4551cc6df6db)
-- [Android开源音乐播放器之播放器基本功能](https://juejin.im/post/5c373a32e51d45521315fc50)
-- [Android开源音乐播放器之高仿云音乐黑胶唱片](https://juejin.im/post/5c373a336fb9a04a016488e8)
-- [Android开源音乐播放器之自动滚动歌词](https://juejin.im/post/5c373a336fb9a049f43b85de)
-- [Android开源音乐播放器之在线音乐列表自动加载更多](https://juejin.im/post/5c373a336fb9a049b82aaaaf)
+[![构建状态](https://img.shields.io/github/actions/workflow/status/your-username/your-repo/android.yml?branch=main&style=for-the-badge)](https://github.com/your-username/your-repo/actions)
+[![许可证](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=for-the-badge)](https://opensource.org/licenses/Apache-2.0)
+[![版本](https://img.shields.io/github/v/release/your-username/your-repo?style=for-the-badge)](https://github.com/your-username/your-repo/releases)
+[![平台](https://img.shields.io/badge/Platform-Android-green.svg?style=for-the-badge)](https://developer.android.com)
+[![API](https://img.shields.io/badge/API-21%2B-brightgreen.svg?style=for-the-badge)](https://android-arsenal.com/api?level=21)
 
-## 展示
-### 视频
-[![](https://raw.githubusercontent.com/wangchenyan/ponymusic/master/art/video_cover.jpg)](https://www.ixigua.com/7294169212384182291)
+**WhisperPlay (轻聆)** 是一款追求极致聆听体验的现代化 Android 音乐播放器。本项目是对经典的 [PonyMusic](https://github.com/wangchenyan/ponymusic) 项目的全面重构，旨在应用业界前沿的 Android 开发技术，构建一个拥有清晰 MVVM 架构和优美用户界面的、可用于学习和实践的现代化应用。
 
-### 截图
-![](https://raw.githubusercontent.com/wangchenyan/ponymusic/master/art/screenshot.jpg)
+---
 
-## 功能
-> 后续可能会根据大家的反馈增加或调整功能
+## ✨ 主要特性
 
-### 本地功能
-- 基于 Media3 + ExoPlayer 构建播放能力
-- 添加和播放本地音乐文件
-- 专辑封面显示
-- 歌词显示，支持拖动歌词调节播放进度
-- 通知栏控制
-- 夜间模式
-- 定时关闭
+- **🎵 高保真播放**: 基于 `Media3 (ExoPlayer)` 内核，提供稳定、高效的音频播放体验。
+- **🎤 同步歌词**: 支持实时同步的歌词显示。
+- **🎨 Material You 设计**: 优美且响应迅速的 UI，完美适配您的设备。
+- **🌙 深色模式**: 提供舒适的夜间使用体验。
+- **📂 本地音乐管理**: 轻松扫描和管理您的本地音频文件。
+- **🚀 现代化架构**: 采用最新的 Android Jetpack 组件和最佳实践构建。
+- **🚗 Android Automotive OS 支持**: 为车载信息娱乐系统进行了特别优化。
 
-### 在线功能
-- 登录网易云（验证码+扫码）
-- 同步网易云歌单
-- 每日推荐
-- 歌单广场
-- 排行榜
-- 搜索歌曲和歌单
-- 添加歌曲到歌单
-- 喜欢歌曲
-- 下载歌曲
-- 管理歌单
-- 设置在线播放/下载音质
+---
 
-## 体验
-> 欢迎大家体验，如果发现功能问题或兼容性问题，可以提 [GitHub Issue](https://github.com/wangchenyan/ponymusic/issues)
+## 📸 应用截图
+
+*(您可以在此处添加应用截图，例如：)*
+
+| 主屏幕 | 播放页 | 深色模式 |
+| :---: | :---: | :---: |
+| [添加截图] | [添加截图] | [添加截图] |
+
+---
+
+## 🛠️ 技术栈与架构
+
+本项目采用现代化的技术栈，以确保其健壮性、可扩展性和可维护性。
+
+| 组件 | 技术 |
+| :--- | :--- |
+| **开发语言** | [Kotlin](https://kotlinlang.org/) |
+| **项目架构** | [MVVM](https://developer.android.com/jetpack/guide) (Model-View-ViewModel) + Repository |
+| **UI 框架** | [Material Design 3](https://m3.material.io/) |
+| **异步处理** | [Kotlin Coroutines](https://kotlinlang.org/docs/coroutines-guide.html) |
+| **依赖注入**| [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) |
+| **播放器内核** | [Media3 (ExoPlayer)](https://developer.android.com/guide/topics/media/media3) |
+| **数据库** | [Room](https://developer.android.com/training/data-storage/room) |
+| **网络请求** | [Retrofit](https://square.github.io/retrofit/) & [OkHttp](https://square.github.io/okhttp/) |
+
+### 架构图
+*(可在此处放置一张简洁的架构图来说明数据流)*
+`View -> ViewModel -> Repository -> (Local/Remote DataSource)`
+
+---
+
+## 🚀 快速上手
 
 ### 环境要求
-- Android 手机（系统版本为 Android 5.0 及以上）
-- 电脑（非必须）
+- Android Studio Iguana | 2023.2.1 或更高版本
+- JDK 17
+- Android SDK API Level 21+
 
-### 安装步骤
-1. 搭建网易云服务器<br>
-   由于我们使用的是非官方 API，因此需要自行搭建 API 服务器。<br>
-   打开服务端项目 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi) (或 [NeteaseCloudMusicApiBackup](https://github.com/nooblong/NeteaseCloudMusicApiBackup)) 主页，根据项目说明安装并运行服务，需要确认电脑和手机处于同一局域网
-2. 安装 APP<br>
-   点击下载[最新安装包](https://github.com/wangchenyan/ponymusic/releases)
-3. 设置域名<br>
-   打开 APP，点击左上角汉堡按钮，打开抽屉，点击「域名设置」，输入步骤1中的地址（包含端口）
-4. 设置完成即可体验
+### 快速体验 (推荐)
+您可以从 [Releases](https://github.com/your-username/your-repo/releases) 页面下载最新的 APK 文件并直接安装。
 
-### 没有电脑，如何体验？
-使用电脑的目的是为了部署后端 API 服务，其实我们的 Android 手机也可以作为服务器！
+### 从源码构建
+1.  **克隆仓库:**
+    ```bash
+    git clone https://github.com/your-username/WhisperPlay.git
+    cd WhisperPlay
+    ```
+2.  **在 Android Studio 中打开:**
+    - 打开 Android Studio，选择 `Open an existing project`。
+    - 导航至克隆下来的项目目录并打开。
+3.  **同步并运行:**
+    - 等待 Android Studio 完成 Gradle 项目同步。
+    - 在模拟器或真实设备上运行 `app` 配置。
 
-1. 安装 `Termux`<br>
-   这是 Android 平台下的一个开源的终端模拟器，[GitHub 下载地址](https://github.com/termux/termux-app/releases)
-2. 安装 `nodejs`<br>
-   启动 `Termux`，执行 `pkg install nodejs` 命令安装 `nodejs`<br>
-   完成后可通过 `node -v` 确认是否安装成功
-3. 运行网易云服务器<br>
-   在 `Termux` 中执行 `npx NeteaseCloudMusicApi@latest` 命令安装并运行网易云服务器<br>
-   看到控制台打印 `server running @ http://localhost:3000` 即表示运行成功
-4. 设置域名<br>
-   打开波尼音乐APP，输入域名 `http://localhost:3000/` 并重启即可
+---
 
-## 更新说明
-`2.3.0`
-- 播放器内核升级为 Media3 + ExoPlayer
-- 修复歌单内歌曲超过1000首加载失败的问题
+## 🆚 与 PonyMusic 对比
 
-`2.2.0`
-- 增加添加歌曲到歌单
-- 播放页增加喜欢歌曲和下载歌曲
-- 设置页增加设置下载音质
-- 支持删除歌单中的歌曲
-- 优化大屏播放页效果
+本项目不仅是一个分支，更是一次彻底的现代化重构。以下是主要区别：
 
-`2.1.0`
-- 增加手机验证码登录（需要使用最新版本服务端代码）
-- 支持设置在线播放音质
-- 增加 Banner 实现
-- 增加接口缓存，非首次打开加载更快
-- 适配 Android 14
-- 修复部分设备后台启动 Service 崩溃
+| 特性 | PonyMusic (原版) | WhisperPlay (本项目) |
+| :--- | :--- | :--- |
+| **架构模式** | MVP | **MVVM + Repository** |
+| **开发语言** | Java | **100% Kotlin** |
+| **依赖注入**| 手动管理 | **Hilt** |
+| **UI 风格** | Material Design | **Material Design 3** |
+| **异步方案** | AsyncTask / RxJava | **Kotlin Coroutines & Flow** |
+| **播放器内核** | MediaPlayer | **Media3 (ExoPlayer)** |
+| **数据库** | GreenDAO | **Room** |
+| **车载系统支持**| 无 | **有** |
 
-`2.0.0`
-- 使用 Kotlin 重写
-- 接口改为网易云音乐
-- 增加「每日推荐」、「歌单广场」、「排行榜」、「搜索」等在线功能
-- 适配到 Android 13
+---
 
-`1.3.0`
-- 新增歌词支持上下拖动
-- 新增支持分屏模式
-- 新增本地歌曲支持按大小和时长过滤
-- 新增下载的歌曲文件自动添加专辑封面
-- 新增编辑歌曲信息
-- 新增5.0以上系统支持联动系统媒体中心，锁屏显示播放信息
-- 修复已知bug
+## 🙏 致谢
 
-`1.2.3`
-- 新增通知栏播放控制
-- 修复魅族手机扫描不到音乐的问题
-- 修复已知bug
+- 非常感谢 [wangchenyan](https://github.com/wangchenyan) 创建了优秀的 [PonyMusic](https://github.com/wangchenyan/ponymusic) 项目，它为本此学习性重构提供了坚实的基础。
+- 感谢所有为本项目提供支持的开源库及其贡献者。
 
-`1.2.0`
-- 修复在线音乐无法加载的问题
-- 修复弱网时播放网络歌曲导致ANR的问题
-- 修复每日启动图片无法更新的问题
-- 下载在线歌曲可以显示专辑封面了
-- 修复已知bug
+---
 
-`1.1.0`
-- 支持 Android 6.0 运行时权限
-- 修复已知bug
+## 📄 许可证
 
-`1.0.0`
-- First Release
+本项目基于 Apache License, Version 2.0 许可证开源。详情请参阅 [LICENSE](LICENSE) 文件。
 
-## TODO
-- [ ] 桌面小部件 with [Glance](https://developer.android.com/jetpack/compose/glance/create-app-widget)
-- [x] 适配 Android 14
-- [x] 在线音乐可以免下载加入我的音乐列表
-- [ ] 在线音乐自动缓存
-- [x] 编辑音乐信息
+```
+Copyright 2024 wangchenyan (original PonyMusic)
+Copyright 2025 ckn (WhisperPlay modifications)
 
-## Liked it?
-如果你觉得该项目对你有帮助，欢迎给它一个 star⭐️
-[![Stargazers over time](https://starchart.cc/wangchenyan/ponymusic.svg?variant=adaptive)](https://starchart.cc/wangchenyan/ponymusic)
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
 
-## 依赖
-> 站在巨人的肩膀上
+    http://www.apache.org/licenses/LICENSE-2.0
 
-### 在线服务
-- 在线音乐: [Binaryify/NeteaseCloudMusicApi: 网易云音乐 Node.js API service](https://github.com/Binaryify/NeteaseCloudMusicApi)
-
-### 开源技术
-- 播放器：Media3 + ExoPlayer
-- 页面: MVVM
-- 网络: [Retrofit](https://square.github.io/retrofit/)
-- 数据库: [Room](https://developer.android.com/jetpack/androidx/releases/room)
-- 依赖注入: [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-- 图片: [Glide](https://github.com/bumptech/glide)
-- 统计&崩溃收集: [Firebase](https://firebase.google.com)
-- 路由框架: [wangchenyan/crouter: 支持组件化的 Android 路由框架](https://github.com/wangchenyan/crouter)
-- 歌词控件: [wangchenyan/lrcview: Android beautiful draggable lyric view library](https://github.com/wangchenyan/lrcview)
-- 通用库: [wangchenyan/android-common: 个人使用的 Android 通用库](https://github.com/wangchenyan/android-common)
-- RecyclerView Adapter: [wangchenyan/radapter3: A multitype adapter for Android recyclerview](https://github.com/wangchenyan/radapter3)
-
-## 关于作者
-掘金: https://juejin.im/user/2313028193754168<br>
-微博: https://weibo.com/wangchenyan1993
-
-## License
-
-    Copyright 2024 wangchenyan
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

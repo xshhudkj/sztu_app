@@ -63,7 +63,17 @@ import javax.inject.Inject
 import kotlin.math.abs
 
 /**
- * Created by wangchenyan.top on 2023/9/4.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/4
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：播放页面
+ * File Description: Playing page
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Route(RoutePath.PLAYING)
 @AndroidEntryPoint

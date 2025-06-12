@@ -5,7 +5,16 @@ import me.ckn.music.common.bean.ArtistData
 
 /**
  * 歌手详情数据
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：歌手详情数据
+ * File Description: Artist detail data
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 data class ArtistDetailData(
     @SerializedName("code")

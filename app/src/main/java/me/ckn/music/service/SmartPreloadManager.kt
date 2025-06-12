@@ -17,8 +17,16 @@ import java.util.concurrent.ConcurrentHashMap
  * - 避免重复预加载：同一首歌曲只预加载一次
  * - 自动清理：清理过期的预加载任务
  * - 性能优化：限制并发预加载数量
- * 
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：智能预加载管理器
+ * File Description: Smart preload manager
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SmartPreloadManager {
     private val TAG = "SmartPreloadManager"

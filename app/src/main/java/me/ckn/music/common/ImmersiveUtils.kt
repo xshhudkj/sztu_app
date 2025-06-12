@@ -21,7 +21,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * 2. 在onCreate中调用enableImmersiveMode()
  * 3. 使用setupWindowInsets()处理内容区域适配
  *
- * Created by wangchenyan.top on 2023/12/20.
+ * Original: Created by wangchenyan.top on 2023/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：沉浸式工具类
+ * File Description: Immersive utility class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object ImmersiveUtils {
 

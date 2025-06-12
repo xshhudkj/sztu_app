@@ -38,7 +38,17 @@ import kotlinx.coroutines.async
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/8/21.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/8/21
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：我的页面Fragment
+ * File Description: Mine page Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class MineFragment : BaseMusicFragment() {

@@ -8,7 +8,17 @@ import me.ckn.music.utils.ImageUtils.loadCover
 import me.wcy.radapter3.RItemBinder
 
 /**
- * Created by wangchenyan.top on 2023/9/28.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/28
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：用户歌单列表项绑定器
+ * File Description: User playlist item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class UserPlaylistItemBinder(
     private val isMine: Boolean,

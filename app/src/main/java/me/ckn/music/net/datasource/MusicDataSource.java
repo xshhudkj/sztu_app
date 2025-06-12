@@ -15,7 +15,7 @@
  */
 package me.ckn.music.net.datasource;
 
-import static me.ckn.music.utils.ModelExKt.SCHEME_NETEASE;
+// import static me.ckn.music.utils.ModelExKt.SCHEME_NETEASE;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -159,6 +159,7 @@ public final class MusicDataSource implements DataSource {
     private static final String SCHEME_RAW = RawResourceDataSource.RAW_RESOURCE_SCHEME;
 
     private static final String SCHEME_ANDROID_RESOURCE = ContentResolver.SCHEME_ANDROID_RESOURCE;
+    private static final String SCHEME_NETEASE = "netease";
 
     private final Context context;
     private final List<TransferListener> transferListeners;

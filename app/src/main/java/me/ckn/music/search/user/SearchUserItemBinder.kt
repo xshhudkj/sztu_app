@@ -17,7 +17,16 @@ import top.wangchenyan.common.net.apiCall
 
 /**
  * 搜索用户ItemBinder
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索用户列表项绑定器
+ * File Description: Search user item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SearchUserItemBinder(
     private val lifecycleScope: LifecycleCoroutineScope,

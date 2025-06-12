@@ -13,9 +13,16 @@ import top.wangchenyan.common.CommonApp
 /**
  * 模型转换扩展函数
  * 提供统一的数据转换和处理工具
- * 
- * Created by wangchenyan.top on 2023/9/18.
- * Refactored for code optimization and deduplication
+ *
+ * Original: Created by wangchenyan.top on 2023/9/18
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：数据模型扩展函数
+ * File Description: Extension functions for data models
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 
 const val SCHEME_NETEASE = "netease"

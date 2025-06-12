@@ -22,8 +22,16 @@ import kotlin.math.min
  * 3. **缓存预热**：智能预热热门歌曲URL缓存
  * 4. **播放器优化**：激进的LoadControl配置，最小化起播延迟
  * 5. **用户行为预测**：基于用户操作预加载可能播放的歌曲
- * 
- * Created by wangchenyan.top on 2024/12/21.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/21
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：首次播放优化器
+ * File Description: First play optimizer
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class FirstPlayOptimizer(
     private val context: Context

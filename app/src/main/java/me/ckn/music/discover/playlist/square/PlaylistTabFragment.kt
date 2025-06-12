@@ -17,7 +17,17 @@ import me.wcy.radapter3.RAdapter
 import me.wcy.router.CRouter
 
 /**
- * Created by wangchenyan.top on 2023/9/26.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：歌单广场标签页Fragment
+ * File Description: Playlist square tab Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class PlaylistTabFragment : SimpleMusicRefreshFragment<PlaylistData>() {

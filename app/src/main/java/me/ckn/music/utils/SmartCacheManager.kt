@@ -71,8 +71,16 @@ data class ClearResult(
  * - 智能内存压力监听和缓存清理
  * - 性能监控和优化建议
  * - 自适应缓存领先时间调整
- * 
- * Created by wangchenyan.top on 2024/12/21.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/21
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：智能缓存管理器
+ * File Description: Smart cache manager
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SmartCacheManager(
     private val context: Context

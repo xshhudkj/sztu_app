@@ -13,7 +13,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
  * 基础音乐BottomSheetDialogFragment
  * 自动应用全屏沉浸式设置
  *
- * Created by wangchenyan.top on 2023/12/20.
+ * Original: Created by wangchenyan.top on 2023/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：基础音乐底部弹窗Fragment
+ * File Description: Base music bottom sheet fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 abstract class BaseMusicBottomSheetFragment : BottomSheetDialogFragment() {
 

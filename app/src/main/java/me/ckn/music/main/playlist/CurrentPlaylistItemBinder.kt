@@ -8,7 +8,17 @@ import me.ckn.music.service.PlayerController
 import me.wcy.radapter3.RItemBinder
 
 /**
- * Created by wangchenyan.top on 2023/9/4.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/4
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：当前播放列表项绑定器
+ * File Description: Current playlist item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class CurrentPlaylistItemBinder(
     private val playerController: PlayerController,

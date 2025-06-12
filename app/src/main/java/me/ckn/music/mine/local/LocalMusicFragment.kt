@@ -27,7 +27,17 @@ import top.wangchenyan.common.permission.Permissioner
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/8/30.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/8/30
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：本地音乐Fragment
+ * File Description: Local Music Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Route(RoutePath.LOCAL_SONG)
 @AndroidEntryPoint

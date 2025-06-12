@@ -159,6 +159,7 @@ ksp {
     // crouter 默认 host
     arg("defaultHost", "whisperplay")
     arg("room.schemaLocation", "$projectDir/schemas")
+    arg("crouter.registerPackage", "me.ckn.music")
 }
 
 dependencies {
@@ -170,6 +171,7 @@ dependencies {
     implementation(libs.media3.datasource.okhttp)
     implementation(libs.media3.session)
     implementation(libs.media3.ui)
+    implementation(libs.j2objc.annotations)
     implementation(libs.preference)
     implementation(libs.flexbox)
 

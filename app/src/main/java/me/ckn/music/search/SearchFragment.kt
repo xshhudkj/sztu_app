@@ -51,7 +51,17 @@ import top.wangchenyan.common.widget.pager.TabLayoutPager
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/9/20.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索Fragment
+ * File Description: Search Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Route(RoutePath.SEARCH)
 @AndroidEntryPoint

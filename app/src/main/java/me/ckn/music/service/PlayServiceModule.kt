@@ -14,7 +14,17 @@ import me.ckn.music.storage.db.MusicDatabase
 import top.wangchenyan.common.ext.toUnMutable
 
 /**
- * Created by wangchenyan.top on 2024/3/26.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：播放服务模块
+ * File Description: Play service module
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Module
 @InstallIn(SingletonComponent::class)

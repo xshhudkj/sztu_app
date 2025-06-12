@@ -5,7 +5,17 @@ import dagger.hilt.android.AndroidEntryPoint
 import top.wangchenyan.common.ui.activity.FragmentContainerActivity
 
 /**
- * Created by wangchenyan.top on 2023/8/7.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/8/7
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：音乐Fragment容器Activity
+ * File Description: Music Fragment container Activity
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class MusicFragmentContainerActivity : FragmentContainerActivity() {

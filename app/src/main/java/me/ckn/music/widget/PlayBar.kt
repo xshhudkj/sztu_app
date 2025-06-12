@@ -40,7 +40,17 @@ import top.wangchenyan.common.ext.loadAvatar
 import top.wangchenyan.common.ext.toast
 
 /**
- * Created by wangchenyan.top on 2023/9/4.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/4
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：底部播放控制条
+ * File Description: Player control bar at the bottom
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class PlayBar @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

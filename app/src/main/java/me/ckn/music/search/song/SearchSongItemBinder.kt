@@ -11,7 +11,17 @@ import me.ckn.music.utils.getSimpleArtist
 import me.wcy.radapter3.RItemBinder
 
 /**
- * Created by wangchenyan.top on 2023/9/20.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索歌曲列表项绑定器
+ * File Description: Search song item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class SearchSongItemBinder(private val listener: OnItemClickListener2<SongData>) :
     RItemBinder<ItemSearchSongBinding, SongData>() {

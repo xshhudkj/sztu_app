@@ -10,7 +10,17 @@ import top.wangchenyan.common.model.CommonResult
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2024/3/20.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2024/3/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：收藏歌曲ViewModel
+ * File Description: Collect song ViewModel
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @HiltViewModel
 class CollectSongViewModel @Inject constructor() : ViewModel() {

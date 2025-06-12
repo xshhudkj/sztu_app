@@ -19,8 +19,16 @@ import top.wangchenyan.common.ext.toast
 /**
  * 自动缓存清理服务
  * 负责定期检查和清理缓存，提供后台自动管理功能
- * 
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：自动缓存清理服务
+ * File Description: Auto cache clean service
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class AutoCacheCleanService : Service() {
     

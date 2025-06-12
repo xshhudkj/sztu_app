@@ -8,7 +8,16 @@ import android.view.animation.OvershootInterpolator
 
 /**
  * 动画工具类，为车载环境优化的交互动画
- * Created by wangchenyan.top on 2024/3/26.
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：动画工具类
+ * File Description: Animation utility class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object AnimationUtils {
 

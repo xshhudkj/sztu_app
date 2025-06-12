@@ -9,7 +9,17 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.HttpException
 
 /**
- * Created by wangchenyan.top on 2023/8/28.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/8/28
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：网络工具类
+ * File Description: Network utility class
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object NetUtils {
     val CONTENT_TYPE_JSON = "application/json".toMediaType()

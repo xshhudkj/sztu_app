@@ -21,8 +21,16 @@ import me.ckn.music.utils.LogUtils
  * - 网络优化：针对音乐流媒体优化的HTTP配置
  * - 错误处理：网络错误时自动回退到缓存
  * - 内存效率：合理的缓存大小和清理策略
- * 
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：现代音乐缓存数据源工厂
+ * File Description: Modern music cache data source factory
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @UnstableApi
 object ModernMusicCacheDataSourceFactory {

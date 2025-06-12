@@ -8,7 +8,17 @@ import android.os.Build
 import dagger.hilt.android.EntryPointAccessors
 
 /**
- * Created by wangchenyan.top on 2023/7/12.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/7/12
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：Context扩展函数
+ * File Description: Context extension functions
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 
 inline fun <reified T : Any> Application.accessEntryPoint(): T {

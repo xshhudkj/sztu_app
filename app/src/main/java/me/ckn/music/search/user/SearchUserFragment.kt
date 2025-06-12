@@ -19,7 +19,16 @@ import javax.inject.Inject
 
 /**
  * 搜索用户Fragment
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索用户Fragment
+ * File Description: Search User Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @AndroidEntryPoint
 class SearchUserFragment : SimpleMusicRefreshFragment<UserData>() {

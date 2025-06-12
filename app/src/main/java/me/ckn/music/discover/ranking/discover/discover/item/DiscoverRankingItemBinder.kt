@@ -14,7 +14,17 @@ import me.ckn.music.utils.getSimpleArtist
 import me.wcy.radapter3.RItemBinder
 
 /**
- * Created by wangchenyan.top on 2023/10/19.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/19
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：发现页排行榜列表项绑定器
+ * File Description: Discover ranking item binder
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class DiscoverRankingItemBinder(private val listener: OnItemClickListener) :
     RItemBinder<ItemDiscoverRankingBinding, PlaylistData>() {

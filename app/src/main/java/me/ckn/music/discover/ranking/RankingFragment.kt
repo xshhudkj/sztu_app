@@ -32,7 +32,17 @@ import top.wangchenyan.common.ext.viewBindings
 import javax.inject.Inject
 
 /**
- * Created by wangchenyan.top on 2023/10/25.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/25
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：排行榜Fragment
+ * File Description: Ranking Fragment
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @Route(RoutePath.RANKING)
 @AndroidEntryPoint

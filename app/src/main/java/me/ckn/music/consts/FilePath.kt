@@ -4,7 +4,17 @@ import top.wangchenyan.common.CommonApp
 import java.io.File
 
 /**
- * Created by wangchenyan.top on 2022/9/24.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2022/9/24
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：文件路径
+ * File Description: File path
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object FilePath {
     val httpCache: String

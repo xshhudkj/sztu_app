@@ -12,7 +12,16 @@ import java.util.concurrent.ConcurrentHashMap
 /**
  * 在线音乐URI获取器
  * 负责获取在线歌曲的播放链接，支持缓存机制和异步获取
- * Created by wangchenyan.top on 2024/3/26.
+ *
+ * Original: Created by wangchenyan.top on 2024/3/26
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：在线音乐URI获取器
+ * File Description: Online music URI fetcher
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 object OnlineMusicUriFetcher {
     private const val TAG = "OnlineMusicUriFetcher"

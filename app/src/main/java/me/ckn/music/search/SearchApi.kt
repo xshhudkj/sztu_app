@@ -18,7 +18,17 @@ import retrofit2.http.POST
 import retrofit2.http.Query
 
 /**
- * Created by wangchenyan.top on 2023/9/20.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/9/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：搜索API
+ * File Description: Search API
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 interface SearchApi {
 

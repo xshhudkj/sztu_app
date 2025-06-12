@@ -17,7 +17,16 @@ import com.bumptech.glide.request.RequestOptions
 /**
  * Glide配置类
  * 优化图片加载性能，减少内存占用
- * Created by wangchenyan.top on 2024/12/20.
+ *
+ * Original: Created by wangchenyan.top on 2024/12/20
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：Glide 全局配置
+ * File Description: Glide global configuration
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 @GlideModule
 class GlideConfig : AppGlideModule() {

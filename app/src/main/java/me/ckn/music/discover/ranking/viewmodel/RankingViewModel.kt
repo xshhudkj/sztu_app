@@ -10,7 +10,17 @@ import top.wangchenyan.common.ext.toUnMutable
 import top.wangchenyan.common.model.CommonResult
 
 /**
- * Created by wangchenyan.top on 2023/10/25.
+ * WhisperPlay Music Player
+ *
+ * Original: Created by wangchenyan.top on 2023/10/25
+ * Modified: Modified for WhisperPlay by ckn on 2025-06-11
+ *
+ * 文件描述：排行榜ViewModel
+ * File Description: Ranking ViewModel
+ *
+ * @author wangchenyan (original), ckn (modified)
+ * @since 2025-06-11
+ * @version 2.3.0
  */
 class RankingViewModel : ViewModel() {
     private val _rankingList = MutableLiveData<List<Any>>()
