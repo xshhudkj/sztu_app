@@ -11,6 +11,7 @@ import dagger.hilt.components.SingletonComponent
 import me.ckn.music.ext.accessEntryPoint
 import me.ckn.music.service.likesong.LikeSongProcessor
 import me.ckn.music.storage.db.MusicDatabase
+import me.ckn.music.main.playlist.RecentPlayRepository
 import top.wangchenyan.common.ext.toUnMutable
 
 /**
@@ -41,7 +42,7 @@ object PlayServiceModule {
     }
 
     @Provides
-    fun providerPlayerController(db: MusicDatabase): PlayerController {
+    fun providerPlayerController(db: MusicDatabase, recentPlayRepository: RecentPlayRepository): PlayerController {
         return playerController ?: synchronized(this) {
             // 双重检查锁定模式
             playerController ?: run {
@@ -62,7 +63,7 @@ object PlayServiceModule {
                     }
                     this.player ?: throw IllegalStateException("Player not prepared after ${maxRetries * 100}ms! Please restart the app.")
                 }
-                PlayerControllerImpl(player, db).also {
+                PlayerControllerImpl(player, db, recentPlayRepository).also {
                     playerController = it
                     android.util.Log.d("PlayServiceModule", "PlayerController created successfully")
                 }

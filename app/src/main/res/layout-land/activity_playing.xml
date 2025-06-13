@@ -336,12 +336,6 @@ Android Automotive 横屏播放页面布局
                     app:lrcTimelineHeight="@dimen/lrc_timeline_height"
                     app:lrcTimelineTextColor="@color/lrc_timeline_highlight_color" />
 
-                <ImageView
-                    android:id="@+id/ivLrcTopMask"
-                    android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    app:layout_constraintTop_toTopOf="@+id/lrcView" />
-
                 <!--
                 歌词底部遮罩
                 作用：在歌词底部添加渐变遮罩效果

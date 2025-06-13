@@ -232,4 +232,10 @@
     <!-- 其他对话框设置 -->
     <string name="auto_clean_apply">应用设置</string>
     <string name="auto_clean_success">自动清理设置成功！</string>
+
+    <!-- 最近播放相关 -->
+    <string name="recent_play">最近播放</string>
+    <string name="playlist_title">播放列表</string>
+    <string name="recent_play_title">最近播放</string>
+    <string name="recent_play_empty">暂无最近播放记录</string>
 </resources>

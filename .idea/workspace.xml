@@ -30,113 +30,27 @@
   <component name="ChangeListManager">
     <list default="true" id="16570d51-db5e-416e-82dc-0432bcc16b4c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.codelf/changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/.codelf/changelog.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.codelf/project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.codelf/project.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/appInsightsSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/appInsightsSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/BaseMusicBottomSheetFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/BaseMusicBottomSheetFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/ImmersiveUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/ImmersiveUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/MusicFragmentContainerActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/MusicFragmentContainerActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/OnItemClickListener.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/OnItemClickListener.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/OnItemClickListener2.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/OnItemClickListener2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/SimpleMusicRefreshFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/SimpleMusicRefreshFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/MenuItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/MenuItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/SongMoreMenuDialog.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/SongMoreMenuDialog.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/items/CollectMenuItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/common/dialog/songmenu/items/CollectMenuItem.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/Consts.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/Consts.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/FilePath.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/FilePath.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/PreferenceName.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/PreferenceName.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/RoutePath.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/consts/RoutePath.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/home/DiscoverFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/home/DiscoverFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/PlaylistDetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/PlaylistDetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/bean/PlaylistDetailData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/bean/PlaylistDetailData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/bean/SongListData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/bean/SongListData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/item/PlaylistSongItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/item/PlaylistSongItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/viewmodel/PlaylistViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/detail/viewmodel/PlaylistViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/PlaylistSquareFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/PlaylistSquareFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/PlaylistTabFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/PlaylistTabFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/bean/PlaylistListData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/bean/PlaylistListData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/bean/PlaylistTagListData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/bean/PlaylistTagListData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/item/PlaylistItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/item/PlaylistItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/viewmodel/PlaylistSquareViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/playlist/square/viewmodel/PlaylistSquareViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/RankingFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/RankingFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/discover/discover/item/DiscoverRankingItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/discover/discover/item/DiscoverRankingItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/OfficialRankingItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/OfficialRankingItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/RankingTitleItemBinding.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/RankingTitleItemBinding.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/SelectedRankingItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/item/item/SelectedRankingItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/viewmodel/RankingViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/ranking/viewmodel/RankingViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/RecommendSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/RecommendSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/bean/RecommendSongListData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/bean/RecommendSongListData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/item/RecommendSongItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/discover/recommend/song/song/item/RecommendSongItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/ext/ContextEx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/ext/ContextEx.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/ext/ViewExt.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/ext/ViewExt.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/login/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/login/LoginActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playing/PlayingActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playing/PlayingActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/MineApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/MineApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/CollectSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/CollectSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/CollectSongViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/CollectSongViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/bean/CollectSongResult.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/collect/song/bean/CollectSongResult.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/home/MineFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/home/MineFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/home/viewmodel/MineViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/home/viewmodel/MineViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalMusicFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalMusicFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalMusicLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalMusicLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalSongItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/local/LocalSongItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/playlist/UserPlaylistItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/mine/playlist/UserPlaylistItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/HttpClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/HttpClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/NetCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/NetCache.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/NetUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/NetUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/ModernMusicCacheDataSourceFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/ModernMusicCacheDataSourceFactory.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/MusicDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/MusicDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/MusicUrlCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/MusicUrlCache.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/OnlineMusicDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/OnlineMusicDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/OnlineMusicUriFetcher.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/net/datasource/OnlineMusicUriFetcher.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchAdapterBase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchAdapterBase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchPreference.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchPreference.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/album/SearchAlbumItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/artist/SearchArtistItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/ArtistDetailData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/ArtistDetailData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/HotSearchData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/HotSearchData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/SearchResultData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/SearchResultData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/SearchSuggestData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/SearchSuggestData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/UserData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/bean/UserData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/playlist/SearchPlaylistFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/playlist/SearchPlaylistFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/playlist/SearchPlaylistItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/playlist/SearchPlaylistItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/song/SearchSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/song/SearchSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/song/SearchSongItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/song/SearchSongItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserItemBinder.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/user/SearchUserItemBinder.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/AutoCacheCleanService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/AutoCacheCleanService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayServiceModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayServiceModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerControllerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerControllerImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/SmartPreloadManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/SmartPreloadManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/bean/LikeSongListData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/bean/LikeSongListData.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/LrcCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/LrcCache.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/DatabaseModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/DatabaseModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/MusicDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/MusicDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/dao/PlaylistDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/dao/PlaylistDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/entity/SongEntity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/db/entity/SongEntity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/AnimationUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/AnimationUtils.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/BatchPlaylistLoader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/BatchPlaylistLoader.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ConvertUtils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ConvertUtils.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/FirstPlayOptimizer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/FirstPlayOptimizer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/GlideConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/GlideConfig.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ModelEx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ModelEx.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/SmartCacheManager.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/SmartCacheManager.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/widget/PlayBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/widget/PlayBar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_playing.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-land/activity_playing.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_playing_control.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_playing_control.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_current_playlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_current_playlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_current_playlist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_current_playlist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,11 +99,11 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2xuSxVP7VcYIuE4hr0Vm5uFZ4iy" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -308,13 +222,66 @@
     <option name="OPEN_GENERIC_TABS">
       <map>
         <entry key="d1883f41-044f-4cd2-ae83-ae9af2991d75" value="TOOL_WINDOW" />
+        <entry key="bb64e076-e89d-4d26-9c7e-49b0ef3ca0f9" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
       </map>
     </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="sztu/HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="bb64e076-e89d-4d26-9c7e-49b0ef3ca0f9">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:C:/Users/86158/Desktop/WhisperPlay/app/src/main/res/layout-land" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+            </State>
           </value>
         </entry>
         <entry key="d1883f41-044f-4cd2-ae83-ae9af2991d75">
@@ -364,12 +331,12 @@
         <entry />
         <entry key="me.ckn.music">
           <value>
-            <CheckInfo lastCheckTimestamp="1749621636349" />
+            <CheckInfo lastCheckTimestamp="1749708055713" />
           </value>
         </entry>
         <entry key="me.ckn.music.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1749621636349" />
+            <CheckInfo lastCheckTimestamp="1749708055713" />
           </value>
         </entry>
         <entry key="me.wcy.music.test">

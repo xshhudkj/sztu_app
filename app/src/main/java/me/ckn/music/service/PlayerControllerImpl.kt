@@ -34,6 +34,10 @@ import me.ckn.music.utils.PerformanceLevel
 import me.ckn.music.utils.FirstPlayOptimizer
 import top.wangchenyan.common.CommonApp
 import top.wangchenyan.common.ext.toast
+import me.ckn.music.main.playlist.RecentPlayRepository
+import me.ckn.music.common.bean.SongData
+import me.ckn.music.common.bean.ArtistData
+import me.ckn.music.common.bean.AlbumData
 
 /**
  * WhisperPlay Music Player
@@ -51,6 +55,7 @@ import top.wangchenyan.common.ext.toast
 class PlayerControllerImpl(
     private val player: Player,
     private val db: MusicDatabase,
+    private val recentPlayRepository: RecentPlayRepository,
 ) : PlayerController, CoroutineScope by MainScope() {
 
     private val _playlist = MutableLiveData(emptyList<MediaItem>())
@@ -138,8 +143,17 @@ class PlayerControllerImpl(
                 super.onMediaItemTransition(mediaItem, reason)
                 mediaItem ?: return
                 val playlist = _playlist.value ?: return
-                _currentSong.value = playlist.find { it.mediaId == mediaItem.mediaId }
-                
+                val currentSong = playlist.find { it.mediaId == mediaItem.mediaId }
+                _currentSong.value = currentSong
+
+                // 当歌曲切换时（不是因为播放列表变化），记录到最近播放
+                if (reason == Player.MEDIA_ITEM_TRANSITION_REASON_AUTO ||
+                    reason == Player.MEDIA_ITEM_TRANSITION_REASON_SEEK) {
+                    currentSong?.let { song ->
+                        addToRecentPlay(song)
+                    }
+                }
+
                 // 预加载下一首歌曲的URL
                 preloadNextSongUrls()
             }
@@ -347,23 +361,21 @@ class PlayerControllerImpl(
         val songFee = playlist[index].getFee()
         smartPreloadManager.markSongAsPlayed(songId)
 
-        // 🔥 首次播放优化：并行获取URL和播放器准备
+        // 🚀 零延时播放优化：立即播放，后台优化URL
         launch(Dispatchers.Main.immediate) {
             try {
                 val optimizeStartTime = System.currentTimeMillis()
-                LogUtils.performance(TAG) { "开始首次播放优化: songId=$songId" }
-                
-                // 并行执行：URL获取 + 播放器准备
-                val urlJob = async(Dispatchers.IO) {
-                    firstPlayOptimizer.optimizeFirstPlay(songId, songFee)
-                }
-                
-                // 立即开始播放器准备（不等待URL）
+                LogUtils.performance(TAG) { "开始零延时播放优化: songId=$songId" }
+
+                // 立即设置播放状态和UI
                 val mediaItem = playlist[index]
                 _currentSong.value = mediaItem
                 _playProgress.value = 0
                 _bufferingPercent.value = 0
-                
+
+                // 记录到最近播放（用户主动点击播放）
+                addToRecentPlay(mediaItem)
+
                 // 极速播放优化：最小化状态切换操作
                 val currentIndex = player.currentMediaItemIndex
                 if (currentIndex != index) {
@@ -377,19 +389,31 @@ class PlayerControllerImpl(
                     // 其他状态直接播放，减少准备时间
                 }
 
-                // 等待URL获取结果（如果需要的话）
-                val optimizedUrl = urlJob.await()
-                
-                val totalOptimizeTime = System.currentTimeMillis() - optimizeStartTime
-                LogUtils.performance(TAG) { 
-                    "首次播放优化完成: songId=$songId, 总用时=${totalOptimizeTime}ms, URL=${if(!optimizedUrl.isNullOrEmpty()) "成功" else "使用默认"}" 
+                // 立即开始播放，不等待URL优化
+                player.play()
+
+                // 后台异步优化URL（不阻塞播放）
+                launch(Dispatchers.IO) {
+                    try {
+                        val optimizedUrl = firstPlayOptimizer.optimizeFirstPlay(songId, songFee)
+                        LogUtils.performance(TAG) {
+                            "后台URL优化完成: songId=$songId, URL=${if(!optimizedUrl.isNullOrEmpty()) "成功" else "使用默认"}"
+                        }
+                    } catch (e: Exception) {
+                        LogUtils.w(TAG, "后台URL优化失败，继续使用当前播放: songId=$songId", e)
+                    }
                 }
-                
+
+                val totalOptimizeTime = System.currentTimeMillis() - optimizeStartTime
+                LogUtils.performance(TAG) {
+                    "零延时播放启动完成: songId=$songId, 启动用时=${totalOptimizeTime}ms"
+                }
+
                 // 重置缓存状态
                 resetCacheState()
-                
+
             } catch (e: Exception) {
-                LogUtils.e(TAG, "首次播放优化失败，回退到传统方式: songId=$songId", e)
+                LogUtils.e(TAG, "零延时播放失败，回退到传统方式: songId=$songId", e)
                 // 回退到传统播放方式
                 fallbackPlaybackStart(playlist, index, songId)
             }
@@ -431,29 +455,24 @@ class PlayerControllerImpl(
     @MainThread
     override fun playPause() {
         if (player.mediaItemCount == 0) return
-        when (player.playbackState) {
-            Player.STATE_IDLE -> {
-                player.prepare()
-            }
 
-            Player.STATE_BUFFERING -> {
-                stop()
-            }
-
-            Player.STATE_READY -> {
-                if (player.isPlaying) {
-                    player.pause()
-                    _playState.value = PlayState.Pause
-                } else {
-                    player.play()
-                    _playState.value = PlayState.Playing
+        // 简化状态管理：直接根据播放状态切换
+        if (player.isPlaying) {
+            player.pause()
+            _playState.value = PlayState.Pause
+        } else {
+            // 智能播放：根据状态决定是否需要准备
+            when (player.playbackState) {
+                Player.STATE_IDLE, Player.STATE_ENDED -> {
+                    player.prepare()
+                }
+                Player.STATE_BUFFERING -> {
+                    // 缓冲中时暂停，避免重复操作
+                    return
                 }
             }
-
-            Player.STATE_ENDED -> {
-                player.seekToNextMediaItem()
-                player.prepare()
-            }
+            player.play()
+            _playState.value = PlayState.Playing
         }
     }
 
@@ -470,8 +489,11 @@ class PlayerControllerImpl(
             smartPreloadManager.markSongAsPlayed(songId)
         }
 
+        // 智能切换：只在必要时准备播放器
         player.seekToNextMediaItem()
-        player.prepare()
+        if (player.playbackState == Player.STATE_IDLE || player.playbackState == Player.STATE_ENDED) {
+            player.prepare()
+        }
         _playProgress.value = 0
         _bufferingPercent.value = 0
 
@@ -496,8 +518,11 @@ class PlayerControllerImpl(
             smartPreloadManager.markSongAsPlayed(songId)
         }
 
+        // 智能切换：只在必要时准备播放器
         player.seekToPreviousMediaItem()
-        player.prepare()
+        if (player.playbackState == Player.STATE_IDLE || player.playbackState == Player.STATE_ENDED) {
+            player.prepare()
+        }
         _playProgress.value = 0
         _bufferingPercent.value = 0
 
@@ -862,6 +887,70 @@ class PlayerControllerImpl(
      * 设置用户交互状态（供Activity调用）
      */
     fun setUserInteracting(interacting: Boolean) = smartUIUpdateManager.setUserInteracting(interacting)
+
+    // 记录最近添加的歌曲ID和时间，避免短时间内重复添加
+    private var lastAddedSongId: Long = 0L
+    private var lastAddedTime: Long = 0L
+    private val addCooldownMs = 2000L // 2秒冷却时间
+
+    /**
+     * 添加歌曲到最近播放记录，带重复检查和即时响应
+     */
+    private fun addToRecentPlay(mediaItem: MediaItem) {
+        launch(Dispatchers.IO) {
+            try {
+                val songId = mediaItem.getSongId()
+                val currentTime = System.currentTimeMillis()
+
+                // 检查是否是短时间内的重复添加
+                if (songId == lastAddedSongId && (currentTime - lastAddedTime) < addCooldownMs) {
+                    LogUtils.d(TAG, "跳过重复添加歌曲到最近播放: songId=$songId")
+                    return@launch
+                }
+
+                // 将MediaItem转换为SongData
+                val songData = mediaItemToSongData(mediaItem)
+
+                // 立即添加到最近播放（响应式数据流会自动更新UI）
+                recentPlayRepository.addToRecentPlay(songData)
+
+                // 更新最近添加记录
+                lastAddedSongId = songId
+                lastAddedTime = currentTime
+
+                LogUtils.d(TAG, "已添加歌曲到最近播放并触发UI更新: ${songData.name}")
+            } catch (e: Exception) {
+                LogUtils.e(TAG, "添加歌曲到最近播放失败", e)
+            }
+        }
+    }
+
+    /**
+     * 将MediaItem转换为SongData，确保数据完整性
+     */
+    private fun mediaItemToSongData(mediaItem: MediaItem): SongData {
+        val metadata = mediaItem.mediaMetadata
+        return SongData(
+            id = mediaItem.getSongId(),
+            name = metadata.title?.toString() ?: "",
+            ar = listOf(ArtistData(name = metadata.artist?.toString() ?: "")),
+            al = AlbumData(
+                name = metadata.albumTitle?.toString() ?: "",
+                picUrl = metadata.artworkUri?.toString() ?: "",
+                id = 0L // 保持默认值
+            ),
+            dt = metadata.durationMs ?: 0L,
+            fee = mediaItem.getFee(),
+            // 保留其他重要字段的默认值，确保数据结构完整
+            pst = 0,
+            t = 0,
+            pop = 0,
+            st = 0,
+            rt = "",
+            v = 0,
+            cf = ""
+        )
+    }
 
     companion object {
         private const val TAG = "PlayerControllerImpl"

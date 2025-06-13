@@ -27,7 +27,10 @@ class CurrentPlaylistItemBinder(
     RItemBinder<ItemCurrentPlaylistBinding, MediaItem>() {
     @SuppressLint("SetTextI18n")
     override fun onBind(viewBinding: ItemCurrentPlaylistBinding, item: MediaItem, position: Int) {
-        viewBinding.root.isSelected = (playerController.currentSong.value == item)
+        // 修复高亮逻辑：使用 mediaId 比较而非对象引用比较，确保最近播放模式下高亮正常
+        val currentSong = playerController.currentSong.value
+        viewBinding.root.isSelected = (currentSong != null && currentSong.mediaId == item.mediaId)
+
         viewBinding.root.setOnClickListener {
             listener.onItemClick(item, position)
         }

@@ -198,6 +198,18 @@ class PlayBar @JvmOverloads constructor(
                 updatePlayProgress()
             }
         }
+
+        // 监听爱心状态变化，确保状态同步
+        lifecycleOwner.lifecycleScope.launch {
+            likeSongProcessor.likeStateChanged.collectLatest { changedSongId ->
+                changedSongId ?: return@collectLatest
+                val currentSong = playerController.currentSong.value
+                if (currentSong != null && currentSong.getSongId() == changedSongId) {
+                    // 当前播放歌曲的爱心状态发生变化，更新UI
+                    updateLikeState(changedSongId)
+                }
+            }
+        }
     }
 
     /**

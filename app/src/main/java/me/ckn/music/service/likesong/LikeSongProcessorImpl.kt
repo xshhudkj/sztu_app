@@ -3,6 +3,9 @@ package me.ckn.music.service.likesong
 import android.app.Activity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import me.ckn.music.account.service.UserService
@@ -30,6 +33,10 @@ class LikeSongProcessorImpl @Inject constructor(
     private val userService: UserService
 ) : LikeSongProcessor, CoroutineScope by MainScope() {
     private val likeSongSet = mutableSetOf<Long>()
+
+    // 状态变化通知流
+    private val _likeStateChanged = MutableStateFlow<Long?>(null)
+    override val likeStateChanged: StateFlow<Long?> = _likeStateChanged.asStateFlow()
 
     override fun init() {
         launch {
@@ -77,6 +84,8 @@ class LikeSongProcessorImpl @Inject constructor(
             return if (res.isSuccess()) {
                 likeSongSet.remove(id)
                 updateLikeSongList()
+                // 通知状态变化
+                _likeStateChanged.value = id
                 CommonResult.success(Unit)
             } else {
                 CommonResult.fail(res.code, res.msg)
@@ -88,6 +97,8 @@ class LikeSongProcessorImpl @Inject constructor(
             return if (res.isSuccess()) {
                 likeSongSet.add(id)
                 updateLikeSongList()
+                // 通知状态变化
+                _likeStateChanged.value = id
                 CommonResult.success(Unit)
             } else {
                 CommonResult.fail(res.code, res.msg)

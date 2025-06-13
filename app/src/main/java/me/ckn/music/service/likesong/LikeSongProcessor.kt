@@ -1,6 +1,7 @@
 package me.ckn.music.service.likesong
 
 import android.app.Activity
+import kotlinx.coroutines.flow.StateFlow
 import top.wangchenyan.common.model.CommonResult
 
 
@@ -18,7 +19,12 @@ import top.wangchenyan.common.model.CommonResult
  * @version 2.3.0
  */
 interface LikeSongProcessor {
-    
+
+    /**
+     * 爱心状态变化通知流
+     */
+    val likeStateChanged: StateFlow<Long?>
+
     fun init()
 
     fun updateLikeSongList()

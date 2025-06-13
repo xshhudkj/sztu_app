@@ -36,4 +36,35 @@
     <dimen name="lrc_timeline_height">5dp</dimen>      <!-- 时间线高度：增大到6dp -->
     <dimen name="lrc_time_text_size">18sp</dimen>      <!-- 时间文字大小：增大到22sp -->
     <dimen name="lrc_play_drawable_size">40dp</dimen>  <!-- 播放按钮图标大小：32dp -->
+
+    <!-- 播放列表对话框车载优化尺寸 -->
+    <dimen name="playlist_dialog_title_text_size">23sp</dimen>        <!-- 标题字体：18sp → 23sp (+30%) -->
+    <dimen name="playlist_dialog_title_margin_top">20dp</dimen>       <!-- 标题上边距：16dp → 20dp (+25%) -->
+    <dimen name="playlist_dialog_title_padding_horizontal">20dp</dimen> <!-- 标题水平内边距：16dp → 20dp (+25%) -->
+
+    <!-- 播放列表按钮区域尺寸 -->
+    <dimen name="playlist_button_container_height">62dp</dimen>       <!-- 按钮容器高度：48dp → 62dp (+30%) -->
+    <dimen name="playlist_button_height">36dp</dimen>                 <!-- 按钮高度：28dp → 36dp (+30%) -->
+    <dimen name="playlist_button_text_size">16sp</dimen>              <!-- 按钮文字：12sp → 16sp (+33%) -->
+    <dimen name="playlist_button_icon_size">28dp</dimen>              <!-- 按钮图标：默认尺寸 -->
+    <dimen name="playlist_play_mode_button_icon_size">32dp</dimen>    <!-- 播放模式按钮图标：28dp → 32dp，增大以突出重要性 -->
+    <dimen name="playlist_recent_play_button_icon_size">24dp</dimen>  <!-- 最近播放按钮图标：28dp → 24dp，减小以平衡视觉层次 -->
+    <dimen name="playlist_button_padding_horizontal">13dp</dimen>     <!-- 按钮水平内边距：10dp → 13dp (+30%) -->
+    <dimen name="playlist_button_margin_start">20dp</dimen>           <!-- 按钮间距：16dp → 20dp (+25%) -->
+    <dimen name="playlist_clear_button_size">49dp</dimen>             <!-- 清空按钮：38dp → 49dp (+30%) -->
+    <dimen name="playlist_clear_button_padding">13dp</dimen>          <!-- 清空按钮内边距：10dp → 13dp (+30%) -->
+
+    <!-- 播放列表项尺寸 -->
+    <dimen name="playlist_item_height">62dp</dimen>                   <!-- 列表项高度：48dp → 62dp (+30%) -->
+    <dimen name="playlist_item_padding_start">20dp</dimen>            <!-- 列表项左内边距：16dp → 20dp (+25%) -->
+    <dimen name="playlist_item_padding_end">10dp</dimen>              <!-- 列表项右内边距：8dp → 10dp (+25%) -->
+    <dimen name="playlist_item_title_text_size">20sp</dimen>          <!-- 歌曲名字体：15sp → 20sp (+33%) -->
+    <dimen name="playlist_item_artist_text_size">16sp</dimen>         <!-- 歌手名字体：12sp → 16sp (+33%) -->
+    <dimen name="playlist_item_delete_button_size">49dp</dimen>       <!-- 删除按钮：38dp → 49dp (+30%) -->
+    <dimen name="playlist_item_delete_button_padding">13dp</dimen>    <!-- 删除按钮内边距：10dp → 13dp (+30%) -->
+
+    <!-- 播放列表对话框固定高度 -->
+    <dimen name="playlist_dialog_fixed_height">600dp</dimen>          <!-- 对话框固定高度，确保切换时一致性 -->
+    <dimen name="playlist_dialog_min_height">400dp</dimen>            <!-- 对话框最小高度 -->
+    <dimen name="playlist_dialog_header_height">140dp</dimen>         <!-- 头部区域高度（标题+按钮+分割线） -->
 </resources>

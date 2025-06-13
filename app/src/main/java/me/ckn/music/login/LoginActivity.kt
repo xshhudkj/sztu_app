@@ -19,6 +19,7 @@ import me.ckn.music.login.dialog.PhoneLoginDialog
 import me.ckn.music.login.dialog.QrCodeLoginDialog
 import me.ckn.music.main.MainActivity
 import me.wcy.router.annotation.Route
+import top.wangchenyan.common.permission.Permissioner
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.utils.ToastUtils
@@ -57,6 +58,7 @@ class LoginActivity : BaseMusicActivity() {
         setContentView(binding.root)
 
         setupViews()
+        requestNotificationPermission()
     }
 
     private fun setupViews() {
@@ -113,6 +115,22 @@ class LoginActivity : BaseMusicActivity() {
 
     private fun handleLoginSuccess() {
         navigateToMainWithAnimation()
+    }
+
+    /**
+     * 请求通知权限
+     * 在登录页面请求通知权限，确保用户能够接收到音乐播放通知
+     * 权限被拒绝时不影响登录流程的正常进行
+     */
+    private fun requestNotificationPermission() {
+        Permissioner.requestNotificationPermission(this) { granted, shouldRationale ->
+            if (granted) {
+                // 通知权限已授予，应用可以正常显示音乐播放通知
+            } else {
+                // 通知权限被拒绝，应用仍然可以正常运行
+                // 不阻塞登录流程，用户可以继续使用应用
+            }
+        }
     }
 
     /**

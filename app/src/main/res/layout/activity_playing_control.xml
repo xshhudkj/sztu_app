@@ -169,7 +169,7 @@
         <!--
         播放模式按钮
         作用：切换播放模式（列表循环/随机播放/单曲循环）
-        调整：paddingVertical控制上下内边距（减少以增大按钮）
+        调整：paddingVertical从6dp减少到4dp以增大按钮显示区域
              src图标会根据播放模式动态切换
         -->
         <ImageView
@@ -177,7 +177,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingVertical="6dp"
+            android:paddingVertical="4dp"
             android:src="@drawable/ic_play_mode_level_list"
             app:tint="@color/translucent_white_p80" />
 
@@ -253,14 +253,14 @@
         <!--
         播放列表按钮
         作用：打开当前播放列表
-        调整：paddingVertical控制上下内边距（减少以增大按钮）
+        调整：paddingVertical从6dp增加到8dp以减小按钮显示区域
         -->
         <ImageView
             android:id="@+id/ivPlaylist"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:paddingVertical="6dp"
+            android:paddingVertical="10dp"
             android:src="@drawable/ic_playlist"
             app:tint="@color/translucent_white_p80" />
     </LinearLayout>

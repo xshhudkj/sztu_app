@@ -36,6 +36,7 @@ import me.ckn.music.consts.RoutePath
 import me.ckn.music.databinding.ActivityPlayingBinding
 import me.ckn.music.discover.DiscoverApi
 
+import me.ckn.music.ext.addClickScaleAnimation
 import me.ckn.music.ext.registerReceiverCompat
 import me.ckn.music.main.playlist.CurrentPlaylistFragment
 import me.ckn.music.service.PlayMode
@@ -125,6 +126,9 @@ class PlayingActivity : BaseMusicActivity() {
     private var lastLrcUpdateTime = 0L
     private val lrcUpdateInterval = 100L // 歌词更新最小间隔100ms
     private var lastLrcProgress = -1L // 上次更新的播放进度
+
+    // 封面URL保存 - 用于歌词颜色时序修复（只保存URL，不保存bitmap避免内存问题）
+    private var currentCoverUrl: String = ""
 
 
 
@@ -291,6 +295,20 @@ class PlayingActivity : BaseMusicActivity() {
     }
 
     private fun initLrc() {
+        // 彻底覆盖LrcView的默认颜色设置，强制使用白色
+        viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+
+        // 强制刷新视图，确保颜色设置立即生效
+        viewBinding.lrcView.invalidate()
+
+        // 延迟再次设置，确保完全覆盖库的默认设置
+        viewBinding.lrcView.post {
+            viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+            viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+            Log.d(TAG, "🎨 强制设置LrcView初始颜色为白色")
+        }
+
         viewBinding.lrcView.setDraggable(true) { _, time ->
             val playState = playerController.playState.value
             if (playState.isPlaying || playState.isPausing) {
@@ -308,7 +326,11 @@ class PlayingActivity : BaseMusicActivity() {
     }
 
     private fun initActions() {
-        // 喜欢按钮 - 移除波纹效果，只保留点击事件
+        // 喜欢按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.ivLike.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.ivLike.setOnClickListener {
             lifecycleScope.launch {
                 val song = playerController.currentSong.value ?: return@launch
@@ -321,7 +343,11 @@ class PlayingActivity : BaseMusicActivity() {
             }
         }
 
-        // 下载按钮 - 移除波纹效果，只保留点击事件
+        // 下载按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.ivDownload.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.ivDownload.setOnClickListener {
             lifecycleScope.launch {
                 val song = playerController.currentSong.value ?: return@launch
@@ -346,22 +372,38 @@ class PlayingActivity : BaseMusicActivity() {
             }
         }
 
-        // 播放模式按钮 - 移除波纹效果，只保留点击事件
+        // 播放模式按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.ivMode.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.ivMode.setOnClickListener {
             switchPlayMode()
         }
 
-        // 播放按钮 - 移除波纹效果，只保留点击事件
+        // 播放按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.flPlay.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.flPlay.setOnClickListener {
             playerController.playPause()
         }
 
-        // 上一首按钮 - 移除波纹效果，只保留点击事件
+        // 上一首按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.ivPrev.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.ivPrev.setOnClickListener {
             playerController.prev()
         }
 
-        // 下一首按钮 - 移除波纹效果，只保留点击事件
+        // 下一首按钮 - 只添加缩放动画效果，不要波纹效果
+        viewBinding.controlLayout.ivNext.addClickScaleAnimation(
+            scaleDown = 0.9f,
+            duration = 200L
+        )
         viewBinding.controlLayout.ivNext.setOnClickListener {
             playerController.next()
         }
@@ -541,24 +583,44 @@ class PlayingActivity : BaseMusicActivity() {
                     viewBinding.controlLayout.sbProgress.max * percent / 100
             }
         }
+
+        // 监听爱心状态变化，确保状态同步
+        lifecycleScope.launch {
+            likeSongProcessor.likeStateChanged.collectLatest { changedSongId ->
+                changedSongId ?: return@collectLatest
+                val currentSong = playerController.currentSong.value
+                if (currentSong != null && currentSong.getSongId() == changedSongId) {
+                    // 当前播放歌曲的爱心状态发生变化，更新UI
+                    updateOnlineActionsState(currentSong)
+                }
+            }
+        }
     }
 
     private fun updateCover(song: MediaItem) {
+        currentCoverUrl = ""
         setDefaultCover()
-        ImageUtils.loadBitmap(song.getLargeCover()) {
+        val coverUrl = song.getLargeCover()
+        ImageUtils.loadBitmap(coverUrl) {
             if (it.isSuccessWithData()) {
                 val bitmap = it.getDataOrThrow()
+
+                // 保存当前封面URL，用于歌词颜色时序修复
+                currentCoverUrl = coverUrl
+
                 viewBinding.albumCoverView.setCoverBitmap(bitmap)
                 Blurry.with(this).sampling(10).from(bitmap).into(viewBinding.ivPlayingBg)
                 updateLrcMask()
 
                 // 动态更新歌词高亮颜色
-                updateLrcHighlightColor(bitmap, song.getLargeCover())
+                updateLrcHighlightColor(bitmap, coverUrl)
             }
         }
     }
 
     private fun setDefaultCover() {
+        currentCoverUrl = ""
+
         viewBinding.albumCoverView.setCoverBitmap(defaultCoverBitmap)
         viewBinding.ivPlayingBg.setImageBitmap(defaultBgBitmap)
         updateLrcMask()
@@ -579,12 +641,18 @@ class PlayingActivity : BaseMusicActivity() {
         lifecycleScope.launch {
             val startTime = System.currentTimeMillis() // 性能监控开始时间
             try {
-                // 只在有歌词内容时才更新动态颜色，避免影响状态文本显示
+                // 检查歌词加载状态，如果没有加载则延迟更新
                 if (!viewBinding.lrcView.hasLrc()) {
-                    // 没有歌词时，确保状态文本为白色
-                    viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
-                    viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
-                    return@launch
+                    Log.d(TAG, "⏳ 歌词还未加载，延迟500ms后重试颜色更新")
+                    // 延迟重试，给歌词加载更多时间
+                    kotlinx.coroutines.delay(500)
+                    
+                    // 再次检查，如果还是没有歌词，也强制更新颜色
+                    if (!viewBinding.lrcView.hasLrc()) {
+                        Log.d(TAG, "⚠️ 歌词仍未加载，但强制进行颜色更新")
+                    } else {
+                        Log.d(TAG, "✅ 延迟后歌词已加载")
+                    }
                 }
 
                 // 检查缓存
@@ -630,13 +698,71 @@ class PlayingActivity : BaseMusicActivity() {
     }
     
     /**
+     * 强制更新歌词高亮颜色 - 跳过hasLrc检查
+     * 用于歌词加载完成后强制进行颜色计算
+     */
+    private fun forceUpdateLrcHighlightColor(bitmap: Bitmap?, coverUrl: String) {
+        lifecycleScope.launch {
+            val startTime = System.currentTimeMillis()
+            try {
+                Log.d(TAG, "🚀 强制更新歌词高亮颜色 - 跳过hasLrc检查")
+
+                // 检查缓存
+                val cacheKey = coverUrl.hashCode().toString()
+                val cachedColor = colorCache[cacheKey]
+
+                val highlightColor = if (cachedColor != null) {
+                    cachedColor
+                } else if (bitmap != null) {
+                    // 优化：将bitmap操作完全移到IO线程，避免阻塞主线程
+                    val extractedColor = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                        extractSmartColor(bitmap)
+                    }
+                    
+                    // 回到主线程更新缓存
+                    kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.Main) {
+                        // 优化缓存管理：使用LRU策略
+                        if (colorCache.size >= maxCacheSize) {
+                            // 清理最旧的缓存项（简单实现）
+                            val oldestKey = colorCache.keys.firstOrNull()
+                            oldestKey?.let { colorCache.remove(it) }
+                        }
+                        colorCache[cacheKey] = extractedColor
+                    }
+                    extractedColor
+                } else {
+                    android.graphics.Color.WHITE
+                }
+
+                // 强制更新UI
+                updateLrcColors(highlightColor)
+
+                val updateTime = System.currentTimeMillis() - startTime
+                Log.d(TAG, "✅ 强制歌词高亮色更新完成: ${Integer.toHexString(highlightColor)} (缓存命中: ${cachedColor != null}, 耗时: ${updateTime}ms)")
+            } catch (e: Exception) {
+                Log.e(TAG, "强制更新歌词高亮颜色失败", e)
+                updateLrcColors(android.graphics.Color.WHITE)
+            }
+        }
+    }
+
+    /**
      * 批量更新歌词颜色 - 避免重复UI操作
+     * 彻底覆盖LrcView的默认颜色，确保普通歌词始终为白色
      */
     private fun updateLrcColors(highlightColor: Int) {
-        // 只更新高亮颜色，保持默认歌词颜色为白色
+        Log.d(TAG, "🎨 updateLrcColors() 被调用")
+        Log.d(TAG, "🌈 设置高亮颜色: #${Integer.toHexString(highlightColor)}")
+
+        // 设置高亮颜色（可以是自适应颜色）
         viewBinding.lrcView.setCurrentColor(highlightColor)
-        // 确保默认文本颜色保持白色
+        // 强制设置普通歌词颜色为白色，彻底覆盖库的默认设置
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+
+        // 强制刷新视图，确保颜色更改立即生效
+        viewBinding.lrcView.invalidate()
+
+        Log.d(TAG, "✅ 歌词颜色强制设置完成 - 普通歌词: 白色, 高亮歌词: #${Integer.toHexString(highlightColor)}")
     }
 
     /**
@@ -768,8 +894,8 @@ class PlayingActivity : BaseMusicActivity() {
     }
 
     private fun updateLrcMask() {
-        updateLrcMask(viewBinding.ivLrcTopMask, true)
-        updateLrcMask(viewBinding.ivLrcBottomMask, false)
+        viewBinding.ivLrcTopMask?.let { updateLrcMask(it, true) }
+        viewBinding.ivLrcBottomMask?.let { updateLrcMask(it, false) }
     }
 
     private fun updateLrcMask(maskView: ImageView, topToBottom: Boolean) {
@@ -822,6 +948,16 @@ class PlayingActivity : BaseMusicActivity() {
                         viewBinding.lrcView.loadLrc(lrcWrap.lrc.lyric, lrcWrap.tlyric.lyric)
                         setLrcLabel("")
                         Log.d(TAG, "Loading dual language lyrics")
+
+                        // 双语歌词加载完成后，立即强制设置白色
+                        viewBinding.lrcView.post {
+                            viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+                            viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+                            Log.d(TAG, "🎨 双语歌词加载完成后强制设置白色")
+                        }
+
+                        // 然后触发颜色更新（自适应颜色）
+                        triggerLrcColorUpdate()
                     } else {
                         // 只有主歌词时使用文件路径加载
                         loadLrc(file.path)
@@ -838,13 +974,58 @@ class PlayingActivity : BaseMusicActivity() {
     private fun loadLrc(path: String) {
         val file = File(path)
         viewBinding.lrcView.loadLrc(file)
+
+        // 歌词加载完成后，立即强制设置白色，防止显示默认红色
+        viewBinding.lrcView.post {
+            viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+            viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+            Log.d(TAG, "🎨 歌词加载完成后强制设置白色")
+        }
+
+        // 然后触发颜色更新（自适应颜色）
+        triggerLrcColorUpdate()
     }
 
     private fun setLrcLabel(label: String) {
         viewBinding.lrcView.setLabel(label)
-        // 确保歌词状态文本（如"歌词加载中…"、"暂无歌词"等）始终显示为白色
-        if (label.isNotEmpty()) {
-            viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+        // 无论什么情况都强制设置白色，彻底覆盖LrcView的默认颜色
+        viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+        Log.d(TAG, "🔤 强制设置歌词颜色为白色: $label")
+    }
+
+    /**
+     * 触发歌词颜色更新 - 用于歌词加载完成后的时序修复
+     * 当歌词真正加载完成后，重新加载封面并计算自适应颜色
+     */
+    private fun triggerLrcColorUpdate() {
+        Log.d(TAG, "🔄 triggerLrcColorUpdate() 被调用")
+        Log.d(TAG, "📝 hasLrc(): ${viewBinding.lrcView.hasLrc()}")
+        Log.d(TAG, "🖼️ currentCoverUrl: $currentCoverUrl")
+
+        // 强制进行颜色计算，不依赖hasLrc()状态
+        // 颜色计算只依赖封面，不应该受歌词加载状态影响
+        Log.d(TAG, "🎨 强制进行颜色计算")
+
+        if (currentCoverUrl.isNotEmpty()) {
+            Log.d(TAG, "🔄 重新加载封面: $currentCoverUrl")
+            // 重新加载封面进行颜色计算，利用ImageUtils的缓存机制
+            ImageUtils.loadBitmap(currentCoverUrl) { result ->
+                if (result.isSuccessWithData()) {
+                    val bitmap = result.getDataOrThrow()
+                    Log.d(TAG, "✅ 封面加载成功，开始颜色提取")
+                    // 强制进行颜色更新，跳过hasLrc检查
+                    forceUpdateLrcHighlightColor(bitmap, currentCoverUrl)
+                } else {
+                    Log.w(TAG, "⚠️ 封面加载失败，使用默认封面")
+                    // 加载失败时使用默认封面
+                    forceUpdateLrcHighlightColor(defaultCoverBitmap, "")
+                }
+            }
+        } else {
+            Log.d(TAG, "🎨 使用默认封面进行颜色计算")
+            // 没有封面URL时使用默认封面
+            forceUpdateLrcHighlightColor(defaultCoverBitmap, "")
         }
     }
 

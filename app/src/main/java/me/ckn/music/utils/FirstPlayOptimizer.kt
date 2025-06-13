@@ -45,60 +45,39 @@ class FirstPlayOptimizer(
     private val userBehaviorPredictor = UserBehaviorPredictor()
     
     /**
-     * 用户点击歌曲时的极速启动优化
-     * 在播放器准备的同时并行获取URL
+     * 后台URL优化（非阻塞）
+     * 用于在播放开始后异步优化URL
      */
     suspend fun optimizeFirstPlay(
-        songId: Long, 
+        songId: Long,
         fee: Int = 0
     ): String? = withContext(Dispatchers.IO) {
         val startTime = System.currentTimeMillis()
-        
+
         try {
             // 策略1：优先使用已缓存的URL
             val cachedUrl = MusicUrlCache.getCachedUrl(songId, fee)
             if (!cachedUrl.isNullOrEmpty()) {
                 val elapsedTime = System.currentTimeMillis() - startTime
-                LogUtils.performance("FirstPlayOptimizer") { 
-                    "首次播放-缓存命中: songId=$songId, 用时=${elapsedTime}ms" 
+                LogUtils.performance("FirstPlayOptimizer") {
+                    "后台优化-缓存命中: songId=$songId, 用时=${elapsedTime}ms"
                 }
                 return@withContext cachedUrl
             }
-            
-            // 策略2：检查是否正在预加载
-            val ongoingJob = preloadingUrls[songId]
-            if (ongoingJob != null && ongoingJob.isActive) {
-                LogUtils.performance("FirstPlayOptimizer") { 
-                    "首次播放-等待预加载: songId=$songId" 
-                }
-                try {
-                    ongoingJob.join() // 等待预加载完成
-                    val preloadedUrl = MusicUrlCache.getCachedUrl(songId, fee)
-                    if (!preloadedUrl.isNullOrEmpty()) {
-                        val elapsedTime = System.currentTimeMillis() - startTime
-                        LogUtils.performance("FirstPlayOptimizer") { 
-                            "首次播放-预加载命中: songId=$songId, 用时=${elapsedTime}ms" 
-                        }
-                        return@withContext preloadedUrl
-                    }
-                } catch (e: Exception) {
-                    LogUtils.w("FirstPlayOptimizer", "等待预加载失败", e)
-                }
-            }
-            
-            // 策略3：立即发起网络请求（最快路径）
+
+            // 策略2：快速网络获取（不等待预加载）
             val url = fetchUrlWithTimeout(songId, fee, FAST_FETCH_TIMEOUT)
-            
+
             val elapsedTime = System.currentTimeMillis() - startTime
-            LogUtils.performance("FirstPlayOptimizer") { 
-                "首次播放-网络获取: songId=$songId, 用时=${elapsedTime}ms, URL=${if(url.isNotEmpty()) "成功" else "失败"}" 
+            LogUtils.performance("FirstPlayOptimizer") {
+                "后台优化-网络获取: songId=$songId, 用时=${elapsedTime}ms, URL=${if(url.isNotEmpty()) "成功" else "失败"}"
             }
-            
+
             return@withContext url
-            
+
         } catch (e: Exception) {
             val elapsedTime = System.currentTimeMillis() - startTime
-            LogUtils.e("FirstPlayOptimizer", "首次播放优化失败: songId=$songId, 用时=${elapsedTime}ms", e)
+            LogUtils.w("FirstPlayOptimizer", "后台URL优化失败: songId=$songId, 用时=${elapsedTime}ms", e)
             return@withContext ""
         }
     }

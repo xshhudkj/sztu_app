@@ -30,6 +30,7 @@ object DatabaseModule {
             CommonApp.app,
             MusicDatabase::class.java,
             "music_db"
-        ).build()
+        ).fallbackToDestructiveMigrationOnDowngrade()
+        .build()
     }
 }
