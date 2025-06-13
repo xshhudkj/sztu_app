@@ -228,6 +228,7 @@ fun SongData.toMediaItem(): MediaItem {
                 .setArtworkUri(Uri.parse(CoverUtils.getLargeCover(false, albumCover)))
                 .setBaseCover(albumCover)
                 .setDuration(dt)
+                .setDurationMs(dt)  // 确保同时设置 durationMs
                 .setFee(fee)
                 .build()
         )

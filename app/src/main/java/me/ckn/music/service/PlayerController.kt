@@ -30,6 +30,9 @@ interface PlayerController {
     fun addAndPlay(song: MediaItem)
 
     @MainThread
+    fun addToNextAndPlay(song: MediaItem)
+
+    @MainThread
     fun replaceAll(songList: List<MediaItem>, song: MediaItem)
 
     @MainThread

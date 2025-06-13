@@ -333,3 +333,19 @@
 - `bg_title_bar_gradient.xml` - 渐变标题栏背景
 - `bg_close_button_modern.xml` - 现代化关闭按钮
 - `bg_action_button_modern.xml`
+
+## [2025-01-27] 播放历史功能关键缺陷修复
+
+### 🛠️ 主要修复内容
+- **播放历史点击逻辑优化**：点击播放历史中的歌曲时，无论是否已在播放列表，始终将其作为新歌插入到当前播放歌曲的下一位置，允许重复。
+- **进度条总时长显示修复**：修复通过播放历史触发播放的歌曲时，进度条组件总时长显示为00:00的问题，确保能正确显示歌曲实际总时长。
+
+### 🔧 主要修改文件
+- `app/src/main/java/me/ckn/music/service/PlayerControllerImpl.kt`
+- `app/src/main/java/me/ckn/music/main/playing/PlayingActivity.kt`
+- `app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistFragment.kt`
+
+### ✅ 验证标准
+1. 播放历史点击后歌曲能正常插入并播放，允许重复。
+2. 进度条总时长显示正常，不再为00:00。
+3. 不影响现有其他功能。

@@ -257,8 +257,10 @@ class PlayerControllerImpl(
                 newPlaylist[index] = song
                 player.replaceMediaItem(index, song)
             } else {
-                newPlaylist.add(song)
-                player.addMediaItem(song)
+                // 验证和增强 MediaItem 数据
+                val enhancedSong = validateAndEnhanceMediaItem(song)
+                newPlaylist.add(enhancedSong)
+                player.addMediaItem(enhancedSong)
             }
             withContext(Dispatchers.IO) {
                 db.playlistDao().clear()
@@ -266,6 +268,49 @@ class PlayerControllerImpl(
             }
             _playlist.value = newPlaylist
             play(song.mediaId)
+        }
+    }
+
+    @MainThread
+    override fun addToNextAndPlay(song: MediaItem) {
+        launch(Dispatchers.Main.immediate) {
+            try {
+                // 验证和增强 MediaItem 数据
+                val enhancedSong = validateAndEnhanceMediaItem(song)
+
+                val currentPlaylist = _playlist.value?.toMutableList() ?: mutableListOf()
+                val currentIndex = player.currentMediaItemIndex
+
+                // 修复：始终添加到下一位置，无论是否已存在相同歌曲（允许重复）
+                val insertIndex = if (currentPlaylist.isEmpty()) {
+                    0
+                } else {
+                    (currentIndex + 1).coerceAtMost(currentPlaylist.size)
+                }
+
+                currentPlaylist.add(insertIndex, enhancedSong)
+                player.addMediaItem(insertIndex, enhancedSong)
+                LogUtils.d(TAG, "歌曲插入到位置 $insertIndex（允许重复）: ${enhancedSong.mediaMetadata.title}")
+
+                // 更新数据库
+                withContext(Dispatchers.IO) {
+                    db.playlistDao().clear()
+                    db.playlistDao().insertAll(currentPlaylist.map { it.toSongEntity() })
+                }
+
+                // 更新播放列表状态
+                _playlist.value = currentPlaylist
+
+                // 立即播放歌曲
+                play(enhancedSong.mediaId)
+
+                LogUtils.d(TAG, "addToNextAndPlay 完成: ${enhancedSong.mediaMetadata.title}")
+
+            } catch (e: Exception) {
+                LogUtils.e(TAG, "addToNextAndPlay 失败", e)
+                // 回退到原有的 addAndPlay 逻辑
+                addAndPlay(song)
+            }
         }
     }
 
@@ -349,16 +394,19 @@ class PlayerControllerImpl(
     override fun play(mediaId: String) {
         val playlist = _playlist.value
         if (playlist.isNullOrEmpty()) {
+            LogUtils.w(TAG, "播放列表为空，无法播放")
             return
         }
         val index = playlist.indexOfFirst { it.mediaId == mediaId }
         if (index < 0) {
+            LogUtils.w(TAG, "在播放列表中未找到歌曲: mediaId=$mediaId")
             return
         }
 
         // 标记当前歌曲开始播放，清理预加载记录
-        val songId = playlist[index].getSongId()
-        val songFee = playlist[index].getFee()
+        val mediaItem = playlist[index]
+        val songId = mediaItem.getSongId()
+        val songFee = mediaItem.getFee()
         smartPreloadManager.markSongAsPlayed(songId)
 
         // 🚀 零延时播放优化：立即播放，后台优化URL
@@ -367,8 +415,20 @@ class PlayerControllerImpl(
                 val optimizeStartTime = System.currentTimeMillis()
                 LogUtils.performance(TAG) { "开始零延时播放优化: songId=$songId" }
 
+                // 验证 MediaItem 数据完整性
+                val duration = mediaItem.mediaMetadata.durationMs ?: 0L
+                if (duration <= 0) {
+                    LogUtils.w(TAG, "MediaItem duration 无效: $duration, 尝试增强数据")
+                    // 如果 duration 无效，尝试从数据库获取
+                    val enhancedMediaItem = validateAndEnhanceMediaItem(mediaItem)
+                    // 更新播放列表中的数据
+                    val updatedPlaylist = playlist.toMutableList()
+                    updatedPlaylist[index] = enhancedMediaItem
+                    _playlist.value = updatedPlaylist
+                    player.replaceMediaItem(index, enhancedMediaItem)
+                }
+
                 // 立即设置播放状态和UI
-                val mediaItem = playlist[index]
                 _currentSong.value = mediaItem
                 _playProgress.value = 0
                 _bufferingPercent.value = 0
@@ -379,17 +439,27 @@ class PlayerControllerImpl(
                 // 极速播放优化：最小化状态切换操作
                 val currentIndex = player.currentMediaItemIndex
                 if (currentIndex != index) {
+                    LogUtils.d(TAG, "切换到播放位置: $currentIndex -> $index")
                     player.seekTo(index, 0)
                 }
 
                 // 智能准备播放器：只在必要时准备
                 when (player.playbackState) {
-                    Player.STATE_IDLE -> player.prepare()
-                    Player.STATE_ENDED -> player.prepare()
-                    // 其他状态直接播放，减少准备时间
+                    Player.STATE_IDLE -> {
+                        LogUtils.d(TAG, "播放器状态 IDLE，准备播放器")
+                        player.prepare()
+                    }
+                    Player.STATE_ENDED -> {
+                        LogUtils.d(TAG, "播放器状态 ENDED，重新准备播放器")
+                        player.prepare()
+                    }
+                    else -> {
+                        LogUtils.d(TAG, "播放器状态正常: ${player.playbackState}")
+                    }
                 }
 
                 // 立即开始播放，不等待URL优化
+                LogUtils.d(TAG, "开始播放: ${mediaItem.mediaMetadata.title}")
                 player.play()
 
                 // 后台异步优化URL（不阻塞播放）
@@ -892,6 +962,60 @@ class PlayerControllerImpl(
     private var lastAddedSongId: Long = 0L
     private var lastAddedTime: Long = 0L
     private val addCooldownMs = 2000L // 2秒冷却时间
+
+    /**
+     * 验证和增强 MediaItem 数据
+     * 确保 MediaItem 包含播放所需的完整信息
+     */
+    private suspend fun validateAndEnhanceMediaItem(mediaItem: MediaItem): MediaItem {
+        return withContext(Dispatchers.IO) {
+            try {
+                val metadata = mediaItem.mediaMetadata
+                val duration = metadata.durationMs ?: 0L
+
+                // 如果 duration 为0或无效，尝试从数据库获取
+                if (duration <= 0) {
+                    LogUtils.d(TAG, "MediaItem duration 无效，尝试从数据库获取: mediaId=${mediaItem.mediaId}")
+
+                    // 从播放列表数据库查询歌曲信息
+                    val songEntity = db.playlistDao().queryByUniqueId(mediaItem.mediaId)
+                    if (songEntity != null && songEntity.duration > 0) {
+                        // 使用数据库中的 duration 重建 MediaItem
+                        val enhancedMetadata = metadata.buildUpon()
+                            .setDurationMs(songEntity.duration)
+                            .build()
+
+                        val enhancedMediaItem = mediaItem.buildUpon()
+                            .setMediaMetadata(enhancedMetadata)
+                            .build()
+
+                        LogUtils.d(TAG, "从数据库补全 duration: ${songEntity.duration}ms")
+                        return@withContext enhancedMediaItem
+                    } else {
+                        LogUtils.w(TAG, "数据库中也没有找到有效的 duration，使用默认值")
+                        
+                        // 设置一个默认的 duration（3分钟），避免进度条无法使用
+                        val enhancedMetadata = metadata.buildUpon()
+                            .setDurationMs(180000L) // 3分钟默认时长
+                            .build()
+
+                        val enhancedMediaItem = mediaItem.buildUpon()
+                            .setMediaMetadata(enhancedMetadata)
+                            .build()
+
+                        LogUtils.w(TAG, "使用默认duration: 180000ms")
+                        return@withContext enhancedMediaItem
+                    }
+                } else {
+                    LogUtils.d(TAG, "MediaItem duration 有效: ${duration}ms")
+                    return@withContext mediaItem
+                }
+            } catch (e: Exception) {
+                LogUtils.e(TAG, "验证和增强 MediaItem 失败，使用原始数据", e)
+                return@withContext mediaItem
+            }
+        }
+    }
 
     /**
      * 添加歌曲到最近播放记录，带重复检查和即时响应

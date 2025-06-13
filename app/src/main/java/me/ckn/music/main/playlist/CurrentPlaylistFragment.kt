@@ -132,13 +132,20 @@ class CurrentPlaylistFragment : BaseMusicBottomSheetFragment() {
                 object : OnItemClickListener2<MediaItem> {
                     override fun onItemClick(item: MediaItem, position: Int) {
                         if (isRecentPlayMode) {
-                            // 最近播放模式：点击歌曲时添加到播放列表并播放
+                            // 最近播放模式：将歌曲插入到下一首位置并播放
                             try {
-                                playerController.addAndPlay(item)
-                                Log.d(TAG, "最近播放模式：开始播放歌曲 ${item.mediaMetadata.title}")
+                                playerController.addToNextAndPlay(item)
+                                Log.d(TAG, "最近播放模式：将歌曲插入到下一首位置并播放 ${item.mediaMetadata.title}")
                             } catch (e: Exception) {
-                                Log.e(TAG, "最近播放模式：播放歌曲失败", e)
-                                // 播放失败时的处理逻辑可以在这里添加，比如显示错误提示
+                                Log.e(TAG, "最近播放模式：播放歌曲失败，回退到原有逻辑", e)
+                                // 播放失败时回退到原有的 addAndPlay 逻辑
+                                try {
+                                    playerController.addAndPlay(item)
+                                    Log.d(TAG, "最近播放模式：回退逻辑播放成功")
+                                } catch (fallbackException: Exception) {
+                                    Log.e(TAG, "最近播放模式：回退逻辑也失败", fallbackException)
+                                    // 可以在这里添加用户提示
+                                }
                             }
                         } else {
                             // 播放列表模式：直接播放

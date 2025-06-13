@@ -226,18 +226,25 @@ class PlayBar @JvmOverloads constructor(
     private fun updatePlayProgress() {
         val currentSong = playerController.currentSong.value
         val progressWidth = if (currentSong != null) {
-            val duration = currentSong.mediaMetadata.getDuration()
+            // 优先从 MediaMetadata 的 durationMs 获取时长
+            val duration = currentSong.mediaMetadata.durationMs ?: currentSong.mediaMetadata.getDuration()
             val position = playerController.playProgress.value
 
             if (duration > 0 && viewBinding.root.width > 0) {
                 val progress = (position.toFloat() / duration.toFloat()).coerceIn(0f, 1f)
                 (viewBinding.root.width * progress).toInt()
-            } else 0
+            } else {
+                // 如果duration无效，至少显示一个最小进度条
+                if (position > 0) 1 else 0
+            }
         } else 0
 
         // 更新进度背景宽度
         viewBinding.progressBackground.layoutParams =
             viewBinding.progressBackground.layoutParams.apply { width = progressWidth }
+        
+        // 强制请求布局更新，确保进度条可见
+        viewBinding.progressBackground.requestLayout()
     }
 
     /**

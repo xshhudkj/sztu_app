@@ -16,6 +16,7 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.doOnLayout
@@ -298,6 +299,8 @@ class PlayingActivity : BaseMusicActivity() {
         // 彻底覆盖LrcView的默认颜色设置，强制使用白色
         viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.setTimelineTextColor(ContextCompat.getColor(this, R.color.lrc_timeline_highlight_color))
+        viewBinding.lrcView.setTimeTextColor(android.graphics.Color.WHITE)
 
         // 强制刷新视图，确保颜色设置立即生效
         viewBinding.lrcView.invalidate()
@@ -306,6 +309,8 @@ class PlayingActivity : BaseMusicActivity() {
         viewBinding.lrcView.post {
             viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
             viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+            viewBinding.lrcView.setTimelineTextColor(ContextCompat.getColor(this, R.color.lrc_timeline_highlight_color))
+            viewBinding.lrcView.setTimeTextColor(android.graphics.Color.WHITE)
             Log.d(TAG, "🎨 强制设置LrcView初始颜色为白色")
         }
 
@@ -489,6 +494,11 @@ class PlayingActivity : BaseMusicActivity() {
                 
                 lastUpdateSongId = songId
                 isUpdatingUI = true
+                
+                // 立即重置歌词颜色为白色，防止显示默认红色
+                viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+                viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+                viewBinding.lrcView.invalidate()
                 // 更新歌曲信息布局（在黑胶封面下方）- 横屏和竖屏模式都存在
                 viewBinding.tvSongTitle?.text = song.mediaMetadata.title
                 viewBinding.tvSongArtist?.text = song.mediaMetadata.artist
@@ -508,22 +518,32 @@ class PlayingActivity : BaseMusicActivity() {
                     viewBinding.titleLayout?.tvArtist?.text = song.mediaMetadata.artist
                 }
 
-                // 立即重置进度条UI - 歌曲切换时的即时反馈
-                viewBinding.controlLayout.sbProgress.max = song.mediaMetadata.getDuration().toInt()
-                viewBinding.controlLayout.sbProgress.progress = 0  // 立即重置为0，提供即时反馈
-                viewBinding.controlLayout.sbProgress.secondaryProgress = 0
-
-                // 设置VIP试听标记
-                updateVipTrialMark(song)
-
-                // 重置VIP对话框状态
-                hasShownVipDialog = false
-                lastProgress = 0
+                // 优化进度条初始化 - 确保数据有效性
+                // 优先从 MediaMetadata 的 durationMs 获取时长（与PlayBar保持一致）
+                val initialDuration = song.mediaMetadata.durationMs ?: song.mediaMetadata.getDuration()
+                Log.d(TAG, "初始duration检查: durationMs=${song.mediaMetadata.durationMs}, getDuration()=${song.mediaMetadata.getDuration()}, 使用值=$initialDuration")
                 
-                // 立即更新时间显示 - 显示00:00而不是等待播放器更新
-                viewBinding.controlLayout.tvCurrentTime.text = TimeUtils.formatMs(0)
-                viewBinding.controlLayout.tvTotalTime.text =
-                    TimeUtils.formatMs(song.mediaMetadata.getDuration())
+                // 如果duration无效，等待MediaItem增强完成后再次检查
+                if (initialDuration <= 0) {
+                    Log.w(TAG, "歌曲 duration 无效，等待数据增强...")
+                    // 延迟一小段时间等待validateAndEnhanceMediaItem完成
+                    lifecycleScope.launch {
+                        delay(200) // 增加到200ms，给更多时间加载
+                        val updatedSong = playerController.currentSong.value
+                        if (updatedSong != null && updatedSong.mediaId == song.mediaId) {
+                            val updatedDuration = updatedSong.mediaMetadata.durationMs ?: updatedSong.mediaMetadata.getDuration()
+                            if (updatedDuration > 0) {
+                                Log.d(TAG, "检测到duration更新: $initialDuration -> $updatedDuration，重新初始化进度条")
+                                updateProgressBar(updatedSong, updatedDuration)
+                            }
+                        }
+                    }
+                    
+                    // 暂时设置一个默认值，避免进度条完全不可用
+                    updateProgressBar(song, 0)
+                } else {
+                    updateProgressBar(song, initialDuration)
+                }
                 updateCover(song)
                 updateLrc(song)
                 viewBinding.albumCoverView.reset()
@@ -600,6 +620,12 @@ class PlayingActivity : BaseMusicActivity() {
     private fun updateCover(song: MediaItem) {
         currentCoverUrl = ""
         setDefaultCover()
+        
+        // 立即设置歌词为白色，防止封面加载过程中显示红色
+        viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.invalidate()
+        
         val coverUrl = song.getLargeCover()
         ImageUtils.loadBitmap(coverUrl) {
             if (it.isSuccessWithData()) {
@@ -754,13 +780,26 @@ class PlayingActivity : BaseMusicActivity() {
         Log.d(TAG, "🎨 updateLrcColors() 被调用")
         Log.d(TAG, "🌈 设置高亮颜色: #${Integer.toHexString(highlightColor)}")
 
-        // 设置高亮颜色（可以是自适应颜色）
-        viewBinding.lrcView.setCurrentColor(highlightColor)
-        // 强制设置普通歌词颜色为白色，彻底覆盖库的默认设置
-        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+        // 确保在主线程更新UI
+        runOnUiThread {
+            // 设置高亮颜色（可以是自适应颜色）
+            viewBinding.lrcView.setCurrentColor(highlightColor)
+            // 强制设置普通歌词颜色为白色，彻底覆盖库的默认设置
+            viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+            // 确保时间线文本颜色也正确
+            viewBinding.lrcView.setTimelineTextColor(ContextCompat.getColor(this@PlayingActivity, R.color.lrc_timeline_highlight_color))
+            viewBinding.lrcView.setTimeTextColor(android.graphics.Color.WHITE)
 
-        // 强制刷新视图，确保颜色更改立即生效
-        viewBinding.lrcView.invalidate()
+            // 强制刷新视图，确保颜色更改立即生效
+            viewBinding.lrcView.invalidate()
+            
+            // 再次延迟设置，确保完全覆盖
+            viewBinding.lrcView.postDelayed({
+                viewBinding.lrcView.setCurrentColor(highlightColor)
+                viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+                viewBinding.lrcView.invalidate()
+            }, 100)
+        }
 
         Log.d(TAG, "✅ 歌词颜色强制设置完成 - 普通歌词: 白色, 高亮歌词: #${Integer.toHexString(highlightColor)}")
     }
@@ -920,6 +959,12 @@ class PlayingActivity : BaseMusicActivity() {
     private fun updateLrc(song: MediaItem) {
         loadLrcJob?.cancel()
         loadLrcJob = null
+        
+        // 立即设置歌词为白色，防止加载过程中显示红色
+        viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+        viewBinding.lrcView.invalidate()
+        
         val lrcPath = LrcCache.getLrcFilePath(song)
         if (lrcPath?.isNotEmpty() == true) {
             loadLrc(lrcPath)
@@ -954,10 +999,12 @@ class PlayingActivity : BaseMusicActivity() {
                             viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
                             viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
                             Log.d(TAG, "🎨 双语歌词加载完成后强制设置白色")
+                            
+                            // 延迟触发颜色更新，确保歌词已完全加载
+                            viewBinding.lrcView.postDelayed({
+                                triggerLrcColorUpdate()
+                            }, 200)
                         }
-
-                        // 然后触发颜色更新（自适应颜色）
-                        triggerLrcColorUpdate()
                     } else {
                         // 只有主歌词时使用文件路径加载
                         loadLrc(file.path)
@@ -980,10 +1027,12 @@ class PlayingActivity : BaseMusicActivity() {
             viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
             viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
             Log.d(TAG, "🎨 歌词加载完成后强制设置白色")
+            
+            // 延迟触发颜色更新，确保歌词已完全加载
+            viewBinding.lrcView.postDelayed({
+                triggerLrcColorUpdate()
+            }, 200)
         }
-
-        // 然后触发颜色更新（自适应颜色）
-        triggerLrcColorUpdate()
     }
 
     private fun setLrcLabel(label: String) {
@@ -1091,6 +1140,9 @@ class PlayingActivity : BaseMusicActivity() {
         unregisterReceiver(volumeReceiver)
         defaultCoverBitmap.recycle()
         defaultBgBitmap.recycle()
+        // 取消duration监听任务
+        durationWatchJob?.cancel()
+        durationWatchJob = null
     }
 
     /**
@@ -1238,6 +1290,79 @@ class PlayingActivity : BaseMusicActivity() {
     }
 
 
+
+    /**
+     * 更新进度条和时间显示
+     * 统一处理进度条初始化和更新逻辑
+     */
+    private fun updateProgressBar(song: MediaItem, duration: Long) {
+        val maxProgress = if (duration > 0) {
+            duration.toInt()
+        } else {
+            // 如果 duration 无效，设置为1避免进度条除零错误
+            Log.w(TAG, "歌曲 duration 无效: $duration，暂时设置为1")
+            1
+        }
+
+        viewBinding.controlLayout.sbProgress.max = maxProgress
+        viewBinding.controlLayout.sbProgress.progress = 0  // 立即重置为0，提供即时反馈
+        viewBinding.controlLayout.sbProgress.secondaryProgress = 0
+
+        // 设置VIP试听标记
+        updateVipTrialMark(song)
+
+        // 重置VIP对话框状态
+        hasShownVipDialog = false
+        lastProgress = 0
+
+        // 立即更新时间显示
+        viewBinding.controlLayout.tvCurrentTime.text = TimeUtils.formatMs(0)
+        val totalTimeText = if (duration > 0) {
+            TimeUtils.formatMs(duration)
+        } else {
+            "--:--" // 如果 duration 无效，显示占位符
+        }
+        viewBinding.controlLayout.tvTotalTime.text = totalTimeText
+
+        Log.d(TAG, "进度条初始化完成: max=$maxProgress, duration=$duration, totalTime=$totalTimeText")
+        
+        // 如果duration无效，设置定时任务监听duration更新
+        if (duration <= 0) {
+            watchForDurationUpdate(song)
+        }
+    }
+    
+    /**
+     * 监听duration更新的协程任务
+     */
+    private var durationWatchJob: kotlinx.coroutines.Job? = null
+    
+    /**
+     * 监听播放器duration更新
+     */
+    private fun watchForDurationUpdate(song: MediaItem) {
+        // 取消之前的监听任务
+        durationWatchJob?.cancel()
+        
+        durationWatchJob = lifecycleScope.launch {
+            // 每500ms检查一次，最多检查20次（10秒）
+            repeat(20) { attempt ->
+                delay(500)
+                val currentSong = playerController.currentSong.value
+                if (currentSong?.mediaId == song.mediaId) {
+                    // 尝试从MediaMetadata获取duration
+                    val mediaDuration = currentSong.mediaMetadata.durationMs ?: currentSong.mediaMetadata.getDuration()
+                    
+                    if (mediaDuration > 0) {
+                        Log.d(TAG, "Duration更新成功 (尝试 ${attempt + 1}): $mediaDuration")
+                        updateProgressBar(currentSong, mediaDuration)
+                        return@launch
+                    }
+                }
+            }
+            Log.w(TAG, "无法获取有效的duration，歌曲可能还在加载中")
+        }
+    }
 
     /**
      * 为歌曲信息设置渐变文字效果
