@@ -1,0 +1,135 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppBaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="colorPrimary">@color/common_theme_color</item>
+        <item name="colorPrimaryDark">@color/common_theme_color</item>
+        <item name="colorAccent">@color/common_theme_color</item>
+    </style>
+
+    <style name="AppTheme.Popup" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationPopup</item>
+    </style>
+
+    <!-- 车载全屏沉浸式主题 - 符合官方最佳实践 -->
+    <style name="AppTheme.CarImmersive" parent="AppTheme">
+        <!-- 基础全屏设置 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- 透明系统栏 - 符合edge-to-edge设计 -->
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+
+        <!-- 强制透明系统栏（确保沉浸式效果） -->
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:enforceNavigationBarContrast" tools:targetApi="q">false</item>
+
+        <!-- 刘海屏和异形屏适配 -->
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="p">shortEdges</item>
+
+        <!-- 窗口适配设置 - 关键配置 -->
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">false</item>
+        <item name="android:windowTranslucentNavigation" tools:targetApi="kitkat">false</item>
+
+        <!-- 车载环境优化 -->
+        <item name="android:keepScreenOn">true</item>
+
+        <!-- 防止系统UI覆盖 -->
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+    </style>
+
+    <!-- 启动页专用主题 - 完全禁用系统默认启动画面 -->
+    <style name="AppTheme.CarImmersive.Splash" parent="AppTheme.CarImmersive">
+        <!-- 设置启动页背景为渐变色，避免白屏 -->
+        <item name="android:windowBackground">@drawable/splash_gradient</item>
+
+        <!-- 完全禁用系统启动窗口预览 -->
+        <item name="android:windowDisablePreview">true</item>
+
+        <!-- 禁用启动时的系统动画和透明效果 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@null</item>
+
+        <!-- 确保无标题栏和系统装饰 -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <!-- Android 12+ Splash Screen API 配置 -->
+        <item name="android:windowSplashScreenBackground" tools:targetApi="s">@drawable/splash_gradient</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@null</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">0</item>
+        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">@android:color/transparent</item>
+
+        <!-- 强制禁用系统启动画面相关属性 -->
+        <item name="android:windowShowWallpaper">false</item>
+        <item name="android:windowIsFloating">false</item>
+
+        <!-- 确保窗口立即可见 -->
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="lollipop">true</item>
+    </style>
+
+    <!-- 播放页面专用主题，带滑动动画 -->
+    <style name="AppTheme.CarImmersive.Playing" parent="AppTheme.CarImmersive">
+        <item name="android:windowAnimationStyle">@style/AnimationPlaying</item>
+    </style>
+
+    <style name="AnimationPopup" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_up</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_slide_down</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_slide_up</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_down</item>
+    </style>
+
+    <!-- 播放页面专用动画 -->
+    <style name="AnimationPlaying" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/anim_slide_up_with_background</item>
+        <item name="android:activityOpenExitAnimation">@anim/anim_stay_background</item>
+        <item name="android:activityCloseEnterAnimation">@anim/anim_stay_background</item>
+        <item name="android:activityCloseExitAnimation">@anim/anim_slide_down_with_background</item>
+    </style>
+
+    <style name="TabLayout">
+        <item name="tabIndicator">@drawable/ic_tab_layout_indicator</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabPaddingEnd">0dp</item>
+        <item name="tabPaddingStart">0dp</item>
+        <item name="tabRippleColor">@null</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Material3.DayNight.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyleTransparent</item>
+    </style>
+
+    <style name="BottomSheetStyleTransparent" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- 自定义NavigationView分组标题样式，使分割线紧凑细致 -->
+    <style name="CustomNavigationViewGroupTitle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:height">1dp</item>
+        <item name="android:background">#F0F1F2</item> <!-- 分割线颜色，可自定义 -->
+        <item name="android:textSize">0sp</item> <!-- 隐藏文字 -->
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="NavMenuItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:drawablePadding">16dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:textColor">@color/common_text_h1_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+</resources>

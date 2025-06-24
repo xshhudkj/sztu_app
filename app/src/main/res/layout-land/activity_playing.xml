@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Android Automotive 横屏播放页面布局
+用途：车载系统横屏模式下的音乐播放界面
+结构：左侧黑胶封面+控制区域，右侧歌词区域
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    背景层容器
+    作用：包含背景图片、遮罩和渐变效果
+    调整：一般不需要修改此容器
+    -->
+    <FrameLayout
+        android:id="@+id/flBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--
+        背景图片
+        作用：显示当前歌曲的专辑封面作为背景
+        调整：scaleType控制图片缩放方式(centerCrop/fitXY/center等)
+        -->
+        <ImageView
+            android:id="@+id/ivPlayingBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/bg_playing_default" />
+
+        <!--
+        背景遮罩
+        作用：在背景图片上添加半透明黑色遮罩，确保前景文字可读
+        调整：修改background颜色可调整遮罩透明度(translucent_black_p30/p50/p70等)
+        -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/translucent_black_p50" />
+
+        <!--
+        底部渐变遮罩
+        作用：在底部添加渐变效果，增强视觉层次
+        调整：layout_height控制渐变高度，颜色控制渐变效果
+        -->
+        <com.hjq.shape.view.ShapeView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            app:shape_solidGradientEndColor="@color/translucent_black_p50"
+            app:shape_solidGradientOrientation="topToBottom"
+            app:shape_solidGradientStartColor="@color/transparent" />
+    </FrameLayout>
+
+    <!--
+    主内容容器
+    作用：包含所有UI元素的垂直布局容器
+    调整：orientation控制子元素排列方向(vertical垂直/horizontal水平)
+    -->
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 标题栏已取消，关闭按钮移到其他位置或通过手势返回 -->
+
+        <!--
+        主要内容水平布局
+        作用：左右分割显示黑胶封面区域和歌词区域
+        调整：取消标题栏后，从顶部开始布局
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <!--
+            左侧黑胶封面区域容器
+            作用：包含黑胶封面、歌曲信息、播放控制
+            调整：layout_weight控制左右区域比例(当前1:1，可改为2:3等)
+                 layout_marginStart向右移动整个左侧区域
+                 layout_marginTop负值让整个容器包括唱臂往上移动
+            -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="-16dp"
+                android:layout_marginTop="-20dp"
+                android:layout_marginEnd="-8dp">
+
+                <!--
+                黑胶封面区域
+                作用：显示旋转的黑胶唱片和唱臂动画
+                调整：layout_marginTop负值让黑胶封面往上移动更多
+                     layout_marginBottom负值让歌曲信息往上移动更多
+                     layout_constraintWidth_max恢复原始大小
+                     具体尺寸在AlbumCoverView.kt中的initSize()方法调整
+                -->
+
+                <!--
+                歌曲信息布局
+                作用：显示歌曲标题和艺术家（从标题栏移动到此处）
+                调整：layout_marginHorizontal控制左右边距（减少以向外扩展）
+                     gravity控制对齐方式(center_horizontal居中/start左对齐/end右对齐)
+                     字体大小在dimens.xml中调整playing_song_title_text_size等
+                     layout_marginTop负值让歌曲信息继续往上移动更多
+                     layout_marginBottom负值让歌曲信息往上移动更多
+                     layout_constraintWidth_max恢复原始大小
+                -->
+
+                <me.ckn.music.widget.AlbumCoverView
+                    android:id="@+id/albumCoverView"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toTopOf="@+id/controlLayout"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="550dp" />
+
+                <!-- 歌曲信息已移动到右侧歌词区域上方 -->
+
+                <!--
+                播放控制区域
+                作用：引入播放控制布局(进度条、播放按钮、上下首等)
+                调整：需要修改activity_playing_control.xml文件
+                     layout_constraintWidth_max控制最大宽度（再增大以让进度条更长）
+                     现在直接约束到黑胶封面下方
+                -->
+                <include
+                    android:id="@+id/controlLayout"
+                    layout="@layout/activity_playing_control"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/albumCoverView"
+                    app:layout_constraintWidth_max="600dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--
+            右侧歌词区域容器
+            作用：包含歌曲信息、音量控制和歌词显示
+            调整：layout_weight控制左右区域比例(当前1:1，可改为3:2等)
+                 layout_marginStart负值向左移动整个右侧区域
+            -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lrcLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="-16dp"
+                android:layout_weight="1">
+
+                <!--
+                歌曲信息布局（移动到歌词区域正上方）
+                作用：显示歌曲标题和艺术家，增加美观的视觉效果
+                调整：layout_marginHorizontal控制左右边距
+                     gravity控制对齐方式(center_horizontal居中/start左对齐/end右对齐)
+                     字体大小在dimens.xml中调整playing_song_title_text_size等
+                     添加背景、圆角、阴影等美观效果
+                -->
+                <LinearLayout
+                    android:id="@+id/songInfoLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="450dp">
+
+                    <!--
+                    歌曲标题（包含VIP标签）
+                    作用：显示当前播放歌曲的标题，增大尺寸并添加美观效果
+                    调整：使用LinearLayout水平布局，包含歌曲标题和VIP标签
+                    -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvSongTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="marquee"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:gravity="center"
+                            android:letterSpacing="0.02"
+                            android:lineSpacingExtra="2dp"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:maxLines="1"
+                            android:scrollHorizontally="true"
+                            android:shadowColor="#80000000"
+                            android:shadowDx="1"
+                            android:shadowDy="1"
+                            android:shadowRadius="3"
+                            android:singleLine="true"
+                            android:text="曲目"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/playing_song_title_text_size"
+                            android:textStyle="bold" />
+
+                        <!-- VIP标签 -->
+                        <TextView
+                            android:id="@+id/tvVipLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:background="@drawable/bg_vip_label"
+                            android:paddingHorizontal="6dp"
+                            android:paddingVertical="2dp"
+                            android:text="VIP"
+                            android:textColor="@color/white"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <!--
+                    艺术家名称
+                    作用：显示当前播放歌曲的艺术家，增大尺寸并添加美观效果
+                    调整：layout_marginTop控制与标题的间距
+                         textSize引用playing_song_artist_text_size(在dimens.xml中修改)
+                         textColor控制文字颜色，添加渐变效果
+                         添加跑马灯相关属性：ellipsize="marquee", singleLine, scrollHorizontally, focusable等
+                    -->
+                    <TextView
+                        android:id="@+id/tvSongArtist"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:alpha="0.9"
+                        android:ellipsize="marquee"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:gravity="center"
+                        android:letterSpacing="0.05"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:maxLines="1"
+                        android:scrollHorizontally="true"
+                        android:shadowColor="#60000000"
+                        android:shadowDx="0.5"
+                        android:shadowDy="0.5"
+                        android:shadowRadius="2"
+                        android:singleLine="true"
+                        android:text="艺术家"
+                        android:textColor="#E0FFFFFF"
+                        android:textSize="@dimen/playing_song_artist_text_size"
+                        android:textStyle="normal" />
+                </LinearLayout>
+
+                <!--
+                音量控制区域
+                作用：引入音量控制布局(音量图标+音量调节条)
+                调整：需要修改activity_playing_volume.xml文件
+                     layout_constraintWidth_max控制最大宽度
+                     现在位于歌曲信息下方
+                -->
+                <include
+                    android:id="@+id/volumeLayout"
+                    layout="@layout/activity_playing_volume"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/songInfoLayout"
+                    app:layout_constraintWidth_max="550dp" />
+
+                <!--
+                歌词显示区域
+                作用：显示滚动歌词，支持拖拽和点击
+                调整：layout_marginTop控制与音量控制的间距
+                     lrcTextSize控制当前行字体大小(在dimens.xml中修改lrc_current_text_size)
+                     lrcNormalTextSize控制普通行字体大小(在dimens.xml中修改lrc_normal_text_size)
+                     lrcDividerHeight控制行间距(在dimens.xml中修改lrc_divider_height)
+                     lrcPadding控制左右内边距(在dimens.xml中修改lrc_padding)
+                     lrcCurrentTextColor控制当前行颜色
+                     lrcNormalTextColor控制普通行颜色
+                     lrcTextGravity设置为左对齐
+                -->
+
+                <!--
+                歌词顶部遮罩
+                作用：在歌词顶部添加渐变遮罩效果
+                调整：layout_height控制遮罩高度，背景在代码中动态设置
+                -->
+
+                <me.wcy.lrcview.LrcView
+                    android:id="@+id/lrcView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/songInfoLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/volumeLayout"
+                    app:layout_constraintVertical_bias="0.864"
+                    app:lrcAnimationDuration="1000"
+                    app:lrcCurrentTextColor="@color/white"
+                    app:lrcDividerHeight="@dimen/lrc_divider_height"
+                    app:lrcNormalTextColor="@color/translucent_white_p50"
+                    app:lrcNormalTextSize="@dimen/lrc_normal_text_size"
+                    app:lrcPadding="@dimen/lrc_padding"
+                    app:lrcTextGravity="left"
+                    app:lrcTextSize="@dimen/lrc_current_text_size"
+                    app:lrcTimeTextColor="#FFFFFF"
+                    app:lrcTimeTextSize="@dimen/lrc_time_text_size"
+                    app:lrcTimelineColor="@color/translucent_white_p50"
+                    app:lrcTimelineHeight="@dimen/lrc_timeline_height"
+                    app:lrcTimelineTextColor="@color/lrc_timeline_highlight_color" />
+
+                <!--
+                歌词底部遮罩
+                作用：在歌词底部添加渐变遮罩效果
+                调整：layout_height控制遮罩高度，背景在代码中动态设置
+                -->
+                <ImageView
+                    android:id="@+id/ivLrcBottomMask"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/lrcView" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 固定的返回按钮 - 绝对定位在左上角 -->
+    <ImageView
+        android:id="@+id/ivCloseButton"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_close_button"
+        android:padding="12dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_arrow_down"
+        app:tint="@color/white" />
+</FrameLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.view.ShapeTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="36dp"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="6dp"
+    android:singleLine="true"
+    android:gravity="center"
+    android:textColor="@color/common_text_h2_color"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    app:shape_radius="18dp"
+    app:shape_solidColor="@color/card_bg"
+    app:shape_strokeColor="@color/common_divider"
+    app:shape_strokeSize="0.5dp"
+    tools:text="周杰伦" />

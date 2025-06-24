@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.hjq.shape.layout.ShapeLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/playlist_item_height"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/playlist_item_padding_start"
+    android:paddingEnd="@dimen/playlist_item_padding_end"
+    app:shape_solidColor="@color/transparent"
+    app:shape_solidSelectedColor="@color/common_background_color">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <com.hjq.shape.view.ShapeTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="@dimen/playlist_item_title_text_size"
+            app:shape_textColor="@color/common_text_h1_color"
+            app:shape_textSelectedColor="@color/common_theme_color"
+            tools:text="听不到" />
+
+        <com.hjq.shape.view.ShapeTextView
+            android:id="@+id/tvArtist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="@dimen/playlist_item_artist_text_size"
+            app:shape_textColor="@color/common_text_h2_color"
+            app:shape_textSelectedColor="@color/common_theme_color"
+            tools:text=" · 五月天" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="@dimen/playlist_item_delete_button_size"
+        android:layout_height="@dimen/playlist_item_delete_button_size"
+        android:padding="@dimen/playlist_item_delete_button_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_close"
+        app:tint="@color/common_text_h2_color" />
+</com.hjq.shape.layout.ShapeLinearLayout>

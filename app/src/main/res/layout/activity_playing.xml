@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/flBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivPlayingBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/bg_playing_default" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/translucent_black_p50" />
+
+        <com.hjq.shape.view.ShapeView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            app:shape_solidGradientEndColor="@color/translucent_black_p50"
+            app:shape_solidGradientOrientation="topToBottom"
+            app:shape_solidGradientStartColor="@color/transparent" />
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/titleLayout"
+            layout="@layout/activity_playing_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 固定的返回按钮 - 始终显示在左上角 -->
+        <ImageView
+            android:id="@+id/ivCloseButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_close_button"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_arrow_down"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/white" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/flCoverLrc"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginVertical="16dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/songInfoLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleLayout"
+            app:layout_constraintWidth_max="450dp">
+
+            <me.ckn.music.widget.AlbumCoverView
+                android:id="@+id/albumCoverView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+            <androidx.constraintlayout.widget.Group
+                android:id="@+id/lrcLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:constraint_referenced_ids="volumeLayout,lrcView,ivLrcTopMask,ivLrcBottomMask" />
+
+            <include
+                android:id="@+id/volumeLayout"
+                layout="@layout/activity_playing_volume" />
+
+            <me.wcy.lrcview.LrcView
+                android:id="@+id/lrcView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/volumeLayout"
+                app:lrcAnimationDuration="1000"
+                app:lrcCurrentTextColor="@color/white"
+                app:lrcDividerHeight="@dimen/lrc_divider_height"
+                app:lrcNormalTextColor="@color/translucent_white_p50"
+                app:lrcNormalTextSize="@dimen/lrc_normal_text_size"
+                app:lrcPadding="@dimen/lrc_padding"
+                app:lrcTextGravity="left"
+                app:lrcTextSize="@dimen/lrc_current_text_size"
+                app:lrcTimelineColor="@color/translucent_white_p50"
+                app:lrcTimelineTextColor="@color/lrc_timeline_highlight_color"
+                app:lrcTimeTextColor="#FFFFFF"
+                app:lrcTimeTextSize="@dimen/lrc_time_text_size"
+                app:lrcTimelineHeight="@dimen/lrc_timeline_height" />
+
+            <ImageView
+                android:id="@+id/ivLrcTopMask"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                app:layout_constraintTop_toTopOf="@+id/lrcView" />
+
+            <ImageView
+                android:id="@+id/ivLrcBottomMask"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                app:layout_constraintBottom_toBottomOf="@+id/lrcView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 歌曲信息布局 - 移动到黑胶封面下方 -->
+        <LinearLayout
+            android:id="@+id/songInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/controlLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintWidth_max="450dp">
+
+            <!-- 歌曲标题区域（包含标题和VIP标签） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvSongTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:maxLines="1"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="曲目"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/playing_song_title_text_size"
+                    android:textStyle="bold" />
+
+                <!-- VIP标签 -->
+                <TextView
+                    android:id="@+id/tvVipLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/bg_vip_label"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="VIP"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvSongArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="艺术家"
+                android:textColor="@color/translucent_white_p80"
+                android:textSize="@dimen/playing_song_artist_text_size" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/controlLayout"
+            layout="@layout/activity_playing_control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintWidth_max="450dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

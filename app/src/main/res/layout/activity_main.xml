@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- 左侧竖直导航栏 -->
+        <LinearLayout
+            android:id="@+id/tabBar"
+            android:layout_width="64dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/tab_bg"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/btnDiscover"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:contentDescription="发现"
+                    android:focusable="true"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_tab_discover" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp" />
+
+                <ImageView
+                    android:id="@+id/btnMine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_tab_mine"
+                    android:contentDescription="我的"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 右侧内容区 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <me.ckn.music.widget.PlayBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/common_divider_size"
+                android:background="@color/common_divider" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemIconTint="?attr/colorPrimary">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <include
+                    layout="@layout/navigation_header" />
+
+                <!-- Group 1: Timer and Recent -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nav_timer"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_timer"
+                        android:text="@string/menu_timer"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/nav_recent_play"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_recent_play"
+                        android:text="@string/recent_play"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+
+                <!-- Group 2: Settings -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nav_domain_setting"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_domain"
+                        android:text="@string/menu_domain_setting"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/nav_setting"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_settings"
+                        android:text="@string/menu_setting"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+
+                <!-- Group 3: About, Login/Logout, Exit -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/bg_card"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nav_about"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_about"
+                        android:text="@string/menu_about"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/nav_login"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_qrcode_login"
+                        android:text="立即登录"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/nav_logout"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_logout"
+                        android:text="退出登录"
+                        android:textSize="20dp"/>
+
+                    <TextView
+                        android:id="@+id/nav_exit"
+                        style="@style/NavMenuItem"
+                        android:drawableStart="@drawable/ic_menu_exit"
+                        android:text="@string/menu_exit"
+                        android:textSize="20dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

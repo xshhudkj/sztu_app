@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white">
+
+    <!-- 现代化标题栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_title_bar_gradient"
+        android:paddingHorizontal="24dp">
+
+        <!-- 清理图标 -->
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_clear_cache"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="缓存清理"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="start|center_vertical" />
+
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- 清理选项 -->
+    <RadioGroup
+        android:id="@+id/rgClearOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="8dp">
+
+        <RadioButton
+            android:id="@+id/rbClearAll"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="清理全部缓存"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground"
+            android:checked="true" />
+
+        <RadioButton
+            android:id="@+id/rbClearAudio"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="仅清理音频缓存"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:id="@+id/rbClearImages"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="仅清理图片缓存"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <RadioButton
+            android:id="@+id/rbClearOld"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="仅清理7天前的缓存"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:paddingStart="24dp"
+            android:gravity="center_vertical"
+            android:background="?android:attr/selectableItemBackground" />
+
+    </RadioGroup>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- 现代化缓存信息卡片 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:background="@android:color/white"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="当前缓存大小："
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvCacheSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="计算中..."
+                android:textColor="@color/common_theme_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="可释放空间："
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvFreedSpace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择清理选项后显示"
+                android:textColor="@color/common_theme_color"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 分割线 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- 底部按钮 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="取消"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginEnd="24dp"
+            android:minWidth="80dp" />
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="开始清理"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:background="@color/common_theme_color"
+            android:minWidth="120dp"
+            android:elevation="4dp" />
+
+    </LinearLayout>
+
+</LinearLayout> 

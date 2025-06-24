@@ -1,0 +1,64 @@
+[versions]
+# android sdk
+compileSdk = "36"
+targetSdk = "36"
+minSdk = "21"
+versionCode = "1000001"
+versionName = "1.0.0"
+# java
+java = "VERSION_17"
+# plugin
+agp = "8.5.2"
+kotlin = "1.9.25"
+ksp = "1.9.25-1.0.20"
+hilt = "2.48.1"
+j2objc = "3.0.0"
+# sdk
+media3 = "1.6.0"
+room = "2.6.1"
+common = "1.0.2"
+crouter = "3.0.0-beta01"
+activity = "1.8.0"
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }
+kotlin = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+gms = { id = "com.google.gms.google-services", version = "4.4.2" }
+crashlytics = { id = "com.google.firebase.crashlytics", version = "3.0.2" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+[libraries]
+# plugin
+crouter-plugin = { group = "com.github.wangchenyan.crouter", name = "crouter-plugin", version.ref = "crouter" }
+# androidx
+appcompat = { group = "androidx.appcompat", name = "appcompat", version = "1.7.0" }
+material = { group = "com.google.android.material", name = "material", version = "1.12.0" }
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version = "2.2.0" }
+flexbox = { group = "com.google.android.flexbox", name = "flexbox", version = "3.0.0" }
+media3-exoplayer = { group = "androidx.media3", name = "media3-exoplayer", version.ref = "media3" }
+media3-datasource-okhttp = { group = "androidx.media3", name = "media3-datasource-okhttp", version.ref = "media3" }
+media3-session = { group = "androidx.media3", name = "media3-session", version.ref = "media3" }
+media3-ui = { group = "androidx.media3", name = "media3-ui", version.ref = "media3" }
+room = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+preference = { group = "androidx.preference", name = "preference-ktx", version = "1.2.1" }
+# google
+crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics-ktx", version = "19.0.3" }
+j2objc-annotations = { group = "com.google.j2objc", name = "j2objc-annotations", version.ref = "j2objc" }
+analytics = { group = "com.google.firebase", name = "firebase-analytics-ktx", version = "22.1.0" }
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
+hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+# wangchenyan
+common = { group = "com.github.wangchenyan", name = "android-common", version.ref = "common" }
+crouter-processor = { group = "com.github.wangchenyan.crouter", name = "crouter-processor", version.ref = "crouter" }
+crouter-api = { group = "com.github.wangchenyan.crouter", name = "crouter-api", version.ref = "crouter" }
+lrcview = { group = "com.github.wangchenyan", name = "lrcview", version = "2.2.2" }
+# open source
+loggingInterceptor = { group = "com.github.ihsanbal", name = "LoggingInterceptor", version = "3.1.0" }
+zbar = { group = "cn.bertsir.zbarLibary", name = "zbarlibary", version = "1.4.2" }
+blurry = { group = "jp.wasabeef", name = "blurry", version = "4.0.1" }
+banner = { group = "io.github.youth5201314", name = "banner", version = "2.2.2" }
+errorprone-annotations = { group = "com.google.errorprone", name = "error_prone_annotations", version = "2.18.0" }
+activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }

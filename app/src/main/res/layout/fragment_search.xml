@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <top.wangchenyan.common.widget.TitleLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tlTitleContentLayout="@layout/title_search" />
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/llResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                style="@style/TabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                app:tabMode="scrollable"
+                app:tabMinWidth="120dp"
+                app:tabPaddingStart="16dp"
+                app:tabPaddingEnd="16dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPage2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp" />
+        </LinearLayout>
+
+
+
+        <!-- 历史记录和热门搜索区域 -->
+        <ScrollView
+            android:id="@+id/svHistory"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp">
+
+                <LinearLayout
+                    android:id="@+id/llHistoryHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/tvHistoryTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="搜索历史"
+                        android:textColor="@color/common_text_h1_color"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvClearHistory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:text="清空"
+                        android:textColor="@color/common_text_h2_color"
+                        android:textSize="14sp"
+                        android:background="?android:attr/selectableItemBackground" />
+                </LinearLayout>
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/flHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:alignItems="flex_start"
+                    app:dividerDrawable="@drawable/common_ic_divider_flexbox_6"
+                    app:showDivider="middle" />
+
+                <!-- 搜索建议区域（动态替换搜索历史） -->
+                <TextView
+                    android:id="@+id/tvSuggestTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="搜索建议"
+                    android:textColor="@color/common_text_h1_color"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/flSearchSuggest"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    app:flexWrap="wrap"
+                    app:justifyContent="flex_start"
+                    app:alignItems="flex_start"
+                    app:dividerDrawable="@drawable/common_ic_divider_flexbox_6"
+                    app:showDivider="middle" />
+
+                <!-- 轮播图区域 -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginTop="24dp">
+
+                    <com.youth.banner.Banner
+                        android:id="@+id/searchBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:banner_auto_loop="true"
+                        app:banner_infinite_loop="true"
+                        app:banner_loop_time="5000"
+                        app:banner_indicator_height="8dp"
+                        app:banner_indicator_margin="6dp"
+                        app:banner_indicator_normal_color="@color/translucent_white_p30"
+                        app:banner_indicator_radius="4dp"
+                        app:banner_indicator_selected_color="@color/white"
+                        app:banner_radius="16dp" />
+
+                    <com.hjq.shape.view.ShapeTextView
+                        android:id="@+id/searchBannerPlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="推荐内容加载中..."
+                        android:textSize="18sp"
+                        android:textColor="@color/common_text_h2_color"
+                        app:shape_radius="16dp"
+                        app:shape_solidColor="@color/common_divider" />
+                </FrameLayout>
+
+                <!-- 热门搜索区域 -->
+                <TextView
+                    android:id="@+id/tvHotSearchTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="热门搜索"
+                    android:textColor="@color/common_text_h1_color"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <!-- 左侧热门搜索列表 -->
+                    <LinearLayout
+                        android:id="@+id/llHotSearchLeft"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:orientation="vertical" />
+
+                    <!-- 右侧热门搜索列表 -->
+                    <LinearLayout
+                        android:id="@+id/llHotSearchRight"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <!-- 底部间距 -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

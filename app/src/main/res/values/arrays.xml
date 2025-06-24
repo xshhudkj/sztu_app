@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="timer_text">
+        <item>不开启</item>
+        <item>10分钟后</item>
+        <item>20分钟后</item>
+        <item>30分钟后</item>
+        <item>45分钟后</item>
+        <item>60分钟后</item>
+        <item>90分钟后</item>
+    </string-array>
+
+    <integer-array name="timer_int">
+        <item>0</item>
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>90</item>
+    </integer-array>
+
+    <string-array name="dark_mode_entries">
+        <item>跟随系统</item>
+        <item>浅色</item>
+        <item>深色</item>
+    </string-array>
+
+    <string-array name="dark_mode_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="sound_quality_entries">
+        <item>标准</item>
+        <item>较高</item>
+        <item>极高(HQ)</item>
+        <item>无损(SQ)</item>
+        <item>高解析度无损(Hi-Res)🇻</item>
+        <item>高清环绕声(Spatial Audio)🇻</item>
+        <item>沉浸环绕声(Surround Audio)🇸</item>
+        <item>超清母带(Master)🇸</item>
+    </string-array>
+
+    <string-array name="sound_quality_entry_values">
+        <item>standard</item>
+        <item>higher</item>
+        <item>exhigh</item>
+        <item>lossless</item>
+        <item>hires</item>
+        <item>jyeffect</item>
+        <item>sky</item>
+        <item>jymaster</item>
+    </string-array>
+
+    <string-array name="filter_size_entries">
+        <item>不过滤</item>
+        <item>100KB</item>
+        <item>200KB</item>
+        <item>500KB</item>
+        <item>1MB</item>
+        <item>2MB</item>
+    </string-array>
+
+    <string-array name="filter_size_entry_values">
+        <item>0</item>
+        <item>100</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1024</item>
+        <item>2048</item>
+    </string-array>
+
+    <string-array name="filter_time_entries">
+        <item>不过滤</item>
+        <item>15秒</item>
+        <item>30秒</item>
+        <item>1分钟</item>
+        <item>1分30秒</item>
+        <item>2分钟</item>
+    </string-array>
+
+    <string-array name="filter_time_entry_values">
+        <item>0</item>
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>90</item>
+        <item>120</item>
+    </string-array>
+
+    <!-- 缓存限制选项 -->
+    <string-array name="cache_limit_entries">
+        <item>@string/cache_limit_unlimited</item>
+        <item>@string/cache_limit_100mb</item>
+        <item>@string/cache_limit_200mb</item>
+        <item>@string/cache_limit_500mb</item>
+        <item>@string/cache_limit_1gb</item>
+        <item>@string/cache_limit_2gb</item>
+        <item>@string/cache_limit_5gb</item>
+    </string-array>
+
+    <string-array name="cache_limit_values">
+        <item>-1</item>
+        <item>104857600</item>
+        <item>209715200</item>
+        <item>524288000</item>
+        <item>1073741824</item>
+        <item>2147483648</item>
+        <item>5368709120</item>
+    </string-array>
+
+    <!-- 缓存限制单位选项 -->
+    <string-array name="cache_unit_entries">
+        <item>MB</item>
+        <item>GB</item>
+    </string-array>
+
+    <string-array name="cache_unit_values">
+        <item>1048576</item>
+        <item>1073741824</item>
+    </string-array>
+
+    <!-- 自动清理间隔选项 -->
+    <string-array name="auto_clean_interval_entries">
+        <item>@string/auto_clean_interval_1day</item>
+        <item>@string/auto_clean_interval_3days</item>
+        <item>@string/auto_clean_interval_1week</item>
+        <item>@string/auto_clean_interval_2weeks</item>
+        <item>@string/auto_clean_interval_1month</item>
+    </string-array>
+
+    <string-array name="auto_clean_interval_values">
+        <item>86400000</item>
+        <item>259200000</item>
+        <item>604800000</item>
+        <item>1209600000</item>
+        <item>2592000000</item>
+    </string-array>
+
+    <!-- 自动清理阈值选项 -->
+    <string-array name="auto_clean_threshold_entries">
+        <item>@string/auto_clean_threshold_50</item>
+        <item>@string/auto_clean_threshold_70</item>
+        <item>@string/auto_clean_threshold_80</item>
+        <item>@string/auto_clean_threshold_90</item>
+        <item>@string/auto_clean_threshold_95</item>
+    </string-array>
+
+    <string-array name="auto_clean_threshold_values">
+        <item>50</item>
+        <item>70</item>
+        <item>80</item>
+        <item>90</item>
+        <item>95</item>
+    </string-array>
+
+</resources>

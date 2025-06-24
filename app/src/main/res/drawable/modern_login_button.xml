@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#B0FFFFFF">
+    <item>
+        <shape android:shape="rectangle">
+            <!-- 半透明背景 - 调整为带粉色调 -->
+            <solid android:color="#40333344" />
+            <!-- 更粗的边框 - 樱花粉蓝色调 -->
+            <stroke android:width="3dp" android:color="#FF87C1" />
+            <!-- 圆角 -->
+            <corners android:radius="35dp" />
+            <!-- 渐变 - 加入粉色调 -->
+            <gradient
+                android:startColor="#40333355"
+                android:centerColor="#30553366"
+                android:endColor="#20553355"
+                android:angle="45" />
+        </shape>
+    </item>
+</ripple> 

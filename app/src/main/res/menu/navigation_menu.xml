@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_timer"
+            android:icon="@drawable/ic_menu_timer"
+            android:title="@string/menu_timer" />
+        <item
+            android:id="@+id/nav_recent_play"
+            android:icon="@drawable/ic_recent_play"
+            android:title="@string/recent_play" />
+
+        <item
+            android:id="@+id/nav_domain_setting"
+            android:icon="@drawable/ic_menu_domain"
+            android:title="@string/menu_domain_setting" />
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@drawable/ic_menu_settings"
+            android:title="@string/menu_setting" />
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_menu_about"
+            android:title="@string/menu_about" />
+
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@drawable/ic_qrcode_login"
+            android:title="立即登录" />
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="退出登录" />
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_menu_exit"
+            android:title="@string/menu_exit" />
+    </group>
+</menu>

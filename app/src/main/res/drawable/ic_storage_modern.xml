@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 现代化存储图标 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorOnPrimary">
+    
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M12,2L2,7V17L12,22L22,17V7L12,2ZM12,4.14L19.5,8L12,11.86L4.5,8L12,4.14ZM4,9.96L11,13.82V20.64L4,16.96V9.96ZM13,20.64V13.82L20,9.96V16.96L13,20.64Z" />
+</vector>

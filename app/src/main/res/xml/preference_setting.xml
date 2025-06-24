@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="通用">
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="外观"
+            android:entries="@array/dark_mode_entries"
+            android:entryValues="@array/dark_mode_values"
+            android:key="@string/setting_key_dark_mode"
+            android:summary="跟随系统"
+            android:title="外观" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/play">
+
+        <ListPreference
+            android:defaultValue="standard"
+            android:dialogTitle="🇻需要VIP 🇸需要SVIP"
+            android:entries="@array/sound_quality_entries"
+            android:entryValues="@array/sound_quality_entry_values"
+            android:key="@string/setting_key_play_sound_quality"
+            android:summary="标准"
+            android:title="在线播放音质" />
+
+        <Preference
+            android:key="@string/setting_key_sound_effect"
+            android:title="@string/sound_effect" />
+
+        <Preference
+            android:key="@string/setting_key_auto_play_on_startup"
+            android:title="@string/auto_play_on_startup_title_enabled"
+            android:summary="@string/auto_play_on_startup_summary"
+            android:iconSpaceReserved="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="下载">
+
+        <ListPreference
+            android:defaultValue="standard"
+            android:dialogTitle="🇻需要VIP 🇸需要SVIP"
+            android:entries="@array/sound_quality_entries"
+            android:entryValues="@array/sound_quality_entry_values"
+            android:key="@string/setting_key_download_sound_quality"
+            android:summary="标准"
+            android:title="下载音质" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/cache_management"
+        android:iconSpaceReserved="false">
+
+        <!-- 清理缓存 - 移除图标，简化显示 -->
+        <Preference
+            android:key="@string/setting_key_cache_clear"
+            android:title="@string/cache_clear_title"
+            android:summary="@string/cache_clear_summary"
+            android:iconSpaceReserved="false" />
+
+        <!-- 缓存限制 - 移除图标，简化显示 -->
+        <ListPreference
+            android:key="@string/setting_key_cache_limit"
+            android:title="@string/cache_limit_title"
+            android:summary="@string/cache_limit_summary"
+            android:entries="@array/cache_limit_entries"
+            android:entryValues="@array/cache_limit_values"
+            android:defaultValue="-1"
+            android:iconSpaceReserved="false" />
+
+        <!-- 定期自动清理 - 新增第三行 -->
+        <Preference
+            android:key="@string/setting_key_auto_cache_clean"
+            android:title="@string/auto_cache_clean_title"
+            android:summary="@string/auto_cache_clean_summary"
+            android:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="文件过滤">
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="最小大小"
+            android:entries="@array/filter_size_entries"
+            android:entryValues="@array/filter_size_entry_values"
+            android:key="@string/setting_key_filter_size"
+            android:summary="不过滤"
+            android:title="按大小过滤" />
+
+        <ListPreference
+            android:defaultValue="0"
+            android:dialogTitle="最小时长"
+            android:entries="@array/filter_time_entries"
+            android:entryValues="@array/filter_time_entry_values"
+            android:key="@string/setting_key_filter_time"
+            android:summary="不过滤"
+            android:title="按时长过滤" />
+    </PreferenceCategory>
+</PreferenceScreen>

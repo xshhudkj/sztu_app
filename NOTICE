@@ -1,0 +1,54 @@
+WhisperPlay
+Copyright 2025 ckn
+
+This product includes software developed by wangchenyan (PonyMusic).
+Original project: https://github.com/wangchenyan/ponymusic
+
+================================================================================
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+
+This project incorporates components from the projects listed below.
+
+================================================================================
+
+1. Music API Service
+   Licensed under the MIT License
+
+2. Media3 and ExoPlayer
+   Copyright (C) 2016 The Android Open Source Project
+   Licensed under the Apache License, Version 2.0
+
+3. Retrofit
+   Copyright 2013 Square, Inc.
+   Licensed under the Apache License, Version 2.0
+
+4. Room
+   Copyright 2017 The Android Open Source Project
+   Licensed under the Apache License, Version 2.0
+
+5. Hilt
+   Copyright 2020 The Android Open Source Project
+   Licensed under the Apache License, Version 2.0
+
+6. Glide
+   Copyright 2014 Google, Inc. All rights reserved.
+   Licensed under the BSD, part MIT and Apache 2.0
+
+7. wangchenyan/crouter
+   Copyright (c) 2018 wangchenyan
+   Licensed under the Apache License, Version 2.0
+
+8. wangchenyan/lrcview
+   Copyright (c) 2016 wangchenyan
+   Licensed under the Apache License, Version 2.0
+
+9. wangchenyan/android-common
+   Copyright (c) 2018 wangchenyan
+   Licensed under the Apache License, Version 2.0
+
+10. wangchenyan/radapter3
+    Copyright (c) 2018 wangchenyan
+    Licensed under the Apache License, Version 2.0
+
+================================================================================

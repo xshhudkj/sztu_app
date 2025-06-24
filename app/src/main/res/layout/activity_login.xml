@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/login_root_layout"
+    tools:context=".LoginActivity">
+
+    <!-- 背景图片 -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/cherry_blossom_car"
+        android:scaleType="centerCrop"
+        android:contentDescription="背景图片" />
+
+    <!-- 半透明覆盖层，提高可读性 -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_black"
+        android:alpha="0.02" />
+
+    <!-- 内容容器 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp">
+
+            <!-- 音乐图标 -->
+            <ImageView
+                android:id="@+id/app_logo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/logo_music" />
+
+            <!-- 欢迎标题 -->
+            <TextView
+                android:id="@+id/tv_welcome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/app_logo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-light"
+                android:text="欢迎使用轻聆"
+                android:textColor="@color/text_light"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:shadowColor="#80000000"
+                android:shadowDx="2"
+                android:shadowDy="2"
+                android:shadowRadius="3" />
+
+            <!-- 副标题 -->
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_welcome"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="6dp"
+                android:text="享受音乐，享受生活"
+                android:textColor="@color/text_light"
+                android:alpha="0.88"
+                android:textSize="18sp" />
+
+            <!-- 登录按钮容器 -->
+            <LinearLayout
+                android:id="@+id/login_buttons_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_subtitle"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <!-- 扫码登录按钮 -->
+                <LinearLayout
+                    android:id="@+id/btnQrCodeLogin"
+                    android:layout_width="420dp"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="28dp"
+                    android:background="@drawable/modern_login_button"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="6dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_qrcode_login"
+                        android:background="@drawable/round_icon_bg"
+                        android:padding="6dp"
+                        android:contentDescription="扫码登录图标" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="24dp"
+                        android:text="扫码登录"
+                        android:textColor="@color/text_light"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#70000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- 手机号登录按钮 -->
+                <LinearLayout
+                    android:id="@+id/btnPhoneLogin"
+                    android:layout_width="420dp"
+                    android:layout_height="85dp"
+                    android:layout_marginBottom="28dp"
+                    android:background="@drawable/modern_login_button"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="6dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_phone_login"
+                        android:background="@drawable/round_icon_bg"
+                        android:padding="6dp"
+                        android:contentDescription="手机登录图标" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="24dp"
+                        android:text="手机号登录"
+                        android:textColor="@color/text_light"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#70000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:gravity="center" />
+                </LinearLayout>
+
+                <!-- 游客登录按钮 -->
+                <LinearLayout
+                    android:id="@+id/btnGuestLogin"
+                    android:layout_width="420dp"
+                    android:layout_height="85dp"
+                    android:background="@drawable/modern_login_button"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="40dp"
+                    android:paddingEnd="40dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:elevation="6dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_guest_login"
+                        android:background="@drawable/round_icon_bg"
+                        android:padding="6dp"
+                        android:contentDescription="游客登录图标" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="24dp"
+                        android:text="游客登录"
+                        android:textColor="@color/text_light"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:shadowColor="#70000000"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:gravity="center" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 版本信息 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="16dp"
+                android:text="轻聆音乐 v1.0"
+                android:textColor="@color/text_light"
+                android:alpha="0.67"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <!-- 加载状态视图 -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/text_light"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:shadowColor="#80000000"
+            android:shadowDx="1"
+            android:shadowDy="1"
+            android:shadowRadius="2"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout> 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 标题栏渐变背景 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    
+    <!-- 渐变背景 -->
+    <gradient
+        android:startColor="@color/common_theme_color"
+        android:endColor="@color/common_theme_color_dark"
+        android:angle="270" />
+    
+    <!-- 顶部圆角 -->
+    <corners
+        android:topLeftRadius="20dp"
+        android:topRightRadius="20dp"
+        android:bottomLeftRadius="0dp"
+        android:bottomRightRadius="0dp" />
+</shape>

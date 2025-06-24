@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+    <!-- VR眼镜/沉浸式风格图标 -->
+    <path
+        android:fillColor="#FF5A5A"
+        android:pathData="M4,14a10,6 0 0,1 20,0v2a4,4 0 0,1 -4,4h-12a4,4 0 0,1 -4,-4zM8,16a2,2 0 1,0 0.01,0zM20,16a2,2 0 1,0 0.01,0z"/>
+</vector> 

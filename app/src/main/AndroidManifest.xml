@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" /> <!-- Android Automotive 通知栏相关权限 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Android Automotive 音量控制权限 -->
+    <uses-permission android:name="android.car.permission.CAR_CONTROL_AUDIO_VOLUME" />
+    <uses-permission android:name="android.car.permission.ACCESS_CAR_AUDIO" />
+
+    <application
+        android:name=".MusicApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/ic_launcher_round"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".main.DhActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".service.MusicService"
+            android:exported="true"
+            android:foregroundServiceType="mediaPlayback">
+            <intent-filter>
+                <action android:name="androidx.media3.session.MediaSessionService" />
+            </intent-filter>
+        </service> <!-- 自动缓存清理服务 -->
+        <service
+            android:name=".service.AutoCacheCleanService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name=".download.DownloadReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".splash.SplashActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.CarImmersive.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".main.MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.CarImmersive"></activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="false"
+            android:label="登录"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.CarImmersive"></activity>
+        <activity
+            android:name=".common.MusicFragmentContainerActivity"
+            android:theme="@style/AppTheme.CarImmersive" />
+        <activity
+            android:name=".main.SettingsActivity"
+            android:label="@string/menu_setting"
+            android:theme="@style/AppTheme.CarImmersive" />
+        <activity
+            android:name=".main.AboutActivity"
+            android:label="@string/menu_about"
+            android:theme="@style/AppTheme.CarImmersive" />
+        <activity
+            android:name=".main.playing.PlayingActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.CarImmersive.Playing" /> <!-- Android Automotive 元数据配置 -->
+        <meta-data
+            android:name="com.android.automotive"
+            android:resource="@xml/automotive_app_desc" />
+        <meta-data
+            android:name="androidx.media3.session.MediaSessionService"
+            android:value="me.ckn.music.service.MusicService" />
+        <activity android:name=".mine.recent.RecentPlayActivity" />
+        <activity android:name=".comment.CommentActivity" />
+    </application>
+
+</manifest>

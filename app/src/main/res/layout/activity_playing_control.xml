@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+播放控制布局文件
+用途：包含进度条、播放按钮、上下首、播放模式等控制元素
+被引用：在activity_playing.xml和activity_playing-land.xml中通过include引入
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/bg_control_card"
+    android:elevation="6dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!--
+    在线操作按钮区域（喜欢、下载）
+    作用：显示在线歌曲的操作按钮
+    调整：layout_height控制按钮区域高度（再增大）
+         paddingHorizontal控制左右内边距
+         在代码中根据歌曲类型控制显示/隐藏
+    -->
+    <LinearLayout
+        android:id="@+id/llActions"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="32dp">
+
+        <!-- 左侧占位空间 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!--
+        喜欢按钮
+        作用：收藏/取消收藏当前歌曲，支持红色实心/空心状态切换
+        调整：layout_weight控制按钮宽度比例
+             paddingVertical控制上下内边距（再减少以进一步增大按钮）
+             src更换图标（ic_favorite_selector支持选中状态）
+        -->
+        <ImageView
+            android:id="@+id/ivLike"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingVertical="4dp"
+            android:src="@drawable/ic_favorite_selector" />
+
+        <!-- 中间占位空间 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <!--
+        下载按钮
+        作用：下载当前歌曲到本地
+        调整：layout_weight控制按钮宽度比例
+             paddingVertical控制上下内边距（再减少以进一步增大按钮）
+             tint控制图标颜色
+        -->
+        <ImageView
+            android:id="@+id/ivDownload"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:paddingVertical="4dp"
+            android:src="@drawable/ic_download"
+            app:tint="@color/translucent_white_p80" />
+
+        <!-- 右侧占位空间 -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!--
+    播放进度条区域
+    作用：显示播放进度、当前时间、总时长，支持拖拽跳转
+    调整：layout_marginTop控制与上方按钮的间距（减少）
+         paddingHorizontal控制左右内边距（最小化以最大延长进度条）
+    -->
+    <LinearLayout
+        android:id="@+id/llProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="2dp">
+
+        <!--
+        当前播放时间
+        作用：显示已播放时间（格式：mm:ss）
+        调整：textSize控制字体大小（增大到16sp），textColor控制颜色
+        -->
+        <TextView
+            android:id="@+id/tvCurrentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:gravity="center"
+            android:minWidth="64dp"
+            android:text="@string/play_time_start"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!--
+        播放进度条（支持VIP试听标记）
+        作用：显示播放进度，支持拖拽跳转到指定位置，支持VIP试听标记
+        调整：layout_height控制触摸区域高度（增大到56dp）
+             layout_marginHorizontal增加左右边距扩展进度条
+             maxHeight/minHeight控制进度条厚度（增大到4dp）
+             paddingVertical增大触摸区域
+             progressDrawable自定义进度条样式
+             thumb自定义拖拽手柄样式
+        -->
+        <me.ckn.music.widget.VipTrialSeekBar
+            android:id="@+id/sbProgress"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_weight="1"
+            android:maxHeight="6dp"
+            android:minHeight="6dp"
+            android:paddingVertical="20dp"
+            android:progressDrawable="@drawable/bg_playing_playback_progress"
+            android:thumb="@drawable/ic_playing_playback_progress_thumb" />
+
+        <!--
+        歌曲总时长
+        作用：显示歌曲总时长（格式：mm:ss）
+        调整：textSize控制字体大小（增大到16sp），textColor控制颜色（当前为半透明）
+        -->
+        <TextView
+            android:id="@+id/tvTotalTime"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:gravity="center"
+            android:minWidth="64dp"
+            android:text="@string/play_time_start"
+            android:textColor="@color/translucent_white_p50"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!--
+    播放控制按钮区域
+    作用：包含播放模式、上一首、播放/暂停、下一首、播放列表按钮
+    调整：layout_height控制按钮区域高度（微增大到64dp）
+         paddingHorizontal控制左右内边距（再减少以更散开间距）
+         所有按钮使用layout_weight="1"平均分配宽度
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <!--
+        播放模式按钮
+        作用：切换播放模式（列表循环/随机播放/单曲循环）
+        调整：paddingVertical从6dp减少到4dp以增大按钮显示区域
+             src图标会根据播放模式动态切换
+        -->
+        <ImageView
+            android:id="@+id/ivMode"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingVertical="4dp"
+            android:src="@drawable/ic_play_mode_level_list"
+            app:tint="@color/translucent_white_p80" />
+
+        <!--
+        上一首按钮
+        作用：播放上一首歌曲
+        调整：paddingVertical控制上下内边距（减少以增大按钮）
+        -->
+        <ImageView
+            android:id="@+id/ivPrev"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:src="@drawable/ic_previous"
+            app:tint="@color/translucent_white_p80" />
+
+        <!--
+        播放/暂停按钮容器
+        作用：包含播放按钮和加载指示器
+        调整：使用FrameLayout层叠显示播放按钮和加载动画
+        -->
+        <FrameLayout
+            android:id="@+id/flPlay"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <!--
+            播放/暂停按钮
+            作用：控制音乐播放/暂停，图标根据播放状态自动切换
+            调整：src使用selector自动切换播放/暂停图标
+            -->
+            <ImageView
+                android:id="@+id/ivPlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_playing_play_pause_selector"
+                app:tint="@color/translucent_white_p80" />
+
+            <!--
+            加载指示器
+            作用：在歌曲加载时显示圆形进度动画
+            调整：indicatorSize控制指示器大小
+                 trackThickness控制线条粗细
+                 indicatorColor控制颜色
+            -->
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/loadingProgress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                app:indicatorColor="@color/common_theme_color"
+                app:indicatorSize="48dp"
+                app:trackThickness="2dp" />
+        </FrameLayout>
+
+        <!--
+        下一首按钮
+        作用：播放下一首歌曲
+        调整：paddingVertical控制上下内边距（减少以增大按钮）
+        -->
+        <ImageView
+            android:id="@+id/ivNext"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingVertical="12dp"
+            android:src="@drawable/ic_next"
+            app:tint="@color/translucent_white_p80" />
+
+        <!--
+        播放列表按钮
+        作用：打开当前播放列表
+        调整：paddingVertical从6dp增加到8dp以减小按钮显示区域
+        -->
+        <ImageView
+            android:id="@+id/ivPlaylist"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingVertical="10dp"
+            android:src="@drawable/ic_playlist"
+            app:tint="@color/translucent_white_p80" />
+    </LinearLayout>
+</LinearLayout>

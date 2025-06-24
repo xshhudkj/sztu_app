@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!--允许抓包-->
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuggable only -->
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+
+    <!--允许所有明文请求-->
+    <base-config cleartextTrafficPermitted="true" />
+
+    <!--允许特定域名明文请求-->
+    <!--    <domain-config cleartextTrafficPermitted="true">-->
+    <!--        <domain includeSubdomains="true">10.89.193.230</domain>-->
+    <!--        <domain includeSubdomains="true">music.126.net</domain>-->
+    <!--    </domain-config>-->
+</network-security-config>
