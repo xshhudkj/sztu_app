@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="通用">
         <ListPreference
@@ -31,6 +32,36 @@
             android:key="@string/setting_key_auto_play_on_startup"
             android:title="@string/auto_play_on_startup_title_enabled"
             android:summary="@string/auto_play_on_startup_summary"
+            android:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="voice_auto_enable"
+            android:title="进入播放页自动开启语音模式"
+            android:summary="开启后，进入播放页面时自动启用语音控制功能"
+            android:defaultValue="true"
+            android:iconSpaceReserved="false" />
+
+        <ListPreference
+            android:key="voice_sensitivity"
+            android:title="语音识别灵敏度"
+            android:summary="调节语音识别的准确性要求"
+            android:entries="@array/voice_sensitivity_entries"
+            android:entryValues="@array/voice_sensitivity_values"
+            android:defaultValue="0.6"
+            android:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="voice_smart_context"
+            android:title="智能上下文理解"
+            android:summary="开启后，根据当前页面和播放状态智能理解语音命令"
+            android:defaultValue="true"
+            android:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            android:key="voice_fuzzy_matching"
+            android:title="模糊匹配识别"
+            android:summary="开启后，支持模糊匹配和容错识别"
+            android:defaultValue="true"
             android:iconSpaceReserved="false" />
     </PreferenceCategory>
 

@@ -50,4 +50,38 @@ object LrcCache {
             }
         }
     }
+
+    /**
+     * 获取翻译歌词文件路径
+     * Get translation lyrics file path
+     */
+    fun getTlyricFilePath(music: MediaItem): String? {
+        if (!music.isLocal()) {
+            val tlyricFile = File(FilePath.lrcDir, "${music.getSongId()}.tlyric")
+            if (tlyricFile.exists()) {
+                return tlyricFile.path
+            }
+        }
+        return null
+    }
+
+    /**
+     * 保存翻译歌词文件
+     * Save translation lyrics file
+     */
+    suspend fun saveTlyricFile(music: MediaItem, content: String): File {
+        return withContext(Dispatchers.IO) {
+            File(FilePath.lrcDir, "${music.getSongId()}.tlyric").also {
+                it.writeText(content)
+            }
+        }
+    }
+
+    /**
+     * 检查是否有双语歌词缓存
+     * Check if dual language lyrics cache exists
+     */
+    fun hasDualLanguageLrc(music: MediaItem): Boolean {
+        return getLrcFilePath(music) != null && getTlyricFilePath(music) != null
+    }
 }

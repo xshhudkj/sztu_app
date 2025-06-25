@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+WhisperPlay Music Player - 语音控制按钮选择器
+文件描述：语音控制按钮的状态选择器，支持开启/关闭/禁用状态切换
+File Description: Voice control button state selector with enabled/disabled/no-permission states
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 禁用状态（无权限） -->
+    <item android:state_enabled="false" android:drawable="@drawable/ic_voice_control_disabled" />
+    <!-- 选中状态（语音控制开启） -->
+    <item android:state_selected="true" android:drawable="@drawable/ic_voice_control_on" />
+    <!-- 默认状态（语音控制关闭） -->
+    <item android:drawable="@drawable/ic_voice_control_off" />
+</selector>

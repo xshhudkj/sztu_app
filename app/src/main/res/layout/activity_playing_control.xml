@@ -17,69 +17,76 @@
     android:padding="16dp">
 
     <!--
-    在线操作按钮区域（喜欢、下载）
-    作用：显示在线歌曲的操作按钮
-    调整：layout_height控制按钮区域高度（再增大）
+    上方操作按钮区域（喜欢、语音控制、下载）
+    作用：显示歌曲操作按钮，语音控制按钮居中对齐
+    调整：统一布局，确保三个按钮在同一水平线上完美对齐
+         layout_height控制按钮区域高度
          paddingHorizontal控制左右内边距
-         在代码中根据歌曲类型控制显示/隐藏
     -->
     <LinearLayout
         android:id="@+id/llActions"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="56dp"
         android:orientation="horizontal"
-        android:paddingHorizontal="32dp">
-
-        <!-- 左侧占位空间 -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+        android:gravity="center_vertical"
+        android:paddingHorizontal="24dp">
 
         <!--
         喜欢按钮
         作用：收藏/取消收藏当前歌曲，支持红色实心/空心状态切换
-        调整：layout_weight控制按钮宽度比例
-             paddingVertical控制上下内边距（再减少以进一步增大按钮）
-             src更换图标（ic_favorite_selector支持选中状态）
+        调整：统一高度为50dp，内边距为4dp
         -->
         <ImageView
             android:id="@+id/ivLike"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:paddingVertical="4dp"
-            android:src="@drawable/ic_favorite_selector" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_favorite_selector"
+            android:contentDescription="收藏歌曲" />
 
-        <!-- 中间占位空间 -->
-        <View
+        <!--
+        语音控制按钮（居中位置）
+        作用：开启/关闭语音控制功能
+        状态：开启时蓝色高亮，关闭时灰色显示，禁用时显示禁用图标
+        调整：统一高度为50dp，内边距为4dp
+        -->
+        <ImageView
+            android:id="@+id/ivVoiceControl"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_voice_control_selector"
+            android:contentDescription="语音控制"
+            app:tint="@color/voice_control_tint_selector" />
 
         <!--
         下载按钮
         作用：下载当前歌曲到本地
-        调整：layout_weight控制按钮宽度比例
-             paddingVertical控制上下内边距（再减少以进一步增大按钮）
-             tint控制图标颜色
+        调整：统一高度为50dp，内边距为4dp
         -->
         <ImageView
             android:id="@+id/ivDownload"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
+            android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
             android:paddingVertical="4dp"
+            android:scaleType="fitCenter"
             android:src="@drawable/ic_download"
+            android:contentDescription="下载歌曲"
             app:tint="@color/translucent_white_p80" />
-
-        <!-- 右侧占位空间 -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <!--
@@ -92,7 +99,7 @@
         android:id="@+id/llProgress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="2dp">

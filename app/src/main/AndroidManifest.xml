@@ -8,6 +8,10 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
+    <!-- 百度语音SDK所需权限 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
     <!-- Android Automotive 通知栏相关权限 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -39,6 +43,18 @@
             android:name=".service.AutoCacheCleanService"
             android:exported="false"
             android:enabled="true" />
+
+        <!-- 全局语音控制服务 -->
+        <service
+            android:name=".voice.GlobalVoiceControlService"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="me.ckn.music.voice.ENABLE" />
+                <action android:name="me.ckn.music.voice.DISABLE" />
+                <action android:name="me.ckn.music.voice.TOGGLE" />
+            </intent-filter>
+        </service>
 
         <receiver
             android:name=".download.DownloadReceiver"

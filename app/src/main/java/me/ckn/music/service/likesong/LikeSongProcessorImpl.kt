@@ -1,6 +1,7 @@
 package me.ckn.music.service.likesong
 
 import android.app.Activity
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -72,37 +73,42 @@ class LikeSongProcessorImpl @Inject constructor(
     }
 
     override suspend fun like(activity: Activity, id: Long): CommonResult<Unit> {
-        if (userService.isLogin().not()) {
-            userService.checkLogin(activity)
-            return CommonResult.fail()
-        }
-        val isLike = isLiked(id)
-        if (isLike) {
-            val res = apiCall {
-                MineApi.get().likeSong(id, false)
+        return try {
+            if (userService.isLogin().not()) {
+                userService.checkLogin(activity)
+                return CommonResult.fail(msg = "需要登录")
             }
-            return if (res.isSuccess()) {
-                likeSongSet.remove(id)
-                updateLikeSongList()
-                // 通知状态变化
-                _likeStateChanged.value = id
-                CommonResult.success(Unit)
+            val isLike = isLiked(id)
+            if (isLike) {
+                val res = apiCall {
+                    MineApi.get().likeSong(id, false)
+                }
+                if (res.isSuccess()) {
+                    likeSongSet.remove(id)
+                    updateLikeSongList()
+                    // 通知状态变化
+                    _likeStateChanged.value = id
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
             } else {
-                CommonResult.fail(res.code, res.msg)
+                val res = apiCall {
+                    MineApi.get().likeSong(id, true)
+                }
+                if (res.isSuccess()) {
+                    likeSongSet.add(id)
+                    updateLikeSongList()
+                    // 通知状态变化
+                    _likeStateChanged.value = id
+                    CommonResult.success(Unit)
+                } else {
+                    CommonResult.fail(res.code, res.msg)
+                }
             }
-        } else {
-            val res = apiCall {
-                MineApi.get().likeSong(id, true)
-            }
-            return if (res.isSuccess()) {
-                likeSongSet.add(id)
-                updateLikeSongList()
-                // 通知状态变化
-                _likeStateChanged.value = id
-                CommonResult.success(Unit)
-            } else {
-                CommonResult.fail(res.code, res.msg)
-            }
+        } catch (e: Exception) {
+            Log.e("LikeSongProcessor", "收藏歌曲操作失败", e)
+            CommonResult.fail(msg = "操作失败: ${e.message}")
         }
     }
 }

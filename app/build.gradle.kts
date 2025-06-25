@@ -198,4 +198,8 @@ dependencies {
     implementation(libs.banner)
     // 移除 error_prone_annotations 以解决 j2objc ReflectionSupport 警告
     // implementation(libs.errorprone.annotations)
+
+    // 百度语音SDK
+    implementation(files("libs/bdasr_V3_20250507_b610f20.jar"))
+    implementation(files("libs/com.baidu.tts_2.6.2.2.20200629_44818d4.jar"))
 }

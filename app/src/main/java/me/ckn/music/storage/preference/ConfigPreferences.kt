@@ -65,6 +65,42 @@ object ConfigPreferences :
         StringUtils.getString(R.string.setting_key_auto_play_on_startup),
         true
     )
+
+    /**
+     * 进入播放页自动开启语音模式设置
+     * true: 自动开启语音模式, false: 不自动开启
+     */
+    var voiceAutoEnable: Boolean by IPreferencesFile.BooleanProperty(
+        "voice_auto_enable",
+        true
+    )
+
+    /**
+     * 语音识别灵敏度（相似度阈值）
+     * 范围：0.2-0.8，值越小越灵敏，值越大越准确
+     */
+    var voiceSensitivity: Float by IPreferencesFile.FloatProperty(
+        "voice_sensitivity",
+        0.6f
+    )
+
+    /**
+     * 智能上下文理解
+     * true: 启用智能上下文理解, false: 禁用
+     */
+    var voiceSmartContext: Boolean by IPreferencesFile.BooleanProperty(
+        "voice_smart_context",
+        true
+    )
+
+    /**
+     * 模糊匹配识别
+     * true: 启用模糊匹配和容错识别, false: 仅精确匹配
+     */
+    var voiceFuzzyMatching: Boolean by IPreferencesFile.BooleanProperty(
+        "voice_fuzzy_matching",
+        true
+    )
     
     private const val DEFAULT_CACHE_LIMIT = -1L // -1表示无限制
     private const val CACHE_LIMIT_KEY = "cache_limit"

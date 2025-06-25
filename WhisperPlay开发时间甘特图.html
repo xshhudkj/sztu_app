@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperPlay开发时间甘特图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .description {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .milestone {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #27ae60;
+        }
+        .milestone h4 {
+            margin: 0 0 10px 0;
+            color: #27ae60;
+        }
+        .risk-item {
+            background: #fdf2e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #e67e22;
+        }
+        .risk-item h4 {
+            margin: 0 0 10px 0;
+            color: #e67e22;
+        }
+        .team-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .team-table th, .team-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .team-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        .team-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhisperPlay音乐播放器开发时间甘特图</h1>
+        <p class="subtitle">项目开发周期：16周 | 团队规模：6人 | 开发模式：敏捷开发</p>
+        
+        <div class="description">
+            <h3>项目概述</h3>
+            <p>WhisperPlay是一款面向Android Automotive平台的现代化音乐播放器，采用MVVM架构模式，集成语音控制、智能缓存、高性能播放等先进功能。项目开发分为6个主要阶段，每个阶段都有明确的交付目标和验收标准。</p>
+        </div>
+
+        <div class="mermaid">
+gantt
+    title WhisperPlay开发时间甘特图
+    dateFormat  YYYY-MM-DD
+    section 第一阶段：基础架构搭建
+    项目初始化和依赖配置    :done, init, 2024-01-01, 2024-01-07
+    Hilt依赖注入框架搭建    :done, hilt, 2024-01-08, 2024-01-14
+    Room数据库设计和实现    :done, room, 2024-01-15, 2024-01-21
+    网络层架构实现          :done, network, 2024-01-15, 2024-01-21
+    
+    section 第二阶段：核心播放功能
+    MusicService音乐服务    :active, music-service, 2024-01-22, 2024-02-04
+    PlayerController播放控制器 :active, player-ctrl, 2024-02-05, 2024-02-11
+    智能缓存管理系统        :cache-mgr, 2024-02-12, 2024-02-18
+    
+    section 第三阶段：用户界面框架
+    MainActivity主界面框架  :ui-main, 2024-02-19, 2024-02-25
+    基础UI组件和主题系统    :ui-components, 2024-02-26, 2024-03-04
+    
+    section 第四阶段：功能模块实现
+    发现页面功能实现        :discover, 2024-03-05, 2024-03-18
+    搜索功能模块实现        :search, 2024-03-19, 2024-04-01
+    个人页面功能实现        :mine, 2024-03-19, 2024-04-01
+    播放页面核心功能实现    :playing, 2024-04-02, 2024-04-08
+    
+    section 第五阶段：高级功能实现
+    语音控制系统核心实现    :voice, 2024-04-09, 2024-04-15
+    Android Automotive深度适配 :automotive, 2024-04-16, 2024-04-22
+    
+    section 第六阶段：优化和测试
+    性能优化和用户体验提升  :optimization, 2024-04-23, 2024-04-29
+    全面测试和质量保证      :testing, 2024-04-30, 2024-05-06
+        </div>
+
+        <div class="legend">
+            <h3>开发团队分工表</h3>
+            <table class="team-table">
+                <thead>
+                    <tr>
+                        <th>团队成员</th>
+                        <th>角色职责</th>
+                        <th>主要负责模块</th>
+                        <th>技能要求</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>张同学</strong></td>
+                        <td>项目负责人、架构设计师</td>
+                        <td>项目初始化、Hilt框架、性能优化</td>
+                        <td>Android架构设计、项目管理、性能调优</td>
+                    </tr>
+                    <tr>
+                        <td><strong>李同学</strong></td>
+                        <td>Android高级开发工程师</td>
+                        <td>音乐服务、播放控制器、缓存系统</td>
+                        <td>Media3、ExoPlayer、音频处理</td>
+                    </tr>
+                    <tr>
+                        <td><strong>王同学</strong></td>
+                        <td>Android开发工程师</td>
+                        <td>用户界面、发现页面、播放页面</td>
+                        <td>UI/UX设计、Material Design、动画</td>
+                    </tr>
+                    <tr>
+                        <td><strong>陈同学</strong></td>
+                        <td>Android开发工程师</td>
+                        <td>数据库、网络层、搜索功能</td>
+                        <td>Room、Retrofit、网络编程</td>
+                    </tr>
+                    <tr>
+                        <td><strong>刘同学</strong></td>
+                        <td>Android开发工程师</td>
+                        <td>语音控制、车载适配</td>
+                        <td>语音SDK、Android Automotive、硬件集成</td>
+                    </tr>
+                    <tr>
+                        <td><strong>赵同学</strong></td>
+                        <td>测试工程师</td>
+                        <td>质量保证、自动化测试</td>
+                        <td>测试框架、自动化测试、性能测试</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="legend">
+            <h3>关键里程碑节点</h3>
+            
+            <div class="milestone">
+                <h4>里程碑1：基础架构完成（第3周末）</h4>
+                <p><strong>交付目标：</strong>完成项目基础架构搭建，包括依赖注入、数据库和网络层</p>
+                <p><strong>验收标准：</strong>可以进行基本的网络请求和数据存储，项目编译运行正常</p>
+                <p><strong>风险评估：</strong>低风险，主要是配置和集成工作</p>
+            </div>
+
+            <div class="milestone">
+                <h4>里程碑2：核心播放功能完成（第6周末）</h4>
+                <p><strong>交付目标：</strong>完成音乐播放的核心功能，用户可以播放网络音乐</p>
+                <p><strong>验收标准：</strong>支持音频播放、暂停、切换，播放控制稳定可靠</p>
+                <p><strong>风险评估：</strong>中等风险，涉及复杂的音频处理和缓存逻辑</p>
+            </div>
+
+            <div class="milestone">
+                <h4>里程碑3：主要界面完成（第8周末）</h4>
+                <p><strong>交付目标：</strong>完成主要用户界面，用户可以进行基本的音乐浏览和播放</p>
+                <p><strong>验收标准：</strong>界面美观易用，导航流畅，支持基本的用户交互</p>
+                <p><strong>风险评估：</strong>低风险，主要是UI开发工作</p>
+            </div>
+
+            <div class="milestone">
+                <h4>里程碑4：所有核心功能完成（第12周末）</h4>
+                <p><strong>交付目标：</strong>完成所有核心功能模块，应用基本可用</p>
+                <p><strong>验收标准：</strong>发现、搜索、个人、播放等功能完整，用户体验良好</p>
+                <p><strong>风险评估：</strong>中等风险，功能集成和调试工作量大</p>
+            </div>
+
+            <div class="milestone">
+                <h4>里程碑5：高级功能完成（第14周末）</h4>
+                <p><strong>交付目标：</strong>完成语音控制和车载适配等高级功能</p>
+                <p><strong>验收标准：</strong>语音控制准确可靠，车载环境运行稳定</p>
+                <p><strong>风险评估：</strong>高风险，涉及第三方SDK集成和硬件适配</p>
+            </div>
+
+            <div class="milestone">
+                <h4>里程碑6：项目完成（第16周末）</h4>
+                <p><strong>交付目标：</strong>项目完成，通过所有测试，可以发布</p>
+                <p><strong>验收标准：</strong>性能优化完成，测试覆盖率达标，质量符合发布要求</p>
+                <p><strong>风险评估：</strong>低风险，主要是优化和测试工作</p>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>风险管控措施</h3>
+            
+            <div class="risk-item">
+                <h4>技术风险管控</h4>
+                <ul>
+                    <li><strong>百度语音SDK风险：</strong>提前进行SDK测试，准备备用语音方案</li>
+                    <li><strong>车载适配风险：</strong>使用官方推荐方案，进行充分设备测试</li>
+                    <li><strong>性能优化风险：</strong>建立性能监控体系，定期进行性能测试</li>
+                </ul>
+            </div>
+
+            <div class="risk-item">
+                <h4>进度风险管控</h4>
+                <ul>
+                    <li><strong>开发延期风险：</strong>设置20%的缓冲时间，建立每周进度评估机制</li>
+                    <li><strong>团队协作风险：</strong>建立清晰接口规范，使用代码审查和版本控制</li>
+                    <li><strong>需求变更风险：</strong>锁定核心需求，变更需要评估影响和调整计划</li>
+                </ul>
+            </div>
+
+            <div class="risk-item">
+                <h4>质量风险管控</h4>
+                <ul>
+                    <li><strong>功能稳定性风险：</strong>建立完善测试体系，进行充分用户测试</li>
+                    <li><strong>兼容性风险：</strong>扩大测试设备范围，建立兼容性测试矩阵</li>
+                    <li><strong>用户体验风险：</strong>定期进行用户体验评估，及时优化交互设计</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            gantt: {
+                useMaxWidth: true,
+                leftPadding: 75,
+                gridLineStartPadding: 35,
+                fontSize: 11,
+                sectionFontSize: 24,
+                numberSectionStyles: 4
+            }
+        });
+    </script>
+</body>
+</html>

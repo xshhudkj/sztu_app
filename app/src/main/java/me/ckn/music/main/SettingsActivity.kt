@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import me.wcy.router.annotation.Route
 import top.wangchenyan.common.ext.toast
 import androidx.preference.SwitchPreference
+import androidx.preference.SwitchPreferenceCompat
 import androidx.preference.ListPreference
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
@@ -172,6 +173,11 @@ class SettingsActivity : BaseMusicActivity(), SharedPreferences.OnSharedPreferen
             findPreference(getString(R.string.setting_key_auto_cache_clean))!!
         }
 
+        // 语音控制设置
+        private val voiceAutoEnable: SwitchPreferenceCompat by lazy {
+            findPreference("voice_auto_enable")!!
+        }
+
         @Inject
         lateinit var playerController: PlayerController
 
@@ -186,6 +192,7 @@ class SettingsActivity : BaseMusicActivity(), SharedPreferences.OnSharedPreferen
             initPlaySoundQuality()
             initSoundEffect()
             initAutoPlayOnStartup()
+            initVoiceControl()
             initDownloadSoundQuality()
             initFilter()
             android.util.Log.d("SettingsActivity", "About to call initCacheManagement")
@@ -268,6 +275,23 @@ class SettingsActivity : BaseMusicActivity(), SharedPreferences.OnSharedPreferen
             } else {
                 autoPlayOnStartup.title = getString(R.string.auto_play_on_startup_title_disabled)
                 autoPlayOnStartup.summary = null // 关闭时不显示副标题
+            }
+        }
+
+        /**
+         * 初始化语音控制设置
+         */
+        private fun initVoiceControl() {
+            // 从SharedPreferences读取当前设置
+            val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
+            val isEnabled = sharedPrefs.getBoolean("voice_auto_enable", true)
+            voiceAutoEnable.isChecked = isEnabled
+
+            // 监听设置变化
+            voiceAutoEnable.setOnPreferenceChangeListener { _, newValue ->
+                val enabled = newValue as Boolean
+                android.util.Log.d("SettingsActivity", "语音自动启用设置已更新: $enabled")
+                true
             }
         }
 

@@ -29,18 +29,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="16570d51-db5e-416e-82dc-0432bcc16b4c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.codelf/changelog.md" beforeDir="false" afterPath="$PROJECT_DIR$/.codelf/changelog.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.codelf/project.md" beforeDir="false" afterPath="$PROJECT_DIR$/.codelf/project.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/SettingsActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/SettingsActivity.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playing/PlayingActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playing/PlayingActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/CurrentPlaylistFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/RecentPlayRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/main/playlist/RecentPlayRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/search/SearchFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerControllerImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/PlayerControllerImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ModelEx.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/utils/ModelEx.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/service/likesong/LikeSongProcessorImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/LrcCache.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/LrcCache.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/preference/ConfigPreferences.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/storage/preference/ConfigPreferences.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/widget/PlayBar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/me/ckn/music/widget/PlayBar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_hot_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_hot_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_playing_control.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_playing_control.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/preference_setting.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/preference_setting.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/issues/播放历史功能修复.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/issues/播放历史点击逻辑重构.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,12 +327,12 @@
         <entry />
         <entry key="me.ckn.music">
           <value>
-            <CheckInfo lastCheckTimestamp="1749794528289" />
+            <CheckInfo lastCheckTimestamp="1750673221744" />
           </value>
         </entry>
         <entry key="me.ckn.music.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1749794528289" />
+            <CheckInfo lastCheckTimestamp="1750673221744" />
           </value>
         </entry>
         <entry key="me.wcy.music.test">

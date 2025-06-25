@@ -157,4 +157,36 @@
         <item>95</item>
     </string-array>
 
+    <!-- 语音识别灵敏度选项 -->
+    <string-array name="voice_sensitivity_entries">
+        <item>低灵敏度（高准确性）</item>
+        <item>中等灵敏度（平衡）</item>
+        <item>高灵敏度（快速响应）</item>
+        <item>极高灵敏度（最快响应）</item>
+    </string-array>
+
+    <string-array name="voice_sensitivity_values">
+        <item>0.8</item>
+        <item>0.6</item>
+        <item>0.4</item>
+        <item>0.2</item>
+    </string-array>
+
+    <!-- 语音反馈音量选项 -->
+    <string-array name="voice_feedback_volume_entries">
+        <item>静音</item>
+        <item>低音量</item>
+        <item>中等音量</item>
+        <item>高音量</item>
+        <item>最大音量</item>
+    </string-array>
+
+    <string-array name="voice_feedback_volume_values">
+        <item>0.0</item>
+        <item>0.3</item>
+        <item>0.6</item>
+        <item>0.8</item>
+        <item>1.0</item>
+    </string-array>
+
 </resources>

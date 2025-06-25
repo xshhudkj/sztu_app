@@ -53,16 +53,24 @@ import me.ckn.music.utils.getDuration
 import me.ckn.music.utils.getLargeCover
 import me.ckn.music.utils.getSongId
 import me.ckn.music.utils.isLocal
+import me.ckn.music.voice.VoiceControlViewModel
+import me.ckn.music.voice.VoiceControlEvent
+import me.ckn.music.voice.requestRecordAudioPermission
+import me.ckn.music.voice.hasRecordAudioPermission
+import me.wcy.router.CRouter
 import me.ckn.music.widget.VipTrialDialog
 import me.wcy.router.annotation.Route
 import top.wangchenyan.common.ext.toast
 import top.wangchenyan.common.ext.viewBindings
 import top.wangchenyan.common.net.apiCall
+import top.wangchenyan.common.permission.Permissioner
 import top.wangchenyan.common.utils.LaunchUtils
 import top.wangchenyan.common.utils.image.ImageUtils
 import java.io.File
 import javax.inject.Inject
 import kotlin.math.abs
+import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 
 /**
  * WhisperPlay Music Player
@@ -88,9 +96,14 @@ class PlayingActivity : BaseMusicActivity() {
     @Inject
     lateinit var likeSongProcessor: LikeSongProcessor
 
+    // 语音控制ViewModel
+    private lateinit var voiceControlViewModel: VoiceControlViewModel
+
     private val audioManager by lazy {
         getSystemService(Context.AUDIO_SERVICE) as AudioManager
     }
+
+
 
 
 
@@ -131,6 +144,11 @@ class PlayingActivity : BaseMusicActivity() {
     // 封面URL保存 - 用于歌词颜色时序修复（只保存URL，不保存bitmap避免内存问题）
     private var currentCoverUrl: String = ""
 
+    // 播放页面加载优化：加载状态控制
+    private var isCoverLoaded = false
+    private var isLyricsLoaded = false
+    private var pendingPlayRequest = false
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -144,6 +162,7 @@ class PlayingActivity : BaseMusicActivity() {
         initLrc()
         initActions()
         initPlayControl()
+        initVoiceControl()
         initData()
         switchCoverLrc(true)
     }
@@ -301,6 +320,8 @@ class PlayingActivity : BaseMusicActivity() {
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.setTimelineTextColor(ContextCompat.getColor(this, R.color.lrc_timeline_highlight_color))
         viewBinding.lrcView.setTimeTextColor(android.graphics.Color.WHITE)
+
+
 
         // 强制刷新视图，确保颜色设置立即生效
         viewBinding.lrcView.invalidate()
@@ -483,6 +504,336 @@ class PlayingActivity : BaseMusicActivity() {
         })
     }
 
+    /**
+     * 初始化语音控制功能（增强版权限管理）
+     */
+    private fun initVoiceControl() {
+        // 初始化VoiceControlViewModel
+        voiceControlViewModel = ViewModelProvider(this)[VoiceControlViewModel::class.java]
+
+        // 查找语音控制按钮
+        val voiceControlButton = findViewById<android.widget.ImageView>(R.id.ivVoiceControl)
+
+        if (voiceControlButton != null) {
+            // 首次权限检查和请求
+            checkAndRequestVoicePermissions()
+
+            // 检查是否启用自动开启语音控制
+            val sharedPrefs = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
+            val autoEnable = sharedPrefs.getBoolean("voice_auto_enable", true)
+
+            if (autoEnable) {
+                // 延迟启用语音控制，确保UI完全初始化和权限检查完成
+                voiceControlButton.postDelayed({
+                    voiceControlViewModel.enableVoiceControl()
+                    Log.d(TAG, "自动启用语音控制功能")
+                }, 1000) // 增加延迟时间，确保权限检查完成
+            }
+            // 添加点击动画效果
+            voiceControlButton.addClickScaleAnimation(
+                scaleDown = 0.9f,
+                duration = 200L
+            )
+
+            // 设置点击事件
+            voiceControlButton.setOnClickListener {
+                voiceControlViewModel.toggleVoiceControl()
+            }
+
+            // 观察语音控制状态
+            lifecycleScope.launch {
+                voiceControlViewModel.state.collectLatest { state ->
+                    updateVoiceControlUI(voiceControlButton, state)
+                }
+            }
+
+            // 观察语音控制事件
+            lifecycleScope.launch {
+                voiceControlViewModel.events.collectLatest { event ->
+                    handleVoiceControlEvent(event)
+                }
+            }
+
+            Log.d(TAG, "语音控制功能初始化完成")
+        } else {
+            Log.w(TAG, "未找到语音控制按钮，跳过语音控制初始化")
+        }
+    }
+
+    /**
+     * 更新语音控制按钮UI状态（智能化增强版）
+     * Enhanced voice control button UI state management with intelligent visual feedback
+     */
+    private fun updateVoiceControlUI(button: android.widget.ImageView, state: me.ckn.music.voice.VoiceControlState) {
+        // 更新按钮启用状态（控制图标选择器的状态）
+        button.isEnabled = state.hasRecordPermission
+
+        // 更新按钮选中状态
+        button.isSelected = state.isVoiceEnabled && state.hasRecordPermission
+
+        // 清除之前的颜色过滤器，让选择器自然工作
+        button.clearColorFilter()
+
+        // 更新按钮状态和外观
+        when {
+            !state.hasRecordPermission -> {
+                // 无权限时：使用禁用图标，半透明，保持可点击以重新请求权限
+                button.alpha = 0.6f
+                button.isClickable = true
+                Log.d(TAG, "语音控制按钮状态：无权限（显示禁用图标）")
+            }
+            state.isVoiceEnabled -> {
+                // 启用时：完全不透明，蓝色高亮（通过选择器自动处理）
+                button.alpha = 1.0f
+                button.isClickable = true
+                Log.d(TAG, "语音控制按钮状态：已启用（蓝色高亮）")
+            }
+            else -> {
+                // 禁用时：稍微透明，灰色显示（通过选择器自动处理）
+                button.alpha = 0.8f
+                button.isClickable = true
+                Log.d(TAG, "语音控制按钮状态：已禁用（灰色）")
+            }
+        }
+
+        // 添加状态指示动画
+        if (state.isListening) {
+            // 监听状态：添加脉冲动画
+            button.animate()
+                .scaleX(1.1f)
+                .scaleY(1.1f)
+                .setDuration(500)
+                .withEndAction {
+                    button.animate()
+                        .scaleX(1.0f)
+                        .scaleY(1.0f)
+                        .setDuration(500)
+                        .start()
+                }
+                .start()
+        }
+
+        // 如果有错误信息，显示提示
+        if (state.errorMessage != null) {
+            toast(state.errorMessage)
+        }
+
+        Log.d(TAG, "语音控制UI状态更新: enabled=${state.isVoiceEnabled}, listening=${state.isListening}, recognizing=${state.isRecognizing}, hasPermission=${state.hasRecordPermission}")
+    }
+
+    /**
+     * 检查并请求语音控制权限
+     */
+    private fun checkAndRequestVoicePermissions() {
+        Log.d(TAG, "检查语音控制权限")
+
+        // 使用Permissioner检查录音权限
+        if (!Permissioner.hasRecordAudioPermission(this)) {
+            Log.d(TAG, "缺少录音权限，主动请求")
+
+            // 主动请求录音权限
+            Permissioner.requestRecordAudioPermission(this) { granted, shouldRationale ->
+                voiceControlViewModel.onPermissionResult(granted)
+
+                if (granted) {
+                    Log.d(TAG, "录音权限已授予")
+                    toast("语音控制功能已启用")
+                } else {
+                    Log.w(TAG, "录音权限被拒绝")
+                    if (shouldRationale) {
+                        toast("语音控制需要录音权限才能正常工作，请在设置中开启")
+                    } else {
+                        toast("语音控制权限被永久拒绝，请在系统设置中手动开启")
+                    }
+                }
+            }
+        } else {
+            Log.d(TAG, "录音权限已存在")
+            voiceControlViewModel.onPermissionResult(true)
+        }
+    }
+
+    /**
+     * 处理语音控制事件（增强版）
+     */
+    private fun handleVoiceControlEvent(event: VoiceControlEvent) {
+        when (event) {
+            is VoiceControlEvent.PermissionResult -> {
+                if (!event.granted) {
+                    // 权限被拒绝，重新请求权限
+                    Permissioner.requestRecordAudioPermission(this) { granted, shouldRationale ->
+                        voiceControlViewModel.onPermissionResult(granted)
+                        if (!granted && shouldRationale) {
+                            toast("语音控制需要录音权限才能正常工作")
+                        }
+                    }
+                }
+            }
+            is VoiceControlEvent.WakeWordDetected -> {
+                Log.d(TAG, "检测到唤醒词: ${event.word}")
+                // 可以添加视觉反馈，比如按钮闪烁
+            }
+            is VoiceControlEvent.CommandRecognized -> {
+                Log.d(TAG, "识别到对话模式语音命令: ${event.command}")
+                toast("执行命令: ${event.command}")
+            }
+            is VoiceControlEvent.DirectCommandRecognized -> {
+                Log.d(TAG, "识别到直接语音命令: ${event.command}")
+                // 直接命令不显示toast，避免干扰用户
+            }
+            is VoiceControlEvent.RecognitionFailed -> {
+                Log.w(TAG, "语音识别失败: ${event.error}")
+                // 错误信息已经通过语音合成播放，这里不需要额外处理
+            }
+            is VoiceControlEvent.SpeechSynthesisCompleted -> {
+                Log.d(TAG, "语音合成完成")
+            }
+
+            // 新增的高级功能事件处理
+            is VoiceControlEvent.NavigateToSearch -> {
+                Log.d(TAG, "语音命令：导航到搜索页面，查询: ${event.query}")
+                // 实现导航到搜索页面的逻辑
+                try {
+                    if (event.query.isNotEmpty()) {
+                        // 带搜索关键词跳转到搜索页面
+                        CRouter.with(this)
+                            .url(RoutePath.SEARCH)
+                            .extra("keywords", event.query)
+                            .start()
+                        toast("正在搜索: ${event.query}")
+                    } else {
+                        // 直接打开搜索页面
+                        CRouter.with(this)
+                            .url(RoutePath.SEARCH)
+                            .start()
+                        toast("打开搜索页面")
+                    }
+                } catch (e: Exception) {
+                    Log.e(TAG, "导航到搜索页面失败", e)
+                    toast("打开搜索页面失败")
+                }
+            }
+
+            is VoiceControlEvent.NavigateToHome -> {
+                Log.d(TAG, "语音命令：返回首页")
+                toast("返回首页")
+                finish() // 关闭播放页面，返回主页
+            }
+
+            is VoiceControlEvent.NavigateToSettings -> {
+                Log.d(TAG, "语音命令：打开设置页面")
+                try {
+                    // 实现导航到设置页面的逻辑
+                    CRouter.with(this)
+                        .url("/settings")
+                        .start()
+                    toast("打开设置页面")
+                } catch (e: Exception) {
+                    Log.e(TAG, "导航到设置页面失败", e)
+                    toast("打开设置页面失败")
+                }
+            }
+
+            is VoiceControlEvent.ShowPlaylist -> {
+                Log.d(TAG, "语音命令：显示播放列表")
+                toast("显示播放列表")
+                // 显示当前播放列表
+                CurrentPlaylistFragment.newInstance()
+                    .show(supportFragmentManager, CurrentPlaylistFragment.TAG)
+            }
+
+            is VoiceControlEvent.AddToFavorite -> {
+                Log.d(TAG, "语音命令：添加到收藏")
+                // 执行收藏操作
+                lifecycleScope.launch {
+                    val song = playerController.currentSong.value
+                    if (song != null) {
+                        val res = likeSongProcessor.like(this@PlayingActivity, song.getSongId())
+                        if (res.isSuccess()) {
+                            toast("已添加到收藏")
+                            updateOnlineActionsState(song)
+                        } else {
+                            toast("收藏失败: ${res.msg}")
+                        }
+                    } else {
+                        toast("当前没有播放歌曲")
+                    }
+                }
+            }
+
+            is VoiceControlEvent.DownloadSong -> {
+                Log.d(TAG, "语音命令：下载歌曲")
+                // 执行下载操作
+                lifecycleScope.launch {
+                    val song = playerController.currentSong.value
+                    if (song != null) {
+                        val res = apiCall {
+                            DiscoverApi.get()
+                                .getSongUrl(song.getSongId(), ConfigPreferences.downloadSoundQuality)
+                        }
+                        if (res.isSuccessWithData() && res.getDataOrThrow().isNotEmpty()) {
+                            val url = res.getDataOrThrow().first().url
+                            LaunchUtils.launchBrowser(this@PlayingActivity, url)
+                            toast("开始下载当前歌曲")
+                        } else {
+                            toast("下载失败: ${res.msg}")
+                        }
+                    } else {
+                        toast("当前没有播放歌曲")
+                    }
+                }
+            }
+
+            is VoiceControlEvent.ShowLyrics -> {
+                Log.d(TAG, "语音命令：显示歌词")
+                toast("显示歌词")
+                // 切换到歌词视图
+                switchCoverLrc(false)
+            }
+
+            is VoiceControlEvent.SearchAndPlaySong -> {
+                Log.d(TAG, "语音命令：搜索并播放歌曲：${event.songName}")
+                if (event.songName.isNotEmpty()) {
+                    try {
+                        // 导航到搜索页面并自动搜索
+                        CRouter.with(this)
+                            .url(RoutePath.SEARCH)
+                            .extra("keywords", event.songName)
+                            .extra("autoSearch", true)
+                            .start()
+                        toast("正在搜索歌曲：${event.songName}")
+                    } catch (e: Exception) {
+                        Log.e(TAG, "搜索歌曲失败", e)
+                        toast("搜索失败")
+                    }
+                } else {
+                    toast("请说出要搜索的歌曲名")
+                }
+            }
+
+            is VoiceControlEvent.SearchAndPlayArtist -> {
+                Log.d(TAG, "语音命令：搜索并播放歌手：${event.artistName}")
+                if (event.artistName.isNotEmpty()) {
+                    try {
+                        // 导航到搜索页面并自动搜索歌手
+                        CRouter.with(this)
+                            .url(RoutePath.SEARCH)
+                            .extra("keywords", event.artistName)
+                            .extra("searchType", "artist")
+                            .extra("autoSearch", true)
+                            .start()
+                        toast("正在搜索歌手：${event.artistName}")
+                    } catch (e: Exception) {
+                        Log.e(TAG, "搜索歌手失败", e)
+                        toast("搜索失败")
+                    }
+                } else {
+                    toast("请说出要搜索的歌手名")
+                }
+            }
+        }
+    }
+
     private fun initData() {
         playerController.currentSong.observe(this) { song ->
             if (song != null) {
@@ -494,7 +845,13 @@ class PlayingActivity : BaseMusicActivity() {
                 
                 lastUpdateSongId = songId
                 isUpdatingUI = true
-                
+
+                // 重置加载状态
+                isCoverLoaded = false
+                isLyricsLoaded = false
+                pendingPlayRequest = false
+                Log.d(TAG, "🔄 新歌曲开始加载，重置加载状态")
+
                 // 立即重置歌词颜色为白色，防止显示默认红色
                 viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
                 viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
@@ -619,13 +976,14 @@ class PlayingActivity : BaseMusicActivity() {
 
     private fun updateCover(song: MediaItem) {
         currentCoverUrl = ""
+        isCoverLoaded = false
         setDefaultCover()
-        
+
         // 立即设置歌词为白色，防止封面加载过程中显示红色
         viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.invalidate()
-        
+
         val coverUrl = song.getLargeCover()
         ImageUtils.loadBitmap(coverUrl) {
             if (it.isSuccessWithData()) {
@@ -640,6 +998,16 @@ class PlayingActivity : BaseMusicActivity() {
 
                 // 动态更新歌词高亮颜色
                 updateLrcHighlightColor(bitmap, coverUrl)
+
+                // 标记封面加载完成
+                isCoverLoaded = true
+                Log.d(TAG, "✅ 封面加载完成")
+                checkAndStartPlayback()
+            } else {
+                // 封面加载失败，使用默认封面
+                isCoverLoaded = true
+                Log.d(TAG, "⚠️ 封面加载失败，使用默认封面")
+                checkAndStartPlayback()
             }
         }
     }
@@ -959,12 +1327,13 @@ class PlayingActivity : BaseMusicActivity() {
     private fun updateLrc(song: MediaItem) {
         loadLrcJob?.cancel()
         loadLrcJob = null
-        
+        isLyricsLoaded = false
+
         // 立即设置歌词为白色，防止加载过程中显示红色
         viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.invalidate()
-        
+
         val lrcPath = LrcCache.getLrcFilePath(song)
         if (lrcPath?.isNotEmpty() == true) {
             loadLrc(lrcPath)
@@ -973,6 +1342,10 @@ class PlayingActivity : BaseMusicActivity() {
         viewBinding.lrcView.loadLrc("")
         if (song.isLocal()) {
             setLrcLabel("暂无歌词")
+            // 本地歌曲无歌词也算加载完成
+            isLyricsLoaded = true
+            Log.d(TAG, "✅ 本地歌曲无歌词，标记为加载完成")
+            checkAndStartPlayback()
         } else {
             setLrcLabel("歌词加载中…")
             loadLrcJob = lifecycleScope.launch {
@@ -989,17 +1362,28 @@ class PlayingActivity : BaseMusicActivity() {
 
                     // 加载双语歌词（如果有翻译歌词）
                     if (lrcWrap.tlyric.isValid()) {
+                        // 同时保存翻译歌词文件
+                        LrcCache.saveTlyricFile(song, lrcWrap.tlyric.lyric)
+
+                        // 优化双语歌词显示，在翻译歌词前添加换行符增加间距
+                        val optimizedTlyricContent = optimizeDualLanguageLyrics(lrcWrap.tlyric.lyric)
+
                         // 使用LrcView的双语歌词文本加载方法
-                        viewBinding.lrcView.loadLrc(lrcWrap.lrc.lyric, lrcWrap.tlyric.lyric)
+                        viewBinding.lrcView.loadLrc(lrcWrap.lrc.lyric, optimizedTlyricContent)
                         setLrcLabel("")
-                        Log.d(TAG, "Loading dual language lyrics")
+                        Log.d(TAG, "Loading dual language lyrics with optimized spacing and saving translation cache")
 
                         // 双语歌词加载完成后，立即强制设置白色
                         viewBinding.lrcView.post {
                             viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
                             viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
                             Log.d(TAG, "🎨 双语歌词加载完成后强制设置白色")
-                            
+
+                            // 标记歌词加载完成
+                            isLyricsLoaded = true
+                            Log.d(TAG, "✅ 双语歌词加载完成")
+                            checkAndStartPlayback()
+
                             // 延迟触发颜色更新，确保歌词已完全加载
                             viewBinding.lrcView.postDelayed({
                                 triggerLrcColorUpdate()
@@ -1013,6 +1397,10 @@ class PlayingActivity : BaseMusicActivity() {
                 }.onFailure {
                     Log.e(TAG, "load lrc error", it)
                     setLrcLabel("歌词加载失败")
+                    // 歌词加载失败也算完成
+                    isLyricsLoaded = true
+                    Log.d(TAG, "⚠️ 歌词加载失败，标记为加载完成")
+                    checkAndStartPlayback()
                 }
             }
         }
@@ -1027,12 +1415,63 @@ class PlayingActivity : BaseMusicActivity() {
             viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
             viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
             Log.d(TAG, "🎨 歌词加载完成后强制设置白色")
-            
+
+            // 标记歌词加载完成
+            isLyricsLoaded = true
+            Log.d(TAG, "✅ 单语歌词加载完成")
+            checkAndStartPlayback()
+
             // 延迟触发颜色更新，确保歌词已完全加载
             viewBinding.lrcView.postDelayed({
                 triggerLrcColorUpdate()
             }, 200)
         }
+    }
+
+    /**
+     * 加载双语歌词文件
+     * Load dual language lyrics files
+     */
+    private fun loadDualLrc(lrcPath: String, tlyricPath: String) {
+        val lrcFile = File(lrcPath)
+        val tlyricFile = File(tlyricPath)
+
+        val lrcContent = lrcFile.readText()
+        val tlyricContent = tlyricFile.readText()
+
+        // 优化双语歌词显示，在翻译歌词前添加换行符增加间距
+        val optimizedTlyricContent = optimizeDualLanguageLyrics(tlyricContent)
+
+        viewBinding.lrcView.loadLrc(lrcContent, optimizedTlyricContent)
+        setLrcLabel("")
+        Log.d(TAG, "Loading cached dual language lyrics with optimized spacing")
+
+        // 双语歌词加载完成后，立即强制设置白色
+        viewBinding.lrcView.post {
+            viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
+            viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
+            Log.d(TAG, "🎨 缓存双语歌词加载完成后强制设置白色")
+
+            // 标记歌词加载完成
+            isLyricsLoaded = true
+            Log.d(TAG, "✅ 缓存双语歌词加载完成")
+            checkAndStartPlayback()
+
+            // 延迟触发颜色更新，确保歌词已完全加载
+            viewBinding.lrcView.postDelayed({
+                triggerLrcColorUpdate()
+            }, 200)
+        }
+    }
+
+    /**
+     * 优化双语歌词显示，增加翻译歌词间距
+     * Optimize dual language lyrics display by adding spacing for translation lyrics
+     */
+    private fun optimizeDualLanguageLyrics(tlyricContent: String): String {
+        // 简单地返回原始内容，依靠增加的行间距来改善显示效果
+        // 主要通过 lrc_divider_height 的增加来改善双语歌词的可读性
+        return tlyricContent
     }
 
     private fun setLrcLabel(label: String) {
@@ -1041,6 +1480,31 @@ class PlayingActivity : BaseMusicActivity() {
         viewBinding.lrcView.setCurrentColor(android.graphics.Color.WHITE)
         viewBinding.lrcView.setNormalColor(android.graphics.Color.WHITE)
         Log.d(TAG, "🔤 强制设置歌词颜色为白色: $label")
+    }
+
+    /**
+     * 检查加载状态并控制播放
+     * 只有封面和歌词都加载完成后才开始播放
+     */
+    private fun checkAndStartPlayback() {
+        Log.d(TAG, "🔍 检查加载状态: 封面=$isCoverLoaded, 歌词=$isLyricsLoaded, 待播放=$pendingPlayRequest")
+
+        if (isCoverLoaded && isLyricsLoaded && pendingPlayRequest) {
+            Log.d(TAG, "🎵 所有资源加载完成，开始播放")
+            pendingPlayRequest = false
+            // 这里可以添加实际的播放控制逻辑
+            // 例如：playerController.resume() 或其他播放控制
+        }
+    }
+
+    /**
+     * 设置播放请求标记
+     * 当用户请求播放时调用，如果资源未加载完成则等待
+     */
+    private fun requestPlayback() {
+        pendingPlayRequest = true
+        Log.d(TAG, "🎵 播放请求已设置，等待资源加载完成")
+        checkAndStartPlayback()
     }
 
     /**

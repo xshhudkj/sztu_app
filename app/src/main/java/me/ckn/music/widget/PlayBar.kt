@@ -4,7 +4,7 @@ import android.animation.ObjectAnimator
 import android.animation.ValueAnimator
 import android.content.Context
 import android.util.AttributeSet
-
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.animation.LinearInterpolator
 import android.widget.FrameLayout
@@ -96,12 +96,17 @@ class PlayBar @JvmOverloads constructor(
             val activity = context.findActivity()
             if (activity is FragmentActivity) {
                 activity.lifecycleScope.launch {
-                    val song = playerController.currentSong.value ?: return@launch
-                    val res = likeSongProcessor.like(activity, song.getSongId())
-                    if (res.isSuccess()) {
-                        updateLikeState(song.getSongId())
-                    } else {
-                        Toast.makeText(context, res.msg, Toast.LENGTH_SHORT).show()
+                    try {
+                        val song = playerController.currentSong.value ?: return@launch
+                        val res = likeSongProcessor.like(activity, song.getSongId())
+                        if (res.isSuccess()) {
+                            updateLikeState(song.getSongId())
+                        } else {
+                            Toast.makeText(context, res.msg ?: "操作失败", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception) {
+                        Log.e("PlayBar", "爱心按钮点击处理失败", e)
+                        Toast.makeText(context, "操作失败，请重试", Toast.LENGTH_SHORT).show()
                     }
                 }
             }

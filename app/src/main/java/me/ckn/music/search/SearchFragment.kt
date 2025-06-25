@@ -99,6 +99,9 @@ class SearchFragment : BaseMusicFragment() {
         initSearchBanner()
         initBackPressedHandler()
 
+        // 处理外部传入的搜索关键词（语音控制）
+        handleExternalKeywords()
+
         lifecycleScope.launch {
             viewModel.showResult.collectLatest { showResult ->
                 updateViewVisibility(showResult)
@@ -107,7 +110,11 @@ class SearchFragment : BaseMusicFragment() {
 
         lifecycleScope.launch {
             delay(200)
-            KeyboardUtils.showSoftInput(titleBinding.etSearch)
+            // 如果有外部关键词，不自动弹出键盘
+            val externalKeywords = arguments?.getString("keywords")
+            if (externalKeywords.isNullOrEmpty()) {
+                KeyboardUtils.showSoftInput(titleBinding.etSearch)
+            }
         }
     }
 
@@ -234,16 +241,8 @@ class SearchFragment : BaseMusicFragment() {
         // 设置预加载页面数量
         viewBinding.viewPage2.offscreenPageLimit = 5
 
-        // 优化标签切换：直接跳转，不滑动中间页面
-        viewBinding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                tab?.let {
-                    viewBinding.viewPage2.setCurrentItem(it.position, false) // false表示不使用平滑滚动
-                }
-            }
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
+        // 移除额外的OnTabSelectedListener设置，与歌单广场页面保持一致的滑动体验
+        // TabLayoutPager内部已经处理了标签与ViewPager2的绑定逻辑
     }
 
     private fun initHistory() {
@@ -480,6 +479,28 @@ class SearchFragment : BaseMusicFragment() {
             return false // 让系统处理返回事件，直接退出
         }
         return super.onInterceptBackEvent()
+    }
+
+    /**
+     * 处理外部传入的搜索关键词（如语音控制）
+     */
+    private fun handleExternalKeywords() {
+        val externalKeywords = arguments?.getString("keywords")
+        if (!externalKeywords.isNullOrEmpty()) {
+            Log.d("SearchFragment", "接收到外部搜索关键词: $externalKeywords")
+
+            // 设置搜索框文本
+            titleBinding.etSearch.setText(externalKeywords)
+            titleBinding.etSearch.setSelection(externalKeywords.length)
+
+            // 延迟执行搜索，确保UI初始化完成
+            lifecycleScope.launch {
+                delay(300)
+                // 自动执行搜索
+                viewModel.search(externalKeywords)
+                Log.d("SearchFragment", "自动执行搜索: $externalKeywords")
+            }
+        }
     }
 
     /**

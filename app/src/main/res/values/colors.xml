@@ -114,5 +114,12 @@
     
     <!-- 加载界面颜色 -->
     <color name="loading_overlay">#80000000</color>
+
+    <!-- 语音控制按钮颜色 -->
+    <color name="voice_control_active">#2196F3</color>
+    <color name="voice_control_inactive">#9E9E9E</color>
+    <color name="voice_control_enabled">#2196F3</color>
+    <color name="voice_control_disabled">#9E9E9E</color>
+    <color name="voice_control_no_permission">#757575</color>
 </resources>
 

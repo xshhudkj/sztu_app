@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+WhisperPlay Music Player - 语音控制按钮颜色选择器
+文件描述：语音控制按钮的颜色状态选择器，支持禁用状态
+File Description: Voice control button color state selector with disabled state
+-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 禁用状态（无权限）- 深灰色 -->
+    <item android:state_enabled="false" android:color="@color/voice_control_no_permission" />
+    <!-- 选中状态（语音控制开启）- 蓝色高亮 -->
+    <item android:state_selected="true" android:color="@color/voice_control_active" />
+    <!-- 默认状态（语音控制关闭）- 灰色 -->
+    <item android:color="@color/voice_control_inactive" />
+</selector>

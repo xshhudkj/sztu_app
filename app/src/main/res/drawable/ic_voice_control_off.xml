@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+WhisperPlay Music Player - 语音控制关闭图标（带斜杠）
+文件描述：语音控制功能关闭状态的麦克风图标，带有斜杠表示禁用
+File Description: Voice control disabled microphone icon with slash indicator
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- 麦克风主体（加粗加大） -->
+    <path
+        android:fillColor="@color/voice_control_inactive"
+        android:pathData="M12,1.5C13.66,1.5 15,2.84 15,4.5V10.5C15,12.16 13.66,13.5 12,13.5C10.34,13.5 9,12.16 9,10.5V4.5C9,2.84 10.34,1.5 12,1.5Z" />
+
+    <!-- 麦克风支架（加粗） -->
+    <path
+        android:fillColor="@color/voice_control_inactive"
+        android:pathData="M18.5,9.5V12C18.5,15.86 15.36,19 11.5,19C7.64,19 4.5,15.86 4.5,12V9.5H6.5V12C6.5,14.76 8.74,17 11.5,17C14.26,17 16.5,14.76 16.5,12V9.5H18.5Z"
+        android:strokeWidth="0.5" />
+
+    <!-- 麦克风底座（加粗） -->
+    <path
+        android:fillColor="@color/voice_control_inactive"
+        android:pathData="M12,19V21H8.5V22.5H15.5V21H12V19Z" />
+
+    <!-- 禁用斜杠（加粗） -->
+    <path
+        android:fillColor="@color/voice_control_inactive"
+        android:pathData="M4.5,3.5L3.5,4.5L20.5,21.5L21.5,20.5L4.5,3.5Z"
+        android:strokeWidth="2"
+        android:strokeColor="@color/voice_control_inactive" />
+</vector>

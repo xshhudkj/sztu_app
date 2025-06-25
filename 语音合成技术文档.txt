@@ -1,0 +1,664 @@
+
+最新活动
+大模型
+产品
+解决方案
+定价
+文档与社区
+生态伙伴
+服务支持
+了解智能云
+备案
+控制台
+*
+*******5052
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+百度智能云大模型系列课程
+500+节免费观看 持续更新
+
+百度智能云千帆AI原生应用商店
+近千款AI应用，解锁多元体验
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+文档中心
+千帆AI应用开发者中心全新上线，一站搞定AI应用开发全链路，快去体验吧！
+搜索本产品文档关键词
+所有文档menu
+语音技术
+搜索本产品文档目录
+产品简介
+产品更新动态
+快速开发指南
+购买指南
+大模型语音
+API文档
+SDK文档
+语音合成
+短文本在线合成 HTTP SDK
+语音合成 Android SDK
+语音合成 iOS SDK
+语音合成 HarmonyOS SDK
+语音识别
+错误码汇总
+EasyDL语音自训练平台
+私有化部署方式
+常见问题汇总
+相关协议
+文档中心
+arrow
+语音技术
+arrow
+SDK文档
+arrow
+语音合成
+arrow
+语音合成 Android SDK
+评价此篇文章
+
+有帮助
+没帮助
+本页目录
+1. 文档说明
+2. 版本说明
+2.1 版本升级改动点说明：
+3. SDK说明
+4. Demo运行
+4.1 配置包名和签名
+4.2 修改鉴权
+5. SDK集成
+复制NDK 架构目录
+build.gradle 文件及包名确认
+DEMO压缩包说明
+6. 授权文件、离线资源文件
+离线资源文件--发音人（支持16个不同发音人）
+在线时支持11种发音
+7. 语音合成相关接口
+设置当前的Context
+设置合成结果的回调
+设置 App Id和 App Key 及 App Secret
+设置合成参数
+合成参数
+初始化合成引擎
+控制接口
+合成及播放接口
+批量合成并播放接口
+播放过程中的暂停及继续
+停止合成并停止播放
+其它接口
+打开调试日志（重要）
+判断模型文件是否有效(重要)
+释放资源
+切换离线发音
+设置音量
+音频流类型
+授权检验接口（测试使用，上线可以忽略）
+SpeechSynthesizerListener回调方法
+8. 错误码及解决方法
+鉴权错误码
+常见错误码及解决方案
+9. 代码混淆
+10. 权限
+11. 不使用离线合成，只使用在线合成
+语音合成 Android SDK
+更新时间：2024-05-29
+1. 文档说明
+文档名称
+语音离线合成集成文档
+所属平台	Android
+提交日期	2024-03-04
+概述	本文档是百度语音开放平台Andriod SDK的用户指南，描述了在线合成，离线合成等相关接口的使用说明。 合成的策略是边下载边播放。区别于Rest Api一次性下载整个录音文件。离线语音合成SDK需要申请SN。将SN填入SDK后，首次联网会自动下载授权文件。TtsMode.MIX 及TtsMode.OFFLINE的离线合成均需要授权文件没有过期。
+2. 版本说明
+名称
+版本号
+语音合成	2.6.3	
+系统支持	android 5.1+	
+架构支持	armeabi-v7a，arm64-v8a，x86，x86_64
+每个架构下均有以下3个so库文件	资源大小
+libbd_etts.so	约4M
+libBDSpeechDecoder_V1.so	约700k
+libgnustl_shared.so	约900K
+2.1 版本升级改动点说明：
+提升SDK稳定性；
+离线发音人听感调优
+3. SDK说明
+文件名称
+版本号
+说明
+com.baidu.tts_2.6.3.c2aaa9f_20220922113422.jar	2.6.3.c2aaa9f	合成SDK
+4. Demo运行
+4.1 配置包名和签名
+从百度云控制台下载Demo之后，需要在build.gradle中配置好包名,且包名和控制台应用包名一致。
+
+F14252A9727FB67683FB142A48856BC3.png
+
+4.2 修改鉴权
+AppId AppKey SecretKey 包名 序列号SN 5个信息必须完全正确后，SDK会自动下载鉴权文件。否则会有-102或-109错误。
+
+可以在百度云网站上申请自己语音合成的应用后，会有appId、appKey、appSecret及android包名 4个鉴权信息， 修改app/src/main/assets/auth.properties 里的4个字段 , 并修改app/build.gradle里 defaultConfig.applicationId与applicationId一致:
+
+Android-ttsdemo-1.png
+
+5. SDK集成
+com.baidu.tts_2.6.*.jar 库 将app/libs/com.baidu.tts_2.6.xxxxxx.jar复制到您的项目的同名目录中。确认在build.gradle文件中引入。
+
+复制NDK 架构目录
+将 app/src/main/jniLibs 下armeabi等5个目录，复制到您的项目的同名目录中。
+如与第三方库集成，至少要保留armeabi目录。如第三方库有7个架构目录，比语音合成SDK多出2个目录 mips和mips64，请将mips和mips64目录删除，剩下5个同名目录合并。
+如第三方库仅有armeabi这一个目录，请将语音合成SDK的额外4个目录如armeabi-v7a删除,合并armeabi目录下的so。 即目录取交集，so文件不可随意更改所属目录。
+打包成apk文件，按照zip格式解压出libs目录可以验证。
+运行时 getApplicationInfo().nativeLibraryDir 目录下查看是否有完整so文件。 特别是系统app需要手动push so文件到这个目录下。
+build.gradle 文件及包名确认
+根目录下build.gradle确认下gradle的版本。
+app/build.gradle 确认下 applicationId 包名是否与官网申请应用时相一致（离线功能需要）。 demo的包名是"com.baidu.tts.sample"。
+确认 compileSdkVersion buildToolsVersion 及 targetSdkVersion, API LEVEL 28的编译产物在android 9.0系统上运行需要在app/src/main/AndroidManifest.xml 里添加 <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+DEMO压缩包说明
+DEMO压缩包下载即可运行，其中DEMO内已经附带了SDK的库。
+
+com.baidu.tts_x.x.x.xxxxx_xxxxx.jar 位于 app/libs 目录下。
+armeabi-v7a，arm64-v8a，x86，x86_64 4个架构目录位于app\src\main\jniLibs 目录下
+
+官方demo内 doc_integration_DOCUMENT文件夹下有Integration-OFFLINETTS-INTO-Helloworld V3.2.docx 文件，helloworld 集成sdk的完整图示实例。
+
+6. 授权文件、离线资源文件
+请将百度云控制台创建应用时获取的语音(APPID)、API/SECRET KEY 并填写包名。
+
+离线资源文件--发音人（支持16个不同发音人）
+离线合成SDK默认自带4个普通音库资源文件，精品音库资源文件需单独下载。2.6.2及之前版本SDK暂不支持兼容当前版本资源文件，需配合旧版本资源文件使用。
+
+SDK默认自带离线资源文件
+
+资源文件
+具体文件名
+m15 离线男声（度小宇）	bd_etts_common_speech_duxiaoyu_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+f7 离线女声（度小美）	bd_etts_navi_speech_f7_mand_eng_high_am-style24k_v4.6.0_20210721.dat
+yy 离线度逍遥	bd_etts_common_speech_duxiaoyao_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+c1 离线度丫丫	bd_etts_common_speech_duyaya_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+中文离线文本模型	bd_etts_common_text_txt_all_mand_eng_middle_big_v4.1.0_20230423.dat
+需要单独下载的精品音库资源文件
+
+资源文件
+具体文件名
+f4 离线度小娇	bd_etts_common_speech_duxiaojiao_mand_eng_high_am-tac-csubgan16k_v4.9.0_20221010_20221024180557.dat
+c3 离线度米朵	bd_etts_common_speech_dumiduo_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+wyg 离线度博文	bd_etts_common_speech_dubowen_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+c4 离线度小童	bd_etts_common_speech_c4_mand_eng_high_am-style24k_v4.6.0_20210721.dat
+f8 离线度小萌	bd_etts_navi_speech_f8_mand_eng_high_am-style24k_v4.6.0_20210721.dat
+f12dt 度小乔	bd_etts_common_speech_duxiaoqiao_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+f17 度小鹿	bd_etts_common_speech_duxiaolu_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+f10tw 度小台	bd_etts_common_speech_duxiaotai_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+m8 度小贤	bd_etts_navi_speech_m8_mand_eng_high_am-style24k_v4.6.0_20210721.dat
+gezi 度小雯	bd_etts_common_speech_duxiaowen_mand_eng_high_am-style24k_v4.6.0_20210721_20220822104311.dat
+粤语离线文本模型	bd_etts_common_text_txt_all_cant_eng_middle_big_v4.5.0_20211222.dat
+f13can 度小粤	bd_etts_navi_speech_f13can_cant_eng_high_am-style24k_v4.6.0_20210721.dat
+英文离线文本模型	bd_etts_common_text_txt_all_mand_eng_middle_big_v4.1.0_20220720.dat（同中文）
+fnat 度小译	bd_etts_common_speech_fnat_mand_eng_high_am-style24k_v4.9.0_20211130.dat
+在线时支持11种发音
+普通音库：普通女声 普通男声 情感男声<度逍遥> 情感儿童声<度丫丫>
+
+精品音库： 度逍遥-磁性男声 度博文-情感男声 度小童-活泼男童 度小鹿-甜美女声 度小娇-情感女声 度米朵-可爱女童 度小萌-可爱女童
+
+具体效果可以在http://ai.baidu.com/tech/speech/tts_online上测试
+
+7. 语音合成相关接口
+7.1 初始化初接口
+
+获取 SpeechSynthesizer 实例
+SpeechSynthesizer mSpeechSynthesizer = SpeechSynthesizer.getInstance();
+设置当前的Context
+Java复制
+mSpeechSynthesizer.setContext(this); // this 是Context的之类，如Activity
+注意 setContext只要在SpeechSynthesizer.getInstance();设置一次即可，不必切换Context时重复设置。
+
+设置合成结果的回调
+如合成成功后，SDK会调用用户设置的SpeechSynthesizerListener 里的回调方法
+
+Java复制
+mSpeechSynthesizer.setSpeechSynthesizerListener(listener); //listener是SpeechSynthesizerListener 的实现类，需要实现您自己的业务逻辑。SDK合成后会对这个类的方法进行回调。
+设置 App Id和 App Key 及 App Secret
+在语音官网或者百度云网站上申请语音合成的应用后，会有appId、appKey、appSecret及android包名 4个鉴权信息
+
+Java复制
+mSpeechSynthesizer.setAppId("8535996"/*这里只是为了让Demo运行使用的APPID,请替换成自己的id。*/);
+mSpeechSynthesizer.setApiKey("MxPpf3nF5QX0pnd******cB",         "7226e84664474aa09********b2aa434"/*这里只是为了让Demo正常运行使用APIKey,请替换成自己的APIKey*/);
+// 包名填写在 app/build.gradle
+如果需要使用离线合成功能的话，请在申请的语音合成的应用填写您自己的包名： demo的包名是“com.baidu.tts.sample"， 定义在build.gradle中。
+
+设置合成参数
+可以在初始化设置，也可以在合成前设置。 示例：
+
+Java复制
+mSpeechSynthesizer.setParam(SpeechSynthesizer.PARAM_SPEAKER, "0"); // 设置发声的人声音，在线生效
+合成参数
+在SpeechSynthesizer类中setParam 方法中使用的参数及值。 填入的值如果不在范围内，相当于没有填写使用默认值。
+
+参数名
+类型，值
+在线/离线生效
+常用程度
+解释
+PARAM_SPEAKER(基础发音人)	选项	在线	常用	仅在线生效，在线的发音
+~	"0"（默认）	~	~	度小美（普通女声）
+~	"1"	~	~	度小宇（成熟男声）
+~	"3"	~	~	度逍遥（磁性男声）
+~	"4"	~	~	度丫丫（可爱女童）
+PARAM_SPEAKER （精品发音人）	"106"	~	~	度博文（情感男声）
+~	"110"	~	~	度小童（情感儿童声）
+~	"111"	~	~	度小萌（情感女声）
+~	"103"	~	~	度米朵（情感儿童声）
+~	"5"	~	~	度小娇（情感女声）
+~	"5003"	~	~	精品度逍遥（磁性男声）
+~	"5118"	~	~	度小鹿（甜美女声）
+PARAM_VOLUME	String, 默认"5"	全部	常用	在线及离线合成的音量 。范围["0" - "15"], 不支持小数。 "0" 最轻，"15" 最响（取值为0时为音量最小值，并非为无声）
+PARAM_SPEED	String, 默认"5"	全部	常用	在线及离线合成的语速 。范围["0" - "15"], 不支持小数。 "0" 最慢，"15" 最快（如需更高语速可提交需求工单或联系商务同学申请）
+PARAM_PITCH	String, 默认"5"	全部	常用	在线及离线合成的语调 。范围["0" - "15"], 不支持小数。 "0" 最低沉， "15" 最尖
+PARAM_MIX_MODE	选项	全部	常用	控制何种网络状况切换到离线。设置initTts(SpeechSynthesizer.PARAM_MIX_MODE)后，该参数生效。
+~	MIX_MODE_DEFAULT（默认）	~	~	WIFI 使用在线合成，非WIFI使用离线合成
+~	MIX_MODE_HIGH_SPEED_NETWORK	~	~	WIFI,5G,4G 使用在线合成，其他使用离线合成
+~	MIX_MODE_HIGH_SPEED_SYNTHESIZE	~	~	同MIX_MODE_HIGH_SPEED_NETWORK。但是连接百度服务器超时1.2s后，自动切换离线合成引擎
+~	MIX_MODE_HIGH_SPEED_SYNTHESIZE_WIFI	~	~	同 MIX_MODE_DEFAULT。 但是连接百度服务器超时1.2s后，自动切换离线合成引擎
+PARAM_MIX_MODE_TIMEOUT
+(MIX模式下生效)	选项	离在线混合模式	不常用	离在线模式，强制在线优先。在线请求后超时xx秒后，转为离线合成。
+~	PARAM_MIX_TIMEOUT_FOUR_SECOND	默认	~	默认值，在线请求后超时4秒后，转为离线合成。
+~	PARAM_MIX_TIMEOUT_THREE_SECOND	默认值	~	默认值，在线请求后超时3秒后，转为离线合成。
+~	PARAM_MIX_TIMEOUT_TWO_SECOND	默认值	~	默认值，在线请求后超时2秒后，转为离线合成。
+PARAM_TTS_TEXT_MODEL_FILE	String , 文件路径	离线	常用	文本模型文件路径，即bd_etts_text.dat所在的路径。
+PARAM_TTS_SPEECH_MODEL_FILE	String , 文件路径	离线	常用	声学模型文件路径。即"bd_etts_speech_female.dat“所在的路径。需要男声，请使用bd_etts_speech_male.dat。
+PARAM_AUDIO_ENCODE	选项	在线	基本不用	不使用改参数即可。SDK与服务器音频传输格式，与 PARAMAUDIO_RATE参数一起使用。可选值为SpeechSynthesizer.AUDIO_ENCODE*， 其中SpeechSynthesizer.AUDIO_ENCODE_PCM为不压缩
+PARAM_AUDIO_RATE	选项	在线	基本不用	不使用改参数即可。SDK与服务器音频传输格式，与 PARAMAUDIO_ENCODE参数一起使用。可选值为SpeechSynthesizer.AUDIO_BITRATE*, 其中SpeechSynthesizer.AUDIO_BITRATE_PCM 为不压缩传输
+PARAM_VOCODER_OPTIM_LEVEL	选项, 默认"0"	离线	基本不用	离线合成引擎速度优化等级。取值范围["0", "2"]，值越大速度越快，但是效果越差
+PARAM_TTS_LICENCE_FILE	String , 文件路径	离线	基本不用	临时授权文件。目前SDK会自动下载正式授权文件。
+初始化合成引擎
+设置合成的参数后，需要调用此方法初始化
+
+Java复制
+mSpeechSynthesizer.initTts(TtsMode.OFFLINE); // 初始化离线混合模式，如果需要在线合成功能，使用离在线混合模式TtsMode.MIX
+控制接口
+合成及播放接口
+如果需要合成后立即播放的请调用speak方法，如果只需要合成请调用synthesize方法。
+
+该接口线程安全，可以快速多次调用。内部采用排队策略，调用后将自动加入队列，SDK会按照队列的顺序进行合成及播放。 注意需要合成的每个文本text不超过120的GBK字节，即60个汉字或英文字母数字。超过请自行按照句号问号等标点切分，调用多次合成接口。
+
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+speak方法示例：
+
+Java复制
+ int speak(String text);
+ int speak(String text, String utteranceId); // utteranceId在SpeechSynthesizerListener 相关事件方法中回调
+
+speechSynthesizer.speak("百度一下");
+synthesize方法示例：
+
+Java复制
+int synthesize(String text);
+int synthesize(String text, String utteranceId); // utteranceId在SpeechSynthesizerListener 相关事件方法中回调
+
+speechSynthesizer.synthesize("百度一下");
+调用这两个方法后，SDK会回调SpeechSynthesizerListener中的onSynthesizeDataArrived方法。 音频数据在byte[] audioData参数中，采样率16K 16bits编码 单声道。连续将audioData写入一个文件，即可作为一个可以播放的pcm文件（采样率16K 16bits编码 单声道）。
+
+批量合成并播放接口
+效果同连续调用speak 方法。推荐连续调用speak方法，sdk内部有队列缓冲。 该接口可以批量传入多个文本并进行排队合成并播放（如果没有设置utteranceId，则使用list的索引值作为utteranceId）。 注意需要合成的每个文本text不超过120的GBK字节，即60个汉字或英文字母数字。超过请自行按照句号问号等标点切分，放入多个SpeechSynthesizeBag
+
+Java复制
+int batchSpeak(java.util.List<SpeechSynthesizeBag> speechSynthesizeBags)
+以下为批量调用示例
+
+Java复制
+List<SpeechSynthesizeBag> bags = new ArrayList<SpeechSynthesizeBag>();
+bags.add(getSpeechSynthesizeBag("123456", "0"));
+bags.add(getSpeechSynthesizeBag("你好", "1"));
+bags.add(getSpeechSynthesizeBag("使用百度语音合成SDK", "2"));
+bags.add(getSpeechSynthesizeBag("hello", "3"));
+bags.add(getSpeechSynthesizeBag("这是一个demo工程", "4"));
+int result = mSpeechSynthesizer.batchSpeak(bags);
+ 
+ private SpeechSynthesizeBag getSpeechSynthesizeBag(String text, String utteranceId) {
+        SpeechSynthesizeBag speechSynthesizeBag = new SpeechSynthesizeBag();
+        //需要合成的文本text的长度不能超过120个GBK字节。
+        speechSynthesizeBag.setText(text);
+        speechSynthesizeBag.setUtteranceId(utteranceId);
+        return speechSynthesizeBag;
+    }
+ 
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+播放过程中的暂停及继续
+仅speak方法调用后有效。可以使用pause暂停当前的播放。pause暂停后，可使用resume进行播放。
+
+Java复制
+int result = mSpeechSynthesizer.pause();
+int result = mSpeechSynthesizer.resume();
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+停止合成并停止播放
+取消当前的合成。并停止播放。
+
+Java复制
+int result = mSpeechSynthesizer.stop();
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+其它接口
+打开调试日志（重要）
+Java复制
+LoggerProxy.printable(true); // 日志打印在logcat中
+开启成功后会看见bdtts-开头的tag日志，建议上线后完全没问题再由服务端控制关闭。
+
+判断模型文件是否有效(重要)
+Java复制
+SynthesizerTool.verifyModelFile(“/path/to/bd_etts_eng_common_text_all_xxxx.dat”) ;//判断文本资源
+SynthesizerTool.verifyModelFile(“/path/to/bd_etts_common_speech_xxxx.dat”) ;//判断音库资源
+释放资源
+不再使用后，请释放资源，并将mSpeechSynthesizer设为null。如果需要再次使用，可以通过SpeechSynthesizer.getInstance() 获取，并重复上述流程。
+
+Java复制
+int result = mSpeechSynthesizer.release();
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+切换离线发音
+切换离线发音人接口。 SDK默认只有4种离线，用这个方法可以切换离线发音人。 离线合成时的参数，填入两个资源文件的路径。如果切换的话，也是使用这两个文件路径。
+
+注意：必须在引擎空闲的时候调用这个方法，否则有不为0的错误码返回。空闲是指最后一个合成回调onSynthesizeFinish 之后。
+
+Java复制
+int result = mSpeechSynthesizer.loadModel(speechModelPath,  textModelPath);
+返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+设置音量
+该接口用来设置播放器的音量，即使用speak 播放音量时生效。范围为[0.0f-1.0f]。
+
+Java复制
+int result = mSpeechSynthesizer.setStereoVolume (leftVolume, rightVolume);
+此接口与PARAM_VOLUME参数的设置不同，PARAM_VOLUME设置的是服务器合成音频时的音量，而该接口设置的是播放时Android系统的音量。 返回结果不为0，表示出错。错误码请参见“错误码及解决方法”一节
+
+音频流类型
+Java复制
+   public int setAudioAttributes(int usage, int contentType)
+该接口用来设置播放器的音频流类型， 默认值为AudioAttributes.USAGE_MEDIA, AudioAttributes.CONTENT_TYPE_MUSIC，指的是用与音乐播放的音频流。 具体可以参考android官方文档 https://source.android.google.cn/devices/audio/attributes
+
+授权检验接口（测试使用，上线可以忽略）
+一般情况下，不需要使用该方法。
+
+测试您的AppId，AppKey AppSecret填写正确，语音合成服务是否开通。
+
+离在线混合模式下，自动下载正式授权文件。每次调用时，可能会更新正式授权文件。
+离在线混合模式下 ，检验应用里包名是否填写正确，如果正确，自动下载正式授权文件。如果不正确，请在应用管理页面检查合成服务是否开通，包名是否填写正确。
+
+​
+
+Java复制
+mSpeechSynthesizer.auth(TtsMode.ONLINE);  // 纯在线
+//或 mSpeechSynthesizer.auth(TtsMode.MIX); // 离在线混合
+//或  mSpeechSynthesizer.auth(TtsMode.OFFLINE)// 纯离线
+注意 demo的包名是com.baidu.tts.sample，定义在build.gradle文件中。
+
+SpeechSynthesizerListener回调方法
+Java复制
+ // @param engineType 1: 音频数据由离线引擎合成； 0：音频数据由在线引擎（百度服务器）合成。
+
+ void onSynthesizeDataArrived(String utteranceId, byte[] bytes, int progress, int engineType);
+
+8. 错误码及解决方法
+Plain Text复制
+生成错误码共2处位置：
+调用接口的方法时的返回，如initTTs方法的返回
+onError(String utteranceId，SpeechError error); SpeechError 中的code
+错误码值
+错误码描述
+-1	在线引擎授权失败
+-2	在线合成请求失败
+-3	在线合成停止失败
+-4	在线授权中断异常
+-5	在线授权执行时异常
+-6	在线授权时间超时
+-7	在线合成返回错误信息 ，如果是鉴权错误，详情见下表鉴权错误码
+-8	在线授权token为空 ，详情见下表鉴权错误码
+-9	在线引擎没有初始化
+-10	在线引擎合成时异常
+-11	在线引擎不支持的操作
+-12	在线合成请求解析出错
+-13	在线合成获取合成结果被中断
+-14	在线合成过程异常
+-15	在线合成获取合成结果超时
+-100	离线引擎授权失败
+-101	离线合成停止失败
+-102	离线授权下载License失败
+-103	离线授权信息为空
+-104	离线授权类型未知
+-105	离线授权中断异常
+-106	离线授权执行时异常
+-107	离线授权执行时间超时
+-108	离线合成引擎初始化失败
+-109	离线引擎未初始化
+-110	离线合成时异常
+-111	离线合成返回值非0
+-112	离线授权已过期
+-113	离线授权包名不匹配
+-114	离线授权签名不匹配
+-115	离线授权设备信息不匹配
+-116	离线授权平台不匹配
+-117	离线授权的license文件不存在
+-118	鉴权被取消
+-119	音库版本与引擎版本不匹配
+-120	音库授权验证失败
+-124	离线证书下载失败， 错误的 SN。 检查appid、包名等账号信息和SN是否对齐
+-200	混合引擎离线在线都授权失败
+-201	混合引擎授权中断异常
+-202	混合引擎授权执行时异常
+-203	混合引擎授权执行时间超时
+-204	在线合成初始化成功，离线合成初始化失败。 可能是离线资源dat文件未加载或包名错误
+-300	合成文本为空
+-301	合成文本长度过长（不要超过GBK120个字节）
+-302	合成文本无法获取GBK字节
+-400	TTS未初始化
+-401	TTS模式无效
+-402	TTS合成队列已满（最大限度为1000）
+-403	TTS批量合成文本过多（最多为100）
+-404	TTS停止失败
+-405	TTS APP ID无效
+-406	TTS被调用方法参数无效
+-500	Context被释放或为空
+-600	播放器为空
+-1000	模型管理参数无效
+-1001	模型管理请求出错
+-1002	模型管理服务器端错误
+-1003	模型管理数据库模型信息无效
+-1004	package无效​，包名超过限制40字节限制
+-1005	模型数据已经存在（ 或已下载）
+-1006	无法获取到模型信息
+-1007	无法获取到模型文件信息
+-1008	模型检查过程异常
+-1009	模型文件下载时异常
+-9999	未知错误
+
+鉴权错误码
+鉴权错误错误的原因可能是appkey，secretkey填错。或者这个应用的配额超限。
+
+示例：
+
+Plain Text复制
+(-8)access token is null, please check your apikey and secretkey or product id，
+(-7)request result contains error message[(502)110: Access token invalid or no longer valid]，
+// 110 是子错误
+错误码值
+错误码描述
+原因
+-8	在线授权token错误	appkey 或者secretkey填错
+-7	token正常，但是应用没有权限	见子错误对应的报错
+
+-7的子错误值
+错误码描述
+原因
+4	pv超限	配额使用完毕，请购买或者申请
+6	没勾权限	应用不存在或者应用没有语音识别的权限
+13	并发超限	并发超过限额，请购买或者申请
+16	字节超限	没有对应的发音人额度，请购买或申请
+111	SDK内部错误，token过期	请反馈
+
+常见错误码及解决方案
+
+错误码
+含义
+可能原因
+自查指南
+解决办法
+-102	离线授权下载license失败	1.网络不佳
+2.授权码额度耗尽
+3.SN已经绑定其他设备
+导致下载license失败	1. 检查离线联网授权时的网络环境；
+2.确认SN序列号是否还有额度
+3.确认SN之前是否绑定过其他设备（刷机等更改设备信息的操作都是导致下载license失败）	1. 更换稳定的网络环境；
+2. 补充SN序列号额度(产品线授权方式)
+3. 如绑定过其他设备更换新的授权SN(设备数授权方式)
+-108	离线合成引擎初始化失败	loadmodel的资源文件 离线音库文件 没加载	1.确认音库文件是否下载；2.是否在指定位置加载；3. 判断模型文件是否有效 点击	1.如加载位置没有对应的文本和音库文件，手动复制文件到指定位置；2.可以尝试删除应用，重新安装测试
+同上	loadmodel时合成引擎不空闲	sdk只支持同一语种的不同发音人使用loadModel方法切换，例如，度小美切换度丫丫。如果是中文切英文或者粤语，需要反初始化后再初始化	如需要切换不同的文本资源，请先调用release方法，再次执行新的文本资源初始化
+同上	其他	初始化添加LoggerProxy.printable(true)；保存启动app到报错的完整日志	提供日志，百度侧进一步判断
+-119	SN序列号不合法	SN序列号不在有效期内	核对绑定的SN序列号	更换合法SN序列号
+同上	SN序列号已被绑定	需要确认SN序列号是否已经绑定其他设备，或者设备刷机等导致cuid变更操作	反馈给百度侧，进一步判断
+鉴权未通过	鉴权信息错误	需要确认SN序列号外的其他鉴权信息	填写正确的鉴权信息，注意空格
+-204	离线合成初始化失败	设备的系统时间超出license时效	确认设备的系统时间是否正常	校验系统时间
+同上	license 超出有效期	确认SN序列号在有效期内	更换有效期内授权SN
+
+9. 代码混淆
+Plain Text复制
+-keep class com.baidu.tts.**{*;}
+-keep class com.baidu.speechsynthesizer.**{*;}
+
+10. 权限
+名称
+说明
+必选
+必要的权限		
+android.permission.INTERNET	允许访问网络	是
+android.permission.ACCESS_NETWORK_STATE	获取网络状态权限	是
+android.permission.MODIFY_AUDIO_SETTINGS	允许程序修改全局音频设置	是
+android.permission.WRITE_EXTERNAL_STORAGE	外置卡读写权限	是
+android.permission.ACCESS_WIFI_STATE	获取网络状态权限	是
+非必要权限		
+android.permission.CHANGE_WIFI_STATE	允许程序改变Wi-Fi连接状态	否
+
+11. 不使用离线合成，只使用在线合成
+不使用离线合成，只使用在线合成，可以单独下载纯在线合成sdk https://ai.baidu.com/download?sdkId=116
+
+删除离线音库文件，并且设置合成模式为online在线模式 ，TtsMode DEFAULT_SDK_TTS_MODE = TtsMode.ONLINE;
+
+Android-ttsdemo-2.png
+
+
+上一篇
+短文本在线合成 HTTP SDK
+下一篇
+语音合成 iOS SDK
+
+文档助手
+
+文档反馈
+搜索文档关键词
+推荐文档
+
+云服务器
+千帆大模型平台
+文字识别
+人脸识别
+实名认证介绍
+备案介绍
+财务功能概述

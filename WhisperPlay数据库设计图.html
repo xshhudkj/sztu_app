@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperPlay数据库设计图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .description {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .table-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .table-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .table-card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        .field-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .field-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e9ecef;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .field-list li:last-child {
+            border-bottom: none;
+        }
+        .primary-key {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .foreign-key {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        .index-key {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .legend-item {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .legend-pk { background: #ffebee; color: #e74c3c; }
+        .legend-fk { background: #fff3e0; color: #f39c12; }
+        .legend-idx { background: #e8f5e8; color: #27ae60; }
+        .relationship-info {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .relationship-info h4 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhisperPlay数据库设计图</h1>
+        <p class="subtitle">基于Room ORM框架的本地数据库设计 | 支持用户数据、音乐信息、播放历史、缓存管理</p>
+        
+        <div class="description">
+            <h3>数据库设计说明</h3>
+            <p>WhisperPlay采用Room ORM框架进行本地数据存储，数据库设计遵循第三范式，确保数据的一致性和完整性。数据库主要包含用户管理、音乐信息、播放历史、歌单管理和缓存控制五个核心功能模块，通过合理的表结构设计和索引优化，保证了数据查询的高效性和应用的流畅体验。</p>
+        </div>
+
+        <div class="mermaid">
+erDiagram
+    USER {
+        int id PK
+        string uid
+        string nickname
+        string avatar_url
+        string phone
+        string email
+        int vip_type
+        long vip_expire_time
+        boolean is_login
+        long create_time
+        long update_time
+    }
+    
+    SONG {
+        int id PK
+        long song_id
+        string name
+        string artist_name
+        string album_name
+        string album_pic_url
+        int duration
+        string lyric_url
+        string play_url
+        int fee_type
+        boolean is_available
+        long create_time
+        long update_time
+    }
+    
+    PLAY_HISTORY {
+        int id PK
+        int user_id FK
+        long song_id FK
+        string song_name
+        string artist_name
+        long play_time
+        int play_duration
+        int play_progress
+        boolean is_completed
+        long create_time
+    }
+    
+    PLAYLIST {
+        int id PK
+        int user_id FK
+        long playlist_id
+        string name
+        string description
+        string cover_img_url
+        int song_count
+        int play_count
+        boolean is_mine
+        boolean is_subscribed
+        long create_time
+        long update_time
+    }
+    
+    PLAYLIST_SONG {
+        int id PK
+        int playlist_id FK
+        long song_id FK
+        int sort_order
+        long add_time
+    }
+    
+    CACHE_INFO {
+        int id PK
+        long song_id FK
+        string cache_key
+        string file_path
+        long file_size
+        int cache_status
+        int cache_priority
+        long expire_time
+        long create_time
+        long last_access_time
+    }
+    
+    SEARCH_HISTORY {
+        int id PK
+        int user_id FK
+        string keyword
+        int search_type
+        int result_count
+        long search_time
+    }
+
+    USER ||--o{ PLAY_HISTORY : "播放历史"
+    USER ||--o{ PLAYLIST : "用户歌单"
+    USER ||--o{ SEARCH_HISTORY : "搜索历史"
+    SONG ||--o{ PLAY_HISTORY : "被播放"
+    SONG ||--o{ CACHE_INFO : "缓存信息"
+    PLAYLIST ||--o{ PLAYLIST_SONG : "歌单歌曲"
+    SONG ||--o{ PLAYLIST_SONG : "歌曲关联"
+        </div>
+
+        <div class="table-info">
+            <div class="table-card">
+                <h4>USER 用户表</h4>
+                <p>存储用户基本信息和登录状态，支持多种登录方式和VIP用户管理。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="index-key">uid</span> - 用户唯一标识</li>
+                    <li>nickname - 用户昵称</li>
+                    <li>avatar_url - 头像URL</li>
+                    <li>phone - 手机号码</li>
+                    <li>email - 邮箱地址</li>
+                    <li>vip_type - VIP类型（0:普通 1:VIP）</li>
+                    <li>vip_expire_time - VIP过期时间</li>
+                    <li>is_login - 登录状态</li>
+                    <li>create_time - 创建时间</li>
+                    <li>update_time - 更新时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>SONG 歌曲表</h4>
+                <p>缓存歌曲元数据信息，包括歌曲基本信息、播放链接和版权信息。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="index-key">song_id</span> - 歌曲唯一标识</li>
+                    <li>name - 歌曲名称</li>
+                    <li>artist_name - 歌手名称</li>
+                    <li>album_name - 专辑名称</li>
+                    <li>album_pic_url - 专辑封面URL</li>
+                    <li>duration - 歌曲时长（毫秒）</li>
+                    <li>lyric_url - 歌词URL</li>
+                    <li>play_url - 播放URL</li>
+                    <li>fee_type - 收费类型</li>
+                    <li>is_available - 是否可用</li>
+                    <li>create_time - 创建时间</li>
+                    <li>update_time - 更新时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>PLAY_HISTORY 播放历史表</h4>
+                <p>记录用户播放历史，支持播放统计和个性化推荐功能。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="foreign-key">user_id</span> - 用户ID（外键）</li>
+                    <li><span class="foreign-key">song_id</span> - 歌曲ID（外键）</li>
+                    <li>song_name - 歌曲名称（冗余存储）</li>
+                    <li>artist_name - 歌手名称（冗余存储）</li>
+                    <li>play_time - 播放时间戳</li>
+                    <li>play_duration - 播放时长</li>
+                    <li>play_progress - 播放进度</li>
+                    <li>is_completed - 是否播放完成</li>
+                    <li>create_time - 创建时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>PLAYLIST 歌单表</h4>
+                <p>存储用户创建和收藏的歌单信息，支持歌单管理和分享功能。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="foreign-key">user_id</span> - 用户ID（外键）</li>
+                    <li><span class="index-key">playlist_id</span> - 歌单唯一标识</li>
+                    <li>name - 歌单名称</li>
+                    <li>description - 歌单描述</li>
+                    <li>cover_img_url - 封面图片URL</li>
+                    <li>song_count - 歌曲数量</li>
+                    <li>play_count - 播放次数</li>
+                    <li>is_mine - 是否为用户创建</li>
+                    <li>is_subscribed - 是否已收藏</li>
+                    <li>create_time - 创建时间</li>
+                    <li>update_time - 更新时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>PLAYLIST_SONG 歌单歌曲关联表</h4>
+                <p>管理歌单和歌曲的多对多关系，支持歌单内歌曲的排序和管理。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="foreign-key">playlist_id</span> - 歌单ID（外键）</li>
+                    <li><span class="foreign-key">song_id</span> - 歌曲ID（外键）</li>
+                    <li>sort_order - 排序顺序</li>
+                    <li>add_time - 添加时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>CACHE_INFO 缓存信息表</h4>
+                <p>管理音频文件缓存信息，支持智能缓存策略和存储空间优化。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="foreign-key">song_id</span> - 歌曲ID（外键）</li>
+                    <li><span class="index-key">cache_key</span> - 缓存键值</li>
+                    <li>file_path - 文件路径</li>
+                    <li>file_size - 文件大小</li>
+                    <li>cache_status - 缓存状态</li>
+                    <li>cache_priority - 缓存优先级</li>
+                    <li>expire_time - 过期时间</li>
+                    <li>create_time - 创建时间</li>
+                    <li>last_access_time - 最后访问时间</li>
+                </ul>
+            </div>
+
+            <div class="table-card">
+                <h4>SEARCH_HISTORY 搜索历史表</h4>
+                <p>记录用户搜索历史，支持搜索建议和热门搜索词统计。</p>
+                <ul class="field-list">
+                    <li><span class="primary-key">id</span> - 主键，自增ID</li>
+                    <li><span class="foreign-key">user_id</span> - 用户ID（外键）</li>
+                    <li><span class="index-key">keyword</span> - 搜索关键词</li>
+                    <li>search_type - 搜索类型</li>
+                    <li>result_count - 结果数量</li>
+                    <li>search_time - 搜索时间</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="relationship-info">
+            <h4>表关系说明</h4>
+            <ul>
+                <li><strong>用户与播放历史：</strong>一对多关系，一个用户可以有多条播放历史记录</li>
+                <li><strong>用户与歌单：</strong>一对多关系，一个用户可以创建和收藏多个歌单</li>
+                <li><strong>歌曲与播放历史：</strong>一对多关系，一首歌曲可以被多次播放</li>
+                <li><strong>歌单与歌曲：</strong>多对多关系，通过PLAYLIST_SONG关联表实现</li>
+                <li><strong>歌曲与缓存：</strong>一对多关系，一首歌曲可以有多个缓存版本（不同音质）</li>
+                <li><strong>用户与搜索历史：</strong>一对多关系，记录用户的搜索行为</li>
+            </ul>
+        </div>
+
+        <div class="legend">
+            <h3>图例说明</h3>
+            <div>
+                <span class="legend-item legend-pk">PK 主键</span>
+                <span class="legend-item legend-fk">FK 外键</span>
+                <span class="legend-item legend-idx">IDX 索引</span>
+            </div>
+            <br>
+            <p><strong>设计原则：</strong></p>
+            <ul>
+                <li>遵循第三范式，减少数据冗余</li>
+                <li>合理使用索引，优化查询性能</li>
+                <li>支持数据版本管理和迁移</li>
+                <li>考虑缓存策略和存储优化</li>
+                <li>支持用户数据的隐私保护</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            er: {
+                useMaxWidth: true,
+                fontSize: 12
+            }
+        });
+    </script>
+</body>
+</html>

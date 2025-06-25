@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhisperPlay功能模块流程图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .description {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        .description h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .flow-section {
+            margin: 40px 0;
+        }
+        .flow-section h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .module-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        .module-card h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .feature-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+        }
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        .feature-list li:before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+        .tech-stack {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            font-size: 12px;
+            color: #27ae60;
+        }
+        .legend {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .legend h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WhisperPlay功能模块流程图</h1>
+        <p class="subtitle">核心功能模块交互流程 | 用户操作路径 | 数据流向分析</p>
+        
+        <div class="description">
+            <h3>功能模块概述</h3>
+            <p>WhisperPlay音乐播放器采用MVVM架构模式，构建了清晰的五层架构体系：表示层、视图模型层、业务层、数据访问层和基础设施层。包含六个核心功能模块：用户认证、音乐发现、搜索功能、个人中心、音乐播放和语音控制。各模块通过清晰的接口定义和数据流转，构成了完整的音乐播放生态系统。本流程图展示了用户从启动应用到完成音乐播放的完整操作路径，以及各模块间的数据交互关系。</p>
+        </div>
+
+        <div class="flow-section">
+            <h3>系统五层架构流程</h3>
+            <div class="mermaid">
+flowchart TD
+    subgraph "表示层 (Presentation Layer)"
+        A1[SplashActivity]
+        A2[MainActivity]
+        A3[PlayingActivity]
+        A4[LoginActivity]
+        A5[Fragments]
+    end
+
+    subgraph "视图模型层 (ViewModel Layer)"
+        B1[VoiceControlViewModel]
+        B2[DiscoverViewModel]
+        B3[SearchViewModel]
+        B4[MineViewModel]
+        B5[PlayingViewModel]
+    end
+
+    subgraph "业务层 (Business Layer)"
+        C1[MusicService]
+        C2[PlayerController]
+        C3[VoiceControlService]
+        C4[UserService]
+        C5[SmartCacheManager]
+        C6[FirstPlayOptimizer]
+    end
+
+    subgraph "数据访问层 (Data Access Layer)"
+        D1[Room Database]
+        D2[Network APIs]
+        D3[Repositories]
+        D4[Cache Storage]
+        D5[SharedPreferences]
+    end
+
+    subgraph "基础设施层 (Infrastructure Layer)"
+        E1[Hilt DI]
+        E2[Media3 ExoPlayer]
+        E3[百度语音SDK]
+        E4[Retrofit]
+        E5[Room ORM]
+        E6[Kotlin Coroutines]
+    end
+
+    A2 --> B2
+    A3 --> B5
+    A4 --> B4
+    A5 --> B1
+
+    B1 --> C3
+    B2 --> C1
+    B5 --> C2
+    B4 --> C4
+
+    C1 --> D1
+    C2 --> D2
+    C3 --> D3
+    C5 --> D4
+
+    D1 --> E5
+    D2 --> E4
+    D3 --> E1
+    D4 --> E2
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>应用启动和用户认证流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[应用启动] --> B[SplashActivity]
+    B --> C{检查登录状态}
+    C -->|已登录| D[MainActivity主界面]
+    C -->|未登录| E[LoginActivity登录页]
+
+    E --> F{选择登录方式}
+    F -->|游客登录| G[游客模式进入]
+    F -->|手机号登录| H[输入手机号]
+    F -->|二维码登录| I[生成二维码]
+
+    G --> D
+    H --> J[发送验证码并验证]
+    I --> K[网易云app扫码验证]
+
+    J --> L{认证成功?}
+    K --> L
+
+    L -->|是| M[获取用户信息]
+    L -->|否| N[显示错误信息]
+
+    M --> O[保存登录状态]
+    N --> E
+    O --> D
+
+    D --> P[初始化主要功能模块]
+    P --> Q[加载用户数据]
+    Q --> R[准备就绪]
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>音乐播放核心流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[音乐播放请求] --> B{播放类型判断}
+    B -->|单曲播放| C[PlayerController处理]
+    B -->|列表播放| C
+    B -->|添加到队列| C
+
+    C --> D[FirstPlayOptimizer优化]
+    D --> E{缓存检查}
+
+    E -->|命中| F[使用缓存]
+    E -->|未命中| G[网络获取]
+
+    F --> H[ExoPlayer播放]
+    G --> I[SmartCacheManager缓存]
+    I --> H
+
+    H --> J[PlayingActivity更新]
+    J --> K[播放状态同步]
+    K --> L[车载系统集成]
+    L --> M[播放完成]
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>音乐发现和内容浏览流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[进入发现页面] --> B[DiscoverFragment初始化]
+    B --> C[DiscoverViewModel]
+
+    C --> D[加载内容数据]
+    D --> E[轮播图/歌单/排行榜]
+    E --> F[Adapter渲染显示]
+
+    F --> G{用户交互}
+    G -->|点击轮播图| H[跳转详情页面]
+    G -->|点击歌单| I[歌单详情页]
+    G -->|点击排行榜| J[排行榜详情页]
+
+    H --> K[加载详细内容]
+    I --> K
+    J --> K
+
+    K --> L[用户选择播放]
+    L --> M[触发播放流程]
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>智能搜索功能流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[进入搜索页面] --> B[SearchFragment初始化]
+    B --> C[显示搜索界面]
+
+    C --> D[热门词/搜索历史/搜索建议]
+    D --> E{用户搜索}
+
+    E -->|选择/输入| F[搜索防抖处理]
+    F --> G[SearchApi网络调用]
+    G --> H{请求成功?}
+
+    H -->|是| I[解析搜索结果]
+    H -->|否| J[显示错误提示]
+
+    I --> K[歌曲/专辑/歌手/歌单/用户分类显示]
+    K --> L[播放歌曲]
+    K --> M[查看详情]
+    K --> N[添加收藏]
+
+    J --> C
+            </div>
+        </div>
+
+        <div class="module-grid">
+            <div class="module-card">
+                <h4>🎵 音乐发现模块</h4>
+                <div class="tech-stack">技术栈：DiscoverViewModel + DiscoverApi + RecyclerView</div>
+                <ul class="feature-list">
+                    <li>轮播图展示热门内容</li>
+                    <li>个性化推荐歌单</li>
+                    <li>实时音乐排行榜</li>
+                    <li>每日推荐歌曲</li>
+                    <li>智能内容缓存</li>
+                    <li>下拉刷新更新</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>🔍 搜索功能模块</h4>
+                <div class="tech-stack">技术栈：SearchViewModel + SearchApi + TabLayout</div>
+                <ul class="feature-list">
+                    <li>多类型搜索（歌曲/专辑/歌手/歌单）</li>
+                    <li>搜索建议和自动补全</li>
+                    <li>搜索历史管理</li>
+                    <li>热门搜索词展示</li>
+                    <li>搜索结果分页加载</li>
+                    <li>搜索防抖优化</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>👤 个人中心模块</h4>
+                <div class="tech-stack">技术栈：MineViewModel + UserService + Room</div>
+                <ul class="feature-list">
+                    <li>用户信息展示和管理</li>
+                    <li>个人歌单创建和编辑</li>
+                    <li>收藏歌单管理</li>
+                    <li>播放历史记录</li>
+                    <li>本地音乐扫描</li>
+                    <li>用户偏好设置</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>🎶 音乐播放模块</h4>
+                <div class="tech-stack">技术栈：PlayerController + MusicService + Media3 + FirstPlayOptimizer</div>
+                <ul class="feature-list">
+                    <li>高质量音频播放（Media3 ExoPlayer）</li>
+                    <li>智能播放队列管理</li>
+                    <li>多种播放模式切换（顺序/随机/循环）</li>
+                    <li>精确进度控制和跳转</li>
+                    <li>实时歌词同步显示</li>
+                    <li>后台播放和通知控制</li>
+                    <li>首次播放优化（FirstPlayOptimizer）</li>
+                    <li>智能预加载（SmartPreloadManager）</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>🎤 语音控制模块</h4>
+                <div class="tech-stack">技术栈：VoiceControlViewModel + BaiduSpeechManager + IntelligentSemanticParser</div>
+                <ul class="feature-list">
+                    <li>语音唤醒检测（"小聆"/"轻聆"）</li>
+                    <li>实时语音识别（百度语音SDK）</li>
+                    <li>智能语义理解和解析</li>
+                    <li>播放控制指令（播放/暂停/上下首）</li>
+                    <li>音乐搜索指令（歌曲/歌手/专辑）</li>
+                    <li>音量控制指令</li>
+                    <li>TTS语音反馈合成</li>
+                    <li>车载环境语音优化</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>⚡ 性能优化模块</h4>
+                <div class="tech-stack">技术栈：SmartCacheManager + SmartUIUpdateManager + 性能监控</div>
+                <ul class="feature-list">
+                    <li>智能缓存策略管理</li>
+                    <li>自适应UI更新优化</li>
+                    <li>内存使用优化</li>
+                    <li>网络请求优化</li>
+                    <li>电池续航优化</li>
+                    <li>启动速度优化</li>
+                    <li>播放延迟优化</li>
+                    <li>性能监控和分析</li>
+                </ul>
+            </div>
+
+            <div class="module-card">
+                <h4>🚗 车载适配模块</h4>
+                <div class="tech-stack">技术栈：Android Automotive + MediaSession + 硬件集成</div>
+                <ul class="feature-list">
+                    <li>车载系统深度集成</li>
+                    <li>方向盘控制支持</li>
+                    <li>大屏界面优化</li>
+                    <li>驾驶安全模式</li>
+                    <li>车载音响优化</li>
+                    <li>多用户支持</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>用户中心模块流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[进入个人中心] --> B[MineFragment初始化]
+    B --> C{登录状态检查}
+
+    C -->|已登录| D[UserService获取数据]
+    C -->|未登录| E[显示登录引导]
+
+    E --> F[跳转LoginActivity]
+    F --> G{登录成功?}
+    G -->|是| D
+    G -->|否| B
+
+    D --> H[显示用户信息]
+    H --> I[加载歌单/收藏/历史]
+    I --> J[Adapter显示列表]
+
+    J --> K{用户操作}
+    K -->|创建歌单| L[保存到Room数据库]
+    K -->|编辑歌单| M[更新歌单信息]
+    K -->|播放歌单| N[PlayerController处理]
+    K -->|设置偏好| O[保存到SharedPreferences]
+
+    L --> P[刷新列表]
+    M --> P
+            </div>
+        </div>
+
+        <div class="flow-section">
+            <h3>语音控制交互流程</h3>
+            <div class="mermaid">
+flowchart TD
+    A[语音控制启动] --> B[BaiduSpeechManager初始化]
+    B --> C{录音权限检查}
+
+    C -->|否| D[申请权限]
+    D --> C
+    C -->|是| E[VoiceControlService启动]
+
+    E --> F[语音唤醒监听]
+    F --> G{检测到唤醒词?}
+
+    G -->|否| F
+    G -->|是| H[暂停音乐播放]
+
+    H --> I[语音识别处理]
+    I --> J[智能语义解析]
+    J --> K{命令识别成功?}
+
+    K -->|否| L[TTS错误提示]
+    K -->|是| M[命令分类处理]
+
+    M --> N{命令类型}
+    N -->|播放控制| O[PlayerController处理]
+    N -->|搜索| P[SearchApi处理]
+    N -->|音量控制| Q[AudioManager处理]
+
+    O --> R[TTS语音反馈]
+    P --> R
+    Q --> R
+
+    L --> S[恢复音乐播放]
+    R --> S
+    S --> F
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>五层架构数据流向说明</h3>
+            <ul>
+                <li><strong>表示层 (Presentation Layer)：</strong>Activity/Fragment接收用户操作，负责UI展示和用户交互，通过数据绑定与ViewModel通信</li>
+                <li><strong>视图模型层 (ViewModel Layer)：</strong>管理UI相关数据和状态，处理用户交互逻辑，协调业务层服务，使用LiveData/StateFlow进行状态管理</li>
+                <li><strong>业务层 (Business Layer)：</strong>实现核心业务逻辑，包括MusicService音乐播放、PlayerController播放控制、VoiceControlService语音控制等</li>
+                <li><strong>数据访问层 (Data Access Layer)：</strong>Repository模式统一管理数据访问，包括Room本地数据库、Retrofit网络API、缓存存储等</li>
+                <li><strong>基础设施层 (Infrastructure Layer)：</strong>提供底层技术支持，包括Hilt依赖注入、Media3播放引擎、百度语音SDK、协程框架等</li>
+            </ul>
+
+            <h3>核心技术组件说明</h3>
+            <ul>
+                <li><strong>FirstPlayOptimizer：</strong>首次播放优化器，解决用户最关心的首次播放延迟问题，实现"秒播"体验</li>
+                <li><strong>SmartCacheManager：</strong>智能缓存管理器，根据网络状况和设备性能动态调整缓存策略</li>
+                <li><strong>IntelligentSemanticParser：</strong>智能语义解析引擎，支持自然语言的语音命令理解和执行</li>
+                <li><strong>SmartUIUpdateManager：</strong>智能UI更新管理器，自适应刷新频率，优化性能和电池续航</li>
+                <li><strong>BaiduSpeechManager：</strong>百度语音管理器，集成语音识别、语音合成和唤醒词检测功能</li>
+            </ul>
+
+            <h3>模块间通信机制</h3>
+            <ul>
+                <li><strong>依赖注入：</strong>通过Hilt管理组件依赖关系，实现松耦合架构</li>
+                <li><strong>响应式编程：</strong>使用Kotlin Coroutines和Flow进行异步数据流处理</li>
+                <li><strong>事件驱动：</strong>使用LiveData/StateFlow进行组件间状态同步和事件通信</li>
+                <li><strong>接口抽象：</strong>清晰的接口契约确保模块间解耦，便于测试和维护</li>
+                <li><strong>数据绑定：</strong>双向数据绑定简化UI状态管理，提高开发效率</li>
+            </ul>
+
+            <h3>车载系统集成特性</h3>
+            <ul>
+                <li><strong>MediaSession集成：</strong>与Android Automotive深度集成，支持车载系统原生控制</li>
+                <li><strong>硬件控制支持：</strong>支持方向盘按键、旋钮等车载硬件控制</li>
+                <li><strong>大屏界面优化：</strong>针对车载大屏进行UI布局和交互优化</li>
+                <li><strong>驾驶安全模式：</strong>在驾驶过程中简化操作，确保行车安全</li>
+                <li><strong>多用户支持：</strong>支持车载环境下的多用户账户管理</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

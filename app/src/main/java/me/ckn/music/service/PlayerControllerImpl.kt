@@ -281,7 +281,16 @@ class PlayerControllerImpl(
                 val currentPlaylist = _playlist.value?.toMutableList() ?: mutableListOf()
                 val currentIndex = player.currentMediaItemIndex
 
-                // 修复：始终添加到下一位置，无论是否已存在相同歌曲（允许重复）
+                // 播放列表去重功能：检查歌曲是否已存在
+                val existingIndex = currentPlaylist.indexOfFirst { it.mediaId == enhancedSong.mediaId }
+                if (existingIndex >= 0) {
+                    // 歌曲已在播放列表中，直接跳转播放
+                    LogUtils.d(TAG, "歌曲已在播放列表中，直接跳转播放: ${enhancedSong.mediaMetadata.title} (位置: $existingIndex)")
+                    play(enhancedSong.mediaId)
+                    return@launch
+                }
+
+                // 歌曲不在播放列表中，插入到当前播放歌曲的下一个位置
                 val insertIndex = if (currentPlaylist.isEmpty()) {
                     0
                 } else {
@@ -290,7 +299,7 @@ class PlayerControllerImpl(
 
                 currentPlaylist.add(insertIndex, enhancedSong)
                 player.addMediaItem(insertIndex, enhancedSong)
-                LogUtils.d(TAG, "歌曲插入到位置 $insertIndex（允许重复）: ${enhancedSong.mediaMetadata.title}")
+                LogUtils.d(TAG, "歌曲插入到位置 $insertIndex（去重后新增）: ${enhancedSong.mediaMetadata.title}")
 
                 // 更新数据库
                 withContext(Dispatchers.IO) {
